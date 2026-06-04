@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xonda | Orquestador de Inercia Digital</title>
+    
+    <!-- Conexión con Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <style>
+        /* =======================================================
+           1. CANVAS OBSIDIAN Y REGLAS DE DIRECCIÓN DE ARTE
+           ======================================================= */
+        :root {
+            --bg-pure-black: #000000; 
+            --text-primary: #ffffff;
+            --text-secondary: #9CA3AF; 
+            --neon-cyan: #06B6D4;
+            --neon-purple: #8B5CF6;
+            
+            --cubic-apple: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            outline: none; 
+            
+            /* CAMBIO AQUÍ: Ahora toda la página usará Roboto */
+            font-family: "Roboto", sans-serif;
+            font-optical-sizing: auto;
+            
+            /* Optimizaciones de renderizado de texto */
+            -webkit-font-smoothing: antialiased; 
+            -moz-osx-font-smoothing: grayscale; 
+        }
+
+        /* --- REGLAS EXTRAS RECOMENDADAS PARA EL HERO --- */
+
+        /* Configuración para tus Subtítulos o Párrafos (P) */
+        p {
+            font-family: "Roboto", sans-serif;
+            font-size: 1.05rem;        /* Tamaño de lectura cómodo */
+            font-weight: 400;
+            color: var(--text-secondary); /* Usa el gris (#9CA3AF) para darle jerarquía */
+            line-height: 1.6;
+            text-align: center;
+            
+            /* EL TRUCO CLAVE: Limitamos el ancho para que no se estire horizontalmente */
+            max-width: 580px;          
+            margin: 0 auto 40px auto;  /* Lo centra horizontalmente y lo separa del botón inferior */
+        }
+
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg-pure-black);
+            color: var(--text-primary);
+            font-weight: 300; /* Letras finas globales */
+            -webkit-font-smoothing: antialiased;
+            letter-spacing: 0.03em; 
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            
+            background-image: url('fondo-hero.jpg');
+            background-size: cover;
+            background-position: top center;
+            background-attachment: fixed;
+        }
+
+        /* LUZ DEL TECHO (PASO 2) */
+        .techo-luz {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.090);
+            border-radius: 400px 400px 0 0;
+            filter: blur(80px);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* =======================================================
+           PASO 3: NAVBAR Y COMPONENTES
+           ======================================================= */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 32px 40px; 
+            
+            /* Asegúrate de que tenga estas líneas exactas */
+            position: absolute; 
+            top: 0; 
+            left: 50%;
+            transform: translateX(-50%);
+            
+            width: 100%; 
+            max-width: 120rem;
+            z-index: 10000;
+            background: transparent; 
+            margin: 0 auto; 
+        }
+
+
+        
+        .logo { 
+            display: flex; /* Obligatorio para que la propiedad 'transform' funcione */
+            align-items: center; 
+            gap: 1rem; 
+            text-decoration: none;
+            font-size: 2rem;
+            color: var(--text-primary); 
+            letter-spacing: -0.05em; 
+            font-weight: 380;
+            transform: scaleY(1.15); 
+            /* Corrige el punto de origen del estiramiento para que no se desplace */
+            transform-origin: center top; 
+        }
+
+        .btn-contact {
+            display: inline-flex; 
+            align-items: center; 
+            gap: 1rem;
+            background: rgba(37, 37, 37, 0.692);
+            border-radius: 10px; 
+            padding: 10px 24px;
+            color: #ffffff;
+            font-size: 1.35rem;
+            font-weight: 400; 
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-contact:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* =======================================================
+           PASO 5: TIPOGRAFÍA REFINADA ALTA Y FINA
+           ======================================================= */
+        h1, h2, h3, h4 {
+            font-family: "Roboto", sans-serif;
+            font-weight: 360;          /* Peso fuerte/Bold de Roboto */
+            letter-spacing: -0.03em;   /* Junta sutilmente las letras estilo premium */
+            line-height: 1.1;
+            color: var(--text-primary);
+            font-size: 4rem;
+            margin-bottom: 24px;       /* Lo separa del párrafo */
+            text-align: center;     
+        }
+
+        h1.hero-title, h2 {
+            font-family: "Roboto", sans-serif;
+            font-weight: 360;          /* Peso fuerte/Bold de Roboto */
+            letter-spacing: -0.05em;   /* Junta sutilmente las letras estilo premium */
+            line-height: 1;
+            color: var(--text-primary);
+            font-size: 6.0rem;
+            margin-bottom: 1rem;      /* Lo separa del párrafo */
+            text-align: center;    
+            
+            /* PASO 5: Letras grises con difuminado blanco de arriba hacia abajo (Luz cenital) */
+            background: linear-gradient(to bottom, #ffffff 30%, #ffffffc7 40%, #ffffffc5 50%, #ffffffbe 60%, #ffffff8f 70%, #ffffff98 80% );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-family: "Roboto", sans-serif;
+            font-weight: 490;
+            text-align: center;
+            display: block;
+            
+            /* 1. TAMAÑO EXACTO ESTILO ULTRA */
+            font-size: 1.5rem;           /* Letra más compacta y estilizada */
+            line-height: 1.2;          /* Da espacio vertical para que no se amontone */
+            
+            /* 2. ANCHO DE CONTENEDOR ESTRICTO */
+            max-width: 22em;          /* Lo reduce lo suficiente para agrupar las frases limpiamente */
+            margin: 0rem auto 2.5rem auto; /* Centrado perfecto y acerca el bloque al botón */
+            
+            /* 3. COLOR DE TEXTO DE INTERFAZ OSCURA */
+            color: #949499;            /* Un gris ceniza suave que no compite con el blanco del H1 */
+            
+            /* 4. SUAVIZADO EXTRA */
+            letter-spacing: -0.005em;  /* Ajuste de lectura fino para Roboto */
+        }
+
+
+
+        
+        .btn-primary {
+            display: inline-flex; 
+            align-items: center; 
+            justify-content: center; 
+            background-color: #FFFFFF; 
+            color: #000000bd; 
+            font-weight: 700; 
+            font-size: 15px;
+            padding: 16px 36px; 
+            border-radius: 8px; 
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15);
+        }
+
+        /* COMPONENTES GENERALES BENTO (MANTENIDOS) */
+        .glass-surface {
+            background: rgba(255, 255, 255, 0.01);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .hero { 
+            min-height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            position: relative; 
+            padding-top: 80px; 
+        }
+        
+        .hero-layout { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center;
+            text-align: center; 
+            width: 100%; 
+            max-width: 950px;
+            z-index: 10; 
+            margin: 0 auto;
+        }
+
+        /* =======================================================
+        REDISEÑO TOTAL DEL HORIZONTE CURVO LUMINOSO
+        ======================================================= */
+        .seccion-capas {
+            position: relative;
+            /* Mantenemos tus rellenos pero damos un aire extra arriba para los títulos */
+            padding: 180px 24px 140px 24px; 
+            width: 100%;
+            background-color: var(--bg-pure-black);
+            /* Desplazamos la sección hacia arriba para que la curva abrace el botón del Hero */
+            margin-top: -120px; 
+            z-index: 1;
+        }
+
+        /* ESTE PSEUDO-ELEMENTO GENERA LA GRAN CURVA CONTINUA */
+        .seccion-capas::before {
+            content: "";
+            position: absolute;
+            /* Se clava arriba del todo del contenedor de ingeniería */
+            top: 0;
+            left: -50%;
+            width: 200%;
+            /* Lo hacemos súper alto para que el degradado no se corte con líneas horizontales */
+            height: 100%; 
+            
+            /* El cuerpo del horizonte ahora se fusiona en un degradado infinito hacia el negro absoluto */
+            background: linear-gradient(to bottom, rgb(31, 31, 31) 0%, var(--bg-pure-black) 10%); 
+            
+            /* Mantiene la curvatura perfecta */
+            border-radius: 50% 50% 0 0;
+            
+            /* AUMENTO DE LUCES RADICAL:
+            1. La primera sombra emite un resplandor blanco/gris potente HACIA ARRIBA en el Hero.
+            2. La segunda sombra inyecta un destello extra para definir bien el filo de la curva. */
+            box-shadow: 
+                0px -25px 60px rgba(255, 255, 255, 0.14),
+                0px -5px 15px rgba(255, 255, 255, 0.041);
+                
+            z-index: -1; /* Se posiciona detrás de tus textos y tarjetas Bento */
+        }
+
+        /* =======================================================
+        SEMICÍRCULO DE LUZ DIFUSA INVERTIDA (AMBIENT GLOW)
+        ======================================================= */
+        /* =======================================================
+        SEMICÍRCULO DE LUZ DIFUSA INVERTIDA (PANZA HACIA ABAJO)
+        ======================================================= */
+        .seccion-capas::after {
+            content: "";
+            position: absolute;
+            /* Lo pegamos exactamente al techo de la sección */
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            
+            /* Lo hacemos bien ancho para que acompañe el flujo de la pantalla */
+            width: 900px;
+            height: 450px;
+            
+            /* LA MAGIA DE LA ORIENTACIÓN: 
+            Creamos un degradado elíptico que nace blanco puro arriba al centro (at 50% 0%)
+            y abre su 'pancita' translúcida barriendo hacia abajo hasta desaparecer */
+            background: radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.12) 0%, rgba(255, 0, 0, 0) 65%);
+            
+            /* Súper desenfoque para que se convierta en un aura ambiental suave */
+            filter: blur(60px);
+            
+            z-index: -1; 
+            pointer-events: none;
+        }
+
+        /* =======================================================
+        TARJETA DE PRIVACIDAD AMPLIADA (DEBAJO DE LA CURVA)
+        ======================================================= */
+        .privacy-card {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            
+            /* AGRANDADO: Subimos el ancho máximo y el espacio interior */
+            width: 100%;
+            max-width: 80rem; /* Antes 680px */
+            margin: 2rem auto 20rem auto; /* 100px de separación con el título de abajo */
+            padding: 3rem 3rem; /* Caja más robusta */
+            
+            /* Estética de cristal premium intacta */
+            background: var(--bg-pure-black);
+            border: 1px solid rgba(133, 133, 133, 0.5);
+            border-radius: 18px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+            position: relative;
+            z-index: 2; /* Asegura quedar por encima de las luces difusas de fondo */
+        }
+
+        /* Contenedor del Escudo más amplio */
+        .privacy-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            width: 5rem;
+            height: 5rem;
+            border-radius: 12px;
+        }
+
+        .privacy-content {
+            text-align: left;
+        }
+
+        /* Tipografías internas escaladas */
+        .privacy-card h4 {
+            font-family: "Roboto", sans-serif;
+            font-size: 1.6rem; /* Un punto más grande */
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+            text-align: left;
+        }
+
+        .privacy-card p.privacy-text {
+            font-family: "Roboto", sans-serif;
+            font-size: 1.5rem; /* Texto secundario más legible */
+            font-weight: 400;
+            color: #8E8E93; /* Gris ceniza premium de Ultra */
+            line-height: 1.5;
+            text-align: left;
+            max-width: 100%;
+            margin: 0;
+        }
+
+        /* Adaptación responsiva limpia */
+        @media (max-width: 768px) {
+            .privacy-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 28px;
+                gap: 18px;
+                margin-bottom: 60px;
+            }
+            .privacy-content, .privacy-card h4, .privacy-card p.privacy-text {
+                text-align: center;
+            }
+        }
+
+        /* =======================================================
+        SECCIÓN DE PROBLEMAS Y EFECTOS GEOMÉTRICOS 3D
+        ======================================================= */
+        .problemas-seccion {
+            width: 100%;
+            max-width: 80rem;
+            margin: 0 auto 12rem auto;
+            padding: 0 2rem;
+        }
+
+        .problemas-main-title {
+            font-family: "Roboto", sans-serif;
+            font-weight: 425;
+            font-size: 4rem;
+            line-height: 1;
+            text-align: center;
+            color: var(--text-primary);
+            margin-bottom: 6rem;
+            letter-spacing: -0.03em;
+            /* PASO 5: Letras grises con difuminado blanco de arriba hacia abajo (Luz cenital) */
+            background: linear-gradient(to bottom, #ffffff 30%, #ffffffc7 40%, #ffffffc5 50%, #ffffffbe 60%, #ffffff8f 70%, #ffffff98 80% );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Distribución de la fila destacada */
+        .solucion-destacada {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 6rem;
+        }
+
+        .solucion-info {
+            text-align: left;
+        }
+
+        .solucion-tag {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .solucion-info h3 {
+            font-size: 2.2rem;
+            line-height: 1.2;
+            font-weight: 600;
+            text-align: left;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .solucion-info p {
+            font-size: 1.05rem;
+            color: #8E8E93;
+            line-height: 1.6;
+            text-align: left;
+            max-width: 480px;
+            margin: 0;
+        }
+
+        /* =======================================================
+        REDISEÑO DE COMPOSICIÓN ESPACIAL CON ESFERA CENTRAL
+        ======================================================= */
+        .problemas-seccion {
+            width: 100%;
+            max-width: 80rem;
+            margin: 0 auto 12rem auto;
+            padding: 0 2rem;
+            position: relative; /* Contenedor de referencia */
+        }
+
+        .problemas-main-title {
+            font-size: 4rem;
+            font-weight: 350;
+            text-align: center;
+            color: var(--text-primary);
+            margin-bottom: 6.5rem;
+            padding-bottom:1rem;
+             /* PASO 5: Letras grises con difuminado blanco de arriba hacia abajo (Luz cenital) */
+            letter-spacing: -0.03em;
+        }
+
+        /* 📊 LA CLAVE: Cuadrícula simétrica de dos columnas principales */
+        .solucion-destacada {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem; /* Deja un espacio generoso en el medio para la esfera */
+            align-items: center;
+            position: relative;
+        }
+
+        .solucion-info {
+            text-align: left;
+            z-index: 2;
+        }
+
+        .solucion-tag {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .solucion-info h3 {
+            font-size: 2.2rem;
+            line-height: 1.2;
+            font-weight: 600;
+            text-align: left;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .solucion-info p {
+            font-size: 1.05rem;
+            color: #8E8E93;
+            line-height: 1.6;
+            text-align: left;
+            max-width: 440px;
+            margin: 0;
+        }
+
+        /* 🔮 LA ESFERA GEOMÉTRICA CON AJUSTE DINÁMICO Y CAPA DE FONDO */
+        .esfera-central-3d {
+            position: absolute;
+            width: 10rem;
+            height: 10rem;
+            
+            
+            /* 2. POSICIONAMIENTO CENTRALIZADO INTERMEDIO (Intacto, no se movió un solo píxel) */
+            top: 90%;
+            left: 50%;
+            transform: translate(-65%, -20%); 
+            
+            border-radius: 50%;
+            pointer-events: none;
+
+            /* 3. SOLUCIÓN AL ORDEN DE CAPAS (Z-INDEX) */
+            z-index: 0; 
+
+            /* 4. TEXTURA BLANCA MATE Y DESVANECE (Estilo Ultra) */
+            background: radial-gradient(circle at 40% 40%, 
+                rgba(255, 255, 255, 0.822) 0%, 
+                rgba(255, 255, 255, 0.6) 30%, 
+                rgba(255, 255, 255, 0.4) 60%,
+                rgba(255, 255, 255, 0.3) 100%);
+            
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            
+            box-shadow: 
+                -10px 15px 35px rgba(0, 0, 0, 0.4),
+                inset -4px -4px 10px rgba(0, 0, 0, 0.3),
+                inset 6px 6px 15px rgba(255, 255, 255, 0.25);
+        }
+
+
+        /* 💻 CONTENEDOR DERECHO: Pantalla de software */
+        .solucion-visual-wrapper {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end; /* La empuja hacia el extremo derecho */
+            perspective: 1200px; 
+            z-index: 1;
+        }
+
+        .interfaz-mockup {
+
+            width: 40rem;
+            height: 30rem;
+            background: 
+                radial-gradient(circle at 80% 0%, rgba(6, 182, 212, 0.28) 0%, rgba(6, 182, 212, 0) 50%), 
+                radial-gradient(circle at 40% 0%, rgba(139, 92, 246, 0.28) 0%, rgba(139, 92, 246, 0) 60%), 
+                radial-gradient(circle at 0% 0%, rgba(236, 72, 153, 0.18) 0%, rgba(236, 72, 153, 0) 40%), 
+                linear-gradient(185deg, rgba(17, 17, 21, 0.75) 0%, rgba(5, 5, 7, 0.349) 100%);
+
+            /* 🔮 EL EFECTO MÁGICO: DESENFOQUE DE VIDRIO ESMERILADO (GLASSMORPHISM) */
+            /* Esta línea es la que agarra la bola blanca de atrás y la difumina de forma hermosa en la esquina */
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px); /* Soporte obligatorio para Safari (Mac/iPhone) */
+
+            /* Reforzamos el borde sutil para que delimite bien el cristal oscuro */
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.9);
+            
+            /* Inclinación 3D limpia hacia adentro */
+            transform: rotateY(-8deg) rotateX(3deg);
+            will-change: transform, backdrop-filter;
+            transform: translateZ(0); /* Truco técnico para despertar la aceleración 3D */
+        }
+
+        .mockup-header {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 1.4rem;
+            color: #8E8E93;
+            margin-bottom: 20px;
+        }
+
+        .mockup-response-card {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 14px;
+            padding: 16px;
+        }
+
+        .mockup-response-card p {
+            font-size: 1.4rem;
+            line-height: 1.5;
+            color: #E5E5EA;
+            text-align: left;
+            margin: 0 0 12px 0;
+            max-width: 100%;
+        }
+
+        .mockup-inner-pill {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 10px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.3rem;
+        }
+
+        .mockup-inner-pill span { color: #ffffff; }
+        .mockup-inner-pill small { color: #636366; }
+        .solucion-box-mini { text-align: left; }
+        .solucion-box-mini h3 { font-size: 1.8rem; line-height: 1.3; font-weight: 600; text-align: left; margin-bottom: 1.2rem; letter-spacing: -0.02em; }
+        .solucion-box-mini p { font-size: 1rem; color: #8E8E93; line-height: 1.6; text-align: left; max-width: 100%; margin: 0; }
+
+        /* Ajuste responsivo */
+        @media (max-width: 968px) {
+            .solucion-destacada, .soluciones-secundarias { grid-template-columns: 1fr; gap: 4rem; }
+            .esfera-central-3d { display: none; } /* Ocultamos la bola en móviles para no encimar texto */
+            .solucion-visual-wrapper { justify-content: center; }
+        }
+
+        /* --- FILA INFERIOR DOS COLUMNAS --- */
+        .soluciones-secundarias {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            padding-top: 6rem;
+            margin-top: 4rem;
+            position: relative; /* Obligatorio para posicionar la línea interna */
+        }
+
+        /* LA LÍNEA SEPARADORA VERTICAL */
+        .soluciones-secundarias::after {
+            content: "";
+            position: absolute;
+            top: 6rem;              /* Alinea el inicio con el padding-top de la sección */
+            bottom: 0;              /* Llega hasta el fondo del contenedor */
+            left: 50%;              /* Se clava exactamente en el medio */
+            transform: translateX(-50%);
+            width: 1px;             /* Grosor ultra fino */
+            background: rgba(255, 255, 255, 0.06); /* Gris translúcido premium estilo Apple */
+        }
+
+        .solucion-box-mini {
+            text-align: left;
+        }
+
+        .solucion-box-mini h3 {
+            font-size: 1.8rem;
+            line-height: 1.3;
+            font-weight: 600;
+            text-align: left;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .solucion-box-mini p {
+            font-size: 1rem;
+            color: #8E8E93;
+            line-height: 1.6;
+            text-align: left;
+            max-width: 100%;
+            margin: 0;
+        }
+
+        /* Ajustes responsivos para pantallas chicas */
+        @media (max-width: 968px) {
+            .solucion-destacada, .soluciones-secundarias {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .solucion-visual-wrapper {
+                margin-top: 2rem;
+            }
+        }
+
+        /* =======================================================
+        ESTILOS COMPONENTES SECUNDARIOS (BENTO INFERIOR)
+        ======================================================= */
+        .solucion-box-mini {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        /* Área de montaje para las interfaces y las figuras */
+        .mini-visual-wrapper {
+            position: relative;
+            width: 100%;
+            height: 340px;
+            margin-top: 3.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1200px;
+        }
+
+        /* Las tarjetas de interfaz (Estilo Cristal Translúcido Idéntico al Principal) */
+        .mini-mockup-card {
+            width: 100%;
+            max-width: 440px;
+            height: 280px;
+            background: linear-gradient(185deg, rgba(17, 17, 21, 0.75) 0%, rgba(5, 5, 7, 0.7) 100%);
+            
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+            transform: rotateY(-6deg) rotateX(2deg);
+            transform-style: preserve-3d;
+            /* Aliviamos el radio de desenfoque */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1; /* Pasa por encima de las figuras geométricas */
+            will-change: transform, backdrop-filter;
+            transform: translateZ(0);
+        }
+
+        .mini-header {
+            font-size: 0.8rem;
+            color: #8E8E93;
+            font-weight: 500;
+            margin-bottom: 16px;
+            text-transform: none;
+        }
+
+        /* Estructura interna de las listas (To-Do's y Mails) */
+        .mini-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .mini-item, .mini-email-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .mini-item.active-todo {
+            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(255, 255, 255, 0.06);
+        }
+
+        .todo-check {
+            width: 14px;
+            height: 14px;
+            border: 1px solid #ff9f0a; /* Toque naranja de Ultra */
+            border-radius: 3px;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        .todo-body, .email-body {
+            font-size: 0.8rem;
+            line-height: 1.4;
+            color: #E5E5EA;
+        }
+
+        .todo-body span {
+            display: block;
+            color: #636366;
+            font-size: 0.72rem;
+            margin-top: 2px;
+        }
+
+        /* Detalles específicos de la lista de correos */
+        .email-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            flex-shrink: 0;
+        }
+
+        .email-top {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            margin-bottom: 2px;
+        }
+
+        .email-top span { color: #636366; }
+
+        .mini-email-item p {
+            font-size: 0.75rem;
+            color: #8E8E93;
+            text-align: left;
+            max-width: 100%;
+            margin: 0;
+        }
+
+        /* 💊 TEXTURA BLANCA: OBJETO CÁPSULA (LADO IZQUIERDO) */
+        .geometria-capsula-3d {
+            position: absolute;
+            width: 90px;
+            height: 140px;
+            border-radius: 50px; /* Alarga los extremos en forma de píldora */
+            bottom: 20px;
+            left: -35px;
+            z-index: 0; /* Va al fondo */
+            transform: rotate(35deg) translateZ(-10px); /* Rotada e inclinada hacia atrás */
+            
+            /* Clonación de tu gradiente blanco denso a medida */
+            background: radial-gradient(circle at 40% 30%, 
+                rgba(255, 255, 255, 0.822) 0%, 
+                rgba(255, 255, 255, 0.5) 40%, 
+                rgba(255, 255, 255, 0.2) 70%,
+                rgba(0, 0, 0, 0.4) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: -15px 15px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* 🧊 TEXTURA BLANCA: OBJETO CUBO REDONDEADO (LADO DERECHO) */
+        .geometria-cubo-3d {
+            position: absolute;
+            width: 110px;
+            height: 110px;
+            border-radius: 28px; /* Cubo suavizado */
+            top: 10px;
+            right: -30px;
+            z-index: 0; /* Va al fondo */
+            transform: rotate(-20deg) rotateX(15deg) translateZ(-10px); /* Ángulo tridimensional */
+            
+            /* Mismo gradiente de tu esfera */
+            background: radial-gradient(circle at 35% 35%, 
+                rgba(255, 255, 255, 0.822) 0%, 
+                rgba(255, 255, 255, 0.5) 35%, 
+                rgba(255, 255, 255, 0.15) 65%,
+                rgba(0, 0, 0, 0.4) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 15px 15px 35px rgba(0, 0, 0, 0.5);
+        }
+
+        /* =======================================================
+        ESTILOS PARA EL ÚLTIMO BLOQUE (DASHBOARD INVERTIDO)
+        ======================================================= */
+
+        /* Forzamos que en pantallas grandes el texto pase a la izquierda y el visual a la derecha */
+        .solucion-invertida {
+            margin-top: 8rem;
+        }
+
+        /* Redefinimos un tamaño ligeramente más ancho para la simulación del panel completo */
+        .dashboard-large-mockup {
+            max-width: 520px !important;
+            height: 300px !important;
+            /* Inclinación 3D opuesta para dar variedad al diseño de la página */
+            transform: rotateY(-6deg) rotateX(2deg) !important;
+        }
+
+        /* =======================================================
+        🔺 REPARACIÓN FINAL: POSICIONAMIENTO DEL CONO GIGANTE
+        ======================================================= */
+        .geometria-cono-container {
+            position: absolute;
+            
+            /* Dimensiones gigantes acordes al Dashboard de Ultra */
+            width: 220px;  
+            height: 220px;
+            
+            /* Lo centramos sacándolo de la esquina del recuadro */
+            top: -110px;
+            left: -100px;
+            
+            z-index: 0; /* Al fondo para que el cristal esmerilado lo pise */
+            pointer-events: none;
+            
+            /* Inclinación espacial tridimensional fija (Evita deformaciones) */
+            transform: rotate(-18deg) rotateX(10deg);
+        }
+
+        .cono-inflado-svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+            
+            /* Sombra proyectada suave contra el lienzo negro de tu web */
+            filter: drop-shadow(-15px 20px 25px rgba(0, 0, 0, 0.829));
+            
+            /* Mantiene activo tu efecto de vidrio esmerilado translúcido */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        /* =======================================================
+        ETIQUETAS DE SECCIÓN CON DEGRADADO METÁLICO (UNIFICADO)
+        ======================================================= */
+        .solucion-tag-premium {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            
+            font-family: "Roboto", sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600; 
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            margin-bottom: 1.2rem;
+            
+            /* Degradado de texto usando tus variables cian y púrpura */
+            background: linear-gradient(45deg, var(--neon-cyan) 0%, var(--neon-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            
+            filter: brightness(0.85); 
+        }
+
+        /* El icono hereda la iluminación cian inicial */
+        .solucion-tag-premium svg {
+            display: block;
+            stroke: var(--neon-cyan); 
+            flex-shrink: 0;
+            opacity: 0.8;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 90px;
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Título principal gigante */
+        .section-title-premium {
+            font-family: "Roboto", sans-serif;
+            font-size: 4.2rem;       /* Tamaño masivo premium */
+            font-weight: 450;        /* Peso medio nítido */
+            line-height: 1.1;
+            letter-spacing: -0.04em; /* Letras juntas estilo Apple/Ultra */
+            color: #ffffff;          /* Primera línea blanca fija */
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        /* Segunda línea del título (Gris atenuado) */
+        .section-title-premium span {
+            color: #8E8E93;          /* Gris ceniza que reduce el peso visual abajo */
+            font-weight: 400;
+        }
+
+        /* Subtítulo de párrafo optimizado */
+        .section-subtitle-premium {
+            font-family: "Roboto", sans-serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: #636366;          /* Gris apagado suave para lectura de soporte */
+            line-height: 1.5;
+            text-align: center;
+            
+            /* El truco clave de la imagen: acotamos el contenedor para forzar el quiebre */
+            max-width: 520px;        
+            margin: 0 auto;
+        }
+
+        /* Adaptación para dispositivos móviles */
+        @media (max-width: 768px) {
+            .section-title-premium {
+                font-size: 2.5rem;
+            }
+            .section-subtitle-premium {
+                font-size: 1.1rem;
+                max-width: 90%;
+            }
+        }
+
+        /* Adaptación responsiva para móviles */
+        @media (max-width: 968px) {
+            .solucion-invertida {
+                margin-top: 4rem;
+            }
+            .geometria-piramide-3d {
+                display: none; /* Se oculta en teléfonos para priorizar la lectura */
+            }
+        }
+
+        /* Ajuste fino responsivo */
+        @media (max-width: 968px) {
+            .soluciones-secundarias { grid-template-columns: 1fr; gap: 4rem; }
+            .geometria-capsula-3d, .geometria-cubo-3d { display: none; } /* Se ocultan en móviles */
+        }
+
+
+
+
+
+        section { padding: 140px 24px; display: flex; justify-content: center; align-items: center; width: 100%; }
+        .container { max-width: 1140px; width: 100%; margin: 0 auto; position: relative; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 1s var(--cubic-apple); }
+        .reveal.activa { opacity: 1; transform: translateY(0); }
+
+        /* BENTO GRID */
+        .section-tag { font-size: 12px; font-weight: 400; color: var(--text-primary); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 20px; display: block; opacity: 0.5; }
+        .section-title { font-size: 52px; line-height: 1.1; margin-bottom: 28px; letter-spacing: -0.04em; }
+        .section-subtitle { font-size: 19px; color: var(--text-secondary); line-height: 1.6; max-width: 600px; font-weight: 300; margin-bottom: 80px; text-transform: none;}
+
+        .bento-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 32px; width: 100%; }
+        .bento-card { border-radius: 28px; padding: 48px; display: flex; flex-direction: column; justify-content: space-between; min-height: 320px; }
+        .bento-card.full-width { grid-column: 1 / -1; flex-direction: row; align-items: center; min-height: 380px; }
+        
+        .bento-card h3 { font-size: 26px; margin-bottom: 16px; letter-spacing: -0.02em; }
+        .bento-card p { font-size: 15px; color: var(--text-secondary); line-height: 1.6; max-width: 440px; font-weight: 300; text-transform: none;}
+        .bento-icon { width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 32px; }
+
+        .bento-asset-box { width: 260px; height: 260px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+        .bento-asset-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+        .footer { padding: 80px 24px 40px 24px; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.03); margin-top: 120px; }
+        .footer-logo { display: inline-flex; align-items: center; justify-content: center; gap: 12px; text-decoration: none; color: var(--text-primary); margin-bottom: 20px; font-size: 20px; font-weight: 300;}
+        .copyright { color: var(--text-secondary); font-size: 13px; letter-spacing: 0.5px;}
+
+        @media (max-width: 968px) {
+            .navbar { width: 100%; padding: 20px 24px; }
+            h1.hero-title { font-size: 42px; }
+            .bento-grid { grid-template-columns: 1fr; }
+            .bento-card.full-width { flex-direction: column; text-align: center; justify-content: center; gap: 40px; }
+            .bento-card.full-width p { margin: 0 auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="techo-luz"></div>
+
+    <nav class="navbar">
+        <a href="#" class="logo">
+            <div class="logo-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="3" y="3" width="12" height="12" stroke="white" stroke-width="1.2"/>
+                    <rect x="9" y="9" width="12" height="12" stroke="white" stroke-width="1.2"/>
+                </svg>
+            </div>
+            <span>Xonda</span>
+        </a>
+        
+        <a href="#" class="btn-contact">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            Averigua más
+        </a>
+    </nav>
+
+    <main class="hero" id="hero">
+        <div class="container hero-layout reveal activa">
+            <h1 class="hero-title">
+                Tu Empresa,<br>
+                Automatizada.
+            </h1>
+            <p class="hero-subtitle">
+                Simplificamos operaciones complejas. Desarrollamos software a medida y agentes autónomos de IA.
+            </p>
+            <div class="hero-actions">
+                <a href="#ingenieria" class="btn-primary">Ver Ecosistemas</a>
+            </div>
+
+        </div> <!-- Aquí cierra el contenedor general del Hero -->
+    </main>
+
+
+    
+
+    <section id="ingenieria" class="seccion-capas">
+        <div class="container">
+
+            <!-- 🌟 NUEVA UBICACIÓN: La tarjeta ahora inicia la sección de abajo -->
+            <div class="privacy-card reveal">
+                <div class="privacy-badge">
+                    <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://w3.org">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 11h4.5c.1.4.1.7.1 1.1 0 2.7-1.8 4.7-4.6 4.7-2.7 0-4.9-2.2-4.9-4.9s2.2-4.9 4.9-4.9c1.3 0 2.4.5 3.3 1.3l-1.3 1.3c-.5-.5-1.2-.8-2-.8-1.7 0-3.1 1.4-3.1 3.1s1.4 3.1 3.1 3.1c2 0 2.7-1.4 2.8-2.1H12v-1.9z" fill="white"/>
+                    </svg>
+                </div>
+                <div class="privacy-content">
+                    <h4>Google-approved. Privacy Protected.</h4>
+                    <p class="privacy-text">Xonda has gone through a rigorous process with Google to make sure your systems are secure.</p>
+                </div>
+            </div>
+
+                    <!-- SECCIÓN DE PROBLEMAS Y SOLUCIONES -->
+            <div class="problemas-seccion reveal">
+                <h2 class="problemas-main-title">¿Has tenido estos problemas?</h2>
+                
+                <!-- Bloque Destacado Superior (2 Columnas) -->
+                <div class="solucion-destacada">
+                    <!-- 1. BLOQUE IZQUIERDO: Textos -->
+                    <div class="solucion-info">
+                        <span class="solucion-tag-premium">
+                            <!-- Icono de CPU / Microchip inteligente -->
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                                <rect x="9" y="9" width="6" height="6"></rect>
+                                <line x1="9" y1="1" x2="9" y2="4"></line>
+                                <line x1="15" y1="1" x2="15" y2="4"></line>
+                                <line x1="9" y1="20" x2="9" y2="23"></line>
+                                <line x1="15" y1="20" x2="15" y2="23"></line>
+                                <line x1="20" y1="9" x2="23" y2="9"></line>
+                                <line x1="20" y1="15" x2="23" y2="15"></line>
+                                <line x1="1" y1="9" x2="4" y2="9"></line>
+                                <line x1="1" y1="15" x2="4" y2="15"></line>
+                            </svg>
+                            Agente Cognitivo Avanzado
+                        </span>
+                        <h3>Personal email assistant.<br>Now you can chat with your emails.</h3>
+                        <p>A ChatGPT-like assistant means a wealth of insights are just a few words away. Imagine that.</p>
+                    </div>
+                    
+                    <!-- 2. ELEMENTO CENTRAL: La esfera geométrica flotante -->
+                    <div class="esfera-central-3d"></div>
+                    
+                    <!-- 3. BLOQUE DERECHO: Pantalla de software -->
+                    <div class="solucion-visual-wrapper">
+                        <div class="interfaz-mockup">
+                            <div class="mockup-header">
+                                <span class="mockup-search">🔍 When did I first meet John?</span>
+                            </div>
+                            <div class="mockup-response-card">
+                                <p>Looks like you first met <strong>John on Dec 21, 2024</strong>. Here's some relevant emails for you.</p>
+                                <div class="mockup-inner-pill">
+                                    <span>Let's catch up 🤝</span>
+                                    <small>Dec 21, 2024</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Fila Inferior (Dos Columnas Simétricas) -->
+                <div class="soluciones-secundarias">
+                    <!-- COLUMNA IZQUIERDA: Extracted To-Do's -->
+                    <div class="solucion-box-mini reveal">
+                        <span class="solucion-tag-premium">
+                            <!-- Icono de Rayo / Energía autónoma -->
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                            </svg>
+                            AI Powered Actions
+                        </span>
+                        <h3>Extracted To-Do's.<br>Let Ultra tell you what needs your attention.</h3>
+                        <p>No more slogging through your emails to figure out what you need to take action on. Ultra finds what's important and transforms it into a to-do.</p>
+                        
+                        <!-- MOCKUP ACCIONES AUTÓNOMAS -->
+                        <div class="mini-visual-wrapper">
+                            <!-- 💊 LA CÁPSULA BLANCA DE FONDO -->
+                            <div class="geometria-capsula-3d"></div>
+                            
+                            <div class="mini-mockup-card">
+                                <div class="mini-header">✦ Action emails</div>
+                                <div class="mini-list">
+                                    <div class="mini-item active-todo">
+                                        <div class="todo-check"></div>
+                                        <div class="todo-body">
+                                            <strong>Coinbase:</strong> Review ticket #4517
+                                            <span>://mercury.com...</span>
+                                        </div>
+                                    </div>
+                                    <div class="mini-item">
+                                        <div class="todo-check"></div>
+                                        <div class="todo-body">
+                                            <strong>F.inc:</strong> Review ticket #4467
+                                            <span>://mercury.com...</span>
+                                        </div>
+                                    </div>
+                                    <div class="mini-item">
+                                        <div class="todo-check"></div>
+                                        <div class="todo-body">
+                                            <strong>Fluid:</strong> Review ticket #4567
+                                            <span>://mercury.com...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- COLUMNA DERECHA: Smart Summaries -->
+                    <div class="solucion-box-mini reveal">
+                        <span class="solucion-tag-premium">
+                            <!-- Icono de Documento / Resumen de texto -->
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                            AI Powered Email Summary
+                        </span>
+                        <h3>Smart Summaries.<br>Read the key takeaways and skip the rest.</h3>
+                        <p>Read the key details first and choose to read the whole thing after. Tell Ultra what you want the summary to look like. Five bullets? One sentence?</p>
+                        
+                        <!-- MOCKUP RESÚMENES INTELIGENTES -->
+                        <div class="mini-visual-wrapper">
+                            <!-- 🧊 EL CUBO BLANCO DE FONDO -->
+                            <div class="geometria-cubo-3d"></div>
+                            
+                            <div class="mini-mockup-card">
+                                <div class="mini-header">📋 Important emails</div>
+                                <div class="mini-list">
+                                    <div class="mini-email-item">
+                                        <div class="email-avatar">AM</div>
+                                        <div class="email-body">
+                                            <div class="email-top"><strong>Angus MacGyver</strong> <span>2:34 PM</span></div>
+                                            <p><strong>Product sync</strong> - Matt wants to chat about crypto product roadmap...</p>
+                                        </div>
+                                    </div>
+                                    <div class="mini-email-item">
+                                        <div class="email-avatar">BB</div>
+                                        <div class="email-body">
+                                            <div class="email-top"><strong>Dr. Bonnie Barstow</strong> <span>2:34 PM</span></div>
+                                            <p><strong>Card review</strong> - Dr. Bonnie wants to share credit card review...</p>
+                                        </div>
+                                    </div>
+                                    <div class="mini-email-item">
+                                        <div class="email-avatar">AB</div>
+                                        <div class="email-body">
+                                            <div class="email-top"><strong>Arc Browser 4</strong> <span>2:34 PM</span></div>
+                                            <p>2023 Arc Event - Matt wants to chat about crypto product roadmap...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- Cierre de la Columna Derecha -->
+
+                </div> <!-- 🌟 AQUÍ CIERRA LA FILA DE DOS COLUMNAS DE FORMA ESTRICTA -->
+
+            </div>
+
+
+            <!-- SECCIÓN INTERMEDIA: INGENIERÍA SIN FRICCIÓN -->
+            <div class="section-header reveal mx-auto">
+                <span class="solucion-tag-premium">
+                    <!-- Icono cuadrado estilo "Behind the Scene" de tu código -->
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="9" y1="3" x2="9" y2="21"></line>
+                    </svg>
+                    Infraestructura Propietaria
+                </span>
+                
+                <!-- TÍTULO ESTRUCTURADO EN DOS LÍNEAS COMO LA IMAGEN -->
+                <h2 class="section-title-premium">
+                    Ingeniería sin fricción <br>
+                    <span>para que tu equipo no pierda el foco.</span>
+                </h2>
+                
+                <p class="section-subtitle-premium">
+                    Construimos ecosistemas robustos que operan en las sombras para que tu equipo vuelva a pensar en estrategia, no en planillas.
+                </p>
+            </div>
+
+            <div class="bento-grid">
+                <div class="bento-card full-width glass-surface reveal">
+                    <div style="flex-grow: 1;">
+                        <div class="bento-icon" style="width:40px; height:40px; border: 1px solid rgba(255,255,255,0.1); border-radius:10px; display:flex; align-items:center; justify-content:center;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                        </div>
+                        <h3>CAPA LÓGICA CUSTOM</h3>
+                        <p>Centralizamos flujos operativos críticos dispersos. Diseñamos e implementamos arquitecturas escalables a medida que unifican sus bases de datos heredadas, eliminando silos informacionales de raíz.</p>
+                    </div>
+                    
+                    <div class="bento-asset-box">
+                        <img src="codigo_3d.png" alt="Zondata Code Brackets 3D">
+                    </div>
+                </div>
+
+                <div class="bento-card glass-surface reveal">
+                    <div>
+                        <div class="bento-icon" style="width:40px; height:40px; border: 1px solid rgba(255,255,255,0.1); border-radius:10px; display:flex; align-items:center; justify-content:center;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        </div>
+                        <h3>AGENTES COGNITIVOS</h3>
+                        <p>Automatización profunda. Implementamos LLMs entrenados con su conocimiento específico para orquestar soporte técnico y operativas conversacionales 24/7 sin descanso manual.</p>
+                    </div>
+                </div>
+                
+                <div class="bento-card glass-surface reveal">
+                    <div>
+                        <div class="bento-icon" style="width:40px; height:40px; border: 1px solid rgba(255,255,255,0.1); border-radius:10px; display:flex; align-items:center; justify-content:center;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                        </div>
+                        <h3>COMPROMISO INVISIBLE</h3>
+                        <p>Infraestructura blindada. Garantizamos SLA de disponibilidad 99.9%, auditorías continuas y transferencia absoluta de propiedad intelectual desde el primer día.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container copyright-wrapper">
+             <a href="#hero" class="logo footer-logo">
+                <div class="logo-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="3" y="3" width="12" height="12" stroke="white" stroke-width="1.2"/>
+                        <rect x="9" y="9" width="12" height="12" stroke="white" stroke-width="1.2"/>
+                    </svg>
+                </div>
+                <span>Xonda</span>
+            </a>
+            <p class="copyright">© 2026 Xonda. Ingeniería Absoluta. Mendoza, Argentina.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            function checkScroll() {
+                const triggerBottom = window.innerHeight * 0.85;
+                document.querySelectorAll('.reveal').forEach(el => {
+                    const boxTop = el.getBoundingClientRect().top;
+                    if (boxTop < triggerBottom) {
+                        el.classList.add('activa');
+                    }
+                });
+            }
+            window.addEventListener('scroll', checkScroll);
+            checkScroll(); 
+        });
+    </script>
+</body>
+</html>
