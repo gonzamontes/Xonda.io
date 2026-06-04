@@ -219,16 +219,6 @@
             box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15);
         }
 
-        /* COMPONENTES GENERALES BENTO (MANTENIDOS) */
-        .glass-surface {
-            background: rgba(255, 255, 255, 0.01);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            border-left: 1px solid rgba(255, 255, 255, 0.06);
-        }
-
         .hero { 
             min-height: 100vh; 
             display: flex; 
@@ -268,28 +258,21 @@
         .seccion-capas::before {
             content: "";
             position: absolute;
-            /* Se clava arriba del todo del contenedor de ingeniería */
             top: 0;
             left: -50%;
             width: 200%;
-            /* Lo hacemos súper alto para que el degradado no se corte con líneas horizontales */
             height: 100%; 
             
-            /* El cuerpo del horizonte ahora se fusiona en un degradado infinito hacia el negro absoluto */
+            /* Mantenemos tu degradado de fusión infinito hacia el negro */
             background: linear-gradient(to bottom, rgb(31, 31, 31) 0%, var(--bg-pure-black) 10%); 
-            
-            /* Mantiene la curvatura perfecta */
             border-radius: 50% 50% 0 0;
             
-            /* AUMENTO DE LUCES RADICAL:
-            1. La primera sombra emite un resplandor blanco/gris potente HACIA ARRIBA en el Hero.
-            2. La segunda sombra inyecta un destello extra para definir bien el filo de la curva. */
-            box-shadow: 
-                0px -25px 60px rgba(255, 255, 255, 0.14),
-                0px -5px 15px rgba(255, 255, 255, 0.041);
-                
-            z-index: -1; /* Se posiciona detrás de tus textos y tarjetas Bento */
+            /* 🌟 SOLUCIÓN: Eliminamos la sombra blanca de -25px que se metía en tus tarjetas */
+            box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.9);
+                        
+            z-index: -1; 
         }
+
 
         /* =======================================================
         SEMICÍRCULO DE LUZ DIFUSA INVERTIDA (AMBIENT GLOW)
@@ -298,7 +281,7 @@
         SEMICÍRCULO DE LUZ DIFUSA INVERTIDA (PANZA HACIA ABAJO)
         ======================================================= */
         .seccion-capas::after {
-            content: "";
+            content: none !important;
             position: absolute;
             /* Lo pegamos exactamente al techo de la sección */
             top: 0;
@@ -1024,6 +1007,414 @@
         }
 
 
+        /* =======================================================
+        REDISEÑO DE PESTAÑAS A TARJETAS DE CRISTAL (GLASS TABS)
+        ======================================================= */
+        .servicios-interactive-wrapper {
+            width: 100%;
+            margin-top: 2rem;
+            position: relative;
+            z-index: 5;
+            /* Evita que los cálculos de animación y desenfoque afecten al fondo */
+            transform: translateZ(0); 
+            will-change: transform;
+        }
+
+        
+        .servicios-tabs {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+            width: 100%;
+        }
+
+        /* =======================================================
+   NUEVO MAQUETADO DE PANELES LIBRES (FLOTANTES)
+   ======================================================= */
+.service-panel {
+    display: none !important; 
+    visibility: hidden;
+    opacity: 0;
+    width: 100%;
+    background: transparent !important; /* Quitamos el contenedor oscuro */
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    transition: opacity 0.4s var(--cubic-apple);
+}
+
+.service-panel.active {
+    display: block !important; 
+    visibility: visible;
+    opacity: 1;
+    animation: fadeInPanel 0.5s var(--cubic-apple);
+}
+
+/* NUEVA CLASE: Tarjetas de Cristal Líquido Puro (Idénticas a la sección Problemas) */
+.glass-card-service {
+    /* Fondo esmerilado translúcido sutil que deja ver las figuras de atrás */
+    background: rgba(255, 255, 255, 0.01) !important;
+    backdrop-filter: blur(24px) !important;
+    -webkit-backdrop-filter: blur(24px) !important;
+    
+    /* Relieve fino premium en los bordes */
+    border: 1px solid rgba(255, 255, 255, 0.03) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-radius: 20px !important;
+    
+    padding: 36px !important;
+    text-align: left !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+    z-index: 2; /* Pasa por encima de los pentágonos */
+    
+    transition: transform 0.4s var(--cubic-apple), border-color 0.4s ease, background 0.4s ease !important;
+}
+
+/* Efecto al pasar el cursor sobre las tarjetas flotantes */
+.glass-card-service:hover {
+    transform: translateY(-4px) !important;
+    background: rgba(255, 255, 255, 0.02) !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* =======================================================
+   🔮 TEXTURA BLANCA: GEOMETRÍA PENTÁGONO 3D FLOTANTE
+   ======================================================= */
+/* =======================================================
+   🔮 TEXTURA BLANCA: GEOMETRÍA PENTÁGONO 3D CON PUNTAS SUAVES
+   ======================================================= */
+.geometria-pentagono-3d {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    z-index: 0; 
+    pointer-events: none;
+    
+    /* 🌟 TRUCO AVANZADO: Filtro dual para redondear las esquinas del clip-path */
+    filter: blur(4px) contrast(8) drop-shadow(0 20px 40px rgba(0, 0, 0, 0.7)) !important;
+    
+    /* Mantenemos el corte del pentágono regular nativo */
+    clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+    -webkit-clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+    
+    /* Gradiente blanco denso mate estilo Ultra */
+    background: radial-gradient(circle at 35% 35%, 
+        rgba(255, 255, 255, 0.9) 0%, /* Subimos un poco el brillo central */
+        rgba(255, 255, 255, 0.55) 35%, 
+        rgba(255, 255, 255, 0.15) 65%,
+        rgba(0, 0, 0, 0.6) 100%) !important;
+        
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+}
+
+
+/* CONGELADOR DE ALTURA GLOBAL */
+.contenedor-servicios-fijo {
+    position: relative !important;
+    width: 100% !important;
+    
+    /* 🌟 LA CLAVE: Forzamos una altura mínima fija para que el fondo no colapse 
+       al cambiar a la pestaña corta de Inteligencia Artificial */
+    min-height: 750px !important; 
+    margin-bottom: 50px !important;
+}
+
+/* Pentágono Superior Derecho (Inmóvil junto a los botones) */
+.pentagono-top {
+    top: -20px !important;
+    right: -40px !important;
+    bottom: auto !important;
+    transform: rotate(25deg) rotateX(15deg) !important;
+}
+
+/* Pentágono Inferior Izquierdo (Fijado estrictamente al piso del bloque más largo) */
+.pentagono-bottom {
+    top: auto !important;
+    
+    /* 🌟 SOLUCIÓN: Al medir desde el piso del contenedor fijo, 
+       jamás se moverá cuando ocultes o muestres las tarjetas de IA */
+    bottom: 27rem !important; 
+    left: -40px !important;
+    transform: rotate(-35deg) rotateX(20deg) !important;
+}
+
+
+/* Ocultamos las figuras en dispositivos móviles para priorizar espacio */
+@media (max-width: 968px) {
+    .geometria-pentagono-3d {
+        display: none !important;
+    }
+}
+
+
+
+        /* 1. REGISTRAR PROPIEDAD PARA ANIMACIÓN DE ÁNGULO FLUIDA */
+        /* 1. REGISTRAR PROPIEDAD PARA EL ÁNGULO DE GIRO */
+        @property --gradient-angle {
+            syntax: "<angle>";
+            initial-value: 0deg;
+            inherits: false;
+        }
+
+        /* 2. EL BOTÓN CONTENEDOR (CRISTAL CON BORDE ANIMADO NATIVO) */
+        .tab-btn-crystal {
+            /* Fondo base de cristal esmerilado oscuro */
+            background: rgba(10, 10, 10, 0.85) !important;
+            backdrop-filter: blur(20px) !important;
+            -webkit-backdrop-filter: blur(20px) !important;
+            
+            /* Creamos un borde real transparente de 1.5px donde se va a renderizar el neón */
+            border: 1.5px solid transparent !important;
+            border-radius: 20px !important;
+            padding: 2rem !important;
+            text-align: left !important;
+            cursor: pointer !important;
+            position: relative !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 8px !important;
+            z-index: 1 !important;
+            outline: none !important;
+            overflow: visible !important; /* Mantiene a salvo el cartel de IA */
+            transition: transform 0.3s var(--cubic-apple), background 0.3s ease, box-shadow 0.3s ease;
+
+            /* 🌟 CORTA EL CARTEL EXACTAMENTE EN EL BORDE DE LA TARJETA */
+            mask-image: linear-gradient(#fff, #fff), linear-gradient(#fff, #fff);
+            mask-clip: padding-box, border-box;
+            mask-composite: intersect;
+            -webkit-mask-image: -webkit-linear-gradient(#fff, #fff), -webkit-linear-gradient(#fff, #fff);
+            -webkit-mask-clip: padding-box, border-box;
+            -webkit-mask-composite: source-in;
+        }
+
+        /* Eliminamos los pseudo-elementos conflictivos que se tapaban entre sí */
+        .tab-btn-crystal::before,
+        .tab-btn-crystal::after {
+            content: none !important;
+        }
+
+        /* 3. CONTRASTE PERFECTO EN TEXTOS */
+        .tab-btn-crystal .tab-title {
+            font-family: "Roboto", sans-serif !important;
+            font-size: 1.4rem !important;
+            font-weight: 500 !important;
+            color: #8E8E93 !important; /* Gris desactivado */
+            transition: color 0.3s ease;
+        }
+
+        .tab-btn-crystal .tab-desc {
+            font-family: "Roboto", sans-serif !important;
+            font-size: 0.9rem !important;
+            color: #48484A !important;
+            line-height: 1.4 !important;
+            transition: color 0.3s ease;
+        }
+
+        /* =======================================================
+        ESTADOS INTERACTIVOS (HOVER Y ACTIVO)
+        ======================================================= */
+
+        .tab-btn-crystal:hover {
+            background: rgba(255, 255, 255, 0.082) !important;
+        }
+        .tab-btn-crystal:hover .tab-title { color: #ffffff !important; }
+
+        /* 🌟 SECCIÓN ACTUALIZADA: COLORES PÚRPURA Y CELESTE EN GIRO */
+        .tab-btn-crystal.active {
+            /* Cambiamos el #ff7300 (naranja) por #8B5CF6 (tu morado/violeta de variables) */
+            background: 
+                linear-gradient(#0a0a0a, #0a0a0a) padding-box, 
+                conic-gradient(
+                    from var(--gradient-angle), 
+                    transparent 30%, 
+                    #8B5CF6 45%,        /* Violeta/Neon Purple */
+                    var(--neon-cyan) 55%, /* Celeste/Neon Cyan */
+                    transparent 70%
+                ) border-box !important;
+            
+            animation: rotarBordeFino 4s linear infinite !important;
+        }
+
+
+        /* Iluminación de textos activos */
+        .tab-btn-crystal.active .tab-title { color: #ffffff !important; }
+        .tab-btn-crystal.active .tab-desc { color: #8E8E93 !important; }
+
+        .tab-btn-crystal.active .font-neon {
+            background: linear-gradient(45deg, #ffffff 30%, var(--neon-cyan) 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+        }
+
+        /* 4. ANIMACIÓN DE ROTACIÓN */
+        @keyframes rotarBordeFino {
+            0% { --gradient-angle: 0deg; }
+            100% { --gradient-angle: 360deg; }
+        }
+
+        /* Resaltado sutil para la pestaña de IA */
+        .font-neon {
+            background: linear-gradient(45deg, #ffffff 0%, var(--neon-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* =======================================================
+        ⚡ CARTEL EN LOOP PERPETUO CON CORTE POR MÁSCARA
+        ======================================================= */
+        .badge-running-container {
+            position: absolute !important;
+            
+            /* 🌟 COORDINADAS PRECISAS PARA EL ÁNGULO DIAGONAL */
+            top: 16px !important;
+            right: -45px !important; /* Lo empuja hacia afuera para esconder la punta derecha */
+            
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple)) !important;
+            padding: 6px 0 !important;
+            
+            /* 🌟 SOLUCIÓN: Corregido a un único valor de rotación limpio de 18 grados */
+            transform: rotate(18deg) !important; 
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.25) !important;
+            
+            /* Hacemos el contenedor bien largo para que la punta izquierda muera fuera de la tarjeta */
+            width: 260px !important; 
+            
+            overflow: hidden !important;
+            white-space: nowrap !important;
+            display: flex !important;
+        }
+
+
+
+        /* El riel que traslada los dos bloques de texto en sincronía pura */
+        .badge-track {
+            display: flex !important;
+            animation: marqueeContinuo 8s linear infinite !important;
+            width: max-content !important;
+        }
+
+        .badge-running-container span {
+            font-family: "Roboto", sans-serif !important;
+            font-size: 0.58rem !important;
+            font-weight: 800 !important;
+            color: #000000 !important;
+            letter-spacing: 0.06em !important;
+            flex-shrink: 0 !important;
+            display: inline-block !important;
+        }
+
+        /* NUEVA ANIMACIÓN: Se desplaza exactamente el 50% de la caja (un bloque de texto)
+        y se resetea instantáneamente sin que el ojo humano note el salto */
+        @keyframes marqueeContinuo {
+            0% {
+                transform: translate3d(0, 0, 0);
+            }
+            100% {
+                transform: translate3d(-50%, 0, 0);
+            }
+        }
+
+
+        /* =======================================================
+        CUADRÍCULAS DE SERVICIOS BLINDADAS (ANTI-APILAMIENTO)
+        ======================================================= */
+        .panel-grid-options {
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr) !important; /* Fuerza las 2 columnas */
+            gap: 20px !important;
+            width: 100% !important;
+        }
+
+        /* Modificadores para 3 columnas fijas */
+        .panel-grid-options.grid-3-cols {
+            grid-template-columns: repeat(3, 1fr) !important;
+        }
+
+        /* Modificadores para las 5 tarjetas de Pilares */
+        .panel-grid-options.grid-5-layout {
+            grid-template-columns: repeat(4, 1fr) !important;
+        }
+        .panel-grid-options.grid-5-layout .long-card {
+            grid-column: span 4 !important; /* La última tarjeta ocupa todo el ancho abajo */
+        }
+
+        /* Tarjetas individuales de servicios (Nivel de diseño Ultra) */
+        .option-card {
+            background: rgba(255, 255, 255, 0.01) !important;
+            border: 1px solid rgba(255, 255, 255, 0.03) !important;
+            border-radius: 16px !important;
+            padding: 30px !important;
+            text-align: left !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: flex-start !important;
+            align-items: flex-start !important;
+            box-sizing: border-box !important;
+        }
+
+        /* Títulos internos específicos (Evitan heredar tamaños gigantes del H1/H2) */
+        .option-card-title {
+            font-family: "Roboto", sans-serif !important;
+            font-size: 1.4rem !important;
+            font-weight: 500 !important;
+            color: #ffffff !important;
+            margin: 0 0 12px 0 !important;
+            text-align: left !important;
+            letter-spacing: -0.01em !important;
+            line-height: 1.3 !important;
+        }
+
+        /* Texto de descripción interno específico */
+        .option-card-text {
+            font-family: "Roboto", sans-serif !important;
+            font-size: 0.95rem !important;
+            color: #8E8E93 !important;
+            line-height: 1.5 !important;
+            text-align: left !important;
+            max-width: 100% !important;
+            margin: 0 !important;
+        }
+
+
+
+        /* Control Responsivo Inteligente para Móviles */
+        @media (max-width: 968px) {
+            .panel-grid-options, 
+            .panel-grid-options.grid-3-cols, 
+            .panel-grid-options.grid-5-layout {
+                grid-template-columns: 1fr !important; /* En celulares se vuelven una sola columna limpia */
+            }
+            .panel-grid-options.grid-5-layout .long-card {
+                grid-column: span 1 !important;
+            }
+        }
+
+
+        /* Animación del movimiento del texto de derecha a izquierda */
+        @keyframes marqueeSpeed {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
+
+        /* Ajuste Responsivo para que las tarjetas de cristal no se rompan */
+        @media (max-width: 968px) {
+            .servicios-tabs {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .badge-running-container {
+                top: 20px;
+                right: -10px;
+            }
+        }
+
 
 
 
@@ -1105,6 +1496,7 @@
     
 
     <section id="ingenieria" class="seccion-capas">
+
         <div class="container">
 
             <!-- 🌟 NUEVA UBICACIÓN: La tarjeta ahora inicia la sección de abajo -->
@@ -1292,41 +1684,115 @@
                 </p>
             </div>
 
-            <div class="bento-grid">
-                <div class="bento-card full-width glass-surface reveal">
-                    <div style="flex-grow: 1;">
-                        <div class="bento-icon" style="width:40px; height:40px; border: 1px solid rgba(255,255,255,0.1); border-radius:10px; display:flex; align-items:center; justify-content:center;">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
-                        </div>
-                        <h3>CAPA LÓGICA CUSTOM</h3>
-                        <p>Centralizamos flujos operativos críticos dispersos. Diseñamos e implementamos arquitecturas escalables a medida que unifican sus bases de datos heredadas, eliminando silos informacionales de raíz.</p>
-                    </div>
+            <!-- CONTENEDOR DE LA INTERFAZ DE SERVICIOS DINÁMICOS -->
+            <div class="servicios-interactive-wrapper reveal">
+                <div class="contenedor-servicios-fijo">
+                    <!-- 🔮 PENTÁGONO 3D SUPERIOR DERECHO -->
+                    <div class="geometria-pentagono-3d pentagono-top"></div>
+                    <!-- 🔮 PENTÁGONO 3D INFERIOR IZQUIERDO -->
+                    <div class="geometria-pentagono-3d pentagono-bottom"></div>
                     
-                    <div class="bento-asset-box">
-                        <img src="codigo_3d.png" alt="Zondata Code Brackets 3D">
+                    <!-- 1. PESTAÑAS SELECTORAS (TABS) -->
+                    <div class="servicios-tabs">
+                        <button class="tab-btn-crystal active" onclick="switchService(event, 'software')">
+                            <span class="tab-title">Software a Medida</span>
+                            <span class="tab-desc">Sistemas y plataformas web de alta gama</span>
+                        </button>
+                        
+                        <button class="tab-btn-crystal" onclick="switchService(event, 'ia')">
+                            <!-- 🏷️ CARTEL CON RIEL DUPLICADO PARA LOOP INFINITO SIN CORTES -->
+                            <div class="badge-running-container">
+                                <div class="badge-track">
+                                    <span>NUEVA ERA • IA AUTÓNOMA • NUEVA ERA • IA AUTÓNOMA •&nbsp;</span>
+                                    <span>NUEVA ERA • IA AUTÓNOMA • NUEVA ERA • IA AUTÓNOMA •&nbsp;</span>
+                                </div>
+                            </div>
+                            <span class="tab-title font-neon">Inteligencia Artificial</span>
+                            <span class="tab-desc">Agentes autónomos y flujos cognitivos</span>
+                        </button>
+
+                        
+                        <button class="tab-btn-crystal" onclick="switchService(event, 'pilares')">
+                            <span class="tab-title">Pilares Fundamentales</span>
+                            <span class="tab-desc">Garantía, diseño y soporte continuo</span>
+                        </button>
+                    </div>
+
+
+                    <!-- CONTENEDOR GENERAL DE SERVICIOS (Sigue justo debajo de las pestañas de cristal) -->
+                    <div style="position: relative; width: 100%;">
+
+                        <!-- PANEL 1: SOFTWARE A MEDIDA (Sin la clase glass-surface para que flote libre) -->
+                        <div id="software" class="service-panel active">
+                            <div class="panel-grid-options">
+                                <div class="option-card glass-card-service">
+                                    <h5 class="option-card-title">Software a Medida</h5>
+                                    <p class="option-card-text">Sistemas escalables diseñados exclusivamente para resolver las necesidades operativas de tu negocio.</p>
+                                </div>
+                                <div class="option-card glass-card-service">
+                                    <h5 class="option-card-title">Sitios Web</h5>
+                                    <p class="option-card-text">Plataformas web de alta gama, optimizadas para ofrecer una velocidad ultra rápida y conversión avanzada.</p>
+                                </div>
+                                <div class="option-card glass-card-service">
+                                    <h5 class="option-card-title">Integración de Sistemas</h5>
+                                    <p class="option-card-text">Conectamos tus herramientas de software existentes para que la información fluya sin barreras.</p>
+                                </div>
+                                <div class="option-card glass-card-service">
+                                    <h5 class="option-card-title">Bases de Datos a Medida</h5>
+                                    <p class="option-card-text">Arquitectura de almacenamiento blindada y estructurada para un acceso masivo y análisis fluido.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PANEL 2: INTELIGENCIA ARTIFICIAL (Libre de contenedor base) -->
+                        <div id="ia" class="service-panel">
+                            <div class="panel-grid-options grid-3-cols">
+                                <div class="option-card glass-card-service">
+                                    <h5 class="option-card-title">Asistente Virtual</h5>
+                                    <p class="option-card-text">Agentes autónomos personalizados con el conocimiento de tu empresa para atención fluida 24/7.</p>
+                                </div>
+                                <div class="option-card glass-card-service">
+                                    <h5 class="option-card-title">Automatización de Tareas</h5>
+                                    <p class="option-card-text">Flujos cognitivos que eliminan los clics manuales repetitivos, procesando datos de forma inteligente.</p>
+                                </div>
+                                <div class="option-card glass-card-service">
+                                    <h5 class="option-card-title">Análisis Inteligente</h5>
+                                    <p class="option-card-text">Modelos predictivos que transforman datos crudos en métricas de estrategia en tiempo real.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PANEL 3: PILARES FUNDAMENTALES (Libre de contenedor base) -->
+                        <div id="pilares" class="service-panel">
+                            <div class="panel-grid-options grid-5-layout">
+                                <div class="option-card glass-card-service">
+                                    <h5 class="option-card-title">Consultoría</h5>
+                                    <p class="option-card-text">Diagnóstico de tus sistemas para trazar una hoja de ruta tecnológica limpia y eficiente.</p>
+                                </div>
+                                <div class="option-card glass-card-service">
+                                    <h5 class="option-card-title">Diseño UX/UI</h5>
+                                    <p class="option-card-text">Interfaces premium que combinan minimalismo estético con una fricción de usuario cero.</p>
+                                </div>
+                                <div class="option-card glass-card-service">
+                                    <h5 class="option-card-title">SEO</h5>
+                                    <p class="option-card-text">Optimización técnica profunda para posicionar tus infraestructuras en el radar de tus clientes.</p>
+                                </div>
+                                <div class="option-card glass-card-service">
+                                    <h5 class="option-card-title">Soporte</h5>
+                                    <p class="option-card-text">Monitoreo proactivo constante en las sombras para garantizar estabilidad total.</p>
+                                </div>
+                                <div class="option-card glass-card-service long-card">
+                                    <h5 class="option-card-title">Escalabilidad Absoluta</h5>
+                                    <p class="option-card-text">Código preparado estructuralmente para soportar incrementos masivos de volumen transaccional sin perder rendimiento.</p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
-                <div class="bento-card glass-surface reveal">
-                    <div>
-                        <div class="bento-icon" style="width:40px; height:40px; border: 1px solid rgba(255,255,255,0.1); border-radius:10px; display:flex; align-items:center; justify-content:center;">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                        </div>
-                        <h3>AGENTES COGNITIVOS</h3>
-                        <p>Automatización profunda. Implementamos LLMs entrenados con su conocimiento específico para orquestar soporte técnico y operativas conversacionales 24/7 sin descanso manual.</p>
-                    </div>
-                </div>
-                
-                <div class="bento-card glass-surface reveal">
-                    <div>
-                        <div class="bento-icon" style="width:40px; height:40px; border: 1px solid rgba(255,255,255,0.1); border-radius:10px; display:flex; align-items:center; justify-content:center;">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                        </div>
-                        <h3>COMPROMISO INVISIBLE</h3>
-                        <p>Infraestructura blindada. Garantizamos SLA de disponibilidad 99.9%, auditorías continuas y transferencia absoluta de propiedad intelectual desde el primer día.</p>
-                    </div>
-                </div>
             </div>
+
         </div>
     </section>
 
@@ -1359,6 +1825,22 @@
             window.addEventListener('scroll', checkScroll);
             checkScroll(); 
         });
+
+        function switchService(event, serviceId) {
+    // 1. Quita la clase activa de los nuevos botones de cristal (.tab-btn-crystal)
+    document.querySelectorAll('.tab-btn-crystal').forEach(btn => btn.classList.remove('active'));
+    
+    // 2. Quita la clase activa de todos los paneles de contenido (.service-panel)
+    document.querySelectorAll('.service-panel').forEach(panel => panel.classList.remove('active'));
+    
+    // 3. Aplica la clase activa al botón de cristal que presionó el usuario
+    event.currentTarget.classList.add('active');
+    
+    // 4. Muestra el panel correspondiente con una transición suave
+    document.getElementById(serviceId).classList.add('active');
+}
+
+
     </script>
 </body>
 </html>
