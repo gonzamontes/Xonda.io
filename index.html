@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xonda | Orquestador de Inercia Digital</title>
     
-    <!-- Conexión con Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         /* =======================================================
-           1. CANVAS OBSIDIAN Y REGLAS DE DIRECCIÓN DE ARTE
+           1. VARIABLES, RESET Y TIPOGRAFÍA GLOBAL
            ======================================================= */
         :root {
             --bg-pure-black: #000000; 
@@ -20,7 +19,6 @@
             --text-secondary: #9CA3AF; 
             --neon-cyan: #06B6D4;
             --neon-purple: #8B5CF6;
-            
             --cubic-apple: cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -29,2252 +27,356 @@
             padding: 0; 
             box-sizing: border-box; 
             outline: none; 
-            
-            /* CAMBIO AQUÍ: Ahora toda la página usará Roboto */
             font-family: "Roboto", sans-serif;
-            font-optical-sizing: auto;
-            
-            /* Optimizaciones de renderizado de texto */
             -webkit-font-smoothing: antialiased; 
             -moz-osx-font-smoothing: grayscale; 
         }
-
-        /* --- REGLAS EXTRAS RECOMENDADAS PARA EL HERO --- */
-
-        /* Configuración para tus Subtítulos o Párrafos (P) */
-        p {
-            font-family: "Roboto", sans-serif;
-            font-size: 1.05rem;        /* Tamaño de lectura cómodo */
-            font-weight: 400;
-            color: var(--text-secondary); /* Usa el gris (#9CA3AF) para darle jerarquía */
-            line-height: 1.6;
-            text-align: center;
-            
-            /* EL TRUCO CLAVE: Limitamos el ancho para que no se estire horizontalmente */
-            max-width: 580px;          
-            margin: 0 auto 40px auto;  /* Lo centra horizontalmente y lo separa del botón inferior */
-        }
-
 
         html { scroll-behavior: smooth; }
 
         body {
             background-color: var(--bg-pure-black);
             color: var(--text-primary);
-            font-weight: 300; /* Letras finas globales */
-            -webkit-font-smoothing: antialiased;
+            font-weight: 300;
             letter-spacing: 0.03em; 
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
         }
 
-        /* Apaga el fixed en móviles para recuperar los 60 FPS al scrollear */
         @media (max-width: 768px) {
-            body {
-                background-attachment: scroll; 
-            }
+            body { background-attachment: scroll; }
         }
 
-        /* LUZ DEL TECHO (PASO 2) */
+        /* =======================================================
+           2. EFECTOS GLOBALES (LUCES Y REVELADOS)
+           ======================================================= */
         .techo-luz {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 800px;
-            height: 400px;
+            position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%);
+            width: 800px; height: 400px;
             background: rgba(255, 255, 255, 0.090);
             border-radius: 400px 400px 0 0;
             filter: blur(80px);
-            z-index: 0;
-            pointer-events: none;
+            z-index: 0; pointer-events: none;
         }
 
-        /* =======================================================
-           PASO 3: NAVBAR Y COMPONENTES
-           ======================================================= */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 2rem 7rem; 
-            
-            /* Asegúrate de que tenga estas líneas exactas */
-            position: absolute; 
-            top: 0; 
-            left: 50%;
-            transform: translateX(-50%);
-            
-            width: 100%; 
-            max-width: 120rem;
-            z-index: 10000;
-            background: transparent; 
-            margin: 0 auto; 
-        }
-
-
-        
-        .logo { 
-            display: flex; /* Obligatorio para que la propiedad 'transform' funcione */
-            align-items: center; 
-            gap: 0.5rem; 
-            text-decoration: none;
-            font-size: 1.8rem;
-            color: var(--text-primary); 
-            letter-spacing: -0.05em; 
-            font-weight: 380;
-            transform: scaleY(1.15); 
-            /* Corrige el punto de origen del estiramiento para que no se desplace */
-            transform-origin: center top; 
-        }
-
-        .btn-contact {
-            display: inline-flex; 
-            align-items: center; 
-            gap: 1rem;
-            background: rgba(37, 37, 37, 0.692);
-            border-radius: 10px; 
-            padding: 6px 12px;
-            color: #ffffff;
-            font-size: 1.35rem;
-            font-weight: 400; 
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .btn-contact:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        /* =======================================================
-           PASO 5: TIPOGRAFÍA REFINADA ALTA Y FINA
-           ======================================================= */
-        h1, h2, h3, h4 {
-            font-family: "Roboto", sans-serif;
-            font-weight: 360;          /* Peso fuerte/Bold de Roboto */
-            letter-spacing: -0.03em;   /* Junta sutilmente las letras estilo premium */
-            line-height: 1.1;
-            color: var(--text-primary);
-            font-size: 4rem;
-            margin-bottom: 24px;       /* Lo separa del párrafo */
-            text-align: center;     
-        }
-
-        h1.hero-title, h2 {
-            font-family: "Roboto", sans-serif;
-            font-weight: 400;          /* Peso fuerte/Bold de Roboto */
-            letter-spacing: -0.05em;   /* Junta sutilmente las letras estilo premium */
-            line-height: 1;
-            color: var(--text-primary);
-            font-size: 6.0rem;
-            margin-bottom: 1rem;      /* Lo separa del párrafo */
-            text-align: center;    
-            
-            /* PASO 5: Letras grises con difuminado blanco de arriba hacia abajo (Luz cenital) */
-            background: linear-gradient(to bottom, #ffffff 30%, #ffffffc7 40%, #ffffffc5 50%, #ffffffbe 60%, #ffffff8f 70%, #ffffff98 80% );
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-subtitle {
-            font-family: "Roboto", sans-serif;
-            font-weight: 490;
-            text-align: center;
-            display: block;
-            
-            /* 1. TAMAÑO EXACTO ESTILO ULTRA */
-            font-size: 1.5rem;           /* Letra más compacta y estilizada */
-            line-height: 1.2;          /* Da espacio vertical para que no se amontone */
-            
-            /* 2. ANCHO DE CONTENEDOR ESTRICTO */
-            max-width: 22em;          /* Lo reduce lo suficiente para agrupar las frases limpiamente */
-            margin: 0rem auto 2.5rem auto; /* Centrado perfecto y acerca el bloque al botón */
-            
-            /* 3. COLOR DE TEXTO DE INTERFAZ OSCURA */
-            color: #949499;            /* Un gris ceniza suave que no compite con el blanco del H1 */
-            
-            /* 4. SUAVIZADO EXTRA */
-            letter-spacing: -0.005em;  /* Ajuste de lectura fino para Roboto */
-        }
-
-
-
-        
-        .btn-primary {
-            display: inline-flex; 
-            align-items: center; 
-            justify-content: center; 
-            background-color: #FFFFFF; 
-            color: #000000bd; 
-            font-weight: 700; 
-            font-size: 15px;
-            padding: 16px 36px; 
-            border-radius: 8px; 
-            text-decoration: none;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15);
-        }
-
-        .hero { 
-            min-height: 100vh; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            position: relative; 
-            padding-top: 80px; 
-        }
-        
-        .hero-layout { 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: center;
-            text-align: center; 
-            width: 100%; 
-            max-width: 950px;
-            z-index: 10; 
-            margin: 0 auto;
-        }
-
-        /* =======================================================
-REDISEÑO DEL HORIZONTE CURVO CON LUZ BLANCA ASCENDENTE
-======================================================= */
-.seccion-capas {
-    position: relative;
-    /* Mantenemos tus rellenos y posición original */
-    padding: 180px 24px 140px 24px; 
-    width: 100%;
-    background-color: var(--bg-pure-black);
-    margin-top: -120px; 
-    z-index: 1;
-}
-
-/* =======================================================
-        LA CURVA GIGANTE CON LUZ EXTENDIDA TIPO "AURA"
-        ======================================================= */
-        .seccion-capas::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -50%;
-            width: 200%;
-            height: 100%; 
-            
-            /* Un gradiente ligeramente más oscuro en la punta para que la luz blanca destaque más */
-            background: linear-gradient(to bottom, rgb(18, 18, 20) 0%, var(--bg-pure-black) 15%); 
-            border-radius: 50% 50% 0 0;
-            
-            /* 🌟 LA MAGIA: Sombras apiladas que abrazan toda la línea matemática de la curva */
-            box-shadow: 
-                0px -1px 3px rgba(255, 255, 255, 0.10),   /* 1. Línea de luz fina (Rim Light) justo en el filo */
-                0px -30px 80px rgba(255, 255, 255, 0.12), /* 2. Resplandor principal difuso hacia arriba */
-                0px -80px 200px rgba(255, 255, 255, 0.06),/* 3. Aura ambiental gigante y súper desvanecida */
-                0px 20px 50px rgba(0, 0, 0, 0.9);         /* 4. Tu sombra negra original para la profundidad interior */
-                        
-            z-index: -2; 
-            will-change: transform; 
-            transform: translateZ(0); /* Forzamos la aceleración GPU */
-        }
-
-/* 2. NUEVA LUZ BLANCA DIFUMINADA HACIA ARRIBA */
-.seccion-capas::after {
-    /* Nos aseguramos de que esté activo */
-    content: "" !important; 
-    position: absolute;
-    
-    /* Lo posicionamos justo en el borde superior (el horizonte) */
-    top: -50px; /* Sube un poco para iluminar la zona del botón/subtítulo */
-    left: 50%;
-    transform: translateX(-50%);
-    
-    /* Tamaño del resplandor */
-    width: 800px;
-    height: 300px;
-    
-    /* LA MAGIA DEL DEGRADADO INVERTIDO: 
-       Comienza blanco translúcido abajo en el centro (at 50% 100%)
-       y se difumina hacia arriba/afuera hasta volverse transparente */
-    background: radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 70%);
-    
-    /* Desenfoque fuerte para que sea un resplandor ambiental, no una forma definida */
-    filter: blur(40px);
-    
-    /* Z-index crucial: debe estar por encima de la curva negra (-2) pero por debajo de las tarjetas/texto (z-index positivos) */
-    z-index: -1; 
-    
-    /* Evita que bloquee los clics en los elementos de arriba */
-    pointer-events: none; 
-}
-
-        /* =======================================================
-        TARJETA DE PRIVACIDAD AMPLIADA (DEBAJO DE LA CURVA)
-        ======================================================= */
-        .privacy-card {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-            
-            /* AGRANDADO: Subimos el ancho máximo y el espacio interior */
-            width: 100%;
-            max-width: 80rem; /* Antes 680px */
-            margin: 2rem auto 20rem auto; /* 100px de separación con el título de abajo */
-            padding: 3rem 3rem; /* Caja más robusta */
-            
-            /* Estética de cristal premium intacta */
-            background: var(--bg-pure-black);
-            border: 1px solid rgba(133, 133, 133, 0.5);
-            border-radius: 18px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
-            position: relative;
-            z-index: 2; /* Asegura quedar por encima de las luces difusas de fondo */
-        }
-
-        /* Contenedor del Escudo más amplio */
-        .privacy-badge {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            width: 5rem;
-            height: 5rem;
-            border-radius: 12px;
-        }
-
-        .privacy-content {
-            text-align: left;
-        }
-
-        /* Tipografías internas escaladas */
-        .privacy-card h4 {
-            font-family: "Roboto", sans-serif;
-            font-size: 1.6rem; /* Un punto más grande */
-            font-weight: 500;
-            color: var(--text-primary);
-            margin-bottom: 6px;
-            text-align: left;
-        }
-
-        .privacy-card p.privacy-text {
-            font-family: "Roboto", sans-serif;
-            font-size: 1.5rem; /* Texto secundario más legible */
-            font-weight: 400;
-            color: #8E8E93; /* Gris ceniza premium de Ultra */
-            line-height: 1.5;
-            text-align: left;
-            max-width: 100%;
-            margin: 0;
-        }
-
-        /* Adaptación responsiva limpia */
-        @media (max-width: 768px) {
-            .privacy-card {
-                flex-direction: column;
-                text-align: center;
-                padding: 28px;
-                gap: 18px;
-                margin-bottom: 60px;
-            }
-            .privacy-content, .privacy-card h4, .privacy-card p.privacy-text {
-                text-align: center;
-            }
-        }
-
-        /* =======================================================
-        SECCIÓN DE PROBLEMAS Y EFECTOS GEOMÉTRICOS 3D
-        ======================================================= */
-        .problemas-seccion {
-            width: 100%;
-            max-width: 80rem;
-            margin: 0 auto 12rem auto;
-            padding: 0 2rem;
-        }
-
-        .problemas-main-title {
-            font-family: "Roboto", sans-serif;
-            font-weight: 425;
-            font-size: 4rem;
-            line-height: 1;
-            text-align: center;
-            color: var(--text-primary);
-            margin-bottom: 6rem;
-            letter-spacing: -0.03em;
-            /* PASO 5: Letras grises con difuminado blanco de arriba hacia abajo (Luz cenital) */
-            background: linear-gradient(to bottom, #ffffff 30%, #ffffffc7 40%, #ffffffc5 50%, #ffffffbe 60%, #ffffff8f 70%, #ffffff98 80% );
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Distribución de la fila destacada */
-        .solucion-destacada {
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 4rem;
-            align-items: center;
-            margin-bottom: 6rem;
-        }
-
-        .solucion-info {
-            text-align: left;
-        }
-
-        .solucion-tag {
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            display: block;
-            margin-bottom: 1rem;
-        }
-
-        .solucion-info h3 {
-            font-size: 2.2rem;
-            line-height: 1.2;
-            font-weight: 600;
-            text-align: left;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.02em;
-        }
-
-        .solucion-info p {
-            font-size: 1.05rem;
-            color: #8E8E93;
-            line-height: 1.6;
-            text-align: left;
-            max-width: 480px;
-            margin: 0;
-        }
-
-        /* =======================================================
-        REDISEÑO DE COMPOSICIÓN ESPACIAL CON ESFERA CENTRAL
-        ======================================================= */
-        .problemas-seccion {
-            width: 100%;
-            max-width: 80rem;
-            margin: 0 auto 12rem auto;
-            padding: 0 2rem;
-            position: relative; /* Contenedor de referencia */
-        }
-
-        .problemas-main-title {
-            font-size: 4rem;
-            font-weight: 350;
-            text-align: center;
-            color: var(--text-primary);
-            margin-bottom: 6.5rem;
-            padding-bottom:1rem;
-             /* PASO 5: Letras grises con difuminado blanco de arriba hacia abajo (Luz cenital) */
-            letter-spacing: -0.03em;
-        }
-
-        /* 📊 LA CLAVE: Cuadrícula simétrica de dos columnas principales */
-        .solucion-destacada {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6rem; /* Deja un espacio generoso en el medio para la esfera */
-            align-items: center;
-            position: relative;
-        }
-
-        .solucion-info {
-            text-align: left;
-            z-index: 2;
-        }
-
-        .solucion-tag {
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            display: block;
-            margin-bottom: 1rem;
-        }
-
-        .solucion-info h3 {
-            font-size: 2.2rem;
-            line-height: 1.2;
-            font-weight: 600;
-            text-align: left;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.02em;
-        }
-
-        .solucion-info p {
-            font-size: 1.05rem;
-            color: #8E8E93;
-            line-height: 1.6;
-            text-align: left;
-            max-width: 440px;
-            margin: 0;
-        }
-
-        /* 🔮 LA ESFERA GEOMÉTRICA CON AJUSTE DINÁMICO Y CAPA DE FONDO */
-        .esfera-central-3d {
-            /* 🌟 OPTIMIZACIÓN: Aceleración GPU */
-            will-change: transform;
-            transform: translate(-65%, -20%) translateZ(0); /* Combinamos tu transform existente con translateZ */
-            position: absolute;
-            width: 10rem;
-            height: 10rem;
-            
-            
-            /* 2. POSICIONAMIENTO CENTRALIZADO INTERMEDIO (Intacto, no se movió un solo píxel) */
-            top: 90%;
-            left: 50%;
-            transform: translate(-65%, -20%); 
-            
-            border-radius: 50%;
-            pointer-events: none;
-
-            /* 3. SOLUCIÓN AL ORDEN DE CAPAS (Z-INDEX) */
-            z-index: 0; 
-
-            /* 4. TEXTURA BLANCA MATE Y DESVANECE (Estilo Ultra) */
-            background: radial-gradient(circle at 40% 40%, 
-                rgba(255, 255, 255, 0.822) 0%, 
-                rgba(255, 255, 255, 0.6) 30%, 
-                rgba(255, 255, 255, 0.4) 60%,
-                rgba(255, 255, 255, 0.3) 100%);
-            
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            
-            box-shadow: 
-                -10px 15px 35px rgba(0, 0, 0, 0.4),
-                inset -4px -4px 10px rgba(0, 0, 0, 0.3),
-                inset 6px 6px 15px rgba(255, 255, 255, 0.25);
-        }
-
-
-        /* 💻 CONTENEDOR DERECHO: Pantalla de software */
-        .solucion-visual-wrapper {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end; /* La empuja hacia el extremo derecho */
-            perspective: 1200px; 
-            z-index: 1;
-        }
-
-        .interfaz-mockup {
-
-            width: 40rem;
-            height: 30rem;
-            background: 
-                radial-gradient(circle at 80% 0%, rgba(6, 182, 212, 0.28) 0%, rgba(6, 182, 212, 0) 50%), 
-                radial-gradient(circle at 40% 0%, rgba(139, 92, 246, 0.28) 0%, rgba(139, 92, 246, 0) 60%), 
-                radial-gradient(circle at 0% 0%, rgba(236, 72, 153, 0.18) 0%, rgba(236, 72, 153, 0) 40%), 
-                linear-gradient(185deg, rgba(17, 17, 21, 0.75) 0%, rgba(5, 5, 7, 0.349) 100%);
-
-            /* 🔮 EL EFECTO MÁGICO: DESENFOQUE DE VIDRIO ESMERILADO (GLASSMORPHISM) */
-            /* Esta línea es la que agarra la bola blanca de atrás y la difumina de forma hermosa en la esquina */
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px); /* Soporte obligatorio para Safari (Mac/iPhone) */
-
-            /* Reforzamos el borde sutil para que delimite bien el cristal oscuro */
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 20px;
-            padding: 24px;
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.9);
-            
-            /* Inclinación 3D limpia hacia adentro */
-            transform: rotateY(-8deg) rotateX(3deg);
-            will-change: transform, backdrop-filter;
-            transform: translateZ(0); /* Truco técnico para despertar la aceleración 3D */
-        }
-
-        .mockup-header {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 12px 16px;
-            border-radius: 12px;
-            font-size: 1.4rem;
-            color: #8E8E93;
-            margin-bottom: 20px;
-        }
-
-        .mockup-response-card {
-            background: rgba(255, 255, 255, 0.01);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            border-radius: 14px;
-            padding: 16px;
-        }
-
-        .mockup-response-card p {
-            font-size: 1.4rem;
-            line-height: 1.5;
-            color: #E5E5EA;
-            text-align: left;
-            margin: 0 0 12px 0;
-            max-width: 100%;
-        }
-
-        .mockup-inner-pill {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            padding: 10px;
-            border-radius: 8px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 1.3rem;
-        }
-
-        .mockup-inner-pill span { color: #ffffff; }
-        .mockup-inner-pill small { color: #636366; }
-        .solucion-box-mini { text-align: left; }
-        .solucion-box-mini h3 { font-size: 1.8rem; line-height: 1.3; font-weight: 600; text-align: left; margin-bottom: 1.2rem; letter-spacing: -0.02em; }
-        .solucion-box-mini p { font-size: 1rem; color: #8E8E93; line-height: 1.6; text-align: left; max-width: 100%; margin: 0; }
-
-        /* Ajuste responsivo */
-        @media (max-width: 968px) {
-            .solucion-destacada, .soluciones-secundarias { grid-template-columns: 1fr; gap: 4rem; }
-            .esfera-central-3d { display: none; } /* Ocultamos la bola en móviles para no encimar texto */
-            .solucion-visual-wrapper { justify-content: center; }
-        }
-
-        /* --- FILA INFERIOR DOS COLUMNAS --- */
-        .soluciones-secundarias {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
-            padding-top: 6rem;
-            margin-top: 4rem;
-            position: relative; /* Obligatorio para posicionar la línea interna */
-        }
-
-        /* LA LÍNEA SEPARADORA VERTICAL */
-        .soluciones-secundarias::after {
-            content: "";
-            position: absolute;
-            top: 6rem;              /* Alinea el inicio con el padding-top de la sección */
-            bottom: 0;              /* Llega hasta el fondo del contenedor */
-            left: 50%;              /* Se clava exactamente en el medio */
-            transform: translateX(-50%);
-            width: 1px;             /* Grosor ultra fino */
-            background: rgba(255, 255, 255, 0.06); /* Gris translúcido premium estilo Apple */
-        }
-
-        .solucion-box-mini {
-            text-align: left;
-        }
-
-        .solucion-box-mini h3 {
-            font-size: 1.8rem;
-            line-height: 1.3;
-            font-weight: 600;
-            text-align: left;
-            margin-bottom: 1.2rem;
-            letter-spacing: -0.02em;
-        }
-
-        .solucion-box-mini p {
-            font-size: 1rem;
-            color: #8E8E93;
-            line-height: 1.6;
-            text-align: left;
-            max-width: 100%;
-            margin: 0;
-        }
-
-        /* Ajustes responsivos para pantallas chicas */
-        @media (max-width: 968px) {
-            .solucion-destacada, .soluciones-secundarias {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-            .solucion-visual-wrapper {
-                margin-top: 2rem;
-            }
-        }
-
-        /* =======================================================
-        ESTILOS COMPONENTES SECUNDARIOS (BENTO INFERIOR)
-        ======================================================= */
-        .solucion-box-mini {
-            display: flex;
-            flex-direction: column;
-            text-align: left;
-        }
-
-        /* Área de montaje para las interfaces y las figuras */
-        .mini-visual-wrapper {
-            position: relative;
-            width: 100%;
-            height: 340px;
-            margin-top: 3.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            perspective: 1200px;
-        }
-
-        /* Las tarjetas de interfaz (Estilo Cristal Translúcido Idéntico al Principal) */
-        .mini-mockup-card {
-            width: 100%;
-            max-width: 440px;
-            height: 280px;
-            background: linear-gradient(185deg, rgba(17, 17, 21, 0.75) 0%, rgba(5, 5, 7, 0.7) 100%);
-            
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 20px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
-            transform: rotateY(-6deg) rotateX(2deg);
-            transform-style: preserve-3d;
-            /* Aliviamos el radio de desenfoque */
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            z-index: 1; /* Pasa por encima de las figuras geométricas */
-            will-change: transform, backdrop-filter;
-            transform: translateZ(0);
-        }
-
-        .mini-header {
-            font-size: 0.8rem;
-            color: #8E8E93;
-            font-weight: 500;
-            margin-bottom: 16px;
-            text-transform: none;
-        }
-
-        /* Estructura interna de las listas (To-Do's y Mails) */
-        .mini-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .mini-item, .mini-email-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            padding: 12px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.01);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-        }
-
-        .mini-item.active-todo {
-            background: rgba(255, 255, 255, 0.03);
-            border-color: rgba(255, 255, 255, 0.06);
-        }
-
-        .todo-check {
-            width: 14px;
-            height: 14px;
-            border: 1px solid #ff9f0a; /* Toque naranja de Ultra */
-            border-radius: 3px;
-            margin-top: 3px;
-            flex-shrink: 0;
-        }
-
-        .todo-body, .email-body {
-            font-size: 0.8rem;
-            line-height: 1.4;
-            color: #E5E5EA;
-        }
-
-        .todo-body span {
-            display: block;
-            color: #636366;
-            font-size: 0.72rem;
-            margin-top: 2px;
-        }
-
-        /* Detalles específicos de la lista de correos */
-        .email-avatar {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.7rem;
-            font-weight: 500;
-            color: var(--text-primary);
-            flex-shrink: 0;
-        }
-
-        .email-top {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.75rem;
-            margin-bottom: 2px;
-        }
-
-        .email-top span { color: #636366; }
-
-        .mini-email-item p {
-            font-size: 0.75rem;
-            color: #8E8E93;
-            text-align: left;
-            max-width: 100%;
-            margin: 0;
-        }
-
-        /* 💊 TEXTURA BLANCA: OBJETO CÁPSULA (LADO IZQUIERDO) */
-        .geometria-capsula-3d {
-            position: absolute;
-            width: 90px;
-            height: 140px;
-            border-radius: 50px; /* Alarga los extremos en forma de píldora */
-            bottom: 20px;
-            left: -35px;
-            z-index: 0; /* Va al fondo */
-            transform: rotate(35deg) translateZ(-10px); /* Rotada e inclinada hacia atrás */
-            
-            /* Clonación de tu gradiente blanco denso a medida */
-            background: radial-gradient(circle at 40% 30%, 
-                rgba(255, 255, 255, 0.822) 0%, 
-                rgba(255, 255, 255, 0.5) 40%, 
-                rgba(255, 255, 255, 0.2) 70%,
-                rgba(0, 0, 0, 0.4) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            box-shadow: -15px 15px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        /* 🧊 TEXTURA BLANCA: OBJETO CUBO REDONDEADO (LADO DERECHO) */
-        .geometria-cubo-3d {
-            position: absolute;
-            width: 110px;
-            height: 110px;
-            border-radius: 28px; /* Cubo suavizado */
-            top: 10px;
-            right: -30px;
-            z-index: 0; /* Va al fondo */
-            transform: rotate(-20deg) rotateX(15deg) translateZ(-10px); /* Ángulo tridimensional */
-            
-            /* Mismo gradiente de tu esfera */
-            background: radial-gradient(circle at 35% 35%, 
-                rgba(255, 255, 255, 0.822) 0%, 
-                rgba(255, 255, 255, 0.5) 35%, 
-                rgba(255, 255, 255, 0.15) 65%,
-                rgba(0, 0, 0, 0.4) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            box-shadow: 15px 15px 35px rgba(0, 0, 0, 0.5);
-        }
-
-        /* =======================================================
-        ESTILOS PARA EL ÚLTIMO BLOQUE (DASHBOARD INVERTIDO)
-        ======================================================= */
-
-        /* Forzamos que en pantallas grandes el texto pase a la izquierda y el visual a la derecha */
-        .solucion-invertida {
-            margin-top: 8rem;
-        }
-
-        /* Redefinimos un tamaño ligeramente más ancho para la simulación del panel completo */
-        .dashboard-large-mockup {
-            max-width: 520px !important;
-            height: 300px !important;
-            /* Inclinación 3D opuesta para dar variedad al diseño de la página */
-            transform: rotateY(-6deg) rotateX(2deg) !important;
-        }
-
-        /* =======================================================
-        🔺 REPARACIÓN FINAL: POSICIONAMIENTO DEL CONO GIGANTE
-        ======================================================= */
-        .geometria-cono-container {
-            position: absolute;
-            
-            /* Dimensiones gigantes acordes al Dashboard de Ultra */
-            width: 220px;  
-            height: 220px;
-            
-            /* Lo centramos sacándolo de la esquina del recuadro */
-            top: -110px;
-            left: -100px;
-            
-            z-index: 0; /* Al fondo para que el cristal esmerilado lo pise */
-            pointer-events: none;
-            
-            /* Inclinación espacial tridimensional fija (Evita deformaciones) */
-            transform: rotate(-18deg) rotateX(10deg);
-        }
-
-        .cono-inflado-svg {
-            width: 100%;
-            height: 100%;
-            display: block;
-            
-            /* Sombra proyectada suave contra el lienzo negro de tu web */
-            filter: drop-shadow(-15px 20px 25px rgba(0, 0, 0, 0.829));
-            
-            /* Mantiene activo tu efecto de vidrio esmerilado translúcido */
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-
-        /* =======================================================
-        ETIQUETAS DE SECCIÓN CON DEGRADADO METÁLICO (UNIFICADO)
-        ======================================================= */
-        .solucion-tag-premium {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            
-            font-family: "Roboto", sans-serif;
-            font-size: 0.72rem;
-            font-weight: 600; 
-            text-transform: uppercase;
-            letter-spacing: 0.18em;
-            margin-bottom: 1.2rem;
-            
-            /* Degradado de texto usando tus variables cian y púrpura */
-            background: linear-gradient(45deg, var(--neon-cyan) 0%, var(--neon-purple) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            
-            filter: brightness(0.85); 
-        }
-
-        /* El icono hereda la iluminación cian inicial */
-        .solucion-tag-premium svg {
-            display: block;
-            stroke: var(--neon-cyan); 
-            flex-shrink: 0;
-            opacity: 0.8;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 90px;
-            margin-top: 50px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        /* Título principal gigante */
-        .section-title-premium {
-            font-family: "Roboto", sans-serif;
-            font-size: 4.2rem;       /* Tamaño masivo premium */
-            font-weight: 450;        /* Peso medio nítido */
-            line-height: 1.1;
-            letter-spacing: -0.04em; /* Letras juntas estilo Apple/Ultra */
-            color: #ffffff;          /* Primera línea blanca fija */
-            text-align: center;
-            margin-bottom: 24px;
-        }
-
-        /* Segunda línea del título (Gris atenuado) */
-        .section-title-premium span {
-            color: #8E8E93;          /* Gris ceniza que reduce el peso visual abajo */
-            font-weight: 400;
-        }
-
-        /* Subtítulo de párrafo optimizado */
-        .section-subtitle-premium {
-            font-family: "Roboto", sans-serif;
-            font-size: 1.3rem;
-            font-weight: 400;
-            color: #636366;          /* Gris apagado suave para lectura de soporte */
-            line-height: 1.5;
-            text-align: center;
-            
-            /* El truco clave de la imagen: acotamos el contenedor para forzar el quiebre */
-            max-width: 520px;        
-            margin: 0 auto;
-        }
-
-        /* Adaptación para dispositivos móviles */
-        @media (max-width: 768px) {
-            .section-title-premium {
-                font-size: 2.5rem;
-            }
-            .section-subtitle-premium {
-                font-size: 1.1rem;
-                max-width: 90%;
-            }
-        }
-
-        /* Adaptación responsiva para móviles */
-        @media (max-width: 968px) {
-            .solucion-invertida {
-                margin-top: 4rem;
-            }
-            .geometria-piramide-3d {
-                display: none; /* Se oculta en teléfonos para priorizar la lectura */
-            }
-        }
-
-        /* Ajuste fino responsivo */
-        @media (max-width: 968px) {
-            .soluciones-secundarias { grid-template-columns: 1fr; gap: 4rem; }
-            .geometria-capsula-3d, .geometria-cubo-3d { display: none; } /* Se ocultan en móviles */
-        }
-
-
-        /* =======================================================
-        REDISEÑO DE PESTAÑAS A TARJETAS DE CRISTAL (GLASS TABS)
-        ======================================================= */
-        .servicios-interactive-wrapper {
-            width: 100%;
-            margin-top: 2rem;
-            position: relative;
-            z-index: 5;
-            /* Evita que los cálculos de animación y desenfoque afecten al fondo */
-            transform: translateZ(0); 
-            will-change: transform;
-        }
-
-        
-        .servicios-tabs {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-bottom: 4rem;
-            width: 100%;
-        }
-
-        /* =======================================================
-   NUEVO MAQUETADO DE PANELES LIBRES (FLOTANTES)
-   ======================================================= */
-.service-panel {
-    display: none !important; 
-    visibility: hidden;
-    opacity: 0;
-    width: 100%;
-    background: transparent !important; /* Quitamos el contenedor oscuro */
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    transition: opacity 0.4s var(--cubic-apple);
-}
-
-.service-panel.active {
-    display: block !important; 
-    visibility: visible;
-    opacity: 1;
-    animation: fadeInPanel 0.5s var(--cubic-apple);
-}
-
-/* NUEVA CLASE: Tarjetas de Cristal Líquido Puro (Idénticas a la sección Problemas) */
-/* Tarjeta de Cristal Optimizada */
-.glass-card-service {
-    background: rgba(255, 255, 255, 0.01) !important;
-    /* Reducimos el blur si es necesario, pero mantenemos el efecto */
-    backdrop-filter: blur(16px); 
-    -webkit-backdrop-filter: blur(16px);
-    
-    border: 1px solid rgba(255, 255, 255, 0.03) !important;
-    border-radius: 20px !important;
-    padding: 36px !important;
-    
-    /* OPTIMIZACIÓN DE RENDIMIENTO */
-    will-change: transform;
-    backface-visibility: hidden;
-    contain: content; 
-    transition: transform 0.3s var(--cubic-apple) !important;
-}
-
-/* Efecto al pasar el cursor sobre las tarjetas flotantes */
-.glass-card-service:hover {
-    transform: translateY(-4px) !important;
-    background: rgba(255, 255, 255, 0.02) !important;
-    border-color: rgba(255, 255, 255, 0.08) !important;
-}
-
-/* =======================================================
-   🔮 TEXTURA BLANCA: GEOMETRÍA PENTÁGONO 3D FLOTANTE
-   ======================================================= */
-.geometria-pentagono-3d {
-    position: absolute;
-    width: 120px;
-    height: 120px;
-    z-index: 0; 
-    pointer-events: none;
-    
-    /* Mantenemos el corte del pentágono regular nativo */
-    clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
-    -webkit-clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
-    
-    /* 🔥 EL MISMO GRADIENTE EXACTO QUE EL CUBO Y LA CÁPSULA */
-    background: radial-gradient(circle at 35% 35%, 
-        rgba(255, 255, 255, 0.822) 0%, 
-                rgba(255, 255, 255, 0.5) 35%, 
-                rgba(255, 255, 255, 0.15) 65%,
-                rgba(0, 0, 0, 0.4) 100%);
-        
-    /* 🔥 QUITAMOS EL 'contrast(8)' Y EL 'blur' EXTERNO. Mantenemos solo la sombra proyectada. */
-    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.7)) !important;
-    
-    border: 1px solid rgba(255, 255, 255, 0.25) !important;
-    
-    /* OPTIMIZACIÓN: Aceleración GPU para que se mueva fluido */
-    will-change: transform;
-    transform: translateZ(0);
-}
-
-
-/* CONGELADOR DE ALTURA GLOBAL */
-.contenedor-servicios-fijo {
-    position: relative !important;
-    width: 100% !important;
-    
-    /* 🌟 LA CLAVE: Forzamos una altura mínima fija para que el fondo no colapse 
-       al cambiar a la pestaña corta de Inteligencia Artificial */
-    min-height: 750px !important; 
-    margin-bottom: 50px !important;
-}
-
-/* Pentágono Superior Derecho (Inmóvil junto a los botones) */
-.pentagono-top {
-    top: -20px !important;
-    right: -40px !important;
-    bottom: auto !important;
-    transform: rotate(25deg) rotateX(15deg) !important;
-}
-
-/* Pentágono Inferior Izquierdo (Fijado estrictamente al piso del bloque más largo) */
-.pentagono-bottom {
-    top: auto !important;
-    
-    /* 🌟 SOLUCIÓN: Al medir desde el piso del contenedor fijo, 
-       jamás se moverá cuando ocultes o muestres las tarjetas de IA */
-    bottom: 27rem !important; 
-    left: -40px !important;
-    transform: rotate(-35deg) rotateX(20deg) !important;
-}
-
-
-/* Ocultamos las figuras en dispositivos móviles para priorizar espacio */
-@media (max-width: 968px) {
-    .geometria-pentagono-3d {
-        display: none !important;
-    }
-}
-
-
-
-        /* 1. REGISTRAR PROPIEDAD PARA ANIMACIÓN DE ÁNGULO FLUIDA */
-        /* 1. REGISTRAR PROPIEDAD PARA EL ÁNGULO DE GIRO */
-        @property --gradient-angle {
-            syntax: "<angle>";
-            initial-value: 0deg;
-            inherits: false;
-        }
-
-        /* 2. EL BOTÓN CONTENEDOR (CRISTAL CON BORDE ANIMADO NATIVO) */
-        .tab-btn-crystal {
-            /* Fondo base de cristal esmerilado oscuro */
-            background: rgba(10, 10, 10, 0.85) !important;
-            backdrop-filter: blur(20px) !important;
-            -webkit-backdrop-filter: blur(20px) !important;
-            
-            /* Creamos un borde real transparente de 1.5px donde se va a renderizar el neón */
-            border: 1.5px solid transparent !important;
-            border-radius: 20px !important;
-            padding: 2rem !important;
-            text-align: left !important;
-            cursor: pointer !important;
-            position: relative !important;
-            display: flex !important;
-            flex-direction: column !important;
-            gap: 8px !important;
-            z-index: 1 !important;
-            outline: none !important;
-            overflow: visible !important; /* Mantiene a salvo el cartel de IA */
-            transition: transform 0.3s var(--cubic-apple), background 0.3s ease, box-shadow 0.3s ease;
-
-            /* 🌟 CORTA EL CARTEL EXACTAMENTE EN EL BORDE DE LA TARJETA */
-            mask-image: linear-gradient(#fff, #fff), linear-gradient(#fff, #fff);
-            mask-clip: padding-box, border-box;
-            mask-composite: intersect;
-            -webkit-mask-image: -webkit-linear-gradient(#fff, #fff), -webkit-linear-gradient(#fff, #fff);
-            -webkit-mask-clip: padding-box, border-box;
-            -webkit-mask-composite: source-in;
-        }
-
-        /* Eliminamos los pseudo-elementos conflictivos que se tapaban entre sí */
-        .tab-btn-crystal::before,
-        .tab-btn-crystal::after {
-            content: none !important;
-        }
-
-        /* 3. CONTRASTE PERFECTO EN TEXTOS */
-        .tab-btn-crystal .tab-title {
-            font-family: "Roboto", sans-serif !important;
-            font-size: 1.4rem !important;
-            font-weight: 500 !important;
-            color: #8E8E93 !important; /* Gris desactivado */
-            transition: color 0.3s ease;
-        }
-
-        .tab-btn-crystal .tab-desc {
-            font-family: "Roboto", sans-serif !important;
-            font-size: 0.9rem !important;
-            color: #48484A !important;
-            line-height: 1.4 !important;
-            transition: color 0.3s ease;
-        }
-
-        /* =======================================================
-        ESTADOS INTERACTIVOS (HOVER Y ACTIVO)
-        ======================================================= */
-
-        .tab-btn-crystal:hover {
-            background: rgba(255, 255, 255, 0.082) !important;
-        }
-        .tab-btn-crystal:hover .tab-title { color: #ffffff !important; }
-
-        /* 🌟 SECCIÓN ACTUALIZADA: COLORES PÚRPURA Y CELESTE EN GIRO */
-        .tab-btn-crystal.active {
-            /* Cambiamos el #ff7300 (naranja) por #8B5CF6 (tu morado/violeta de variables) */
-            background: 
-                linear-gradient(#0a0a0a, #0a0a0a) padding-box, 
-                conic-gradient(
-                    from var(--gradient-angle), 
-                    transparent 30%, 
-                    #8B5CF6 45%,        /* Violeta/Neon Purple */
-                    var(--neon-cyan) 55%, /* Celeste/Neon Cyan */
-                    transparent 70%
-                ) border-box !important;
-            
-            animation: rotarBordeFino 4s linear infinite !important;
-        }
-
-
-        /* Iluminación de textos activos */
-        .tab-btn-crystal.active .tab-title { color: #ffffff !important; }
-        .tab-btn-crystal.active .tab-desc { color: #8E8E93 !important; }
-
-        .tab-btn-crystal.active .font-neon {
-            background: linear-gradient(45deg, #ffffff 30%, var(--neon-cyan) 100%) !important;
-            -webkit-background-clip: text !important;
-            -webkit-text-fill-color: transparent !important;
-            background-clip: text !important;
-        }
-
-        /* 4. ANIMACIÓN DE ROTACIÓN */
-        @keyframes rotarBordeFino {
-            0% { --gradient-angle: 0deg; }
-            100% { --gradient-angle: 360deg; }
-        }
-
-        /* Resaltado sutil para la pestaña de IA */
-        .font-neon {
-            background: linear-gradient(45deg, #ffffff 0%, var(--neon-cyan) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* =======================================================
-        ⚡ CARTEL EN LOOP PERPETUO CON CORTE POR MÁSCARA
-        ======================================================= */
-        .badge-running-container {
-            position: absolute !important;
-            
-            /* 🌟 COORDINADAS PRECISAS PARA EL ÁNGULO DIAGONAL */
-            top: 16px !important;
-            right: -45px !important; /* Lo empuja hacia afuera para esconder la punta derecha */
-            
-            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple)) !important;
-            padding: 6px 0 !important;
-            
-            /* 🌟 SOLUCIÓN: Corregido a un único valor de rotación limpio de 18 grados */
-            transform: rotate(18deg) !important; 
-            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.25) !important;
-            
-            /* Hacemos el contenedor bien largo para que la punta izquierda muera fuera de la tarjeta */
-            width: 260px !important; 
-            
-            overflow: hidden !important;
-            white-space: nowrap !important;
-            display: flex !important;
-        }
-
-
-
-        /* El riel que traslada los dos bloques de texto en sincronía pura */
-        .badge-track {
-            display: flex !important;
-            animation: marqueeContinuo 8s linear infinite !important;
-            width: max-content !important;
-        }
-
-        .badge-running-container span {
-            font-family: "Roboto", sans-serif !important;
-            font-size: 0.58rem !important;
-            font-weight: 800 !important;
-            color: #000000 !important;
-            letter-spacing: 0.06em !important;
-            flex-shrink: 0 !important;
-            display: inline-block !important;
-        }
-
-        /* NUEVA ANIMACIÓN: Se desplaza exactamente el 50% de la caja (un bloque de texto)
-        y se resetea instantáneamente sin que el ojo humano note el salto */
-        @keyframes marqueeContinuo {
-            0% {
-                transform: translate3d(0, 0, 0);
-            }
-            100% {
-                transform: translate3d(-50%, 0, 0);
-            }
-        }
-
-
-        /* =======================================================
-        NUEVO DISEÑO: LISTA VERTICAL DE TARJETAS APILADAS
-        ======================================================= */
-        .panel-vertical-stack {
-            display: flex !important;
-            flex-direction: column !important;
-            gap: 16px !important; /* Separación uniforme entre tarjetas */
-            width: 100% !important;
-        }
-
-        /* Tarjeta de Cristal Líquido en Fila de Ancho Completo */
-        .option-card-row {
-            background: rgba(255, 255, 255, 0.01) !important;
-            backdrop-filter: blur(5px) !important;
-            -webkit-backdrop-filter: blur(24px) !important;
-            
-            /* Bordes ultra finos con relieve cenital */
-            border: 1px solid rgba(255, 255, 255, 0.03) !important;
-            border-top: 1px solid rgba(255, 255, 255, 0.07) !important;
-            border-radius: 16px !important;
-            
-            padding: 24px 32px !important;
-            display: flex !important;
-            align-items: center !important;
-            gap: 32px !important;
-            width: 100% !important;
-            box-sizing: border-box !important;
-            position: relative !important;
-            
-            /* Aceleración por hardware integrada */
-            will-change: transform, border-color, background-color;
-            transform: translateZ(0);
-            transition: transform 0.4s var(--cubic-apple), border-color 0.4s ease, background-color 0.4s ease !important;
-        }
-
-        /* Efecto Hover interactivo de alta gama */
-        .option-card-row:hover {
-            transform: translateY(-2px) scale(1.005) !important;
-            background: rgba(255, 255, 255, 0.02) !important;
-            border-color: rgba(255, 255, 255, 0.08) !important;
-        }
-
-        /* Indicador Numérico Indexado (Estilo de la foto) */
-        .card-row-index {
-            font-family: "Roboto", sans-serif !important;
-            font-size: 0.95rem !important;
-            font-weight: 600 !important;
-            color: var(--text-secondary) !important;
-            opacity: 0.4;
-            min-width: 24px;
-        }
-
-        /* Contenedor interno del contenido para alineación perfecta */
-        .card-row-content {
-            display: flex !important;
-            flex-direction: column !important;
-            text-align: left !important;
-            flex-grow: 1;
-        }
-
-        .option-card-title-row {
-            font-family: "Roboto", sans-serif !important;
-            font-size: 1.35rem !important;
-            font-weight: 500 !important;
-            color: #ffffff !important;
-            margin: 0 0 4px 0 !important;
-            letter-spacing: -0.01em !important;
-        }
-
-        .option-card-text-row {
-            font-family: "Roboto", sans-serif !important;
-            font-size: 0.95rem !important;
-            color: #8E8E93 !important;
-            line-height: 1.5 !important;
-            margin: 0 !important;
-        }
-
-        /* Flecha indicadora minimalista en el extremo derecho */
-        .card-row-arrow {
-            color: #ffffff;
-            opacity: 0.15;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            flex-shrink: 0;
-        }
-
-        .option-card-row:hover .card-row-arrow {
-            opacity: 0.6;
-            transform: translateX(4px);
-        }
-
-        /* Adaptabilidad para Teléfonos Celulares */
-        @media (max-width: 768px) {
-            .option-card-row {
-                flex-direction: column !important;
-                align-items: flex-start !important;
-                gap: 12px !important;
-                padding: 24px !important;
-            }
-            .card-row-arrow {
-                display: none !important; /* Ocultamos la flecha en móviles */
-            }
-        }
-
-    /* =======================================================
-   TARJETAS ANCHAS: ESTÉTICA "DASHBOARD PREMIUM"
-   ======================================================= */
-/* =======================================================
-   ESTILO DE TARJETAS XONDA (BLINDADO Y ANIMADO)
-   ======================================================= */
-.card-servicio-ancha {
-    /* Estética y Estructura Protegidas */
-    background: rgba(0, 0, 0, 0.726) !important; 
-    backdrop-filter: blur(3px) !important;
-    -webkit-backdrop-filter: blur(3px) !important;
-    border: 1px solid rgba(29, 29, 29, 0.404) !important;
-    border-radius: 24px !important;
-    padding: 40px !important;
-    width: 100% !important;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 32px !important;
-    margin-bottom: 24px !important;
-    position: relative !important;
-    
-    /* Cursor bloqueado en todo el elemento */
-    cursor: default !important;
-    user-select: none !important;
-    -webkit-user-select: none !important;
-
-    /* Nos aseguramos de que no tenga animaciones */
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-}
-
-/* 🌟 CUANDO LA TARJETA ENTRA EN PANTALLA (Enderezada y visible) */
-.card-servicio-ancha.revealed {
-    opacity: 1 !important;
-    transform: perspective(1000px) rotateX(0deg) translateY(0) !important;
-}
-
-/* Aseguramos que los textos de adentro tampoco cambien el cursor */
-.card-servicio-ancha * {
-    cursor: default !important;
-    user-select: none !important;
-    -webkit-user-select: none !important;
-}
-
-/* Estado revelado (aplicado por JS) */
-.service-panel .card-servicio-ancha.revealed {
-    opacity: 1;
-    transform: perspective(1000px) rotateX(0deg) translateY(0);
-}
-
-/* 🌟 LA MAGIA: Iluminación difuminada en el borde superior (centro a costados) */
-.card-servicio-ancha::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 15%; /* Nace un poco después de la esquina */
-    width: 70%; /* Ocupa el centro */
-    height: 1px;
-    /* Degradado: Transparente -> Color -> Transparente */
-    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0) 100%);
-    
-    /* Sombra difusa hacia abajo simulando que la luz "baña" el cristal */
-    box-shadow: 0 2px 20px 1px rgba(255, 255, 255, 0.15);
-}
-
-/* =======================================================
-   SUBTÍTULOS DE COLUMNAS (Estilo "Lo que ves / Lo que procesa")
-   ======================================================= */
-.column-label {
-    font-family: "Roboto", sans-serif !important;
-    font-size: 0.9rem !important;
-    font-weight: 600 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.15em !important;
-    margin-bottom: 20px !important;
-    display: flex !important;
-    align-items: center !important;
-    gap: 8px !important;
-    opacity: 0.8 !important;
-}
-
-.label-left {
-    color: var(--text-secondary) !important;
-}
-
-.label-right {
-    /* Usamos tu variable de neón púrpura para destacar la tecnología */
-    color: var(--neon-purple) !important; 
-}
-
-/* Pequeña línea decorativa al lado del subtítulo */
-.column-label::after {
-    content: "";
-    height: 1px;
-    flex-grow: 1;
-    background: rgba(255, 255, 255, 0.05);
-}
-/* 🌟 TÍTULO CENTRADO EN LA PARTE SUPERIOR */
-.card-header-servicio {
-    text-align: center !important;
-    width: 100%;
-}
-
-/* =======================================================
-   RESTAURAMOS LOS TEXTOS GIGANTES Y TÍTULOS BLINDADOS
-   ======================================================= */
-.card-header-servicio h3 {
-    font-family: "Roboto", sans-serif !important;
-    font-size: 2.5rem !important;
-    font-weight: 600 !important;
-    letter-spacing: -0.02em !important;
-    background: linear-gradient(90deg, #ffffff 0%, #9CA3AF 100%) !important;
-    -webkit-background-clip: text !important;
-    background-clip: text !important;
-    color: transparent !important;
-    margin: 0 !important;
-    display: inline-block !important; /* Vital para el degradado */
-}
-
-/* 🌟 CONTENEDOR DIVIDIDO EN DOS COLUMNAS (TEXTO / MOCKUP) */
-.card-body-split {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    gap: 48px !important; /* Espacio elegante entre columnas */
-    width: 100%;
-}
-
-/* Columna Izquierda: El Texto Descriptivo */
-.card-split-text {
-    flex: 1 !important;
-    text-align: left !important;
-}
-
-.card-split-text p {
-    font-family: "Roboto", sans-serif !important;
-    font-size: 1.7rem !important;
-    font-weight: 300 !important;
-    color: #E5E7EB !important;
-    line-height: 1.4 !important;
-    margin: 0 !important;
-}
-
-/* Ajuste móvil para que el texto gigante no desborde en pantallas chicas */
-@media (max-width: 768px) {
-    .card-split-text p {
-        font-size: 1.3rem !important; /* En celulares lo bajamos un poco por espacio */
-        text-align: center !important;
-    }
-    .card-header-servicio h3 {
-        font-size: 2rem !important;
-    }
-}
-
-/* =======================================================
-   ANIMACIÓN EXCLUSIVA PARA LAS TARJETAS DE MOCKUP
-   ======================================================= */
-/* Apuntamos al contenedor del mockup directamente */
-.card-split-mockup > div:not(.column-label) {
-    opacity: 0;
-    transform: perspective(1000px) rotateX(15deg) translateY(40px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    will-change: opacity, transform;
-}
-
-/* El estado cuando hacemos scroll y aparecen */
-.card-split-mockup > div:not(.column-label).revealed {
-    opacity: 1;
-    transform: perspective(1000px) rotateX(0deg) translateY(0);
-}
-
-/* Columna Derecha: El Mockup (Hereda los contenedores visuales que ya hicimos) */
-.card-split-mockup {
-    flex: 1 !important;
-    width: 100%;
-}
-
-/* Forzamos que los contenedores dentro del split no tengan margen superior extra */
-.chat-mockup-container, .web-mockup-container, .integration-mockup-container, .db-mockup-container {
-    margin-top: 0 !important; 
-    width: 100% !important;
-}
-
-/* Adaptabilidad para teléfonos: el diseño vuelve a ser una sola torre vertical */
-@media (max-width: 968px) {
-    .card-body-split {
-        flex-direction: column !important;
-        gap: 24px !important;
-    }
-    .card-split-text {
-        text-align: center !important; /* Centrado en móviles para mejor lectura */
-    }
-    .card-servicio-ancha {
-        padding: 24px !important;
-    }
-}
-
-/* =======================================================
-   MOCKUP ESTÁTICO: SOFTWARE A MEDIDA (ARQUITECTURA)
-   ======================================================= */
-.software-static-container {
-    background: #050505;
-    border-color: rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    display: flex;
-    flex-direction: column;
-    height: 240px; 
-    overflow: hidden;
-    width: 100%;
-    box-shadow: inset 0 0 40px rgba(0,0,0,0.9);
-}
-
-/* Barra superior de la ventana */
-.static-header {
-    height: 36px;
-    background: rgba(255, 255, 255, 0.03);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    display: flex;
-    align-items: center;
-    padding: 0 16px;
-    gap: 8px;
-}
-
-.static-dot {
-    width: 10px; 
-    height: 10px; 
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.15);
-}
-
-/* Cuerpo del software */
-.static-body {
-    display: flex;
-    flex: 1;
-    padding: 20px;
-    gap: 20px;
-}
-
-/* Menú lateral esquemático */
-.static-sidebar {
-    width: 25%;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.static-menu-item {
-    height: 14px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 4px;
-    width: 100%;
-}
-
-.static-menu-item.short { 
-    width: 60%; 
-}
-
-/* Item de menú seleccionado */
-.static-menu-item.active { 
-    background: rgba(6, 182, 212, 0.15); 
-    border: 1px solid rgba(6, 182, 212, 0.4); 
-}
-
-/* Área de módulos (Lo que construyes a medida) */
-.static-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-/* Módulos de estructura */
-.static-module {
-    flex: 1;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px dashed rgba(255, 255, 255, 0.15);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #6B7280;
-    font-family: "Roboto", sans-serif;
-    font-size: 0.75rem;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-}
-
-/* Módulo principal destacado */
-.static-module.core {
-    flex: 2; /* Ocupa el doble de espacio */
-    border-style: solid;
-    background: linear-gradient(135deg, rgba(6, 182, 212, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
-    border-color: rgba(139, 92, 246, 0.3);
-    color: var(--neon-purple);
-}
-
-/* =======================================================
-   MOCKUP: INTERFAZ WEB (DENTRO DE LA TARJETA)
-   ======================================================= */
-.web-mockup-container {
-    background: #050505;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.08);
-    box-shadow: inset 0 0 40px rgba(0,0,0,0.9);
-    overflow: hidden;
-    margin-top: 16px;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Barra superior del navegador */
-.browser-bar {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 8px 12px;
-    display: flex;
-    gap: 6px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.browser-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
-}
-
-/* Contenido de la web esquemática */
-.mockup-content {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.mockup-nav { width: 100%; height: 10px; background: rgba(255, 255, 255, 0.05); border-radius: 4px; }
-.mockup-hero { width: 60%; height: 40px; background: rgba(255, 255, 255, 0.1); border-radius: 4px; }
-.mockup-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.mockup-box { height: 30px; background: rgba(255, 255, 255, 0.03); border-radius: 4px; }
-
-/* =======================================================
-   MOCKUP ESTÁTICO: INTEGRACIÓN DE SISTEMAS (SIN ANIMACIÓN)
-   ======================================================= */
-.integration-mockup-container {
-    background: #050505 !important;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
-    padding: 40px 24px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    overflow: hidden;
-    box-shadow: inset 0 0 40px rgba(0,0,0,0.9) !important;
-    cursor: default;
-    user-select: none;
-}
-
-/* Las aplicaciones separadas del cliente */
-.api-nodes {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 450px;
-}
-
-.api-node {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 10px 16px;
-    border-radius: 8px;
-    font-family: "Roboto", sans-serif;
-    font-size: 0.85rem;
-    color: #9CA3AF;
-    text-align: center;
-    width: 30%;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-
-/* 🌟 LÍNEAS DE CONEXIÓN ESTÁTICAS (Sin lag) */
-.api-flow {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 350px;
-    height: 40px;
-}
-
-/* En lugar de animar, usamos un gradiente que brilla más fuerte al llegar al centro */
-.flow-line {
-    width: 2px;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 0%, rgba(6, 182, 212, 0.8) 100%);
-    position: relative;
-    box-shadow: 0 10px 15px rgba(6, 182, 212, 0.2);
-}
-
-/* Eliminamos completamente el ::after y los @keyframes dataFlow que causaban lag */
-
-/* El sistema unificado final */
-.api-core {
-    background: rgba(6, 182, 212, 0.08); 
-    border: 1px solid rgba(6, 182, 212, 0.3);
-    width: 100%;
-    max-width: 450px;
-    padding: 16px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    color: #ffffff;
-    font-family: "Roboto", sans-serif;
-    font-weight: 500;
-    font-size: 1rem;
-    box-shadow: 0 0 30px rgba(6, 182, 212, 0.1);
-}
-
-.core-dot {
-    width: 10px;
-    height: 10px;
-    background: var(--neon-cyan);
-    border-radius: 50%;
-    box-shadow: 0 0 10px var(--neon-cyan);
-}
-
-/* =======================================================
-   MOCKUP ESTÁTICO: BASES DE DATOS (BLINDADO Y SIN MOVIMIENTO)
-   ======================================================= */
-.db-mockup-container {
-    background: #050505 !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
-    box-shadow: inset 0 0 40px rgba(0,0,0,0.9) !important;
-    border-radius: 12px;
-    padding: 32px 24px;
-    margin-top: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    user-select: none;
-    cursor: default;
-}
-
-/* Panel Izquierdo: Excel (Estático) */
-.legacy-excel {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px dashed rgba(255, 255, 255, 0.15);
-    border-radius: 8px;
-    padding: 16px;
-    width: 35%;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-/* Eliminamos la animación de la flecha central */
-.db-transition {
-    color: var(--neon-cyan);
-    font-size: 1.5rem;
-    animation: none !important; /* Estático */
-    opacity: 0.5;
-}
-
-/* Panel Derecho: El Servidor Xonda (ESTÁTICO) */
-.xonda-db-stack {
-    width: 45%;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.db-server-layer {
-    background: linear-gradient(90deg, rgba(6, 182, 212, 0.05) 0%, rgba(139, 92, 246, 0.1) 100%);
-    border: 1px solid rgba(6, 182, 212, 0.3);
-    border-radius: 6px;
-    height: 28px;
-    display: flex;
-    align-items: center;
-    padding: 0 12px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-}
-
-.db-light {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--neon-cyan);
-    box-shadow: 0 0 8px var(--neon-cyan);
-}
-
-/* 🌟 AQUÍ ESTÁ EL CAMBIO: ELIMINAMOS EL EFECTO DE ESCANEO */
-.db-server-layer::after {
-    display: none !important; /* Eliminamos la línea de escaneo que causaba lag */
-}
-
-/* =======================================================
-   MOCKUP ESTÁTICO/LIGERO: ASISTENTE VIRTUAL (TERMINAL IA)
-   ======================================================= */
-.ai-terminal-container {
-    background: #050505;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    display: flex;
-    flex-direction: column;
-    height: 240px; 
-    overflow: hidden;
-    width: 100%;
-    box-shadow: inset 0 0 40px rgba(0,0,0,0.9);
-    
-    /* Fuente típica de programación para la terminal */
-    font-family: 'Courier New', Courier, monospace !important; 
-}
-
-/* Cabecera de la terminal */
-.terminal-header {
-    background: rgba(255, 255, 255, 0.02);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 8px 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.75rem;
-    color: #6B7280;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* Cuerpo del log de la IA */
-.terminal-body {
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    font-size: 0.85rem;
-    color: #D1D5DB;
-    line-height: 1.4;
-}
-
-/* Colores para cada tipo de mensaje en la consola */
-.log-time { color: #4B5563; margin-right: 8px; }
-.log-user { color: #E5E7EB; font-weight: bold; }
-.log-sys { color: var(--neon-purple); font-weight: bold; }
-.log-success { color: var(--neon-cyan); font-weight: bold; }
-
-/* El cursor titilando (Animación súper ligera de opacidad) */
-.blinking-cursor {
-    display: inline-block;
-    width: 8px;
-    height: 15px;
-    background-color: var(--neon-cyan);
-    vertical-align: middle;
-    margin-left: 4px;
-    box-shadow: 0 0 5px rgba(6, 182, 212, 0.5); /* Le damos un leve brillo para que se vea premium */
-}
-
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-}
-
-/* =======================================================
-   MOCKUP ESTÁTICO: AUTOMATIZACIÓN DE TAREAS (PIPELINE)
-   ======================================================= */
-.ai-automation-container {
-    background: #050505;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 240px; 
-    padding: 0 24px;
-    box-shadow: inset 0 0 40px rgba(0,0,0,0.9);
-    width: 100%;
-}
-
-/* Columna de Tareas Manuales (Inputs) */
-.auto-inputs {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    width: 25%;
-}
-
-.auto-box {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px dashed rgba(255, 255, 255, 0.15);
-    padding: 10px;
-    border-radius: 6px;
-    font-family: 'Courier New', monospace;
-    font-size: 0.65rem;
-    color: #9CA3AF;
-    text-align: center;
-}
-
-/* Líneas de conexión */
-.auto-path {
-    flex: 1;
-    height: 2px;
-    background: linear-gradient(90deg, rgba(255,255,255,0.05) 0%, rgba(139,92,246,0.3) 100%);
-    position: relative;
-    margin: 0 12px;
-}
-
-.auto-path.out {
-    background: linear-gradient(90deg, rgba(139,92,246,0.3) 0%, rgba(6,182,212,0.3) 100%);
-}
-
-/* Motor de IA Central */
-.auto-core {
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(6, 182, 212, 0.05) 100%);
-    border: 1px solid rgba(139, 92, 246, 0.4);
-    padding: 16px 20px;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
-}
-
-.core-ring {
-    width: 24px; height: 24px;
-    border-radius: 50%;
-    border: 2px solid var(--neon-purple);
-    border-top-color: transparent;
-    transform: rotate(45deg);
-}
-
-.core-text {
-    font-family: "Roboto", sans-serif;
-    font-size: 0.75rem;
-    color: #fff;
-    font-weight: 500;
-    letter-spacing: 1px;
-}
-
-/* Columna de Procesos Automatizados (Outputs) */
-.auto-outputs {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    width: 25%;
-}
-
-.auto-box-done {
-    background: rgba(6, 182, 212, 0.05);
-    border: 1px solid rgba(6, 182, 212, 0.3);
-    padding: 10px;
-    border-radius: 6px;
-    font-family: 'Courier New', monospace;
-    font-size: 0.65rem;
-    color: var(--neon-cyan);
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-}
-
-/* =======================================================
-   MOCKUP: ANÁLISIS INTELIGENTE (EXCEL -> DATOS CLASIFICADOS)
-   ======================================================= */
-.ai-analytics-container {
-    background: #050505 !important;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    display: flex;
-    flex-direction: column;
-    height: 240px; 
-    padding: 20px;
-    box-shadow: inset 0 0 40px rgba(0,0,0,0.9);
-    width: 100%;
-}
-
-.analytics-body {
-    display: flex;
-    gap: 20px;
-    height: 100%;
-    align-items: center;
-}
-
-/* =======================================================
-   MOCKUP: EXCEL TABULAR (MATRIZ DE DATOS)
-   ======================================================= */
-.raw-excel-panel {
-    width: 40%;
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    position: relative; /* Para posicionar la etiqueta .xlsx */
-}
-
-/* Etiqueta de archivo en esquina superior derecha */
-.excel-file-label {
-    position: absolute;
-    top: -10px;
-    right: 8px;
-    background: #000;
-    color: #F87171; /* Rojo suave para Excel */
-    font-family: 'Courier New', monospace;
-    font-size: 0.6rem;
-    padding: 2px 6px;
-    border: 1px solid rgba(248, 113, 113, 0.3);
-    border-radius: 4px;
-}
-
-/* La matriz (filas y columnas) */
-.excel-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 3px;
-}
-
-.excel-cell { 
-    height: 12px; 
-    background: rgba(255, 255, 255, 0.05); 
-    border-radius: 1px; 
-}
-.excel-cell.header { background: rgba(255, 255, 255, 0.15); }
-
-/* Panel Derecho: Datos Clasificados */
-.classified-data-panel {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.class-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-family: "Roboto", sans-serif;
-    font-size: 0.75rem;
-    color: #fff;
-}
-
-.class-tag {
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-weight: 600;
-    font-size: 0.65rem;
-    letter-spacing: 0.5px;
-}
-
-.tag-a { background: rgba(6, 182, 212, 0.2); color: var(--neon-cyan); border: 1px solid rgba(6, 182, 212, 0.3); }
-.tag-b { background: rgba(139, 92, 246, 0.2); color: var(--neon-purple); border: 1px solid rgba(139, 92, 246, 0.3); }
-.tag-c { background: rgba(255, 255, 255, 0.1); color: #9CA3AF; border: 1px solid rgba(255, 255, 255, 0.2); }
-
-.bar-bg { flex: 1; height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; }
-
-/* =======================================================
-   MOCKUPS CONCEPTUALES: PILARES FUNDAMENTALES (ESTÁTICOS)
-   ======================================================= */
-.mockup-pilar-container {
-    background: #050505 !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
-    box-shadow: inset 0 0 40px rgba(0,0,0,0.9) !important;
-    border-radius: 12px;
-    height: 220px; /* Un poco más bajos que los de software para dar ritmo de "pilar" */
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-}
-
-    /* --- 1. Consultoría (Hoja de Ruta / Nodos) --- */
-    .audit-roadmap { display: flex; align-items: center; justify-content: center; width: 100%; gap: 8px;}
-    .audit-node { width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(6, 182, 212, 0.5); background: rgba(6, 182, 212, 0.05); display: flex; align-items: center; justify-content: center; color: var(--neon-cyan); font-family: monospace; font-size: 0.8rem; box-shadow: 0 0 15px rgba(6, 182, 212, 0.1);}
-    .audit-line { flex: 1; max-width: 60px; height: 2px; background: repeating-linear-gradient(90deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.2) 50%, transparent 50%, transparent 100%); background-size: 10px 2px; }
-
-    /* --- 2. Diseño UX/UI (Esqueleto de Interfaz) --- */
-    .ux-skeleton { width: 70%; display: flex; flex-direction: column; gap: 16px; }
-    .ux-header { height: 12px; width: 40%; background: rgba(255, 255, 255, 0.1); border-radius: 6px; }
-    .ux-ui-elements { display: flex; gap: 12px; align-items: center; }
-    .ux-toggle { width: 40px; height: 20px; border-radius: 12px; background: var(--neon-purple); position: relative; box-shadow: 0 0 10px rgba(139, 92, 246, 0.3);}
-    .ux-toggle::after { content: ''; position: absolute; right: 2px; top: 2px; width: 16px; height: 16px; background: #fff; border-radius: 50%; }
-    .ux-button { flex: 1; height: 36px; border: 1px solid rgba(139, 92, 246, 0.4); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: var(--neon-purple); font-size: 0.7rem; font-family: "Roboto", sans-serif; letter-spacing: 1px;}
-
-    /* --- 3. Soporte (Monitor de Uptime) --- */
-    .support-monitor { width: 80%; display: flex; flex-direction: column; gap: 12px; }
-    .support-status { color: var(--neon-cyan); font-family: 'Courier New', monospace; font-size: 0.8rem; display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;}
-    .support-bars { display: flex; gap: 4px; align-items: flex-end; height: 60px; }
-    .sup-bar { flex: 1; background: rgba(6, 182, 212, 0.15); border-radius: 2px 2px 0 0; }
-    .sup-bar.active { background: var(--neon-cyan); box-shadow: 0 0 10px rgba(6, 182, 212, 0.3); }
-
-    /* --- 4. Escalabilidad (Bloques Modulares) --- */
-    .scale-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-    .scale-cube { width: 56px; height: 56px; border-radius: 8px; border: 1px solid rgba(139, 92, 246, 0.5); background: rgba(139, 92, 246, 0.1); display: flex; align-items: center; justify-content: center; color: var(--neon-purple); font-size: 1.2rem; box-shadow: inset 0 0 15px rgba(139, 92, 246, 0.2);}
-    .scale-cube.future { border: 1px dashed rgba(255, 255, 255, 0.2); background: transparent; color: rgba(255, 255, 255, 0.2); box-shadow: none; }
-
-
-        section { padding: 140px 24px; display: flex; justify-content: center; align-items: center; width: 100%; }
-        .container { max-width: 1140px; width: 100%; margin: 0 auto; position: relative; }
         .reveal { opacity: 0; transform: translateY(30px); transition: all 1s var(--cubic-apple); }
         .reveal.activa { opacity: 1; transform: translateY(0); }
 
-        /* BENTO GRID */
-        .section-tag { font-size: 12px; font-weight: 400; color: var(--text-primary); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 20px; display: block; opacity: 0.5; }
-        .section-title { font-size: 52px; line-height: 1.1; margin-bottom: 28px; letter-spacing: -0.04em; }
-        .section-subtitle { font-size: 19px; color: var(--text-secondary); line-height: 1.6; max-width: 600px; font-weight: 300; margin-bottom: 80px; text-transform: none;}
-
-        .bento-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 32px; width: 100%; }
-        .bento-card { border-radius: 28px; padding: 48px; display: flex; flex-direction: column; justify-content: space-between; min-height: 320px; }
-        .bento-card.full-width { grid-column: 1 / -1; flex-direction: row; align-items: center; min-height: 380px; }
-        
-        .bento-card h3 { font-size: 26px; margin-bottom: 16px; letter-spacing: -0.02em; }
-        .bento-card p { font-size: 15px; color: var(--text-secondary); line-height: 1.6; max-width: 440px; font-weight: 300; text-transform: none;}
-        .bento-icon { width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 32px; }
-
-        .bento-asset-box { width: 260px; height: 260px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
-        .bento-asset-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
-
-        .footer { padding: 80px 24px 40px 24px; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.03); margin-top: 120px; }
-        .footer-logo { display: inline-flex; align-items: center; justify-content: center; gap: 12px; text-decoration: none; color: var(--text-primary); margin-bottom: 20px; font-size: 20px; font-weight: 300;}
-        .copyright { color: var(--text-secondary); font-size: 13px; letter-spacing: 0.5px;}
-
-        @media (max-width: 968px) {
-            .navbar { width: 100%; padding: 20px 24px; }
-            h1.hero-title { font-size: 42px; }
-            .bento-grid { grid-template-columns: 1fr; }
-            .bento-card.full-width { flex-direction: column; text-align: center; justify-content: center; gap: 40px; }
-            .bento-card.full-width p { margin: 0 auto; }
+        /* =======================================================
+           3. NAVBAR Y HERO SECTION
+           ======================================================= */
+        .navbar {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 2rem 7rem; position: absolute; top: 0; left: 50%;
+            transform: translateX(-50%); width: 100%; max-width: 120rem;
+            z-index: 10000; background: transparent;
         }
 
+        .logo { 
+            display: flex; align-items: center; gap: 0.5rem; text-decoration: none;
+            font-size: 1.8rem; color: var(--text-primary); letter-spacing: -0.05em; 
+            font-weight: 380; transform: scaleY(1.15); transform-origin: center top; 
+        }
+
+        .btn-contact, .btn-primary {
+            display: inline-flex; align-items: center; justify-content: center; gap: 1rem;
+            text-decoration: none; transition: all 0.3s ease;
+        }
+
+        .btn-contact {
+            background: rgba(37, 37, 37, 0.692); border-radius: 10px; padding: 6px 12px;
+            color: #ffffff; font-size: 1.35rem; font-weight: 400; 
+        }
+        .btn-contact:hover { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.2); }
+
+        .btn-primary {
+            background-color: #FFFFFF; color: #000000bd; font-weight: 700; font-size: 15px;
+            padding: 16px 36px; border-radius: 8px;
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15); }
+
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; padding-top: 80px; }
+        .hero-layout { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; width: 100%; max-width: 950px; z-index: 10; margin: 0 auto; }
+        
+        .hero-title, .section-title-premium, .problemas-main-title {
+            font-weight: 400; letter-spacing: -0.04em; line-height: 1; text-align: center;
+            background: linear-gradient(to bottom, #ffffff 30%, #ffffffc7 40%, #ffffffc5 50%, #ffffffbe 60%, #ffffff8f 70%, #ffffff98 80%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .hero-title { font-size: 6rem; margin-bottom: 1rem; }
+        
+        .hero-subtitle {
+            font-size: 1.5rem; font-weight: 490; color: #949499; max-width: 22em;
+            margin: 0 auto 2.5rem auto; line-height: 1.2; letter-spacing: -0.005em; text-align: center;
+        }
+
+        /* =======================================================
+           4. CURVA GIGANTE Y CONTENEDOR DE CAPAS
+           ======================================================= */
+        .seccion-capas {
+            position: relative; padding: 180px 24px 140px 24px; width: 100%;
+            background-color: var(--bg-pure-black); margin-top: -120px; z-index: 1;
+        }
+
+        .seccion-capas::before {
+            content: ""; position: absolute; top: 0; left: -50%; width: 200%; height: 100%; 
+            background: linear-gradient(to bottom, rgb(18, 18, 20) 0%, var(--bg-pure-black) 15%); 
+            border-radius: 50% 50% 0 0; z-index: -2; will-change: transform; transform: translateZ(0);
+            box-shadow: 0px -1px 3px rgba(255, 255, 255, 0.10), 0px -30px 80px rgba(255, 255, 255, 0.12), 0px -80px 200px rgba(255, 255, 255, 0.06), 0px 20px 50px rgba(0, 0, 0, 0.9);
+        }
+
+        .seccion-capas::after {
+            content: ""; position: absolute; top: -50px; left: 50%; transform: translateX(-50%);
+            width: 800px; height: 300px; filter: blur(40px); z-index: -1; pointer-events: none;
+            background: radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 70%);
+        }
+
+        /* PRIVACY CARD */
+        .privacy-card {
+            display: flex; align-items: center; gap: 24px; width: 100%; max-width: 80rem;
+            margin: 2rem auto 20rem auto; padding: 3rem; background: var(--bg-pure-black);
+            border: 1px solid rgba(133, 133, 133, 0.5); border-radius: 18px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6); position: relative; z-index: 2;
+        }
+        .privacy-badge { display: flex; align-items: center; justify-content: center; width: 5rem; height: 5rem; flex-shrink: 0; }
+        .privacy-content h4 { font-size: 1.6rem; font-weight: 500; margin-bottom: 6px; }
+        .privacy-content p { font-size: 1.5rem; color: #8E8E93; line-height: 1.5; }
+
+        /* =======================================================
+           5. SECCIÓN DE PROBLEMAS Y EFECTOS GEOMÉTRICOS 3D
+           ======================================================= */
+        .problemas-seccion { width: 100%; max-width: 80rem; margin: 0 auto 12rem auto; position: relative; }
+        .problemas-main-title { font-size: 4rem; margin-bottom: 6.5rem; }
+
+        .solucion-destacada, .soluciones-secundarias { display: grid; align-items: center; position: relative; }
+        .solucion-destacada { grid-template-columns: 1fr 1fr; gap: 6rem; margin-bottom: 6rem; }
+        .soluciones-secundarias { grid-template-columns: 1fr 1fr; gap: 5rem; border-top: 1px solid rgba(255, 255, 255, 0.04); padding-top: 6rem; margin-top: 4rem; }
+        .soluciones-secundarias::after { content: ""; position: absolute; top: 6rem; bottom: 0; left: 50%; transform: translateX(-50%); width: 1px; background: rgba(255, 255, 255, 0.06); }
+
+        .solucion-info, .solucion-box-mini { text-align: left; z-index: 2; display: flex; flex-direction: column; }
+        .solucion-tag-premium { display: inline-flex; align-items: center; gap: 8px; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em; margin-bottom: 1.2rem; filter: brightness(0.85); background: linear-gradient(45deg, var(--neon-cyan) 0%, var(--neon-purple) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .solucion-tag-premium svg { stroke: var(--neon-cyan); flex-shrink: 0; opacity: 0.8; }
+        
+        .solucion-info h3 { font-size: 2.2rem; line-height: 1.2; font-weight: 600; margin-bottom: 1.5rem; letter-spacing: -0.02em; }
+        .solucion-info p { font-size: 1.05rem; color: #8E8E93; line-height: 1.6; max-width: 440px; margin: 0; }
+        .solucion-box-mini h3 { font-size: 1.8rem; line-height: 1.3; font-weight: 600; margin-bottom: 1.2rem; letter-spacing: -0.02em; }
+        .solucion-box-mini p { font-size: 1rem; color: #8E8E93; line-height: 1.6; max-width: 100%; margin: 0; }
+
+        /* FIGURAS 3D FLOTANTES */
+        .esfera-central-3d {
+            position: absolute; width: 10rem; height: 10rem; top: 90%; left: 50%; border-radius: 50%; z-index: 0; pointer-events: none;
+            will-change: transform; transform: translate(-65%, -20%) translateZ(0); 
+            background: radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0.6) 30%, rgba(255, 255, 255, 0.4) 60%, rgba(255, 255, 255, 0.3) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.18); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            box-shadow: -10px 15px 35px rgba(0, 0, 0, 0.4), inset -4px -4px 10px rgba(0, 0, 0, 0.3), inset 6px 6px 15px rgba(255, 255, 255, 0.25);
+        }
+        .geometria-capsula-3d, .geometria-cubo-3d, .geometria-pentagono-3d {
+            position: absolute; z-index: 0; pointer-events: none; border: 1px solid rgba(255, 255, 255, 0.25);
+            background: radial-gradient(circle at 40% 30%, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0.5) 40%, rgba(255, 255, 255, 0.2) 70%, rgba(0, 0, 0, 0.4) 100%);
+        }
+        .geometria-capsula-3d { width: 90px; height: 140px; border-radius: 50px; bottom: 20px; left: -35px; transform: rotate(35deg) translateZ(-10px); box-shadow: -15px 15px 30px rgba(0, 0, 0, 0.5); }
+        .geometria-cubo-3d { width: 110px; height: 110px; border-radius: 28px; top: 10px; right: -30px; transform: rotate(-20deg) rotateX(15deg) translateZ(-10px); box-shadow: 15px 15px 35px rgba(0, 0, 0, 0.5); }
+        .geometria-pentagono-3d { width: 120px; height: 120px; clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%); -webkit-clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%); filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.7)); will-change: transform; transform: translateZ(0); }
+
+        /* INTERFACES (MOCKUPS PROBLEMAS) */
+        .solucion-visual-wrapper { display: flex; align-items: center; justify-content: flex-end; perspective: 1200px; z-index: 1; width: 100%; }
+        .mini-visual-wrapper { position: relative; width: 100%; height: 340px; margin-top: 3.5rem; display: flex; align-items: center; justify-content: center; perspective: 1200px; }
+        
+        .interfaz-mockup, .mini-mockup-card {
+            background: radial-gradient(circle at 80% 0%, rgba(6, 182, 212, 0.28) 0%, transparent 50%), linear-gradient(185deg, rgba(17, 17, 21, 0.75) 0%, rgba(5, 5, 7, 0.35) 100%);
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 20px; padding: 24px; box-shadow: 0 40px 80px rgba(0, 0, 0, 0.9);
+            will-change: transform, backdrop-filter; transform: translateZ(0); z-index: 1;
+        }
+        .interfaz-mockup { width: 40rem; height: 30rem; transform: rotateY(-8deg) rotateX(3deg); }
+        .mini-mockup-card { width: 100%; max-width: 440px; height: 280px; transform: rotateY(-6deg) rotateX(2deg); background: linear-gradient(185deg, rgba(17, 17, 21, 0.75) 0%, rgba(5, 5, 7, 0.7) 100%); }
+
+        .mockup-header { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); padding: 12px 16px; border-radius: 12px; font-size: 1.4rem; color: #8E8E93; margin-bottom: 20px; }
+        .mockup-response-card { background: rgba(255, 255, 255, 0.01); border: 1px solid rgba(255, 255, 255, 0.03); border-radius: 14px; padding: 16px; }
+        .mockup-response-card p { font-size: 1.4rem; line-height: 1.5; color: #E5E5EA; margin-bottom: 12px; }
+        .mockup-inner-pill { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.04); padding: 10px; border-radius: 8px; display: flex; justify-content: space-between; font-size: 1.3rem; }
+        .mockup-inner-pill span { color: #fff; } .mockup-inner-pill small { color: #636366; }
+
+        .mini-header { font-size: 0.8rem; color: #8E8E93; font-weight: 500; margin-bottom: 16px; }
+        .mini-list { display: flex; flex-direction: column; gap: 10px; }
+        .mini-item, .mini-email-item { display: flex; gap: 12px; padding: 12px; border-radius: 10px; background: rgba(255, 255, 255, 0.01); border: 1px solid rgba(255, 255, 255, 0.03); }
+        .mini-item.active-todo { background: rgba(255, 255, 255, 0.03); border-color: rgba(255, 255, 255, 0.06); }
+        .todo-check { width: 14px; height: 14px; border: 1px solid #ff9f0a; border-radius: 3px; margin-top: 3px; flex-shrink: 0; }
+        .todo-body, .email-body { font-size: 0.8rem; line-height: 1.4; color: #E5E5EA; }
+        .todo-body span { display: block; color: #636366; font-size: 0.72rem; margin-top: 2px; }
+        .email-avatar { width: 28px; height: 28px; border-radius: 50%; background: rgba(255, 255, 255, 0.05); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: #fff; flex-shrink: 0; }
+        .email-top { display: flex; justify-content: space-between; font-size: 0.75rem; margin-bottom: 2px; }
+        .email-top span, .mini-email-item p { color: #8E8E93; font-size: 0.75rem; }
+
+        /* =======================================================
+           6. SECCIÓN DE SERVICIOS (TABS Y BENTO GRID)
+           ======================================================= */
+        .section-header { text-align: center; margin: 50px auto 90px; display: flex; flex-direction: column; align-items: center; }
+        .section-title-premium { font-size: 4.2rem; font-weight: 450; line-height: 1.1; color: #fff; margin-bottom: 24px; }
+        .section-title-premium span { color: #8E8E93; font-weight: 400; }
+        .section-subtitle-premium { font-size: 1.3rem; color: #636366; line-height: 1.5; max-width: 520px; margin: 0 auto; }
+        
+        .contenedor-servicios-fijo { position: relative; width: 100%; min-height: 750px; margin-bottom: 50px; }
+        .pentagono-top { top: -20px; right: -40px; transform: rotate(25deg) rotateX(15deg); }
+        .pentagono-bottom { bottom: 27rem; left: -40px; transform: rotate(-35deg) rotateX(20deg); }
+
+        /* BOTONES DE TABS (CRISTAL ANIMADO) */
+        @property --gradient-angle { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+        .servicios-tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 4rem; width: 100%; }
+        
+        .tab-btn-crystal {
+            background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border: 1.5px solid transparent; border-radius: 20px; padding: 2rem; text-align: left; cursor: pointer;
+            position: relative; display: flex; flex-direction: column; gap: 8px; z-index: 1; transition: all 0.3s ease;
+            mask-image: linear-gradient(#fff, #fff), linear-gradient(#fff, #fff); mask-clip: padding-box, border-box; mask-composite: intersect;
+            -webkit-mask-image: -webkit-linear-gradient(#fff, #fff), -webkit-linear-gradient(#fff, #fff); -webkit-mask-clip: padding-box, border-box; -webkit-mask-composite: source-in;
+        }
+        .tab-btn-crystal .tab-title { font-size: 1.4rem; font-weight: 500; color: #8E8E93; transition: color 0.3s ease; }
+        .tab-btn-crystal .tab-desc { font-size: 0.9rem; color: #48484A; line-height: 1.4; transition: color 0.3s ease; }
+        
+        .tab-btn-crystal:hover { background: rgba(255, 255, 255, 0.08); }
+        .tab-btn-crystal:hover .tab-title { color: #fff; }
+        .tab-btn-crystal.active {
+            background: linear-gradient(#0a0a0a, #0a0a0a) padding-box, conic-gradient(from var(--gradient-angle), transparent 30%, #8B5CF6 45%, var(--neon-cyan) 55%, transparent 70%) border-box;
+            animation: rotarBordeFino 4s linear infinite;
+        }
+        .tab-btn-crystal.active .tab-title { color: #fff; }
+        .tab-btn-crystal.active .tab-desc { color: #8E8E93; }
+        
+        @keyframes rotarBordeFino { 0% { --gradient-angle: 0deg; } 100% { --gradient-angle: 360deg; } }
+        
+        /* Cartel Loop IA */
+        .badge-running-container { position: absolute; top: 16px; right: -45px; background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple)); padding: 6px 0; transform: rotate(18deg); box-shadow: 0 4px 15px rgba(139, 92, 246, 0.25); width: 260px; overflow: hidden; display: flex; }
+        .badge-track { display: flex; animation: marqueeContinuo 8s linear infinite; width: max-content; }
+        .badge-running-container span { font-size: 0.58rem; font-weight: 800; color: #000; letter-spacing: 0.06em; flex-shrink: 0; }
+        @keyframes marqueeContinuo { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-50%, 0, 0); } }
+
+        /* PANELES DE SERVICIO (BENTO GRID 2x2) */
+        .service-panel { display: none; visibility: hidden; opacity: 0; width: 100%; transition: opacity 0.4s var(--cubic-apple); }
+        .service-panel.active { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; align-items: stretch; visibility: visible; opacity: 1; animation: fadeInPanel 0.5s var(--cubic-apple); }
+        @keyframes fadeInPanel { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .card-servicio-ancha {
+            background: rgba(0, 0, 0, 0.72); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);
+            border: 1px solid rgba(29, 29, 29, 0.4); border-radius: 24px; padding: 32px;
+            display: flex; flex-direction: column; gap: 12px; position: relative;
+            cursor: default; user-select: none; -webkit-user-select: none;
+        }
+        .card-servicio-ancha::before {
+            content: ""; position: absolute; top: 0; left: 15%; width: 70%; height: 1px;
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0) 100%);
+            box-shadow: 0 2px 20px 1px rgba(255, 255, 255, 0.15);
+        }
+        .card-servicio-ancha * { cursor: default; user-select: none; -webkit-user-select: none; }
+
+        .card-header-servicio { width: 100%; text-align: left; }
+        .card-header-servicio h3 { font-size: 1.5rem; font-weight: 600; background: linear-gradient(90deg, #ffffff 0%, #9CA3AF 100%); -webkit-background-clip: text; background-clip: text; color: transparent; margin: 0 0 4px 0; }
+        
+        .card-body-split { display: flex; flex-direction: column; gap: 24px; height: 100%; }
+        .card-split-text { width: 100%; text-align: left; }
+        .card-split-text p { font-size: 0.95rem; font-weight: 400; color: #9CA3AF; line-height: 1.5; }
+        
+        .card-split-mockup { display: flex; flex-direction: column; height: 100%; justify-content: flex-end; width: 100%; }
+        .card-split-mockup > div {
+            background: #050505; border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: inset 0 0 40px rgba(0,0,0,0.9); border-radius: 12px; width: 100%; overflow: hidden;
+            opacity: 0; transform: perspective(1000px) rotateX(15deg) translateY(40px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; will-change: opacity, transform;
+        }
+        .card-split-mockup > div.revealed { opacity: 1; transform: perspective(1000px) rotateX(0deg) translateY(0); }
+
+        /* MOCKUPS INTERNOS DE BENTO (ESTRUCTURAS MINIMIZADAS) */
+        .software-static-container, .web-mockup-container, .integration-mockup-container, .db-mockup-container, .ai-terminal-container, .ai-automation-container, .ai-analytics-container, .mockup-pilar-container { padding: 20px; height: 220px; display: flex; flex-direction: column; }
+        
+        /* Software & Web */
+        .static-header { display: flex; gap: 8px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 12px; }
+        .static-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.15); }
+        .static-body { display: flex; gap: 16px; margin-top: 12px; height: 100%; }
+        .static-sidebar { width: 25%; display: flex; flex-direction: column; gap: 10px; }
+        .static-menu-item { height: 12px; background: rgba(255,255,255,0.05); border-radius: 4px; }
+        .static-menu-item.active { background: rgba(6, 182, 212, 0.15); border: 1px solid rgba(6,182,212,0.4); }
+        .static-content { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+        .static-module { flex: 1; border: 1px dashed rgba(255,255,255,0.15); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; color: #6B7280; }
+        .static-module.core { flex: 2; border-style: solid; background: linear-gradient(135deg, rgba(6,182,212,0.05), rgba(139,92,246,0.05)); border-color: rgba(139,92,246,0.3); color: var(--neon-purple); }
+        .mockup-nav { width: 100%; height: 10px; background: rgba(255,255,255,0.05); border-radius: 4px; margin-bottom: 12px;}
+        .mockup-hero { width: 60%; height: 40px; background: rgba(255,255,255,0.1); border-radius: 4px; margin-bottom: 12px;}
+        .mockup-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .mockup-box { height: 30px; background: rgba(255,255,255,0.03); border-radius: 4px; }
+
+        /* Integración & BD */
+        .integration-mockup-container { align-items: center; justify-content: center; gap: 16px; }
+        .api-nodes { display: flex; justify-content: space-between; width: 100%; }
+        .api-node { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 8px 12px; border-radius: 6px; font-size: 0.7rem; color: #9CA3AF; }
+        .api-flow { display: flex; justify-content: space-between; width: 80%; height: 30px; }
+        .flow-line { width: 2px; height: 100%; background: linear-gradient(to bottom, rgba(255,255,255,0.05), rgba(6,182,212,0.8)); }
+        .api-core { background: rgba(6,182,212,0.08); border: 1px solid rgba(6,182,212,0.3); padding: 12px; border-radius: 8px; font-size: 0.8rem; color: #fff; display: flex; align-items: center; gap: 8px; }
+        .core-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--neon-cyan); box-shadow: 0 0 10px var(--neon-cyan); }
+        .db-mockup-container { flex-direction: row; align-items: center; gap: 16px; }
+        .legacy-excel, .xonda-db-stack { display: flex; flex-direction: column; gap: 6px; width: 40%; }
+        .legacy-excel { padding: 12px; border: 1px dashed rgba(255,255,255,0.15); border-radius: 6px; }
+        .raw-cell { height: 6px; background: rgba(255,255,255,0.08); border-radius: 2px; }
+        .db-server-layer { height: 20px; background: linear-gradient(90deg, rgba(6,182,212,0.05), rgba(139,92,246,0.1)); border: 1px solid rgba(6,182,212,0.3); border-radius: 4px; display: flex; align-items: center; padding: 0 8px; }
+
+        /* IA */
+        .ai-terminal-container { font-family: 'Courier New', monospace; padding: 0; }
+        .terminal-header { padding: 8px 12px; font-size: 0.65rem; color: #6B7280; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; }
+        .terminal-body { padding: 12px; font-size: 0.75rem; color: #D1D5DB; display: flex; flex-direction: column; gap: 8px; }
+        .log-time { color: #4B5563; } .log-sys { color: var(--neon-purple); } .log-success { color: var(--neon-cyan); }
+        .static-cursor { display: inline-block; width: 6px; height: 12px; background: var(--neon-cyan); vertical-align: middle; box-shadow: 0 0 5px rgba(6,182,212,0.5); }
+        .ai-automation-container { flex-direction: row; align-items: center; justify-content: space-between; padding: 0 16px; }
+        .auto-inputs, .auto-outputs { display: flex; flex-direction: column; gap: 8px; width: 25%; }
+        .auto-box { padding: 6px; border: 1px dashed rgba(255,255,255,0.15); border-radius: 4px; font-size: 0.55rem; color: #9CA3AF; text-align: center; }
+        .auto-box-done { padding: 6px; border: 1px solid rgba(6,182,212,0.3); background: rgba(6,182,212,0.05); border-radius: 4px; font-size: 0.55rem; color: var(--neon-cyan); text-align: center; }
+        .auto-core { padding: 12px; border: 1px solid rgba(139,92,246,0.4); border-radius: 6px; font-size: 0.65rem; color: #fff; text-align: center; background: rgba(139,92,246,0.1); }
+        .analytics-body { display: flex; gap: 16px; align-items: center; height: 100%; }
+        .raw-excel-panel { width: 40%; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; padding: 8px; position: relative; }
+        .excel-file-label { position: absolute; top: -8px; right: 8px; background: #000; color: #F87171; font-size: 0.5rem; padding: 2px 4px; border: 1px solid rgba(248,113,113,0.3); border-radius: 2px; }
+        .excel-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+        .excel-cell { height: 6px; background: rgba(255,255,255,0.05); } .excel-cell.header { background: rgba(255,255,255,0.15); }
+        .classified-data-panel { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+        .class-row { display: flex; align-items: center; gap: 6px; font-size: 0.6rem; color: #fff; }
+        .class-tag { padding: 2px 4px; border-radius: 2px; font-size: 0.5rem; }
+        .tag-a { color: var(--neon-cyan); border: 1px solid rgba(6,182,212,0.3); } .tag-b { color: var(--neon-purple); border: 1px solid rgba(139,92,246,0.3); } .tag-c { color: #9CA3AF; border: 1px solid rgba(255,255,255,0.2); }
+        .bar-bg { flex: 1; height: 4px; background: rgba(255,255,255,0.05); }
+
+        /* Pilares */
+        .mockup-pilar-container { justify-content: center; align-items: center; }
+        .audit-roadmap { display: flex; align-items: center; gap: 6px; }
+        .audit-node { width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(6,182,212,0.5); background: rgba(6,182,212,0.05); display: flex; align-items: center; justify-content: center; color: var(--neon-cyan); font-size: 0.7rem; }
+        .audit-line { width: 30px; height: 2px; background: repeating-linear-gradient(90deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.2) 50%, transparent 50%, transparent 100%); background-size: 8px 2px; }
+        .ux-skeleton { width: 70%; display: flex; flex-direction: column; gap: 12px; }
+        .ux-header { height: 8px; width: 40%; background: rgba(255,255,255,0.1); border-radius: 4px; }
+        .ux-ui-elements { display: flex; gap: 10px; align-items: center; }
+        .ux-toggle { width: 32px; height: 16px; border-radius: 8px; background: var(--neon-purple); position: relative; }
+        .ux-toggle::after { content: ''; position: absolute; right: 2px; top: 2px; width: 12px; height: 12px; background: #fff; border-radius: 50%; }
+        .ux-button { flex: 1; height: 24px; border: 1px solid rgba(139,92,246,0.4); border-radius: 4px; display: flex; justify-content: center; align-items: center; font-size: 0.55rem; color: var(--neon-purple); }
+        .support-monitor { width: 80%; display: flex; flex-direction: column; gap: 8px; }
+        .support-status { color: var(--neon-cyan); font-size: 0.65rem; display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 4px; }
+        .support-bars { display: flex; gap: 3px; align-items: flex-end; height: 40px; }
+        .sup-bar { flex: 1; background: rgba(6,182,212,0.15); border-radius: 2px 2px 0 0; } .sup-bar.active { background: var(--neon-cyan); }
+        .scale-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+        .scale-cube { width: 40px; height: 40px; border-radius: 6px; border: 1px solid rgba(139,92,246,0.5); background: rgba(139,92,246,0.1); display: flex; align-items: center; justify-content: center; color: var(--neon-purple); }
+        .scale-cube.future { border: 1px dashed rgba(255,255,255,0.2); background: transparent; color: rgba(255,255,255,0.2); }
+
+        /* MÓVIL RESPONSIVE GLOBAL */
+        @media (max-width: 968px) {
+            .navbar { padding: 20px 24px; }
+            .hero-title { font-size: 42px; }
+            .section-title-premium { font-size: 2.5rem; }
+            .section-subtitle-premium { font-size: 1.1rem; max-width: 90%; }
+            .solucion-destacada, .soluciones-secundarias, .servicios-tabs, .service-panel.active { grid-template-columns: 1fr; gap: 3rem; }
+            .soluciones-secundarias::after { display: none; }
+            .esfera-central-3d, .geometria-capsula-3d, .geometria-cubo-3d, .geometria-pentagono-3d { display: none !important; }
+            .contenedor-servicios-fijo { min-height: auto !important; margin-bottom: 0 !important; }
+        }
+
+        /* =======================================================
+           7. FOOTER
+           ======================================================= */
+        .footer { padding: 80px 24px 40px; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.03); margin-top: 120px; }
+        .footer-logo { display: inline-flex; align-items: center; gap: 12px; color: var(--text-primary); margin-bottom: 20px; font-size: 20px; text-decoration: none; }
+        .copyright { color: var(--text-secondary); font-size: 13px; }
 
     </style>
-
-    
-
 </head>
 <body>
 
@@ -2282,54 +384,29 @@ REDISEÑO DEL HORIZONTE CURVO CON LUZ BLANCA ASCENDENTE
 
     <nav class="navbar">
         <a href="#" class="logo">
-            <div class="logo-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="3" y="3" width="12" height="12" stroke="white" stroke-width="1.2"/>
-                    <rect x="9" y="9" width="12" height="12" stroke="white" stroke-width="1.2"/>
-                </svg>
-            </div>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="12" height="12" stroke="white" stroke-width="1.2"/><rect x="9" y="9" width="12" height="12" stroke="white" stroke-width="1.2"/></svg>
             <span>Xonda</span>
         </a>
-        
         <a href="#" class="btn-contact">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                <polyline points="22,6 12,13 2,6"></polyline>
-            </svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
             Averigua más
         </a>
     </nav>
 
     <main class="hero" id="hero">
-        <div class="container hero-layout reveal activa">
-            <h1 class="hero-title">
-                Tu Empresa,<br>
-                Automatizada.
-            </h1>
-            <p class="hero-subtitle">
-                Simplificamos operaciones complejas. Desarrollamos software a medida y agentes autónomos de IA.
-            </p>
-            <div class="hero-actions">
-                <a href="#ingenieria" class="btn-primary">Ver Ecosistemas</a>
-            </div>
-
-        </div> <!-- Aquí cierra el contenedor general del Hero -->
+        <div class="container hero-layout reveal">
+            <h1 class="hero-title">Tu Empresa,<br>Automatizada.</h1>
+            <p class="hero-subtitle">Simplificamos operaciones complejas. Desarrollamos software a medida y agentes autónomos de IA.</p>
+            <a href="#ingenieria" class="btn-primary">Ver Ecosistemas</a>
+        </div>
     </main>
 
-
-    
-
     <section id="ingenieria" class="seccion-capas">
-
         <div class="container">
 
-            <!-- 🌟 NUEVA UBICACIÓN: La tarjeta ahora inicia la sección de abajo -->
             <div class="privacy-card reveal">
                 <div class="privacy-badge">
-                    <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://w3.org">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M12 11h4.5c.1.4.1.7.1 1.1 0 2.7-1.8 4.7-4.6 4.7-2.7 0-4.9-2.2-4.9-4.9s2.2-4.9 4.9-4.9c1.3 0 2.4.5 3.3 1.3l-1.3 1.3c-.5-.5-1.2-.8-2-.8-1.7 0-3.1 1.4-3.1 3.1s1.4 3.1 3.1 3.1c2 0 2.7-1.4 2.8-2.1H12v-1.9z" fill="white"/>
-                    </svg>
+                    <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 11h4.5c.1.4.1.7.1 1.1 0 2.7-1.8 4.7-4.6 4.7-2.7 0-4.9-2.2-4.9-4.9s2.2-4.9 4.9-4.9c1.3 0 2.4.5 3.3 1.3l-1.3 1.3c-.5-.5-1.2-.8-2-.8-1.7 0-3.1 1.4-3.1 3.1s1.4 3.1 3.1 3.1c2 0 2.7-1.4 2.8-2.1H12v-1.9z" fill="white"/></svg>
                 </div>
                 <div class="privacy-content">
                     <h4>Google-approved. Privacy Protected.</h4>
@@ -2337,194 +414,81 @@ REDISEÑO DEL HORIZONTE CURVO CON LUZ BLANCA ASCENDENTE
                 </div>
             </div>
 
-                    <!-- SECCIÓN DE PROBLEMAS Y SOLUCIONES -->
             <div class="problemas-seccion reveal">
                 <h2 class="problemas-main-title">¿Has tenido estos problemas?</h2>
                 
-                <!-- Bloque Destacado Superior (2 Columnas) -->
                 <div class="solucion-destacada">
-                    <!-- 1. BLOQUE IZQUIERDO: Textos -->
                     <div class="solucion-info">
-                        <span class="solucion-tag-premium">
-                            <!-- Icono de CPU / Microchip inteligente -->
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="4" y="4" width="16" height="16" rx="2"></rect>
-                                <rect x="9" y="9" width="6" height="6"></rect>
-                                <line x1="9" y1="1" x2="9" y2="4"></line>
-                                <line x1="15" y1="1" x2="15" y2="4"></line>
-                                <line x1="9" y1="20" x2="9" y2="23"></line>
-                                <line x1="15" y1="20" x2="15" y2="23"></line>
-                                <line x1="20" y1="9" x2="23" y2="9"></line>
-                                <line x1="20" y1="15" x2="23" y2="15"></line>
-                                <line x1="1" y1="9" x2="4" y2="9"></line>
-                                <line x1="1" y1="15" x2="4" y2="15"></line>
-                            </svg>
-                            Agente Cognitivo Avanzado
-                        </span>
+                        <span class="solucion-tag-premium"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="15" x2="23" y2="15"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="15" x2="4" y2="15"></line></svg> Agente Cognitivo Avanzado</span>
                         <h3>Personal email assistant.<br>Now you can chat with your emails.</h3>
                         <p>A ChatGPT-like assistant means a wealth of insights are just a few words away. Imagine that.</p>
                     </div>
-                    
-                    <!-- 2. ELEMENTO CENTRAL: La esfera geométrica flotante -->
                     <div class="esfera-central-3d"></div>
-                    
-                    <!-- 3. BLOQUE DERECHO: Pantalla de software -->
                     <div class="solucion-visual-wrapper">
                         <div class="interfaz-mockup">
-                            <div class="mockup-header">
-                                <span class="mockup-search">🔍 When did I first meet John?</span>
-                            </div>
+                            <div class="mockup-header">🔍 When did I first meet John?</div>
                             <div class="mockup-response-card">
-                                <p>Looks like you first met <strong>John on Dec 21, 2024</strong>. Here's some relevant emails for you.</p>
-                                <div class="mockup-inner-pill">
-                                    <span>Let's catch up 🤝</span>
-                                    <small>Dec 21, 2024</small>
-                                </div>
+                                <p>Looks like you first met <strong>John on Dec 21, 2024</strong>. Here's some relevant emails.</p>
+                                <div class="mockup-inner-pill"><span>Let's catch up 🤝</span><small>Dec 21, 2024</small></div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-
-                <!-- Fila Inferior (Dos Columnas Simétricas) -->
                 <div class="soluciones-secundarias">
-                    <!-- COLUMNA IZQUIERDA: Extracted To-Do's -->
                     <div class="solucion-box-mini reveal">
-                        <span class="solucion-tag-premium">
-                            <!-- Icono de Rayo / Energía autónoma -->
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-                            </svg>
-                            AI Powered Actions
-                        </span>
+                        <span class="solucion-tag-premium"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg> AI Powered Actions</span>
                         <h3>Extracted To-Do's.<br>Let Ultra tell you what needs your attention.</h3>
-                        <p>No more slogging through your emails to figure out what you need to take action on. Ultra finds what's important and transforms it into a to-do.</p>
-                        
-                        <!-- MOCKUP ACCIONES AUTÓNOMAS -->
+                        <p>No more slogging through your emails to figure out what you need to take action on. Ultra finds what's important.</p>
                         <div class="mini-visual-wrapper">
-                            <!-- 💊 LA CÁPSULA BLANCA DE FONDO -->
                             <div class="geometria-capsula-3d"></div>
-                            
                             <div class="mini-mockup-card">
                                 <div class="mini-header">✦ Action emails</div>
                                 <div class="mini-list">
-                                    <div class="mini-item active-todo">
-                                        <div class="todo-check"></div>
-                                        <div class="todo-body">
-                                            <strong>Coinbase:</strong> Review ticket #4517
-                                            <span>://mercury.com...</span>
-                                        </div>
-                                    </div>
-                                    <div class="mini-item">
-                                        <div class="todo-check"></div>
-                                        <div class="todo-body">
-                                            <strong>F.inc:</strong> Review ticket #4467
-                                            <span>://mercury.com...</span>
-                                        </div>
-                                    </div>
-                                    <div class="mini-item">
-                                        <div class="todo-check"></div>
-                                        <div class="todo-body">
-                                            <strong>Fluid:</strong> Review ticket #4567
-                                            <span>://mercury.com...</span>
-                                        </div>
-                                    </div>
+                                    <div class="mini-item active-todo"><div class="todo-check"></div><div class="todo-body"><strong>Coinbase:</strong> Review ticket #4517<span>://mercury.com...</span></div></div>
+                                    <div class="mini-item"><div class="todo-check"></div><div class="todo-body"><strong>F.inc:</strong> Review ticket #4467<span>://mercury.com...</span></div></div>
+                                    <div class="mini-item"><div class="todo-check"></div><div class="todo-body"><strong>Fluid:</strong> Review ticket #4567<span>://mercury.com...</span></div></div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- COLUMNA DERECHA: Smart Summaries -->
                     <div class="solucion-box-mini reveal">
-                        <span class="solucion-tag-premium">
-                            <!-- Icono de Documento / Resumen de texto -->
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                <polyline points="14 2 14 8 20 8"></polyline>
-                            </svg>
-                            AI Powered Email Summary
-                        </span>
+                        <span class="solucion-tag-premium"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg> AI Powered Email Summary</span>
                         <h3>Smart Summaries.<br>Read the key takeaways and skip the rest.</h3>
-                        <p>Read the key details first and choose to read the whole thing after. Tell Ultra what you want the summary to look like. Five bullets? One sentence?</p>
-                        
-                        <!-- MOCKUP RESÚMENES INTELIGENTES -->
+                        <p>Read the key details first and choose to read the whole thing after. Tell Ultra what you want.</p>
                         <div class="mini-visual-wrapper">
-                            <!-- 🧊 EL CUBO BLANCO DE FONDO -->
                             <div class="geometria-cubo-3d"></div>
-                            
                             <div class="mini-mockup-card">
                                 <div class="mini-header">📋 Important emails</div>
                                 <div class="mini-list">
-                                    <div class="mini-email-item">
-                                        <div class="email-avatar">AM</div>
-                                        <div class="email-body">
-                                            <div class="email-top"><strong>Angus MacGyver</strong> <span>2:34 PM</span></div>
-                                            <p><strong>Product sync</strong> - Matt wants to chat about crypto product roadmap...</p>
-                                        </div>
-                                    </div>
-                                    <div class="mini-email-item">
-                                        <div class="email-avatar">BB</div>
-                                        <div class="email-body">
-                                            <div class="email-top"><strong>Dr. Bonnie Barstow</strong> <span>2:34 PM</span></div>
-                                            <p><strong>Card review</strong> - Dr. Bonnie wants to share credit card review...</p>
-                                        </div>
-                                    </div>
-                                    <div class="mini-email-item">
-                                        <div class="email-avatar">AB</div>
-                                        <div class="email-body">
-                                            <div class="email-top"><strong>Arc Browser 4</strong> <span>2:34 PM</span></div>
-                                            <p>2023 Arc Event - Matt wants to chat about crypto product roadmap...</p>
-                                        </div>
-                                    </div>
+                                    <div class="mini-email-item"><div class="email-avatar">AM</div><div class="email-body"><div class="email-top"><strong>Angus MacGyver</strong> <span>2:34 PM</span></div><p>Product sync - Matt wants to chat...</p></div></div>
+                                    <div class="mini-email-item"><div class="email-avatar">BB</div><div class="email-body"><div class="email-top"><strong>Dr. Bonnie Barstow</strong> <span>2:34 PM</span></div><p>Card review - Dr. Bonnie wants to...</p></div></div>
+                                    <div class="mini-email-item"><div class="email-avatar">AB</div><div class="email-body"><div class="email-top"><strong>Arc Browser 4</strong> <span>2:34 PM</span></div><p>2023 Arc Event - Matt wants to chat...</p></div></div>
                                 </div>
                             </div>
                         </div>
-                    </div> <!-- Cierre de la Columna Derecha -->
-
-                </div> <!-- 🌟 AQUÍ CIERRA LA FILA DE DOS COLUMNAS DE FORMA ESTRICTA -->
-
+                    </div>
+                </div>
             </div>
 
-
-            <!-- SECCIÓN INTERMEDIA: INGENIERÍA SIN FRICCIÓN -->
-            <div class="section-header reveal mx-auto">
-                <span class="solucion-tag-premium">
-                    <!-- Icono cuadrado estilo "Behind the Scene" de tu código -->
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                        <line x1="9" y1="3" x2="9" y2="21"></line>
-                    </svg>
-                    Infraestructura Propietaria
-                </span>
-                
-                <!-- TÍTULO ESTRUCTURADO EN DOS LÍNEAS COMO LA IMAGEN -->
-                <h2 class="section-title-premium">
-                    Ingeniería sin fricción <br>
-                    <span>para que tu equipo no pierda el foco.</span>
-                </h2>
-                
-                <p class="section-subtitle-premium">
-                    Construimos ecosistemas robustos que operan en las sombras para que tu equipo vuelva a pensar en estrategia, no en planillas.
-                </p>
+            <div class="section-header reveal">
+                <span class="solucion-tag-premium"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg> Infraestructura Propietaria</span>
+                <h2 class="section-title-premium">Ingeniería sin fricción <br><span>para que tu equipo no pierda el foco.</span></h2>
+                <p class="section-subtitle-premium">Construimos ecosistemas robustos que operan en las sombras para que tu equipo vuelva a pensar en estrategia.</p>
             </div>
 
-            <!-- CONTENEDOR DE LA INTERFAZ DE SERVICIOS DINÁMICOS -->
             <div class="servicios-interactive-wrapper reveal">
                 <div class="contenedor-servicios-fijo">
-                    <!-- 🔮 PENTÁGONO 3D SUPERIOR DERECHO -->
                     <div class="geometria-pentagono-3d pentagono-top"></div>
-                    <!-- 🔮 PENTÁGONO 3D INFERIOR IZQUIERDO -->
                     <div class="geometria-pentagono-3d pentagono-bottom"></div>
                     
-                    <!-- 1. PESTAÑAS SELECTORAS (TABS) -->
                     <div class="servicios-tabs">
-                        <button class="tab-btn-crystal active" onclick="switchService(event, 'software')">
+                        <button class="tab-btn-crystal active" data-target="software">
                             <span class="tab-title">Software a Medida</span>
                             <span class="tab-desc">Sistemas y plataformas web de alta gama</span>
                         </button>
-                        
-                        <button class="tab-btn-crystal" onclick="switchService(event, 'ia')">
-                            <!-- 🏷️ CARTEL CON RIEL DUPLICADO PARA LOOP INFINITO SIN CORTES -->
+                        <button class="tab-btn-crystal" data-target="ia">
                             <div class="badge-running-container">
                                 <div class="badge-track">
                                     <span>NUEVA ERA • IA AUTÓNOMA • NUEVA ERA • IA AUTÓNOMA •&nbsp;</span>
@@ -2534,278 +498,139 @@ REDISEÑO DEL HORIZONTE CURVO CON LUZ BLANCA ASCENDENTE
                             <span class="tab-title font-neon">Inteligencia Artificial</span>
                             <span class="tab-desc">Agentes autónomos y flujos cognitivos</span>
                         </button>
-
-                        
-                        <button class="tab-btn-crystal" onclick="switchService(event, 'pilares')">
+                        <button class="tab-btn-crystal" data-target="pilares">
                             <span class="tab-title">Pilares Fundamentales</span>
                             <span class="tab-desc">Garantía, diseño y soporte continuo</span>
                         </button>
                     </div>
 
-
-                    <!-- CONTENEDOR GENERAL DE SERVICIOS (Sigue justo debajo de las pestañas de cristal) -->
                     <div style="position: relative; width: 100%;">
 
                         <div id="software" class="service-panel active">
-
                             <div class="card-servicio-ancha">
-                                <div class="card-header-servicio">
-                                    <h3>Software a Medida</h3>
-                                </div>
-                                
+                                <div class="card-header-servicio"><h3>Software a Medida</h3></div>
                                 <div class="card-body-split">
-                                    
-                                    <div class="card-split-text">
-                                        <div class="column-label label-left">Nuestro Servicio</div>
-                                        <p>Sistemas escalables diseñados exclusivamente para resolver las necesidades operativas de tu negocio. Desarrollamos herramientas robustas que se adaptan a tus flujos actuales y crecen con tu empresa.</p>
-                                    </div>
-                                    
+                                    <div class="card-split-text"><p>Transformamos tus desafíos en ecosistemas digitales. Creamos plataformas robustas y escalables para darte control total.</p></div>
                                     <div class="card-split-mockup">
-                                        <div class="column-label label-right">Lo que Xonda procesa</div>
-                                        
                                         <div class="software-static-container">
-                                            
-                                            <div class="static-header">
-                                                <div class="static-dot"></div>
-                                                <div class="static-dot"></div>
-                                                <div class="static-dot"></div>
-                                            </div>
-                                            
+                                            <div class="static-header"><div class="static-dot"></div><div class="static-dot"></div><div class="static-dot"></div></div>
                                             <div class="static-body">
-                                                <div class="static-sidebar">
-                                                    <div class="static-menu-item active"></div>
-                                                    <div class="static-menu-item"></div>
-                                                    <div class="static-menu-item short"></div>
-                                                    <div class="static-menu-item"></div>
-                                                </div>
-                                                
+                                                <div class="static-sidebar"><div class="static-menu-item active"></div><div class="static-menu-item"></div><div class="static-menu-item short"></div></div>
                                                 <div class="static-content">
                                                     <div class="static-module core">Módulo Central</div>
-                                                    <div style="display: flex; gap: 12px; flex: 1;">
-                                                        <div class="static-module">Módulo A</div>
-                                                        <div class="static-module">Módulo B</div>
-                                                    </div>
+                                                    <div style="display: flex; gap: 10px;"><div class="static-module">Mód A</div><div class="static-module">Mód B</div></div>
                                                 </div>
                                             </div>
-                                            
                                         </div>
                                     </div>
-                                    
                                 </div>
                             </div>
 
                             <div class="card-servicio-ancha">
-
-                                <div class="card-header-servicio">
-                                    <h3>Sitios Web</h3>
-                                </div>
-
+                                <div class="card-header-servicio"><h3>Sitios Web</h3></div>
                                 <div class="card-body-split">
-
-                                    <div class="card-split-text">
-                                        <div class="column-label label-left">Nuestro Servicio</div>
-                                        <p>Plataformas web de alta gama, optimizadas para ofrecer una velocidad ultra rápida y conversión avanzada. Construimos experiencias visuales memorables alineadas a los objetivos comerciales de tu marca.</p>
-                                    </div>
-
+                                    <div class="card-split-text"><p>Creamos experiencias digitales premium que proyectan autoridad. Diseño de vanguardia para convertir visitas en clientes.</p></div>
                                     <div class="card-split-mockup">
-                                        <div class="column-label label-right">Lo que Xonda procesa</div>
-                                            <div class="web-mockup-container">
-                                                <div class="browser-bar">
-                                                    <div class="browser-dot"></div>
-                                                    <div class="browser-dot"></div>
-                                                    <div class="browser-dot"></div>
-                                                </div>
-                                                <div class="mockup-content">
-                                                    <div class="mockup-nav"></div>
-                                                    <div class="mockup-hero"></div>
-                                                    <div class="mockup-grid">
-                                                        <div class="mockup-box"></div>
-                                                        <div class="mockup-box"></div>
-                                                    </div>
-                                                </div>
+                                        <div class="web-mockup-container">
+                                            <div class="static-header"><div class="static-dot"></div><div class="static-dot"></div><div class="static-dot"></div></div>
+                                            <div class="static-body" style="flex-direction: column; align-items: center; justify-content: center;">
+                                                <div class="mockup-nav"></div><div class="mockup-hero"></div>
+                                                <div class="mockup-grid"><div class="mockup-box"></div><div class="mockup-box"></div></div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
                             <div class="card-servicio-ancha">
-                                <div class="card-header-servicio">
-                                    <h3>Integración de Sistemas</h3>
-                                </div>
+                                <div class="card-header-servicio"><h3>Integración de Sistemas</h3></div>
                                 <div class="card-body-split">
-                                    <div class="card-split-text">
-                                        <div class="column-label label-left">Nuestro Servicio</div>
-                                        <p>Unificamos tu gestión operativa en un solo ecosistema conectado. Hacemos que todas tus plataformas de software dialoguen de forma ágil entre sí para multiplicar radicalmente la productividad de tu equipo.</p>
-                                    </div>
+                                    <div class="card-split-text"><p>Conectamos todas tus herramientas para que dialoguen. Centralizamos tus datos y eliminamos los procesos manuales.</p></div>
                                     <div class="card-split-mockup">
-                                        <div class="column-label label-right">Lo que Xonda procesa</div>
                                         <div class="integration-mockup-container">
-                                            <div class="api-nodes">
-                                                <div class="api-node">CRM / Ventas</div>
-                                                <div class="api-node">Inventario</div>
-                                                <div class="api-node">Facturación</div>
-                                            </div>
-                                            <div class="api-flow">
-                                                <div class="flow-line"></div>
-                                                <div class="flow-line"></div>
-                                                <div class="flow-line"></div>
-                                            </div>
-                                            <div class="api-core">
-                                                <div class="core-dot"></div> Ecosistema Centralizado Xonda
-                                            </div>
+                                            <div class="api-nodes"><div class="api-node">CRM</div><div class="api-node">Stock</div><div class="api-node">Web</div></div>
+                                            <div class="api-flow"><div class="flow-line"></div><div class="flow-line"></div><div class="flow-line"></div></div>
+                                            <div class="api-core"><div class="core-dot"></div>Ecosistema Xonda</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                        <div class="card-servicio-ancha">
-                            <div class="card-header-servicio">
-                                <h3>Bases de Datos a Medida</h3>
-                            </div>
-                            <div class="card-body-split">
-                                <div class="card-split-text">
-                                    <div class="column-label label-left">Nuestro Servicio</div>
-                                    <p>Digitalizamos tu gestión de datos, eliminando la dependencia de procesos manuales y planillas de cálculo estáticas que ralentizan el negocio. Estructuramos infraestructuras blindadas de alto rendimiento.</p>
-                                </div>
-                                <div class="card-split-mockup">
-                                    <div class="column-label label-right">Lo que Xonda procesa</div>
-                                    <div class="db-mockup-container">
-                                        <div class="legacy-excel">
-                                            <div class="excel-header"><span style="color: #F87171;">⊗</span> inventario_final_v3.xlsx</div>
-                                            <div class="excel-row"><div class="excel-cell"></div><div class="excel-cell"></div><div class="excel-cell"></div></div>
-                                            <div class="excel-row"><div class="excel-cell"></div><div class="excel-cell"></div><div class="excel-cell"></div></div>
-                                        </div>
-                                        <div class="db-transition">➔</div>
-                                        <div class="xonda-db-stack">
-                                            <div class="excel-header" style="color: var(--neon-cyan);"><span>●</span> Xonda Relational DB</div>
-                                            <div class="db-server-layer"><div class="db-light"></div></div>
-                                            <div class="db-server-layer"><div class="db-light"></div></div>
+                            <div class="card-servicio-ancha">
+                                <div class="card-header-servicio"><h3>Bases de Datos</h3></div>
+                                <div class="card-body-split">
+                                    <div class="card-split-text"><p>Arquitecturas seguras para grandes volúmenes de información. Datos blindados y accesibles sin latencia operativa.</p></div>
+                                    <div class="card-split-mockup">
+                                        <div class="db-mockup-container">
+                                            <div class="legacy-excel">
+                                                <div class="raw-cell" style="width: 80%;"></div><div class="raw-cell" style="width: 60%;"></div>
+                                                <div class="raw-cell" style="width: 90%;"></div><div class="raw-cell" style="width: 70%;"></div>
+                                            </div>
+                                            <div class="db-transition" style="opacity: 1;">➔</div>
+                                            <div class="xonda-db-stack">
+                                                <div class="db-server-layer"></div><div class="db-server-layer"></div><div class="db-server-layer"></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                    </div>
                         <div id="ia" class="service-panel">
-
                             <div class="card-servicio-ancha">
-                                <div class="card-header-servicio">
-                                    <h3>Asistente Virtual</h3>
-                                </div>
-                                
+                                <div class="card-header-servicio"><h3>Asistente Virtual</h3></div>
                                 <div class="card-body-split">
-                                    
-                                    <div class="card-split-text">
-                                        <div class="column-label label-left">Nuestro Servicio</div>
-                                        <p>Agentes autónomos personalizados con el conocimiento profundo de tu empresa. Brindan atención fluida 24/7, resuelven problemas en tiempo real y guían a tus clientes sin requerir intervención humana.</p>
-                                    </div>
-                                    
+                                    <div class="card-split-text"><p>Agentes autónomos con conocimiento profundo de tu empresa. Atención fluida 24/7 sin requerir intervención humana.</p></div>
                                     <div class="card-split-mockup">
-                                        <div class="column-label label-right">Lo que Xonda procesa</div>
-                                        
                                         <div class="ai-terminal-container">
-                                            <div class="terminal-header">
-                                                <span>xonda_ai_core.exe</span>
-                                                <span>Status: Online</span>
-                                            </div>
+                                            <div class="terminal-header"><span>xonda_ai.exe</span><span>Online</span></div>
                                             <div class="terminal-body">
-                                                <div><span class="log-time">[03:14:02 AM]</span> <span class="log-user">USER:</span> "No puedo acceder a mi cuenta, necesito ayuda urgente."</div>
-                                                <div><span class="log-time">[03:14:03 AM]</span> <span class="log-sys">SYS_AI:</span> Analizando intención... [Urgencia: ALTA]</div>
-                                                <div><span class="log-time">[03:14:03 AM]</span> <span class="log-sys">SYS_AI:</span> Consultando base de datos y ejecutando protocolo de recuperación...</div>
-                                                <div><span class="log-time">[03:14:05 AM]</span> <span class="log-success">SUCCESS:</span> Enlace de seguridad generado y enviado al cliente. Ticket cerrado.</div>
-                                                <div style="margin-top: 8px;"><span class="log-sys">SYS_AI:</span> Escuchando nuevas consultas <span class="blinking-cursor"></span></div>
+                                                <div><span class="log-time">[03:14]</span> <span class="log-user">USER:</span> "Ayuda urgente."</div>
+                                                <div><span class="log-time">[03:14]</span> <span class="log-sys">SYS:</span> Analizando intención...</div>
+                                                <div><span class="log-time">[03:15]</span> <span class="log-success">OK:</span> Problema resuelto. Ticket cerrado.</div>
+                                                <div style="margin-top: 8px;"><span class="log-sys">SYS:</span> Escuchando comandos <span class="static-cursor"></span></div>
                                             </div>
                                         </div>
                                     </div>
-                                    
                                 </div>
-
                             </div>
 
                             <div class="card-servicio-ancha">
-                                <div class="card-header-servicio">
-                                    <h3>Automatización de Tareas</h3>
-                                </div>
-                                
+                                <div class="card-header-servicio"><h3>Automatización</h3></div>
                                 <div class="card-body-split">
-                                    <div class="card-split-text">
-                                        <div class="column-label label-left">Nuestro Servicio</div>
-                                        <p>Delegamos el trabajo repetitivo a sistemas inteligentes, acelerando procesos operativos y eliminando por completo el margen de error humano.</p>
-                                    </div>
-                                    
+                                    <div class="card-split-text"><p>Delegamos el trabajo repetitivo a sistemas inteligentes. Aceleramos procesos operativos eliminando el margen de error.</p></div>
                                     <div class="card-split-mockup">
-                                        <div class="column-label label-right">Lo que Xonda procesa</div>
-                                        
                                         <div class="ai-automation-container">
-                                            <div class="auto-inputs">
-                                                <div class="auto-box">Factura.pdf</div>
-                                                <div class="auto-box">Email_Lead</div>
-                                                <div class="auto-box">Data_Entry</div>
-                                            </div>
-                                            
+                                            <div class="auto-inputs"><div class="auto-box">PDF</div><div class="auto-box">Email</div></div>
                                             <div class="auto-path"></div>
-                                            
-                                            <div class="auto-core">
-                                                <div class="core-ring"></div>
-                                                <div class="core-text">XONDA_AI</div>
-                                            </div>
-                                            
+                                            <div class="auto-core">AI</div>
                                             <div class="auto-path out"></div>
-                                            
-                                            <div class="auto-outputs">
-                                                <div class="auto-box-done">● Contabilidad</div>
-                                                <div class="auto-box-done">● CRM_Updated</div>
-                                                <div class="auto-box-done">● Database</div>
-                                            </div>
+                                            <div class="auto-outputs"><div class="auto-box-done">CRM</div><div class="auto-box-done">BD</div></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="card-servicio-ancha">
-                                <div class="card-header-servicio">
-                                    <h3>Análisis Inteligente</h3>
-                                </div>
-                                
+                            <div class="card-servicio-ancha" style="grid-column: 1 / -1;">
+                                <div class="card-header-servicio"><h3>Análisis Inteligente</h3></div>
                                 <div class="card-body-split">
-                                    <div class="card-split-text">
-                                        <div class="column-label label-left">Nuestro Servicio</div>
-                                        <p>Procesamos volúmenes de datos dispersos para que la toma de decisiones directiva sea rápida, visual y certera. Transformamos el caos de tus planillas en inteligencia estratégica accionable.</p>
-                                    </div>
-                                    
+                                    <div class="card-split-text"><p>Procesamos datos dispersos para decisiones directivas certeras. Transformamos el caos en inteligencia estratégica accionable.</p></div>
                                     <div class="card-split-mockup">
-                                        <div class="column-label label-right">Lo que Xonda procesa</div>
-                                        
                                         <div class="ai-analytics-container">
                                             <div class="analytics-body">
-                                                
                                                 <div class="raw-excel-panel">
-                                                    <div class="excel-file-label">planilla.xlsx</div>
+                                                    <div class="excel-file-label">data.xlsx</div>
                                                     <div class="excel-grid">
-                                                        <div class="excel-cell header"></div><div class="excel-cell header"></div>
-                                                        <div class="excel-cell header"></div><div class="excel-cell header"></div>
-                                                        <div class="excel-cell"></div><div class="excel-cell"></div><div class="excel-cell"></div><div class="excel-cell"></div>
+                                                        <div class="excel-cell header"></div><div class="excel-cell header"></div><div class="excel-cell header"></div><div class="excel-cell header"></div>
                                                         <div class="excel-cell"></div><div class="excel-cell"></div><div class="excel-cell"></div><div class="excel-cell"></div>
                                                         <div class="excel-cell"></div><div class="excel-cell"></div><div class="excel-cell"></div><div class="excel-cell"></div>
                                                     </div>
                                                 </div>
-                                                
-                                                <div style="color: rgba(255,255,255,0.2); font-size: 1.2rem;">➔</div>
-                                                
+                                                <div style="color: rgba(255,255,255,0.2);">➔</div>
                                                 <div class="classified-data-panel">
-                                                    <div class="class-row">
-                                                        <span class="class-tag tag-a">CLASE A</span>
-                                                        <div class="bar-bg"></div>
-                                                    </div>
-                                                    <div class="class-row">
-                                                        <span class="class-tag tag-b">CLASE B</span>
-                                                        <div class="bar-bg"></div>
-                                                    </div>
-                                                    <div class="class-row">
-                                                        <span class="class-tag tag-c">CLASE C</span>
-                                                        <div class="bar-bg"></div>
-                                                    </div>
+                                                    <div class="class-row"><span class="class-tag tag-a">CLASE A</span><div class="bar-bg"></div></div>
+                                                    <div class="class-row"><span class="class-tag tag-b">CLASE B</span><div class="bar-bg"></div></div>
+                                                    <div class="class-row"><span class="class-tag tag-c">CLASE C</span><div class="bar-bg"></div></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -2815,51 +640,31 @@ REDISEÑO DEL HORIZONTE CURVO CON LUZ BLANCA ASCENDENTE
                         </div>
 
                         <div id="pilares" class="service-panel">
-
                             <div class="card-servicio-ancha">
-                                <div class="card-header-servicio">
-                                    <h3>Consultoría</h3>
-                                </div>
+                                <div class="card-header-servicio"><h3>Consultoría</h3></div>
                                 <div class="card-body-split">
-                                    <div class="card-split-text">
-                                        <div class="column-label label-left">Nuestro Enfoque</div>
-                                        <p>Auditamos tu operativa y trazamos una hoja de ruta estratégica y clara antes de escribir una sola línea de código.</p>
-                                    </div>
+                                    <div class="card-split-text"><p>Auditamos tu operativa al detalle. Trazamos una hoja de ruta estratégica antes de escribir código.</p></div>
                                     <div class="card-split-mockup">
-                                        <div class="column-label label-right">Implementación</div>
                                         <div class="mockup-pilar-container">
                                             <div class="audit-roadmap">
-                                                <div class="audit-node">01</div>
-                                                <div class="audit-line"></div>
-                                                <div class="audit-node">02</div>
-                                                <div class="audit-line"></div>
+                                                <div class="audit-node">01</div><div class="audit-line"></div>
+                                                <div class="audit-node">02</div><div class="audit-line"></div>
                                                 <div class="audit-node" style="border-color: #fff; color: #fff;">03</div>
                                             </div>
-                                            <div style="color: #6B7280; font-family: monospace; font-size: 0.7rem; margin-top: 24px; text-transform: uppercase;">Mapeo de Procesos Completado</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="card-servicio-ancha">
-                                <div class="card-header-servicio">
-                                    <h3>Diseño UX/UI</h3>
-                                </div>
+                                <div class="card-header-servicio"><h3>Diseño UX/UI</h3></div>
                                 <div class="card-body-split">
-                                    <div class="card-split-text">
-                                        <div class="column-label label-left">Nuestro Enfoque</div>
-                                        <p>Construimos interfaces modernas, limpias e intuitivas, diseñadas para maximizar la adopción tecnológica de tu equipo sin fricción.</p>
-                                    </div>
+                                    <div class="card-split-text"><p>Construimos interfaces modernas e intuitivas. Maximizamos la adopción tecnológica de tu equipo sin generar fricción.</p></div>
                                     <div class="card-split-mockup">
-                                        <div class="column-label label-right">Implementación</div>
                                         <div class="mockup-pilar-container">
                                             <div class="ux-skeleton">
                                                 <div class="ux-header"></div>
-                                                <div class="ux-ui-elements">
-                                                    <div class="ux-toggle"></div>
-                                                    <div class="ux-button">ACTION</div>
-                                                </div>
-                                                <div style="height: 40px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 6px; width: 100%;"></div>
+                                                <div class="ux-ui-elements"><div class="ux-toggle"></div><div class="ux-button">ACTION</div></div>
                                             </div>
                                         </div>
                                     </div>
@@ -2867,32 +672,17 @@ REDISEÑO DEL HORIZONTE CURVO CON LUZ BLANCA ASCENDENTE
                             </div>
 
                             <div class="card-servicio-ancha">
-                                <div class="card-header-servicio">
-                                    <h3>Soporte</h3>
-                                </div>
+                                <div class="card-header-servicio"><h3>Soporte</h3></div>
                                 <div class="card-body-split">
-                                    <div class="card-split-text">
-                                        <div class="column-label label-left">Nuestro Enfoque</div>
-                                        <p>Planes de mantenimiento activo y monitoreo continuo en la sombra para garantizar que la operativa de tu negocio nunca se detenga.</p>
-                                    </div>
+                                    <div class="card-split-text"><p>Planes de mantenimiento activo y monitoreo continuo. Garantizamos que la operativa de tu negocio fluya.</p></div>
                                     <div class="card-split-mockup">
-                                        <div class="column-label label-right">Implementación</div>
                                         <div class="mockup-pilar-container">
                                             <div class="support-monitor">
-                                                <div class="support-status">
-                                                    <span>SYS_UPTIME</span>
-                                                    <span>99.99% ONLINE</span>
-                                                </div>
+                                                <div class="support-status"><span>UPTIME</span><span>99.9%</span></div>
                                                 <div class="support-bars">
-                                                    <div class="sup-bar active" style="height: 100%;"></div>
-                                                    <div class="sup-bar active" style="height: 90%;"></div>
-                                                    <div class="sup-bar active" style="height: 95%;"></div>
-                                                    <div class="sup-bar active" style="height: 100%;"></div>
+                                                    <div class="sup-bar active" style="height: 100%;"></div><div class="sup-bar active" style="height: 90%;"></div>
+                                                    <div class="sup-bar active" style="height: 95%;"></div><div class="sup-bar active" style="height: 100%;"></div>
                                                     <div class="sup-bar active" style="height: 85%;"></div>
-                                                    <div class="sup-bar active" style="height: 100%;"></div>
-                                                    <div class="sup-bar active" style="height: 95%;"></div>
-                                                    <div class="sup-bar active" style="height: 100%;"></div>
-                                                    <div class="sup-bar active" style="height: 100%;"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -2901,172 +691,111 @@ REDISEÑO DEL HORIZONTE CURVO CON LUZ BLANCA ASCENDENTE
                             </div>
 
                             <div class="card-servicio-ancha">
-                                <div class="card-header-servicio">
-                                    <h3>Escalabilidad</h3>
-                                </div>
+                                <div class="card-header-servicio"><h3>Escalabilidad</h3></div>
                                 <div class="card-body-split">
-                                    <div class="card-split-text">
-                                        <div class="column-label label-left">Nuestro Enfoque</div>
-                                        <p>Diseñamos plataformas con arquitectura modular, preparadas estructuralmente para sumar nuevas funcionalidades a futuro sin reescribir el núcleo.</p>
-                                    </div>
+                                    <div class="card-split-text"><p>Diseñamos plataformas con arquitectura modular. Podrás sumar nuevas funcionalidades sin reescribir el núcleo del sistema.</p></div>
                                     <div class="card-split-mockup">
-                                        <div class="column-label label-right">Implementación</div>
                                         <div class="mockup-pilar-container">
                                             <div class="scale-grid">
-                                                <div class="scale-cube">A</div>
-                                                <div class="scale-cube">B</div>
-                                                <div class="scale-cube future">+</div>
-                                                <div class="scale-cube future">+</div>
-                                                <div class="scale-cube future">+</div>
-                                                <div class="scale-cube future">+</div>
+                                                <div class="scale-cube">A</div><div class="scale-cube">B</div>
+                                                <div class="scale-cube future">+</div><div class="scale-cube future">+</div>
+                                                <div class="scale-cube future">+</div><div class="scale-cube future">+</div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
 
                     </div>
                 </div>
-
             </div>
-
         </div>
     </section>
 
     <footer class="footer">
-        <div class="container copyright-wrapper">
-             <a href="#hero" class="logo footer-logo">
-                <div class="logo-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="3" y="3" width="12" height="12" stroke="white" stroke-width="1.2"/>
-                        <rect x="9" y="9" width="12" height="12" stroke="white" stroke-width="1.2"/>
-                    </svg>
-                </div>
-                <span>Xonda</span>
-            </a>
-            <p class="copyright">© 2026 Xonda. Ingeniería Absoluta. Mendoza, Argentina.</p>
-        </div>
+        <a href="#hero" class="footer-logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="12" height="12" stroke="white" stroke-width="1.2"/><rect x="9" y="9" width="12" height="12" stroke="white" stroke-width="1.2"/></svg>
+            <span>Xonda</span>
+        </a>
+        <p class="copyright">© 2026 Xonda. Ingeniería Absoluta. Mendoza, Argentina.</p>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            function checkScroll() {
-                const triggerBottom = window.innerHeight * 0.85;
-                document.querySelectorAll('.reveal').forEach(el => {
-                    const boxTop = el.getBoundingClientRect().top;
-                    if (boxTop < triggerBottom) {
-                        el.classList.add('activa');
-                    }
-                });
-            }
-            window.addEventListener('scroll', checkScroll);
-            checkScroll(); 
-        });
-
-        function switchService(event, serviceId) {
-        // 1. Quita la clase activa de los nuevos botones de cristal (.tab-btn-crystal)
-        document.querySelectorAll('.tab-btn-crystal').forEach(btn => btn.classList.remove('active'));
-        
-        // 2. Quita la clase activa de todos los paneles de contenido (.service-panel)
-        document.querySelectorAll('.service-panel').forEach(panel => panel.classList.remove('active'));
-        
-        // 3. Aplica la clase activa al botón de cristal que presionó el usuario
-        event.currentTarget.classList.add('active');
-        
-        // 4. Muestra el panel correspondiente con una transición suave
-        document.getElementById(serviceId).classList.add('active');
-        }
-
-        // Pausar animaciones cuando no están en pantalla
-        document.addEventListener("DOMContentLoaded", function() {
-            const observer = new IntersectionObserver((entries) => {
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            // 1. Efecto Scroll Reveal (Aparición de Secciones Base)
+            const revealObserver = new IntersectionObserver((entries, obs) => {
                 entries.forEach(entry => {
-                    // Si el elemento se ve en pantalla, activa la animación. Si no, la pausa.
                     if (entry.isIntersecting) {
-                        entry.target.style.animationPlayState = 'running';
-                    } else {
-                        entry.target.style.animationPlayState = 'paused';
+                        entry.target.classList.add('activa');
+                        obs.unobserve(entry.target); // Solo se activa una vez
                     }
                 });
+            }, { threshold: 0.15 });
+            document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+            // 2. Control Inteligente de Animaciones Infinitas (Pausa si no se ven)
+            const animObserver = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    entry.target.style.animationPlayState = entry.isIntersecting ? 'running' : 'paused';
+                });
             });
+            document.querySelectorAll('.tab-btn-crystal.active, .badge-track').forEach(el => animObserver.observe(el));
 
-            // Apunta a los elementos que tienen animaciones infinitas
-            document.querySelectorAll('.tab-btn-crystal.active, .badge-track').forEach(el => {
-                observer.observe(el);
-            });
-        });
-
-        document.addEventListener("DOMContentLoaded", function() {
-            // 1. Opciones del observador
-            const observerOptions = {
-                threshold: 0.15 // Se activa cuando el mockup asoma un 15%
-            };
-
-            // Variable global para almacenar el observador activo
-            let currentObserver = null;
-
-            // 2. Función para inicializar el observador
-            function initObserver() {
-                if (currentObserver) {
-                    currentObserver.disconnect();
-                }
-
-                currentObserver = new IntersectionObserver((entries) => {
+            // 3. Efecto Cinético Reutilizable para los Mockups (Se repite al scrollear arriba/abajo)
+            let mockupObserver = null;
+            const initMockups = () => {
+                if (mockupObserver) mockupObserver.disconnect();
+                mockupObserver = new IntersectionObserver(entries => {
                     entries.forEach(entry => {
-                        
                         if (entry.isIntersecting) {
-                            // CUANDO ENTRA A LA PANTALLA: Se endereza y aparece
                             entry.target.classList.add('revealed');
                         } else {
-                            // 🌟 EL CAMBIO CLAVE: CUANDO SALE DE LA PANTALLA
-                            // Le quitamos la clase para que se vuelva a inclinar y ocultar.
-                            // Así estará lista para volver a animarse al scrollear de nuevo.
-                            entry.target.classList.remove('revealed');
+                            entry.target.classList.remove('revealed'); // Permite que se vuelva a animar
                         }
-                        
                     });
-                }, observerOptions);
+                }, { threshold: 0.15 });
+                document.querySelectorAll('.service-panel.active .card-split-mockup > div').forEach(m => mockupObserver.observe(m));
+            };
+            initMockups();
 
-                // Seleccionamos SOLO los mockups DEL PANEL ACTIVO
-                const mockups = document.querySelectorAll('.service-panel.active .card-split-mockup > div:not(.column-label)');
-                mockups.forEach(mockup => {
-                    currentObserver.observe(mockup);
-                });
-            }
-
-            // Inicializamos al cargar la página
-            initObserver();
-
-            // 3. PARCHE PESTAÑAS: Reiniciamos el observador al cambiar de panel
-            const tabButtons = document.querySelectorAll('.tab-btn-crystal'); 
-            tabButtons.forEach(btn => {
-                btn.addEventListener('click', () => {
+            // 4. Lógica de Pestañas (Tabs)
+            const tabs = document.querySelectorAll('.tab-btn-crystal');
+            const panels = document.querySelectorAll('.service-panel');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', (e) => {
+                    // Limpieza general
+                    tabs.forEach(t => t.classList.remove('active'));
+                    panels.forEach(p => p.classList.remove('active'));
+                    
+                    // Activar selección
+                    const targetBtn = e.currentTarget;
+                    const targetId = targetBtn.getAttribute('data-target');
+                    targetBtn.classList.add('active');
+                    document.getElementById(targetId).classList.add('active');
+                    
+                    // Reasignar observer de pausas de animación a la nueva pestaña activa
+                    animObserver.disconnect();
+                    document.querySelectorAll('.tab-btn-crystal.active, .badge-track').forEach(el => animObserver.observe(el));
+                    
+                    // Reiniciar animaciones cinéticas en el panel visible
                     setTimeout(() => {
-                        // Removemos la clase de los mockups del nuevo panel
-                        const newPanelMockups = document.querySelectorAll('.service-panel.active .card-split-mockup > div:not(.column-label)');
-                        newPanelMockups.forEach(m => m.classList.remove('revealed'));
-
-                        // Volvemos a iniciar el observador
-                        initObserver();
+                        document.querySelectorAll('.service-panel.active .card-split-mockup > div').forEach(m => m.classList.remove('revealed'));
+                        initMockups();
                         
-                        // Forzamos la animación solo del primer mockup visible
+                        // Forzar aparición automática del primer mockup visible para evitar demoras
                         setTimeout(() => {
-                            const firstMockup = document.querySelector('.service-panel.active .card-split-mockup > div:not(.column-label)');
-                            if (firstMockup) {
-                                const rect = firstMockup.getBoundingClientRect();
-                                if(rect.top >= 0 && rect.bottom <= window.innerHeight) {
-                                    firstMockup.classList.add('revealed');
-                                }
+                            const firstMockup = document.querySelector('.service-panel.active .card-split-mockup > div');
+                            if (firstMockup && firstMockup.getBoundingClientRect().top < window.innerHeight) {
+                                firstMockup.classList.add('revealed');
                             }
-                        }, 100);
-
-                    }, 50); 
+                        }, 50);
+                    }, 10);
                 });
             });
-        }); 
-
+        });
     </script>
 </body>
 </html>
