@@ -183,14 +183,53 @@
         .solucion-visual-wrapper { display: flex; align-items: center; justify-content: flex-end; perspective: 1200px; z-index: 1; width: 100%; }
         .mini-visual-wrapper { position: relative; width: 100%; height: 340px; margin-top: 3.5rem; display: flex; align-items: center; justify-content: center; perspective: 1200px; }
         
-        .interfaz-mockup, .mini-mockup-card {
-            background: radial-gradient(circle at 80% 0%, rgba(6, 182, 212, 0.28) 0%, transparent 50%), linear-gradient(185deg, rgba(17, 17, 21, 0.75) 0%, rgba(5, 5, 7, 0.35) 100%);
-            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 20px; padding: 24px; box-shadow: 0 40px 80px rgba(0, 0, 0, 0.9);
-            will-change: transform, backdrop-filter; transform: translateZ(0); z-index: 1;
+        /* =======================================================
+           1. RECUPERANDO LA TARJETA PREMIUM DE "PROBLEMAS"
+           ======================================================= */
+        .interfaz-mockup {
+            width: 40rem; 
+            height: 30rem; 
+            
+            /* 🔥 EL TRIPLE GRADIENTE RADIAL ORIGINAL (Cian, Púrpura, Rosa) + Fondo translúcido */
+            background: 
+                radial-gradient(circle at 80% 0%, rgba(6, 182, 212, 0.28) 0%, transparent 50%), 
+                radial-gradient(circle at 40% 0%, rgba(139, 92, 246, 0.28) 0%, transparent 60%), 
+                radial-gradient(circle at 0% 0%, rgba(236, 72, 153, 0.18) 0%, transparent 40%), 
+                linear-gradient(185deg, rgba(17, 17, 21, 0.75) 0%, rgba(5, 5, 7, 0.35) 100%);
+                
+            backdrop-filter: blur(16px); 
+            -webkit-backdrop-filter: blur(16px);
+            
+            border: 1px solid rgba(255, 255, 255, 0.06); 
+            border-radius: 20px; 
+            padding: 24px; 
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.9);
+            
+            /* Inclinación espacial restaurada */
+            will-change: transform, backdrop-filter; 
+            transform: rotateY(-8deg) rotateX(3deg) translateZ(0); 
+            z-index: 1;
         }
-        .interfaz-mockup { width: 40rem; height: 30rem; transform: rotateY(-8deg) rotateX(3deg); }
-        .mini-mockup-card { width: 100%; max-width: 440px; height: 280px; transform: rotateY(-6deg) rotateX(2deg); background: linear-gradient(185deg, rgba(17, 17, 21, 0.75) 0%, rgba(5, 5, 7, 0.7) 100%); }
+
+        /* Recuperamos la translucidez de las tarjetas mini que la acompañan */
+        .mini-mockup-card { 
+            width: 100%; 
+            max-width: 440px; 
+            height: 280px; 
+            
+            /* Fondo translúcido original */
+            background: linear-gradient(185deg, rgba(17, 17, 21, 0.75) 0%, rgba(5, 5, 7, 0.6) 100%);
+            backdrop-filter: blur(10px); 
+            -webkit-backdrop-filter: blur(10px);
+            
+            border: 1px solid rgba(255, 255, 255, 0.05); 
+            border-radius: 16px; 
+            padding: 20px; 
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+            will-change: transform, backdrop-filter;
+            transform: rotateY(-6deg) rotateX(2deg) translateZ(0); 
+            z-index: 1;
+        }
 
         .mockup-header { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); padding: 12px 16px; border-radius: 12px; font-size: 1.4rem; color: #8E8E93; margin-bottom: 20px; }
         .mockup-response-card { background: rgba(255, 255, 255, 0.01); border: 1px solid rgba(255, 255, 255, 0.03); border-radius: 14px; padding: 16px; }
@@ -212,6 +251,8 @@
         /* =======================================================
            6. SECCIÓN DE SERVICIOS (TABS Y BENTO GRID)
            ======================================================= */
+        .servicios-interactive-wrapper { max-width: 980px; /* Limita el ancho para que no toque los bordes */ margin: 0 auto;   /* Lo centra perfectamente en la pantalla */ width: 100%;}
+
         .section-header { text-align: center; margin: 50px auto 90px; display: flex; flex-direction: column; align-items: center; }
         .section-title-premium { font-size: 4.2rem; font-weight: 450; line-height: 1.1; color: #fff; margin-bottom: 24px; }
         .section-title-premium span { color: #8E8E93; font-weight: 400; }
@@ -223,7 +264,7 @@
 
         /* BOTONES DE TABS (CRISTAL ANIMADO) */
         @property --gradient-angle { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
-        .servicios-tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 4rem; width: 100%; }
+        .servicios-tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 4rem; width: 100%; gap: 1rem; }
         
         .tab-btn-crystal {
             background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
@@ -254,108 +295,729 @@
 
         /* PANELES DE SERVICIO (BENTO GRID 2x2) */
         .service-panel { display: none; visibility: hidden; opacity: 0; width: 100%; transition: opacity 0.4s var(--cubic-apple); }
-        .service-panel.active { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; align-items: stretch; visibility: visible; opacity: 1; animation: fadeInPanel 0.5s var(--cubic-apple); }
-        @keyframes fadeInPanel { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+                /* =======================================================
+           NUEVA DINÁMICA: CARRUSEL FLUIDO ESTILO APPLE
+           ======================================================= */
+        /* Contenedor relativo para alojar los paneles y las flechas */
+        .servicios-interactive-wrapper {
+            position: relative;
+            max-width: 1040px;
+            margin: 0 auto;
+            width: 100%;
+        }
 
+        /* Cada panel de servicios ahora es una tira horizontal oculta por defecto */
+        .service-panel { 
+            display: none; 
+            visibility: hidden; 
+            opacity: 0; 
+            width: 100%; 
+            transition: opacity 0.4s var(--cubic-apple); 
+        }
+        
+        /* =======================================================
+           DINÁMICA ULTRA-PREMIUM: CARRUSEL COVERFLOW 3D NATIVO
+           ======================================================= */
+        /* Contenedor del Carrusel con perspectiva espacial */
+        .service-panel.active { 
+            display: flex !important;
+            visibility: visible; 
+            opacity: 1; 
+            gap: 0; /* Controlamos el espacio tridimensional mediante márgenes */
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none; 
+            padding: 40px 10px 60px 10px;
+            scroll-snap-type: x mandatory; 
+            -webkit-overflow-scrolling: touch;
+            perspective: 1200px; /* Activa la profundidad de campo 3D */
+            perspective-origin: center;
+        }
+        .service-panel.active::-webkit-scrollbar { display: none; }
+
+        /* Cada tarjeta ahora es una pieza del entorno 3D */
         .card-servicio-ancha {
-            background: rgba(0, 0, 0, 0.72); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);
-            border: 1px solid rgba(29, 29, 29, 0.4); border-radius: 24px; padding: 32px;
-            display: flex; flex-direction: column; gap: 12px; position: relative;
-            cursor: default; user-select: none; -webkit-user-select: none;
+            flex: 0 0 540px; /* Ancho fijo premium para que resalte la tarjeta central */
+            margin: 0 -40px; /* Solapamiento controlado para ver las tarjetas contiguas */
+            scroll-snap-align: center; /* Imanta perfectamente en el centro de la pantalla */
+            background: rgba(10, 10, 12, 0.85); 
+            backdrop-filter: blur(16px); 
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05); 
+            border-radius: 24px; 
+            padding: 36px;
+            display: flex; 
+            flex-direction: column; 
+            gap: 12px; 
+            position: relative;
+            user-select: none; 
+            -webkit-user-select: none;
+            
+            /* Transformaciones base para suavizar el giro */
+            transform-style: preserve-3d;
+            transition: transform 0.6s var(--cubic-apple), opacity 0.6s ease, border-color 0.3s ease;
+            
+            /* Estado por defecto (Laterales desvanecidas) */
+            opacity: 0.35;
+            will-change: transform, opacity;
         }
         .card-servicio-ancha::before {
             content: ""; position: absolute; top: 0; left: 15%; width: 70%; height: 1px;
-            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0) 100%);
-            box-shadow: 0 2px 20px 1px rgba(255, 255, 255, 0.15);
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
         }
-        .card-servicio-ancha * { cursor: default; user-select: none; -webkit-user-select: none; }
+        
+        /* 🔥 CLASES CINÉTICAS 3D (Se inyectan dinámicamente mediante JS) */
+        /* Tarjeta Central Enfocada */
+        .card-servicio-ancha.is-center {
+            opacity: 1;
+            transform: translateZ(60px) rotateY(0deg); /* Se adelanta hacia el usuario */
+            border-color: rgba(6, 182, 212, 0.25);
+            z-index: 10;
+        }
 
-        .card-header-servicio { width: 100%; text-align: left; }
-        .card-header-servicio h3 { font-size: 1.5rem; font-weight: 600; background: linear-gradient(90deg, #ffffff 0%, #9CA3AF 100%); -webkit-background-clip: text; background-clip: text; color: transparent; margin: 0 0 4px 0; }
-        
-        .card-body-split { display: flex; flex-direction: column; gap: 24px; height: 100%; }
-        .card-split-text { width: 100%; text-align: left; }
-        .card-split-text p { font-size: 0.95rem; font-weight: 400; color: #9CA3AF; line-height: 1.5; }
-        
-        .card-split-mockup { display: flex; flex-direction: column; height: 100%; justify-content: flex-end; width: 100%; }
-        .card-split-mockup > div {
-            background: #050505; border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: inset 0 0 40px rgba(0,0,0,0.9); border-radius: 12px; width: 100%; overflow: hidden;
-            opacity: 0; transform: perspective(1000px) rotateX(15deg) translateY(40px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; will-change: opacity, transform;
+        /* Tarjeta de la Izquierda (Rotada hacia adentro) */
+        .card-servicio-ancha.is-left {
+            opacity: 0.4;
+            transform: translateZ(-100px) rotateY(32deg) translateX(20px);
+            z-index: 5;
         }
-        .card-split-mockup > div.revealed { opacity: 1; transform: perspective(1000px) rotateX(0deg) translateY(0); }
+
+        /* Tarjeta de la Derecha (Rotada hacia adentro simétricamente) */
+        .card-servicio-ancha.is-right {
+            opacity: 0.4;
+            transform: translateZ(-100px) rotateY(-32deg) translateX(-20px);
+            z-index: 5;
+        }
+
+        /* Forzamos que en IA la tercera tarjeta mantenga la misma estructura */
+        #ia .card-servicio-ancha[style*="grid-column"] {
+            grid-column: auto !important; 
+            flex: 0 0 540px !important;
+        }
+
+        /* Flechas Minimalistas de Control (Ajustadas para no pisar el renderizado 3D) */
+        .carousel-arrow {
+            position: absolute;
+            top: calc(50% + 40px); 
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            background: rgba(18, 18, 20, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease, background 0.2s ease, border-color 0.2s ease;
+            color: #fff;
+        }
+        .carousel-arrow svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.5; }
+        .servicios-interactive-wrapper:hover .carousel-arrow { opacity: 1; pointer-events: auto; }
+        .carousel-arrow.prev { left: -70px; }
+        .carousel-arrow.next { right: -70px; }
+
+        /* Comportamiento Móvil (Se aplana el 3D para evitar cortes en pantallas chicas) */
+        @media (max-width: 968px) {
+            .service-panel.active { padding: 20px 24px; gap: 16px; perspective: none; }
+            .card-servicio-ancha { flex: 0 0 100% !important; margin: 0 !important; opacity: 1 !important; transform: none !important; }
+            .carousel-arrow { display: none !important; }
+        }
 
         /* MOCKUPS INTERNOS DE BENTO (ESTRUCTURAS MINIMIZADAS) */
         .software-static-container, .web-mockup-container, .integration-mockup-container, .db-mockup-container, .ai-terminal-container, .ai-automation-container, .ai-analytics-container, .mockup-pilar-container { padding: 20px; height: 220px; display: flex; flex-direction: column; }
         
-        /* Software & Web */
-        .static-header { display: flex; gap: 8px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 12px; }
-        .static-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.15); }
-        .static-body { display: flex; gap: 16px; margin-top: 12px; height: 100%; }
-        .static-sidebar { width: 25%; display: flex; flex-direction: column; gap: 10px; }
-        .static-menu-item { height: 12px; background: rgba(255,255,255,0.05); border-radius: 4px; }
-        .static-menu-item.active { background: rgba(6, 182, 212, 0.15); border: 1px solid rgba(6,182,212,0.4); }
-        .static-content { flex: 1; display: flex; flex-direction: column; gap: 10px; }
-        .static-module { flex: 1; border: 1px dashed rgba(255,255,255,0.15); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; color: #6B7280; }
-        .static-module.core { flex: 2; border-style: solid; background: linear-gradient(135deg, rgba(6,182,212,0.05), rgba(139,92,246,0.05)); border-color: rgba(139,92,246,0.3); color: var(--neon-purple); }
-        .mockup-nav { width: 100%; height: 10px; background: rgba(255,255,255,0.05); border-radius: 4px; margin-bottom: 12px;}
-        .mockup-hero { width: 60%; height: 40px; background: rgba(255,255,255,0.1); border-radius: 4px; margin-bottom: 12px;}
-        .mockup-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .mockup-box { height: 30px; background: rgba(255,255,255,0.03); border-radius: 4px; }
+                /* =======================================================
+           MOCKUPS DETALLADOS (SOFTWARE Y WEB) - SIN ANIMACIONES
+           ======================================================= */
+        .software-static-container, .web-mockup-container { 
+            padding: 0; 
+            height: 240px; 
+            display: flex; 
+            flex-direction: column; 
+            background: #09090b;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        /* Contenedor Común de Ventana */
+        .window-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 14px;
+            background: #121214;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .window-dots { display: flex; gap: 6px; }
+        .window-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255, 255, 255, 0.15); }
+        .window-title { font-size: 0.65rem; color: #6B7280; font-family: sans-serif; letter-spacing: 0.02em; }
 
-        /* Integración & BD */
-        .integration-mockup-container { align-items: center; justify-content: center; gap: 16px; }
-        .api-nodes { display: flex; justify-content: space-between; width: 100%; }
-        .api-node { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 8px 12px; border-radius: 6px; font-size: 0.7rem; color: #9CA3AF; }
-        .api-flow { display: flex; justify-content: space-between; width: 80%; height: 30px; }
-        .flow-line { width: 2px; height: 100%; background: linear-gradient(to bottom, rgba(255,255,255,0.05), rgba(6,182,212,0.8)); }
-        .api-core { background: rgba(6,182,212,0.08); border: 1px solid rgba(6,182,212,0.3); padding: 12px; border-radius: 8px; font-size: 0.8rem; color: #fff; display: flex; align-items: center; gap: 8px; }
-        .core-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--neon-cyan); box-shadow: 0 0 10px var(--neon-cyan); }
-        .db-mockup-container { flex-direction: row; align-items: center; gap: 16px; }
-        .legacy-excel, .xonda-db-stack { display: flex; flex-direction: column; gap: 6px; width: 40%; }
-        .legacy-excel { padding: 12px; border: 1px dashed rgba(255,255,255,0.15); border-radius: 6px; }
-        .raw-cell { height: 6px; background: rgba(255,255,255,0.08); border-radius: 2px; }
-        .db-server-layer { height: 20px; background: linear-gradient(90deg, rgba(6,182,212,0.05), rgba(139,92,246,0.1)); border: 1px solid rgba(6,182,212,0.3); border-radius: 4px; display: flex; align-items: center; padding: 0 8px; }
+        /* Estructura Interna: Software de Gestión */
+        .dashboard-layout { display: flex; flex: 1; height: calc(100% - 33px); }
+        .dashboard-sidebar { 
+            width: 50px; 
+            background: #0e0e11; 
+            border-right: 1px solid rgba(255, 255, 255, 0.03); 
+            padding: 12px 0; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            gap: 14px; 
+        }
+        .sidebar-icon { width: 18px; height: 10px; background: rgba(255, 255, 255, 0.08); border-radius: 3px; }
+        .sidebar-icon.active { background: rgba(6, 182, 212, 0.25); border: 1px solid rgba(6, 182, 212, 0.4); }
+        
+        .dashboard-main { flex: 1; padding: 14px; display: flex; flex-direction: column; gap: 12px; overflow: hidden; }
+        .dashboard-metrics { display: flex; gap: 10px; }
+        .metric-card { 
+            flex: 1; 
+            background: rgba(255, 255, 255, 0.02); 
+            border: 1px solid rgba(255, 255, 255, 0.04); 
+            border-radius: 6px; 
+            padding: 8px; 
+        }
+        .metric-label { height: 5px; width: 60%; background: rgba(255, 255, 255, 0.1); border-radius: 2px; margin-bottom: 6px; }
+        .metric-value { height: 10px; width: 40%; background: var(--neon-cyan); border-radius: 2px; opacity: 0.8; }
+        .metric-value.purple { background: var(--neon-purple); }
+        
+        .dashboard-chart-section { 
+            flex: 1; 
+            background: rgba(255, 255, 255, 0.01); 
+            border: 1px solid rgba(255, 255, 255, 0.03); 
+            border-radius: 6px; 
+            padding: 10px; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 6px;
+        }
+        .chart-row { display: flex; align-items: center; gap: 8px; width: 100%; }
+        .chart-row-label { width: 25px; height: 5px; background: rgba(255,255,255,0.1); border-radius: 2px; }
+        .chart-bar-bg { flex: 1; height: 6px; background: rgba(255, 255, 255, 0.03); border-radius: 3px; overflow: hidden; position: relative; }
+        .chart-bar-fill { height: 100%; background: linear-gradient(90deg, var(--neon-purple), var(--neon-cyan)); border-radius: 3px; }
 
-        /* IA */
-        .ai-terminal-container { font-family: 'Courier New', monospace; padding: 0; }
-        .terminal-header { padding: 8px 12px; font-size: 0.65rem; color: #6B7280; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; }
-        .terminal-body { padding: 12px; font-size: 0.75rem; color: #D1D5DB; display: flex; flex-direction: column; gap: 8px; }
-        .log-time { color: #4B5563; } .log-sys { color: var(--neon-purple); } .log-success { color: var(--neon-cyan); }
-        .static-cursor { display: inline-block; width: 6px; height: 12px; background: var(--neon-cyan); vertical-align: middle; box-shadow: 0 0 5px rgba(6,182,212,0.5); }
-        .ai-automation-container { flex-direction: row; align-items: center; justify-content: space-between; padding: 0 16px; }
-        .auto-inputs, .auto-outputs { display: flex; flex-direction: column; gap: 8px; width: 25%; }
-        .auto-box { padding: 6px; border: 1px dashed rgba(255,255,255,0.15); border-radius: 4px; font-size: 0.55rem; color: #9CA3AF; text-align: center; }
-        .auto-box-done { padding: 6px; border: 1px solid rgba(6,182,212,0.3); background: rgba(6,182,212,0.05); border-radius: 4px; font-size: 0.55rem; color: var(--neon-cyan); text-align: center; }
-        .auto-core { padding: 12px; border: 1px solid rgba(139,92,246,0.4); border-radius: 6px; font-size: 0.65rem; color: #fff; text-align: center; background: rgba(139,92,246,0.1); }
-        .analytics-body { display: flex; gap: 16px; align-items: center; height: 100%; }
-        .raw-excel-panel { width: 40%; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; padding: 8px; position: relative; }
-        .excel-file-label { position: absolute; top: -8px; right: 8px; background: #000; color: #F87171; font-size: 0.5rem; padding: 2px 4px; border: 1px solid rgba(248,113,113,0.3); border-radius: 2px; }
-        .excel-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
-        .excel-cell { height: 6px; background: rgba(255,255,255,0.05); } .excel-cell.header { background: rgba(255,255,255,0.15); }
-        .classified-data-panel { flex: 1; display: flex; flex-direction: column; gap: 8px; }
-        .class-row { display: flex; align-items: center; gap: 6px; font-size: 0.6rem; color: #fff; }
-        .class-tag { padding: 2px 4px; border-radius: 2px; font-size: 0.5rem; }
-        .tag-a { color: var(--neon-cyan); border: 1px solid rgba(6,182,212,0.3); } .tag-b { color: var(--neon-purple); border: 1px solid rgba(139,92,246,0.3); } .tag-c { color: #9CA3AF; border: 1px solid rgba(255,255,255,0.2); }
-        .bar-bg { flex: 1; height: 4px; background: rgba(255,255,255,0.05); }
+                /* =======================================================
+           ESTILO SUAVIZADO SUTIL: SITIOS WEB PREMIUM
+           ======================================================= */
+        .web-content { flex: 1; padding: 0; display: flex; flex-direction: column; background: #050507; }
+        .web-navbar { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 12px 18px; 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03); 
+        }
+        /* Logo suavizado a gris claro en lugar de blanco puro */
+        .web-logo { width: 40px; height: 8px; background: rgba(255, 255, 255, 0.4); border-radius: 2px; }
+        .web-nav-links { display: flex; gap: 10px; }
+        .web-link { width: 25px; height: 4px; background: rgba(255, 255, 255, 0.12); border-radius: 1px; }
+        /* Botón de la barra de navegación suavizado */
+        .web-nav-btn { width: 35px; height: 10px; background: rgba(255, 255, 255, 0.2); border-radius: 4px; border: 1px solid rgba(255, 255, 255, 0.1); }
+        
+        .web-hero-section { 
+            padding: 24px 18px 18px 18px; 
+            text-align: center; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            gap: 8px; 
+        }
+        .web-hero-tag { width: 60px; height: 8px; background: rgba(6, 182, 212, 0.08); border: 1px solid rgba(6, 182, 212, 0.2); border-radius: 10px; }
+        /* Título de la web con degradado sutil apagado para no encandilar */
+        .web-hero-title { width: 160px; height: 14px; background: linear-gradient(to bottom, rgba(255,255,255,0.7), rgba(255,255,255,0.3)); border-radius: 3px; }
+        .web-hero-subtitle { width: 220px; height: 6px; background: rgba(255, 255, 255, 0.06); border-radius: 2px; }
+        
+        /* Botones de acción del hero suavizados */
+        .web-hero-btns { display: flex; gap: 8px; margin-top: 4px; }
+        .web-btn-main { width: 45px; height: 12px; background: rgba(255, 255, 255, 0.25); border-radius: 3px; }
+        .web-btn-sec { width: 45px; height: 12px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 3px; }
+        
+        .web-grid-section { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 0 18px; }
+        .web-grid-card { 
+            height: 42px; 
+            background: rgba(255, 255, 255, 0.01); 
+            border: 1px solid rgba(255, 255, 255, 0.03); 
+            border-radius: 6px; 
+            padding: 6px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        /* Imágenes simuladas con gradientes de marca muy tenues */
+        .web-card-img { height: 16px; background: linear-gradient(135deg, rgba(6,182,212,0.06), rgba(139,92,246,0.06)); border-radius: 3px; border: 1px solid rgba(255,255,255,0.02); }
+        .web-card-line { height: 4px; width: 70%; background: rgba(255, 255, 255, 0.1); border-radius: 1px; }
 
-        /* Pilares */
-        .mockup-pilar-container { justify-content: center; align-items: center; }
-        .audit-roadmap { display: flex; align-items: center; gap: 6px; }
-        .audit-node { width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(6,182,212,0.5); background: rgba(6,182,212,0.05); display: flex; align-items: center; justify-content: center; color: var(--neon-cyan); font-size: 0.7rem; }
-        .audit-line { width: 30px; height: 2px; background: repeating-linear-gradient(90deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.2) 50%, transparent 50%, transparent 100%); background-size: 8px 2px; }
-        .ux-skeleton { width: 70%; display: flex; flex-direction: column; gap: 12px; }
-        .ux-header { height: 8px; width: 40%; background: rgba(255,255,255,0.1); border-radius: 4px; }
-        .ux-ui-elements { display: flex; gap: 10px; align-items: center; }
-        .ux-toggle { width: 32px; height: 16px; border-radius: 8px; background: var(--neon-purple); position: relative; }
-        .ux-toggle::after { content: ''; position: absolute; right: 2px; top: 2px; width: 12px; height: 12px; background: #fff; border-radius: 50%; }
-        .ux-button { flex: 1; height: 24px; border: 1px solid rgba(139,92,246,0.4); border-radius: 4px; display: flex; justify-content: center; align-items: center; font-size: 0.55rem; color: var(--neon-purple); }
-        .support-monitor { width: 80%; display: flex; flex-direction: column; gap: 8px; }
-        .support-status { color: var(--neon-cyan); font-size: 0.65rem; display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 4px; }
-        .support-bars { display: flex; gap: 3px; align-items: flex-end; height: 40px; }
-        .sup-bar { flex: 1; background: rgba(6,182,212,0.15); border-radius: 2px 2px 0 0; } .sup-bar.active { background: var(--neon-cyan); }
-        .scale-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-        .scale-cube { width: 40px; height: 40px; border-radius: 6px; border: 1px solid rgba(139,92,246,0.5); background: rgba(139,92,246,0.1); display: flex; align-items: center; justify-content: center; color: var(--neon-purple); }
-        .scale-cube.future { border: 1px dashed rgba(255,255,255,0.2); background: transparent; color: rgba(255,255,255,0.2); }
+
+                /* =======================================================
+           MOCKUPS DETALLADOS (INTEGRACIÓN Y BASES DE DATOS)
+           ======================================================= */
+        .integration-mockup-container, .db-mockup-container { 
+            padding: 0; 
+            height: 240px; 
+            display: flex; 
+            flex-direction: column; 
+            background: #09090b;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        /* Estructura Interna: Integración de Sistemas */
+        .integration-layout {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 24px;
+            position: relative;
+        }
+        .integration-column {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 28%;
+            z-index: 2;
+        }
+                /* =======================================================
+           AJUSTE DE NODOS CON TEXTO REAL (INTEGRACIÓN)
+           ======================================================= */
+        .integration-node {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 8px 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 110px;
+        }
+        .node-dot { width: 6px; height: 6px; border-radius: 50%; background: #6B7280; flex-shrink: 0; }
+        .node-dot.cyan { background: var(--neon-cyan); box-shadow: 0 0 8px var(--neon-cyan); }
+        .node-dot.purple { background: var(--neon-purple); box-shadow: 0 0 8px var(--neon-purple); }
+        .node-label { 
+            font-size: 0.68rem; 
+            font-weight: 500; 
+            color: #9CA3AF; 
+            font-family: sans-serif; 
+            letter-spacing: 0.02em;
+        }
+
+        
+        .integration-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 35%;
+            position: relative;
+            z-index: 2;
+        }
+        .core-hub {
+            background: rgba(6, 182, 212, 0.04);
+            border: 1px solid rgba(6, 182, 212, 0.25);
+            border-radius: 12px;
+            padding: 14px;
+            width: 100%;
+            text-align: center;
+            box-shadow: inset 0 0 15px rgba(6, 182, 212, 0.1);
+        }
+        .hub-title { font-size: 0.75rem; font-weight: 500; color: #fff; margin-bottom: 6px; letter-spacing: 0.05em; }
+        .hub-status { display: inline-flex; align-items: center; gap: 4px; font-size: 0.55rem; color: var(--neon-cyan); font-weight: 600; text-transform: uppercase; }
+
+        /* Estructura Interna: Bases de Datos */
+        .db-layout {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            gap: 14px;
+        }
+        
+        /* Planilla Excel Detallada */
+        .excel-sheet {
+            width: 45%;
+            height: 100%;
+            background: #0d0e12;
+            border: 1px solid rgba(239, 68, 68, 0.15);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .excel-top-bar {
+            background: #14161f;
+            padding: 6px 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .excel-badge { font-size: 0.52rem; color: #F87171; font-weight: 600; text-transform: uppercase; }
+        .excel-grid-table {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        .excel-row {
+            display: flex;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+            flex: 1;
+            align-items: center;
+        }
+        .excel-row.header { background: #11131a; }
+        .excel-cell-idx {
+            width: 18px;
+            font-size: 0.5rem;
+            color: #4B5563;
+            text-align: center;
+            border-right: 1px solid rgba(255, 255, 255, 0.02);
+        }
+        .excel-cell-data {
+            flex: 1;
+            padding: 0 6px;
+            display: flex;
+            align-items: center;
+        }
+        .excel-line-fill { height: 4px; width: 80%; background: rgba(255, 255, 255, 0.06); border-radius: 1px; }
+        .excel-row.header .excel-line-fill { background: rgba(255, 255, 255, 0.2); width: 50%; }
+        .excel-cell-data:nth-child(3) .excel-line-fill { width: 60%; }
+
+        .db-flow-arrow {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.15);
+            font-family: sans-serif;
+            user-select: none;
+        }
+
+        /* Servidores Estructurados de Destino */
+        .xonda-secure-db {
+            width: 45%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 8px;
+        }
+        .server-rack {
+            background: linear-gradient(90deg, #0e0f14 0%, #070709 100%);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 6px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        }
+        .server-rack::before {
+            content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--neon-purple); border-radius: 2px 0 0 2px;
+        }
+        .rack-info { display: flex; flex-direction: column; gap: 4px; width: 60%; }
+        .rack-title { height: 5px; width: 70%; background: #fff; opacity: 0.8; border-radius: 1px; }
+        .rack-sub { height: 3px; width: 40%; background: rgba(255,255,255,0.2); border-radius: 1px; }
+        .rack-leds { display: flex; gap: 4px; }
+        .rack-led { width: 4px; height: 4px; border-radius: 50%; background: var(--neon-purple); box-shadow: 0 0 6px var(--neon-purple); }
+        .rack-led.pulse { background: var(--neon-cyan); box-shadow: 0 0 6px var(--neon-cyan); }
+
+                /* =======================================================
+           PANELES DE INTERFAZ: INTELIGENCIA ARTIFICIAL (ALTA FIDELIDAD)
+           ======================================================= */
+        .ai-terminal-container, .ai-automation-container, .ai-analytics-container {
+            padding: 0;
+            height: 240px;
+            display: flex;
+            flex-direction: column;
+            background: #09090b;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        /* 1. Asistente Virtual (Terminal Consolidada) */
+        .terminal-header {
+            padding: 10px 14px;
+            background: #121214;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .terminal-header span { font-size: 0.65rem; color: #6B7280; font-family: monospace; }
+        .terminal-header .status-online { color: var(--neon-cyan); font-weight: 600; font-size: 0.6rem; letter-spacing: 0.05em; }
+        
+        .terminal-body {
+            padding: 14px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.7rem;
+            line-height: 1.5;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            color: #D1D5DB;
+        }
+        .log-time { color: #4B5563; margin-right: 4px; }
+        .log-user { color: #fff; font-weight: 600; }
+        .log-sys { color: var(--neon-purple); }
+        .log-success { color: var(--neon-cyan); }
+        .static-cursor { display: inline-block; width: 6px; height: 11px; background: var(--neon-cyan); vertical-align: middle; box-shadow: 0 0 5px var(--neon-cyan); }
+
+        /* 2. Automatización de Tareas (Nodos y Conectores) */
+        .automation-layout {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+        }
+        .auto-column { display: flex; flex-direction: column; gap: 10px; width: 28%; }
+        .auto-node-pill {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-size: 0.65rem;
+            color: #9CA3AF;
+            font-family: sans-serif;
+            text-align: center;
+            letter-spacing: 0.02em;
+        }
+        .auto-node-pill.success {
+            border-color: rgba(6, 182, 212, 0.2);
+            background: rgba(6, 182, 212, 0.02);
+            color: var(--neon-cyan);
+        }
+                /* =======================================================
+           CONECTORES Y PROCESADOR DE ALTA VISIBILIDAD (MOCKUP IA)
+           ======================================================= */
+        /* Flechas con grosor y degradado de marca */
+        .auto-flow-arrow { 
+            width: 32px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
+            border-radius: 2px;
+            position: relative;
+            flex-shrink: 0;
+            opacity: 0.85;
+            box-shadow: 0 0 8px rgba(6, 182, 212, 0.4);
+        }
+        /* Punta de la flecha mediante un triángulo CSS sutil */
+        .auto-flow-arrow::after {
+            content: '';
+            position: absolute;
+            right: -2px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-top: 4px solid transparent;
+            border-bottom: 4px solid transparent;
+            border-left: 5px solid var(--neon-purple);
+        }
+        
+        /* Procesador con Círculo de Carga Fijo (Estilo Foto) */
+        .auto-center-processor {
+            width: 34%;
+            background: rgba(139, 92, 246, 0.02);
+            border: 1px solid rgba(139, 92, 246, 0.25);
+            border-radius: 12px;
+            padding: 14px 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: inset 0 0 15px rgba(139, 92, 246, 0.1);
+        }
+        
+        /* El círculo de procesamiento de la imagen (Efecto Spinner de Alta Gama Fijo) */
+        .processor-spinner {
+            width: 26px;
+            height: 26px;
+            border: 2.5px solid rgba(6, 182, 212, 0.15);
+            border-top-color: var(--neon-cyan);
+            border-right-color: var(--neon-purple);
+            border-radius: 50%;
+            filter: drop-shadow(0 0 6px var(--neon-cyan));
+            position: relative;
+            transform: rotate(45deg); /* Inclinación fija estética */
+        }
+        
+        .processor-title { 
+            font-size: 0.68rem; 
+            font-weight: 700; 
+            color: #fff; 
+            letter-spacing: 0.08em; 
+            font-family: monospace;
+        }
+
+        /* =======================================================
+           RÉPLICA EXACTA DE LA FOTO: ANÁLISIS INTELIGENTE
+        ======================================================= */
+        .analytics-layout {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 30px 40px;
+            gap: 20px;
+        }
+
+        /* Excel Réplica Foto (Izquierda) */
+        .source-file-box {
+            width: 45%;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            padding: 18px 14px 14px 14px;
+            position: relative;
+            margin-top: 10px;
+        }
+        
+        /* Cartel flotante rojo idéntico a la imagen */
+        .excel-red-badge {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1a0a0a;
+            border: 1px solid #f87171;
+            border-radius: 20px;
+            color: #f87171;
+            font-family: monospace;
+            font-size: 0.55rem;
+            font-weight: 600;
+            padding: 2px 10px;
+            letter-spacing: 0.05em;
+        }
+
+        .excel-photo-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            width: 100%;
+        }
+        .excel-photo-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+        }
+        .excel-photo-cell {
+            height: 14px;
+            background: rgba(255, 255, 255, 0.07);
+            border-radius: 3px;
+        }
+        /* Fila superior un poco diferente como en la foto */
+        .excel-photo-row.top-row .excel-photo-cell {
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        /* Flecha de la foto */
+        .photo-arrow {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.2);
+            user-select: none;
+        }
+
+        /* Panel de Salida Réplica Foto (Derecha) */
+        .classified-output-panel {
+            width: 45%;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            background: transparent;
+            border: none;
+            padding: 0;
+            height: auto;
+        }
+        .photo-dest-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            width: 100%;
+        }
+        
+        /* Línea de texto continua gris al lado de las etiquetas */
+        .photo-dest-line {
+            flex: 1;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 2px;
+        }
+
+        /* Etiquetas Clases de la Foto */
+        .class-label-tag {
+            font-size: 0.48rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 4px;
+            line-height: 1;
+            letter-spacing: 0.04em;
+            min-width: 55px;
+            text-align: center;
+        }
+        .class-label-tag.cyan { color: var(--neon-cyan); border: 1px solid rgba(6, 182, 212, 0.3); background: rgba(6, 182, 212, 0.03); }
+        .class-label-tag.purple { color: var(--neon-purple); border: 1px solid rgba(139, 92, 246, 0.3); background: rgba(139, 92, 246, 0.03); }
+        .class-label-tag.gray { color: #8e8e93; border: 1px solid rgba(255, 255, 255, 0.15); background: rgba(255, 255, 255, 0.02); }
+
+                /* =======================================================
+           RÉPLICA EXACTA: PILARES FUNDAMENTALES (SIN ANIMACIÓN)
+           ======================================================= */
+        .mockup-pilar-container { 
+            height: 180px; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            background: transparent;
+            width: 100%;
+        }
+
+        /* 1. Consultoría: Roadmap y Línea de Tiempo */
+        .audit-roadmap { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
+        .audit-node { 
+            width: 32px; 
+            height: 32px; 
+            border-radius: 50%; 
+            border: 1px solid rgba(6, 182, 212, 0.4); 
+            background: rgba(6, 182, 212, 0.03); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: var(--neon-cyan); 
+            font-size: 0.65rem; 
+            font-weight: 600;
+        }
+        .audit-node.active { border-color: #fff; color: #fff; background: rgba(255, 255, 255, 0.05); }
+        .audit-line { width: 35px; height: 1px; border-bottom: 1px dashed rgba(255, 255, 255, 0.2); }
+        .audit-subtitle { font-size: 0.52rem; color: #48484a; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
+
+        /* 2. Diseño UX/UI: Componentes Premium */
+        .ux-skeleton-interface { width: 85%; display: flex; flex-direction: column; gap: 10px; background: rgba(255,255,255,0.01); border: 1px solid rgba(255,255,255,0.03); padding: 16px; border-radius: 10px; }
+        .ux-ui-row { display: flex; align-items: center; gap: 12px; }
+        .ux-toggle-switch { width: 32px; height: 16px; border-radius: 10px; background: var(--neon-purple); position: relative; flex-shrink: 0; box-shadow: 0 0 8px rgba(139, 92, 246, 0.4); }
+        .ux-toggle-switch::after { content: ''; position: absolute; right: 2px; top: 2px; width: 12px; height: 12px; background: #fff; border-radius: 50%; }
+        .ux-progress-bar { flex: 1; height: 16px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 4px; display: flex; align-items: center; padding: 0 2px; overflow: hidden; }
+        .ux-progress-fill { height: 10px; width: 45%; background: var(--neon-purple); border-radius: 2px; opacity: 0.8; }
+        .ux-action-button { width: 100%; height: 26px; border: 1px solid rgba(255, 255, 255, 0.08); background: rgba(255, 255, 255, 0.02); border-radius: 5px; display: flex; justify-content: center; align-items: center; font-size: 0.58rem; color: #8e8e93; font-weight: 600; letter-spacing: 0.06em; }
+
+        /* 3. Soporte: Monitor de Uptime */
+        .support-monitor-box { width: 85%; display: flex; flex-direction: column; gap: 10px; }
+        .support-header-row { display: flex; justify-content: space-between; font-size: 0.55rem; font-weight: 600; letter-spacing: 0.04em; }
+        .support-lbl { color: #636366; text-transform: uppercase; }
+        .support-val { color: var(--neon-cyan); }
+        .support-bars-grid { display: flex; gap: 4px; align-items: flex-end; height: 45px; width: 100%; }
+        .support-bar-pillar { flex: 1; height: 100%; background: var(--neon-cyan); border-radius: 2px; opacity: 0.85; box-shadow: 0 0 6px rgba(6, 182, 212, 0.2); }
+        .support-bar-pillar.variant { height: 90%; }
+        .support-bar-pillar.variant-2 { height: 95%; }
+
+        /* 4. Escalabilidad: Grilla de Módulos */
+        .scale-modules-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+        .scale-cube-block { width: 34px; height: 34px; border-radius: 6px; border: 1px solid rgba(139, 92, 246, 0.3); background: rgba(139, 92, 246, 0.04); display: flex; align-items: center; justify-content: center; color: var(--neon-purple); font-size: 0.65rem; font-weight: 600; }
+        .scale-cube-block.future { border: 1px dashed rgba(255, 255, 255, 0.12); background: transparent; color: rgba(255, 255, 255, 0.15); font-weight: 400; }
 
         /* MÓVIL RESPONSIVE GLOBAL */
         @media (max-width: 968px) {
@@ -504,21 +1166,48 @@
                         </button>
                     </div>
 
+                    <!-- Botones de Control de Carrusel Estilo Apple -->
+                    <button class="carousel-arrow prev" aria-label="Tarjeta anterior">
+                        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    </button>
+                    <button class="carousel-arrow next" aria-label="Siguiente tarjeta">
+                        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
+
                     <div style="position: relative; width: 100%;">
 
                         <div id="software" class="service-panel active">
+                            
+                            <!-- 1. SOFTWARE DE GESTIÓN -->
                             <div class="card-servicio-ancha">
-                                <div class="card-header-servicio"><h3>Software a Medida</h3></div>
+                                <div class="card-header-servicio"><h3>Software de Gestión</h3></div>
                                 <div class="card-body-split">
                                     <div class="card-split-text"><p>Transformamos tus desafíos en ecosistemas digitales. Creamos plataformas robustas y escalables para darte control total.</p></div>
                                     <div class="card-split-mockup">
                                         <div class="software-static-container">
-                                            <div class="static-header"><div class="static-dot"></div><div class="static-dot"></div><div class="static-dot"></div></div>
-                                            <div class="static-body">
-                                                <div class="static-sidebar"><div class="static-menu-item active"></div><div class="static-menu-item"></div><div class="static-menu-item short"></div></div>
-                                                <div class="static-content">
-                                                    <div class="static-module core">Módulo Central</div>
-                                                    <div style="display: flex; gap: 10px;"><div class="static-module">Mód A</div><div class="static-module">Mód B</div></div>
+                                            <div class="window-header">
+                                                <div class="window-dots"><div class="window-dot"></div><div class="window-dot"></div><div class="window-dot"></div></div>
+                                                <div class="window-title">v1.4.2 // xonda-erp-cloud</div>
+                                                <div style="width: 30px;"></div>
+                                            </div>
+                                            <div class="dashboard-layout">
+                                                <div class="dashboard-sidebar">
+                                                    <div class="sidebar-icon active"></div>
+                                                    <div class="sidebar-icon"></div>
+                                                    <div class="sidebar-icon"></div>
+                                                    <div class="sidebar-icon"></div>
+                                                </div>
+                                                <div class="dashboard-main">
+                                                    <div class="dashboard-metrics">
+                                                        <div class="metric-card"><div class="metric-label"></div><div class="metric-value"></div></div>
+                                                        <div class="metric-card"><div class="metric-label"></div><div class="metric-value purple"></div></div>
+                                                        <div class="metric-card"><div class="metric-label"></div><div class="metric-value"></div></div>
+                                                    </div>
+                                                    <div class="dashboard-chart-section">
+                                                        <div class="chart-row"><div class="chart-row-label"></div><div class="chart-bar-bg"><div class="chart-bar-fill" style="width: 85%;"></div></div></div>
+                                                        <div class="chart-row"><div class="chart-row-label"></div><div class="chart-bar-bg"><div class="chart-bar-fill" style="width: 60%;"></div></div></div>
+                                                        <div class="chart-row"><div class="chart-row-label"></div><div class="chart-bar-bg"><div class="chart-bar-fill" style="width: 45%;"></div></div></div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -526,111 +1215,255 @@
                                 </div>
                             </div>
 
+                            <!-- 2. SITIOS WEB -->
                             <div class="card-servicio-ancha">
                                 <div class="card-header-servicio"><h3>Sitios Web</h3></div>
                                 <div class="card-body-split">
                                     <div class="card-split-text"><p>Creamos experiencias digitales premium que proyectan autoridad. Diseño de vanguardia para convertir visitas en clientes.</p></div>
                                     <div class="card-split-mockup">
                                         <div class="web-mockup-container">
-                                            <div class="static-header"><div class="static-dot"></div><div class="static-dot"></div><div class="static-dot"></div></div>
-                                            <div class="static-body" style="flex-direction: column; align-items: center; justify-content: center;">
-                                                <div class="mockup-nav"></div><div class="mockup-hero"></div>
-                                                <div class="mockup-grid"><div class="mockup-box"></div><div class="mockup-box"></div></div>
+                                            <div class="window-header">
+                                                <div class="window-dots"><div class="window-dot"></div><div class="window-dot"></div><div class="window-dot"></div></div>
+                                                <div class="window-title">https://experiencia-premium.xonda</div>
+                                                <div style="width: 30px;"></div>
+                                            </div>
+                                            <div class="web-content">
+                                                <div class="web-navbar">
+                                                    <div class="web-logo"></div>
+                                                    <div class="web-nav-links"><div class="web-link"></div><div class="web-link"></div><div class="web-link"></div></div>
+                                                    <div class="web-nav-btn"></div>
+                                                </div>
+                                                <div class="web-hero-section">
+                                                    <div class="web-hero-tag"></div>
+                                                    <div class="web-hero-title"></div>
+                                                    <div class="web-hero-subtitle"></div>
+                                                    <div class="web-hero-btns"><div class="web-btn-main"></div><div class="web-btn-sec"></div></div>
+                                                </div>
+                                                <div class="web-grid-section">
+                                                    <div class="web-grid-card"><div class="web-card-img"></div><div class="web-card-line"></div></div>
+                                                    <div class="web-grid-card"><div class="web-card-img"></div><div class="web-card-line"></div></div>
+                                                    <div class="web-grid-card"><div class="web-card-img"></div><div class="web-card-line"></div></div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
+                            <!-- 3. INTEGRACIÓN DE SISTEMAS -->
                             <div class="card-servicio-ancha">
                                 <div class="card-header-servicio"><h3>Integración de Sistemas</h3></div>
                                 <div class="card-body-split">
                                     <div class="card-split-text"><p>Conectamos todas tus herramientas para que dialoguen. Centralizamos tus datos y eliminamos los procesos manuales.</p></div>
                                     <div class="card-split-mockup">
                                         <div class="integration-mockup-container">
-                                            <div class="api-nodes"><div class="api-node">CRM</div><div class="api-node">Stock</div><div class="api-node">Web</div></div>
-                                            <div class="api-flow"><div class="flow-line"></div><div class="flow-line"></div><div class="flow-line"></div></div>
-                                            <div class="api-core"><div class="core-dot"></div>Ecosistema Xonda</div>
+                                            <div class="window-header">
+                                                <div class="window-dots"><div class="window-dot"></div><div class="window-dot"></div><div class="window-dot"></div></div>
+                                                <div class="window-title">data-mesh // routing-gateway</div>
+                                                <div style="width: 30px;"></div>
+                                            </div>
+                                                                                        <div class="integration-layout">
+                                                <!-- Flujos de entrada de la izquierda -->
+                                                <div class="integration-column">
+                                                    <div class="integration-node">
+                                                        <div class="node-dot cyan"></div>
+                                                        <span class="node-label">Ventas</span>
+                                                    </div>
+                                                    <div class="integration-node">
+                                                        <div class="node-dot purple"></div>
+                                                        <span class="node-label">Stock</span>
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- Núcleo central unificador -->
+                                                <div class="integration-center">
+                                                    <div class="core-hub">
+                                                        <div class="hub-title">Ecosistema</div>
+                                                        <div class="hub-status"><div class="node-dot cyan" style="width:4px; height:4px;"></div> Xonda Core</div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- Flujos de entrada de la derecha -->
+                                                <div class="integration-column">
+                                                    <div class="integration-node">
+                                                        <div class="node-dot purple"></div>
+                                                        <span class="node-label">Facturación</span>
+                                                    </div>
+                                                    <div class="integration-node">
+                                                        <div class="node-dot cyan"></div>
+                                                        <span class="node-label">CRM</span>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
+                                                        <!-- 4. BASES DE DATOS -->
                             <div class="card-servicio-ancha">
                                 <div class="card-header-servicio"><h3>Bases de Datos</h3></div>
                                 <div class="card-body-split">
                                     <div class="card-split-text"><p>Arquitecturas seguras para grandes volúmenes de información. Datos blindados y accesibles sin latencia operativa.</p></div>
                                     <div class="card-split-mockup">
-                                        <div class="db-mockup-container">
-                                            <div class="legacy-excel">
-                                                <div class="raw-cell" style="width: 80%;"></div><div class="raw-cell" style="width: 60%;"></div>
-                                                <div class="raw-cell" style="width: 90%;"></div><div class="raw-cell" style="width: 70%;"></div>
-                                            </div>
-                                            <div class="db-transition" style="opacity: 1;">➔</div>
-                                            <div class="xonda-db-stack">
-                                                <div class="db-server-layer"></div><div class="db-server-layer"></div><div class="db-server-layer"></div>
+                                        <div class="db-mockup-container" style="height: 100%; min-height: 180px;">
+                                            <div class="db-layout" style="padding: 10px 0;">
+                                                <!-- Planilla Excel Antigua -->
+                                                <div class="excel-sheet">
+                                                    <div class="excel-top-bar">
+                                                        <div class="excel-badge">Desorganizado.xlsx</div>
+                                                    </div>
+                                                    <div class="excel-grid-table">
+                                                        <div class="excel-row header">
+                                                            <div class="excel-cell-idx"></div>
+                                                            <div class="excel-cell-data"><div class="excel-line-fill"></div></div>
+                                                            <div class="excel-cell-data"><div class="excel-line-fill"></div></div>
+                                                        </div>
+                                                        <div class="excel-row">
+                                                            <div class="excel-cell-idx">1</div>
+                                                            <div class="excel-cell-data"><div class="excel-line-fill"></div></div>
+                                                            <div class="excel-cell-data"><div class="excel-line-fill"></div></div>
+                                                        </div>
+                                                        <div class="excel-row">
+                                                            <div class="excel-cell-idx">2</div>
+                                                            <div class="excel-cell-data"><div class="excel-line-fill"></div></div>
+                                                            <div class="excel-cell-data"><div class="excel-line-fill"></div></div>
+                                                        </div>
+                                                        <div class="excel-row">
+                                                            <div class="excel-cell-idx">3</div>
+                                                            <div class="excel-cell-data"><div class="excel-line-fill"></div></div>
+                                                            <div class="excel-cell-data"><div class="excel-line-fill"></div></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="db-flow-arrow">➔</div>
+                                                
+                                                <!-- Infraestructura Xonda Estructurada -->
+                                                <div class="xonda-secure-db">
+                                                    <div class="server-rack">
+                                                        <div class="rack-info"><div class="rack-title"></div><div class="rack-sub"></div></div>
+                                                        <div class="rack-leds"><div class="rack-led pulse"></div><div class="rack-led"></div></div>
+                                                    </div>
+                                                    <div class="server-rack">
+                                                        <div class="rack-info"><div class="rack-title"></div><div class="rack-sub"></div></div>
+                                                        <div class="rack-leds"><div class="rack-led"></div><div class="rack-led pulse"></div></div>
+                                                    </div>
+                                                    <div class="server-rack">
+                                                        <div class="rack-info"><div class="rack-title"></div><div class="rack-sub"></div></div>
+                                                        <div class="rack-leds"><div class="rack-led pulse"></div><div class="rack-led pulse"></div></div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
 
                         <div id="ia" class="service-panel">
+                            <!-- 1. ASISTENTE VIRTUAL -->
                             <div class="card-servicio-ancha">
                                 <div class="card-header-servicio"><h3>Asistente Virtual</h3></div>
                                 <div class="card-body-split">
                                     <div class="card-split-text"><p>Agentes autónomos con conocimiento profundo de tu empresa. Atención fluida 24/7 sin requerir intervención humana.</p></div>
                                     <div class="card-split-mockup">
-                                        <div class="ai-terminal-container">
-                                            <div class="terminal-header"><span>xonda_ai.exe</span><span>Online</span></div>
-                                            <div class="terminal-body">
-                                                <div><span class="log-time">[03:14]</span> <span class="log-user">USER:</span> "Ayuda urgente."</div>
-                                                <div><span class="log-time">[03:14]</span> <span class="log-sys">SYS:</span> Analizando intención...</div>
-                                                <div><span class="log-time">[03:15]</span> <span class="log-success">OK:</span> Problema resuelto. Ticket cerrado.</div>
-                                                <div style="margin-top: 8px;"><span class="log-sys">SYS:</span> Escuchando comandos <span class="static-cursor"></span></div>
+                                        <div class="ai-terminal-container" style="height: 100%; min-height: 180px;">
+                                            <div class="terminal-body" style="padding: 18px 14px;">
+                                                <div style="display: flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 6px;"><span style="font-size: 0.65rem; color: #6B7280; font-family: monospace;">xonda_agent_core.sh</span><span class="status-online">● STATUS: ONLINE</span></div>
+                                                <div><span class="log-time">[10:14:02]</span><span class="log-user">USER:</span> "No puedo acceder a mi cuenta, necesito ayuda urgente."</div>
+                                                <div><span class="log-time">[10:14:02]</span><span class="log-sys">SYS_AI:</span> Analizando intención... [Urgencia: ALTA]</div>
+                                                <div><span class="log-time">[10:14:03]</span><span class="log-sys">SYS_AI:</span> Consultando base de datos y ejecutando protocolo de recuperación...</div>
+                                                <div><span class="log-time">[10:14:05]</span><span class="log-success">SUCCESS:</span> Enlace de seguridad generado y enviado al cliente. Ticket cerrado.</div>
+                                                <div style="margin-top: 8px;"><span class="log-sys">SYS_AI:</span> Escuchando nuevos comandos <span class="static-cursor"></span></div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
+                            <!-- 2. AUTOMATIZACIÓN DE TAREAS -->
                             <div class="card-servicio-ancha">
                                 <div class="card-header-servicio"><h3>Automatización</h3></div>
                                 <div class="card-body-split">
                                     <div class="card-split-text"><p>Delegamos el trabajo repetitivo a sistemas inteligentes. Aceleramos procesos operativos eliminando el margen de error.</p></div>
                                     <div class="card-split-mockup">
-                                        <div class="ai-automation-container">
-                                            <div class="auto-inputs"><div class="auto-box">PDF</div><div class="auto-box">Email</div></div>
-                                            <div class="auto-path"></div>
-                                            <div class="auto-core">AI</div>
-                                            <div class="auto-path out"></div>
-                                            <div class="auto-outputs"><div class="auto-box-done">CRM</div><div class="auto-box-done">BD</div></div>
+                                        <div class="ai-automation-container" style="height: 100%; min-height: 180px; background: transparent;">
+                                            <div class="automation-layout" style="padding: 10px 0;">
+                                                <!-- Inputs manuales -->
+                                                <div class="auto-column">
+                                                    <div class="auto-node-pill">Facturas.pdf</div>
+                                                    <div class="auto-node-pill">Emails</div>
+                                                </div>
+                                                
+                                                <!-- Flecha Conectora Optimizada -->
+                                                <div class="auto-flow-arrow"></div>
+                                                
+                                                <!-- Procesador Central con Spinner Fijo -->
+                                                <div class="auto-center-processor">
+                                                    <div class="processor-spinner"></div>
+                                                    <div class="processor-title">XONDA_AI</div>
+                                                </div>
+                                                
+                                                <!-- Flecha Conectora Optimizada -->
+                                                <div class="auto-flow-arrow"></div>
+                                                
+                                                <!-- Outputs automatizados -->
+                                                <div class="auto-column">
+                                                    <div class="auto-node-pill success">CRM Core</div>
+                                                    <div class="auto-node-pill success">Notificaciones</div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
+                            <!-- 3. ANÁLISIS INTELIGENTE -->
                             <div class="card-servicio-ancha" style="grid-column: 1 / -1;">
                                 <div class="card-header-servicio"><h3>Análisis Inteligente</h3></div>
                                 <div class="card-body-split">
                                     <div class="card-split-text"><p>Procesamos datos dispersos para decisiones directivas certeras. Transformamos el caos en inteligencia estratégica accionable.</p></div>
                                     <div class="card-split-mockup">
-                                        <div class="ai-analytics-container">
-                                            <div class="analytics-body">
-                                                <div class="raw-excel-panel">
-                                                    <div class="excel-file-label">data.xlsx</div>
-                                                    <div class="excel-grid">
-                                                        <div class="excel-cell header"></div><div class="excel-cell header"></div><div class="excel-cell header"></div><div class="excel-cell header"></div>
-                                                        <div class="excel-cell"></div><div class="excel-cell"></div><div class="excel-cell"></div><div class="excel-cell"></div>
-                                                        <div class="excel-cell"></div><div class="excel-cell"></div><div class="excel-cell"></div><div class="excel-cell"></div>
+                                        <div class="ai-analytics-container" style="height: 100%; min-height: 180px; background: transparent;">
+                                            <div class="analytics-layout" style="padding: 10px 0;">
+                                                <!-- Planilla Excel de la Foto (Izquierda) -->
+                                                <div class="source-file-box">
+                                                    <div class="excel-red-badge">planilla.xlsx</div>
+                                                    <div class="excel-photo-grid">
+                                                        <div class="excel-photo-row top-row">
+                                                            <div class="excel-photo-cell"></div><div class="excel-photo-cell"></div><div class="excel-photo-cell"></div><div class="excel-photo-cell"></div>
+                                                        </div>
+                                                        <div class="excel-photo-row">
+                                                            <div class="excel-photo-cell"></div><div class="excel-photo-cell"></div><div class="excel-photo-cell"></div><div class="excel-photo-cell"></div>
+                                                        </div>
+                                                        <div class="excel-photo-row">
+                                                            <div class="excel-photo-cell"></div><div class="excel-photo-cell"></div><div class="excel-photo-cell"></div><div class="excel-photo-cell"></div>
+                                                        </div>
+                                                        <div class="excel-photo-row">
+                                                            <div class="excel-photo-cell"></div><div class="excel-photo-cell"></div><div class="excel-photo-cell"></div><div class="excel-photo-cell"></div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div style="color: rgba(255,255,255,0.2);">➔</div>
-                                                <div class="classified-data-panel">
-                                                    <div class="class-row"><span class="class-tag tag-a">CLASE A</span><div class="bar-bg"></div></div>
-                                                    <div class="class-row"><span class="class-tag tag-b">CLASE B</span><div class="bar-bg"></div></div>
-                                                    <div class="class-row"><span class="class-tag tag-c">CLASE C</span><div class="bar-bg"></div></div>
+                                                
+                                                <!-- Flecha sutil de la foto -->
+                                                <div class="photo-arrow">→</div>
+                                                
+                                                <!-- Bloque Clasificado de la Foto (Derecha) -->
+                                                <div class="classified-output-panel">
+                                                    <div class="photo-dest-row">
+                                                        <span class="class-label-tag cyan">CLASE A</span>
+                                                        <div class="photo-dest-line"></div>
+                                                    </div>
+                                                    <div class="photo-dest-row">
+                                                        <span class="class-label-tag purple">CLASE B</span>
+                                                        <div class="photo-dest-line"></div>
+                                                    </div>
+                                                    <div class="photo-dest-row">
+                                                        <span class="class-label-tag gray">CLASE C</span>
+                                                        <div class="photo-dest-line"></div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -640,6 +1473,7 @@
                         </div>
 
                         <div id="pilares" class="service-panel">
+                                                        <!-- 1. CONSULTORÍA -->
                             <div class="card-servicio-ancha">
                                 <div class="card-header-servicio"><h3>Consultoría</h3></div>
                                 <div class="card-body-split">
@@ -647,42 +1481,58 @@
                                     <div class="card-split-mockup">
                                         <div class="mockup-pilar-container">
                                             <div class="audit-roadmap">
-                                                <div class="audit-node">01</div><div class="audit-line"></div>
-                                                <div class="audit-node">02</div><div class="audit-line"></div>
-                                                <div class="audit-node" style="border-color: #fff; color: #fff;">03</div>
+                                                <div class="audit-node">01</div>
+                                                <div class="audit-line"></div>
+                                                <div class="audit-node">02</div>
+                                                <div class="audit-line"></div>
+                                                <div class="audit-node active">03</div>
                                             </div>
+                                            <div class="audit-subtitle">Mapa de Proceso Completado</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
+                            <!-- 2. DISEÑO UX/UI -->
                             <div class="card-servicio-ancha">
                                 <div class="card-header-servicio"><h3>Diseño UX/UI</h3></div>
                                 <div class="card-body-split">
                                     <div class="card-split-text"><p>Construimos interfaces modernas e intuitivas. Maximizamos la adopción tecnológica de tu equipo sin generar fricción.</p></div>
                                     <div class="card-split-mockup">
                                         <div class="mockup-pilar-container">
-                                            <div class="ux-skeleton">
-                                                <div class="ux-header"></div>
-                                                <div class="ux-ui-elements"><div class="ux-toggle"></div><div class="ux-button">ACTION</div></div>
+                                            <div class="ux-skeleton-interface">
+                                                <div class="ux-ui-row">
+                                                    <div class="ux-toggle-switch"></div>
+                                                    <div class="ux-progress-bar"><div class="ux-progress-fill"></div></div>
+                                                </div>
+                                                <div class="ux-action-button">ACTION</div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
+                            <!-- 3. SOPORTE -->
                             <div class="card-servicio-ancha">
                                 <div class="card-header-servicio"><h3>Soporte</h3></div>
                                 <div class="card-body-split">
                                     <div class="card-split-text"><p>Planes de mantenimiento activo y monitoreo continuo. Garantizamos que la operativa de tu negocio fluya.</p></div>
                                     <div class="card-split-mockup">
                                         <div class="mockup-pilar-container">
-                                            <div class="support-monitor">
-                                                <div class="support-status"><span>UPTIME</span><span>99.9%</span></div>
-                                                <div class="support-bars">
-                                                    <div class="sup-bar active" style="height: 100%;"></div><div class="sup-bar active" style="height: 90%;"></div>
-                                                    <div class="sup-bar active" style="height: 95%;"></div><div class="sup-bar active" style="height: 100%;"></div>
-                                                    <div class="sup-bar active" style="height: 85%;"></div>
+                                            <div class="support-monitor-box">
+                                                <div class="support-header-row">
+                                                    <span class="support-lbl">Uptime Óptimo</span>
+                                                    <span class="support-val">99.99% (ONLINE)</span>
+                                                </div>
+                                                <div class="support-bars-grid">
+                                                    <div class="support-bar-pillar"></div>
+                                                    <div class="support-bar-pillar variant"></div>
+                                                    <div class="support-bar-pillar variant-2"></div>
+                                                    <div class="support-bar-pillar"></div>
+                                                    <div class="support-bar-pillar variant"></div>
+                                                    <div class="support-bar-pillar variant-2"></div>
+                                                    <div class="support-bar-pillar"></div>
+                                                    <div class="support-bar-pillar"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -690,16 +1540,24 @@
                                 </div>
                             </div>
 
+                            <!-- 4. ESCALABILIDAD -->
                             <div class="card-servicio-ancha">
                                 <div class="card-header-servicio"><h3>Escalabilidad</h3></div>
                                 <div class="card-body-split">
                                     <div class="card-split-text"><p>Diseñamos plataformas con arquitectura modular. Podrás sumar nuevas funcionalidades sin reescribir el núcleo del sistema.</p></div>
                                     <div class="card-split-mockup">
                                         <div class="mockup-pilar-container">
-                                            <div class="scale-grid">
-                                                <div class="scale-cube">A</div><div class="scale-cube">B</div>
-                                                <div class="scale-cube future">+</div><div class="scale-cube future">+</div>
-                                                <div class="scale-cube future">+</div><div class="scale-cube future">+</div>
+                                            <div class="scale-modules-grid" style="margin-bottom: 8px;">
+                                                <div class="scale-cube-block">A</div>
+                                                <div class="scale-cube-block">B</div>
+                                                <div class="scale-cube-block future">+</div>
+                                                <div class="scale-cube-block future">+</div>
+                                            </div>
+                                            <div class="scale-modules-grid">
+                                                <div class="scale-cube-block future">+</div>
+                                                <div class="scale-cube-block future">+</div>
+                                                <div class="scale-cube-block future">+</div>
+                                                <div class="scale-cube-block future">+</div>
                                             </div>
                                         </div>
                                     </div>
@@ -760,41 +1618,107 @@
             };
             initMockups();
 
-            // 4. Lógica de Pestañas (Tabs)
+                        // 4. Lógica Unificada: Carrusel Coverflow 3D e Interacción de Pestañas
+            let coverflowObserver = null;
+
+            const initCoverflow3D = () => {
+                if (coverflowObserver) coverflowObserver.disconnect();
+
+                // Configuramos un observer que detecta qué tarjeta ocupa el centro del panel
+                coverflowObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        const card = entry.target;
+                        
+                        if (entry.isIntersecting) {
+                            // Limpiamos estados anteriores
+                            card.classList.remove('is-left', 'is-right');
+                            card.classList.add('is-center');
+
+                            // Calculamos las tarjetas hermanas para inclinarlas hacia el centro
+                            let prevCard = card.previousElementSibling;
+                            if (prevCard && prevCard.classList.contains('card-servicio-ancha')) {
+                                prevCard.classList.remove('is-center', 'is-right');
+                                prevCard.classList.add('is-left');
+                            }
+
+                            let nextCard = card.nextElementSibling;
+                            if (nextCard && nextCard.classList.contains('card-servicio-ancha')) {
+                                nextCard.classList.remove('is-center', 'is-left');
+                                nextCard.classList.add('is-right');
+                            }
+                        }
+                    });
+                }, {
+                    root: document.querySelector('.service-panel.active'),
+                    threshold: 0.6 // Se activa cuando la tarjeta domina el 60% del centro
+                });
+
+                // Vinculamos todas las tarjetas del panel visible actualmente
+                document.querySelectorAll('.service-panel.active .card-servicio-ancha').forEach(card => {
+                    coverflowObserver.observe(card);
+                });
+            };
+
+            // Inicializar el efecto en la carga inicial de la página
+            setTimeout(initCoverflow3D, 100);
+
+            // Controladores de las Flechas Minimalistas
+            const btnPrev = document.querySelector('.carousel-arrow.prev');
+            const btnNext = document.querySelector('.carousel-arrow.next');
+
+            const desplazarCarrusel3D = (direccion) => {
+                const panelActivo = document.querySelector('.service-panel.active');
+                if (!panelActivo) return;
+
+                const tarjetaCentro = panelActivo.querySelector('.card-servicio-ancha.is-center');
+                if (!tarjetaCentro) return;
+
+                if (direccion === 'next') {
+                    const siguiente = tarjetaCentro.nextElementSibling;
+                    if (siguiente) {
+                        panelActivo.scrollTo({ left: siguiente.offsetLeft - (panelActivo.offsetWidth / 2) + (siguiente.offsetWidth / 2), behavior: 'smooth' });
+                    }
+                } else {
+                    const anterior = tarjetaCentro.previousElementSibling;
+                    if (anterior) {
+                        panelActivo.scrollTo({ left: anterior.offsetLeft - (panelActivo.offsetWidth / 2) + (anterior.offsetWidth / 2), behavior: 'smooth' });
+                    }
+                }
+            };
+
+            btnNext.addEventListener('click', () => desplazarCarrusel3D('next'));
+            btnPrev.addEventListener('click', () => desplazarCarrusel3D('prev'));
+
+            // Manejo de clicks en las pestañas superiores (Tabs)
             const tabs = document.querySelectorAll('.tab-btn-crystal');
             const panels = document.querySelectorAll('.service-panel');
             
             tabs.forEach(tab => {
                 tab.addEventListener('click', (e) => {
-                    // Limpieza general
                     tabs.forEach(t => t.classList.remove('active'));
                     panels.forEach(p => p.classList.remove('active'));
                     
-                    // Activar selección
                     const targetBtn = e.currentTarget;
                     const targetId = targetBtn.getAttribute('data-target');
                     targetBtn.classList.add('active');
-                    document.getElementById(targetId).classList.add('active');
                     
-                    // Reasignar observer de pausas de animación a la nueva pestaña activa
+                    const nuevoPanel = document.getElementById(targetId);
+                    nuevoPanel.classList.add('active');
+                    nuevoPanel.scrollLeft = 0; // Reseteamos la posición del carrusel al inicio
+
+                    // Reiniciamos las pausas de animación globales
                     animObserver.disconnect();
                     document.querySelectorAll('.tab-btn-crystal.active, .badge-track').forEach(el => animObserver.observe(el));
                     
-                    // Reiniciar animaciones cinéticas en el panel visible
+                    // Volvemos a encender las animaciones mecánicas y el efecto espacial 3D
                     setTimeout(() => {
                         document.querySelectorAll('.service-panel.active .card-split-mockup > div').forEach(m => m.classList.remove('revealed'));
                         initMockups();
-                        
-                        // Forzar aparición automática del primer mockup visible para evitar demoras
-                        setTimeout(() => {
-                            const firstMockup = document.querySelector('.service-panel.active .card-split-mockup > div');
-                            if (firstMockup && firstMockup.getBoundingClientRect().top < window.innerHeight) {
-                                firstMockup.classList.add('revealed');
-                            }
-                        }, 50);
-                    }, 10);
+                        initCoverflow3D(); // 🔥 Re-calcula la grilla tridimensional para las nuevas tarjetas
+                    }, 50);
                 });
             });
+
         });
     </script>
 </body>
