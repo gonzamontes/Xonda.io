@@ -105,3 +105,24 @@ body {
     .footer-inner { flex-direction: column; gap: 24px; text-align: center; }
     .footer-links-premium { flex-direction: column; gap: 16px; }
 }
+/* =========================================
+    AJUSTES MÓVILES EXTREMOS (iPhone / Android)
+========================================= */
+@media(max-width: 480px) {
+    /* Achicamos la barra, el logo y el botón de contacto */
+    .navbar { 
+        padding: 15px 20px; 
+    }
+    .logo { 
+        font-size: 1.15rem; /* Logo más sutil */
+    }
+    .btn-contact { 
+        font-size: 0.85rem; /* Letra tamaño app nativa */
+        padding: 8px 12px; 
+        gap: 0.4rem;
+    }
+    .btn-contact svg { /* Si tu botón tiene un ícono adentro */
+        width: 14px; 
+        height: 14px; 
+    }
+}
