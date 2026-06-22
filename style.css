@@ -540,12 +540,14 @@
     /* 4. SECCIÓN PROBLEMAS EN CASCADA (1 Columna Centrada) */
     .problemas-seccion {
         margin-bottom: 80px; 
+        margin-top: 12rem;
     }
     
     .problemas-main-title {
         font-size: 3.2rem; /* EL CAMBIO: Título principal bastante más grande */
         line-height: 1.1;  /* Ajustamos el interlineado para que no choque si baja a dos líneas */
         margin-bottom: 3.5rem; 
+        font-weight: 600 !important;
     }
     
     /* Forzamos el apilamiento vertical estricto */
@@ -604,23 +606,246 @@
         transform: translate(-50%, 0); /* Ajuste del centro geométrico */
         z-index: 0;     /* Aseguramos que quede detrás del mockup (que tiene z-index 1) */
     }
+    /* =========================================
+       5. CARRUSEL DE SERVICIOS (Header + Tabs App)
+    ========================================= */
+    
+    /* Matamos la etiqueta superior en móvil */
+    .section-header .solucion-tag-premium {
+        display: none !important;
+    }
 
-    /* 5. CABECERA DEL CARRUSEL DE SERVICIOS */
     .section-header {
-        margin: 20px auto 35px; /* Reducimos el foso vertical antes de los botones */
-        padding: 0 10px;
+        margin: 40px auto 35px; /* Más aire por encima */
+        padding: 0 16px;        /* Colchón de relleno lateral */
     }
     
     .section-title-premium {
         font-size: 3.2rem; /* EL CAMBIO: Título principal bastante más grande */
-        line-height: 1.1; 
+        line-height: 1.2;
         margin-bottom: 16px;
         width: 100%;
+        font-weight: 600 !important;
     }
     
     .section-subtitle-premium {
         font-size: 0.5rem !important;
         line-height: 1.45;
         padding: 0 10px;
+    }
+
+    /* LA MAGIA: CONVERTIMOS LAS PESTAÑAS EN UN SLIDER HORIZONTAL */
+    .servicios-tabs {
+        display: flex !important;
+        flex-direction: row !important;
+        grid-template-columns: none !important;
+        gap: 12px;
+        
+        /* Activamos el deslizamiento nativo con el dedo */
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory; /* Hace que el botón "encastre" al soltar el dedo */
+        
+        /* Rompemos los márgenes para que el scroll toque el vidrio del teléfono */
+        width: calc(100% + 40px);
+        margin-left: -20px;
+        padding: 0 20px 15px; 
+        
+        /* Ocultamos la barrita de scroll nativa de Android/iOS */
+        scrollbar-width: none; 
+    }
+
+    .servicios-tabs::-webkit-scrollbar { display: none; }
+
+    .tab-btn-crystal {
+        /* EL TRUCO NETFLIX: Cada botón ocupa el 78% de la pantalla */
+        flex: 0 0 78%; 
+        scroll-snap-align: center;
+        padding: 1.2rem;
+    }
+
+/* =========================================
+       6. PANELES DEL CARRUSEL (Solución Atómica)
+    ========================================= */
+    
+    .servicios-interactive-wrapper {
+        width: 100%;
+        height: auto !important;
+        margin-bottom: 80px; 
+    }
+
+    /* 1. REGLA ESTRICTA: Tarjeta que no esté activa, ES DESTRUIDA del plano físico */
+    .card-servicio-ancha:not(.is-center) {
+        display: none !important;
+    }
+
+    /* 2. Tarjeta activa toma el control absoluto del piso 1 */
+    .card-servicio-ancha.is-center {
+        display: flex !important;
+        flex-direction: column !important; 
+        position: relative !important;
+        top: 0 !important;
+        left: 0 !important;
+        transform: none !important;
+        width: 100% !important;
+        height: auto !important;
+        gap: 16px !important;
+        padding: 0 16px !important;
+        z-index: 5;
+    }
+
+    /* Tarjeta superior de texto */
+    .card-info-group {
+        height: auto !important;
+        padding: 24px 20px !important; 
+        width: 100% !important;
+    }
+    .card-header-servicio h3 { font-size: 1.7rem !important; }
+    .card-header-servicio h3 span { font-size: 1.05rem !important; margin-top: 8px !important; }
+
+    /* Tarjeta inferior de código */
+    .card-split-mockup {
+        width: 100% !important;
+        height: auto !important;
+        -webkit-mask-image: none !important; 
+        mask-image: none !important;
+    }
+
+    /* =========================================
+       MOCKUP CÓDIGO (Ángulo 0° + Cristal Premium)
+    ========================================= */
+    /* MAGIA RECURSIVA (*): Obliga a la ventana Y A TODOS SUS HIJOS a perder el 3D */
+    .app-window-mockup,
+    .app-window-mockup * {
+        transform: none !important;
+        perspective: none !important;
+        rotate: none !important;
+        scale: none !important;
+        filter: none !important; /* Mata cualquier blur de herencia */
+    }
+
+    .app-window-mockup {
+        width: 100% !important;
+        height: 230px !important;
+        margin-top: 15px !important; /* Genera el "pasillo" para que asome la esfera */
+        
+        /* Cristal de alta definición */
+        background: rgba(18, 18, 22, 0.65) !important;
+        backdrop-filter: blur(16px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+        border: 1px solid rgba(255, 255, 255, 0.12) !important;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7) !important;
+        
+        border-radius: 14px !important;
+        position: relative;
+        z-index: 3 !important; /* Se superpone a la mitad inferior de la esfera */
+    }
+
+    /* =========================================
+       7. REESTRUCTURACIÓN INTERNA DE MOCKUPS 
+    ========================================= */
+
+    /* 1. RECLAMAMOS ANCHO DE PANTALLA (Menos margen lateral en todo el sitio) */
+    .section-header, 
+    .card-servicio-ancha,
+    .solucion-destacada,
+    .soluciones-secundarias {
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+    }
+
+    /* 2. VENTANA DEL MOCKUP CENTRADA Y PLANA */
+    .app-window-mockup,
+    .interfaz-mockup,
+    .mini-mockup-card {
+        width: 100% !important; /* EL CAMBIO: Se adapta exacto al padre, elimina el desborde derecho */
+        max-width: 100% !important;
+        margin: 0 auto !important; /* Centrado absoluto */
+        padding: 0 !important; /* Quitamos el foso exterior para ganar espacio real */
+        
+        /* MATAMOS EL BLUR: Cero transformaciones 3D */
+        -webkit-font-smoothing: antialiased !important;
+        -moz-osx-font-smoothing: grayscale !important;
+        transform: none !important; /* ELIMINAMOS el translateZ que causaba el rasterizado borroso */
+    }
+
+    /* Cabecera miniatura (Los 3 puntitos de Mac + la ruta del archivo) */
+    .app-window-mockup [class*="header"],
+    .interfaz-mockup [class*="header"] {
+        gap: 6px !important;
+        margin-bottom: 10px !important;
+        padding-bottom: 8px !important;
+    }
+
+    .app-window-mockup [class*="header"] span,
+    .app-window-mockup [class*="title"] {
+        font-size: 0.75rem !important; /* Achica la ruta "app/api/route.ts" */
+        letter-spacing: -0.01em !important;
+    }
+
+    /* 3. DOMAMOS EL CÓDIGO FUENTE */
+    .app-window-mockup pre,
+    .app-window-mockup code,
+    .interfaz-mockup code,
+    .interfaz-mockup pre {
+        font-size: 0.72rem !important; /* Tamaño IDE real para móviles (aprox 11.5px) */
+        line-height: 1.45 !important;
+        
+        /* LEY DE ORO: No permitas que el código salte a la línea de abajo */
+        white-space: pre !important; 
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+        
+        /* Ocultamos la barra de desplazamiento interna */
+        scrollbar-width: none;
+    }
+    
+    .app-window-mockup pre::-webkit-scrollbar { display: none; }
+
+    /* =========================================
+       8. MICRO-IDE: DOMANDO EL INTERIOR DE LOS MOCKUPS
+    ========================================= */
+    /* Achicamos drásticamente los rellenos (paddings) para que los paneles no choquen */
+    .app-window-mockup .app-side-panel,
+    .app-window-mockup .app-main-content,
+    .app-window-mockup .app-top-bar {
+        padding: 8px 10px !important;
+        gap: 6px !important;
+    }
+
+    /* Forzamos a que todo texto pueda bajar a otra línea si no cabe */
+    .app-window-mockup *:not(pre):not(code) {
+        white-space: normal !important;
+        line-height: 1.3 !important;
+    }
+
+    /* Reducción extrema de fuentes "quemadas" en el HTML (Hack de selectores) */
+    .app-item-title, 
+    .app-window-mockup [style*="font-size: 0.8"], 
+    .app-window-mockup [style*="font-size: 0.75"] {
+        font-size: 0.68rem !important; 
+    }
+
+    .app-item-subtitle, 
+    .app-window-mockup [style*="font-size: 0.7"],
+    .app-window-mockup [style*="font-size: 0.65"] {
+        font-size: 0.6rem !important;
+    }
+
+    .app-item-meta, 
+    .app-window-mockup [style*="font-size: 0.6"], 
+    .app-window-mockup [style*="font-size: 0.58"],
+    .app-window-mockup [style*="font-size: 0.55"],
+    .app-window-mockup [style*="font-size: 0.5"] {
+        font-size: 0.5rem !important;
+    }
+
+    /* Domamos la grilla de la tarjeta de "Arquitectura Modular" para que no se salga */
+    .scale-blocks-grid {
+        gap: 6px !important;
+    }
+    .scale-cube-unit {
+        height: auto !important;
+        padding: 6px !important;
     }
 }

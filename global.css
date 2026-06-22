@@ -10,6 +10,16 @@
     --cubic-apple: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* =========================================
+   CANDADO DE DESBORDAMIENTO (Anti-Scroll Horizontal)
+========================================= */
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden; /* La guillotina: corta todo lo que sobresalga a los lados */
+    position: relative;
+}
+
 *, *::before, *::after {
     margin: 0; padding: 0; box-sizing: border-box; outline: 0;
 }
