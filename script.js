@@ -178,4 +178,67 @@ document.addEventListener("DOMContentLoaded", () => {
             cardInner.classList.remove('is-flipped');
         });
     }
+    
+});
+
+// ==========================================
+// MOTOR TÁCTIL PARA EL CARRUSEL MÓVIL (Versión Quirúrgica)
+// ==========================================
+document.addEventListener('DOMContentLoaded', () => {
+    const carruselWrapper = document.querySelector('.servicios-interactive-wrapper');
+    const tabsContainer = document.querySelector('.servicios-tabs');
+    const tabs = document.querySelectorAll('.tab-btn-crystal');
+    
+    // 1. AUTO-CENTRADO SEGURO (Mata el bug de la pantalla corrida)
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            if (tabsContainer) {
+                // Matemática pura: calculamos el centro exacto del botón respecto a su contenedor
+                const scrollPos = this.offsetLeft - (tabsContainer.offsetWidth / 2) + (this.offsetWidth / 2);
+                
+                // Le ordenamos que mueva SOLO la caja de botones, protegiendo el resto de la página
+                tabsContainer.scrollTo({
+                    left: scrollPos,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // 2. DETECCIÓN DE DESLIZAMIENTO (SWIPE) PARA LAS TARJETAS
+    if (carruselWrapper) {
+        let touchstartX = 0;
+        let touchendX = 0;
+
+        // Detecta dónde pones el dedo al tocar los mockups
+        carruselWrapper.addEventListener('touchstart', e => {
+            touchstartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        // Detecta hacia dónde sueltas el dedo
+        carruselWrapper.addEventListener('touchend', e => {
+            touchendX = e.changedTouches[0].screenX;
+            procesarDeslizamiento();
+        }, { passive: true });
+
+        function procesarDeslizamiento() {
+            // Buscamos qué tarjeta está activa actualmente
+            let activeIndex = Array.from(tabs).findIndex(t => t.classList.contains('active'));
+            if (activeIndex === -1) return;
+
+            const umbral = 50; // Sensibilidad: debes mover el dedo al menos 50px
+
+            if (touchendX < touchstartX - umbral) {
+                // Deslizaste hacia la izquierda (Avanzar)
+                if (activeIndex < tabs.length - 1) {
+                    tabs[activeIndex + 1].click(); 
+                }
+            } else if (touchendX > touchstartX + umbral) {
+                // Deslizaste hacia la derecha (Retroceder)
+                if (activeIndex > 0) {
+                    tabs[activeIndex - 1].click(); 
+                }
+            }
+        }
+    }
 });

@@ -485,6 +485,14 @@
         margin-bottom: 1.5rem; 
     }
 
+    .btn-primary {font-weight: 500; 
+        font-size: 1.5rem !important; 
+        padding: 1rem 1rem !important; 
+        border-radius: 5px; 
+        width: 100%;
+        max-width: 70%;
+    }
+
 /* 2. SUBIMOS Y CALIBRAMOS LA CURVA (Ajuste a 200%) */
     .seccion-capas {
         margin-top: -80px; 
@@ -609,11 +617,20 @@
     /* =========================================
        5. CARRUSEL DE SERVICIOS (Botones Originales PC + Scroll Móvil)
     ========================================= */
+
+
     .section-header .solucion-tag-premium { display: none !important; }
 
-    .section-header { margin: 40px auto 25px; padding: 0 16px; }
-    .section-title-premium { font-size: 2.8rem !important; line-height: 1.2; margin-bottom: 16px; font-weight: 600 !important; }
-    .section-subtitle-premium { font-size: 0.5rem !important; line-height: 1.45; padding: 0 10px; }
+    .section-header { 
+        margin: 110px auto 30px !important; 
+        padding: 0 16px !important; 
+    }
+    .section-title-premium { 
+        font-size: 2.8rem !important; 
+        line-height: 1.2 !important; 
+        margin-bottom: 16px !important; 
+        font-weight: 600 !important; 
+    }    .section-subtitle-premium { font-size: 0.5rem !important; line-height: 1.45; padding: 0 10px; }
 
     /* Contenedor horizontal deslizable (Swipe táctil) */
     .servicios-tabs {
