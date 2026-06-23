@@ -607,62 +607,85 @@
         z-index: 0;     /* Aseguramos que quede detrás del mockup (que tiene z-index 1) */
     }
     /* =========================================
-       5. CARRUSEL DE SERVICIOS (Header + Tabs App)
+       5. CARRUSEL DE SERVICIOS (Botones Originales PC + Scroll Móvil)
     ========================================= */
-    
-    /* Matamos la etiqueta superior en móvil */
-    .section-header .solucion-tag-premium {
-        display: none !important;
-    }
+    .section-header .solucion-tag-premium { display: none !important; }
 
-    .section-header {
-        margin: 40px auto 35px; /* Más aire por encima */
-        padding: 0 16px;        /* Colchón de relleno lateral */
-    }
-    
-    .section-title-premium {
-        font-size: 3.2rem; /* EL CAMBIO: Título principal bastante más grande */
-        line-height: 1.2;
-        margin-bottom: 16px;
-        width: 100%;
-        font-weight: 600 !important;
-    }
-    
-    .section-subtitle-premium {
-        font-size: 0.3rem !important;
-        line-height: 1.45;
-        padding: 0 10px;
-    }
+    .section-header { margin: 40px auto 25px; padding: 0 16px; }
+    .section-title-premium { font-size: 2.8rem !important; line-height: 1.2; margin-bottom: 16px; font-weight: 600 !important; }
+    .section-subtitle-premium { font-size: 0.5rem !important; line-height: 1.45; padding: 0 10px; }
 
-    /* LA MAGIA: CONVERTIMOS LAS PESTAÑAS EN UN SLIDER HORIZONTAL */
+    /* Contenedor horizontal deslizable (Swipe táctil) */
     .servicios-tabs {
         display: flex !important;
         flex-direction: row !important;
-        grid-template-columns: none !important;
-        gap: 12px;
+        gap: 16px !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        scroll-snap-type: x mandatory !important;
         
-        /* Activamos el deslizamiento nativo con el dedo */
-        overflow-x: auto;
-        overflow-y: hidden;
-        scroll-snap-type: x mandatory; /* Hace que el botón "encastre" al soltar el dedo */
+        /* Rompemos márgenes para que el scroll toque el borde del celular */
+        width: calc(100% + 32px) !important;
+        margin-left: -16px !important;
+        padding: 0 16px 20px !important;
+        scrollbar-width: none !important; 
         
-        /* Rompemos los márgenes para que el scroll toque el vidrio del teléfono */
-        width: calc(100% + 40px);
-        margin-left: -20px;
-        padding: 0 20px 15px; 
-        
-        /* Ocultamos la barrita de scroll nativa de Android/iOS */
-        scrollbar-width: none; 
+        /* Limpiamos cualquier rastro de la 'isla' fallida */
+        background: transparent !important;
+        border: none !important;
+        backdrop-filter: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
     }
-
     .servicios-tabs::-webkit-scrollbar { display: none; }
 
+    /* El Botón Original de PC, adaptado a móvil */
     .tab-btn-crystal {
-        /* EL TRUCO NETFLIX: Cada botón ocupa el 78% de la pantalla */
-        flex: 0 0 78%; 
-        scroll-snap-align: center;
-        padding: 1.2rem;
+        flex: 0 0 82% !important; /* Ocupa el 82% de la pantalla, deja asomar el siguiente botón */
+        scroll-snap-align: center !important;
+        padding: 20px !important;
+        
+        /* Estética Original: Cristal Oscuro */
+        background: rgba(0, 0, 0, 0.4) !important;
+        backdrop-filter: blur(15px) !important;
+        -webkit-backdrop-filter: blur(15px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.05) !important;
+        border-radius: 16px !important;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+        
+        text-align: left !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 8px !important;
+        align-items: flex-start !important;
+        justify-content: center !important;
+        transition: all 0.3s ease !important;
     }
+
+    .tab-btn-crystal .tab-title {
+        font-size: 1.15rem !important;
+        font-weight: 500 !important;
+        color: #8E8E93 !important;
+        margin: 0 !important;
+    }
+
+    .tab-btn-crystal .tab-desc {
+        display: block !important;
+        font-size: 0.85rem !important;
+        color: rgba(255, 255, 255, 0.4) !important;
+        line-height: 1.4 !important;
+        text-align: left !important;
+    }
+
+    /* Estado Activo Original */
+    .tab-btn-crystal.active {
+        background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.08) 0%, rgba(0, 0, 0, 0.4) 60%) !important;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    }
+
+    .tab-btn-crystal.active .tab-title { color: #fff !important; }
+    .tab-btn-crystal.active .tab-desc { color: rgba(255, 255, 255, 0.7) !important; }
 
     /* =========================================
        5.1 ESFERA DEL CARRUSEL (Nivel Subsuelo)
@@ -755,10 +778,10 @@
     }
 
 /* =========================================
-       7. REESTRUCTURACIÓN MÓVIL (Bordes al Límite)
+       7. REESTRUCTURACIÓN MÓVIL (Ancho Extremo y 3D)
     ========================================= */
 
-    /* EL TRUCO MÁGICO: Rompemos la caja padre y forzamos el ancho de pantalla física */
+    /* Tarjeta base del carrusel al límite */
     .card-servicio-ancha.is-center {
         width: 100vw !important;
         max-width: 100vw !important;
@@ -767,18 +790,17 @@
         gap: 12px !important;
     }
 
-    /* Le devolvemos un margen de lectura al texto superior */
     .card-info-group {
         width: calc(100% - 24px) !important;
         margin: 0 auto !important;
     }
 
-    /* MOCKUP AL LÍMITE: Deja solo 6px de respiro contra el borde de metal del teléfono */
     .card-split-mockup {
         width: calc(100% - 12px) !important; 
         margin: 0 auto !important;
     }
 
+    /* Regla base de tamaño para TODOS los mockups en móvil */
     .app-window-mockup,
     .interfaz-mockup,
     .mini-mockup-card {
@@ -787,19 +809,17 @@
         height: auto !important; 
         min-height: 230px !important; 
         margin: 0 !important; 
-        padding: 10px 0 !important; 
-        -webkit-font-smoothing: antialiased !important;
-        -moz-osx-font-smoothing: grayscale !important;
-        transform: none !important; 
+        padding: 10px 0 !important;
         display: flex !important;
         flex-direction: column !important;
-        
-        /* EL CAMBIO: FONDO NEGRO PURO CON ESMERILADO FUERTE */
-       /* EL CAMBIO: Cristal súper translúcido para que la esfera atraviese */
-        background: rgba(10, 10, 14, 0.25) !important; /* Bajamos la opacidad del negro a la mitad */
-        backdrop-filter: blur(10px) saturate(200%) !important; /* Menos blur, más saturación de color */
-        -webkit-backdrop-filter: blur(10px) saturate(200%) !important;
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+
+    /* EL ARREGLO DEL 3D: SOLO le quitamos la inclinación a los mockups DEL CARRUSEL */
+    .servicios-interactive-wrapper .app-window-mockup,
+    .servicios-interactive-wrapper .app-window-mockup * {
+        transform: none !important;
+        -webkit-font-smoothing: antialiased !important;
+        -moz-osx-font-smoothing: grayscale !important;
     }
 
     /* Si el mockup tiene la barrita negra superior, matamos el padding para que toque el techo */
@@ -917,46 +937,122 @@
         bottom: -25px !important; /* Los acercamos un poco más al mockup */
     }
 
-    /* =========================================
-       10. SECCIÓN PROBLEMAS (Geometría Estricta)
+/* =========================================
+       10. SECCIÓN PROBLEMAS (Espaciado Perfecto y Minitítulos Intactos)
     ========================================= */
-    
-    /* 1. PROBLEMA 1 (Destacado) */
+
+    /* 1. ESPACIADO ENTRE PROBLEMAS */
     .solucion-destacada {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 2.5rem !important; /* Distancia estricta: Texto -> Mockup */
-        margin: 0 0 5rem 0 !important; /* Distancia estricta: Problema 1 -> Problema 2 */
+        margin: 0 0 5rem 0 !important; 
+        display: block !important;
     }
 
-    /* 2. CONTENEDOR PROBLEMAS 2 Y 3 */
     .soluciones-secundarias {
         display: flex !important;
         flex-direction: column !important;
-        gap: 5rem !important; /* Distancia estricta: Problema 2 -> Problema 3 */
+        gap: 5rem !important; 
         margin: 0 !important;
         padding-top: 0 !important;
         border-top: none !important;
     }
     .soluciones-secundarias::after { display: none !important; }
 
-    /* Interior de los Problemas 2 y 3 */
+    /* EL ARREGLO DEL ESPACIO GIGANTE: Matamos el flex/gap que separaba el mini-título */
     .soluciones-secundarias > div {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 2.5rem !important; /* Distancia estricta: Texto -> Mockup (Igual al Problema 1) */
+        display: block !important; 
         margin: 0 !important;
     }
 
-    /* 3. MATAMOS LOS FANTASMAS DE PC (La causa de la rotura) */
+    /* 2. ALINEACIÓN AL CENTRO */
+    .solucion-info,
+    .solucion-box-mini {
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important; 
+        text-align: center !important;  
+        gap: 0 !important; 
+    }
+
+    /* 3. MINI-TÍTULOS (Solo Tamaño y Centrado. NADA de transparencias) */
+    .solucion-destacada .solucion-tag-premium,
+    .soluciones-secundarias .solucion-tag-premium,
+    .solucion-info .card-mini-title-premium,
+    .solucion-box-mini .card-mini-title-premium,
+    .soluciones-secundarias > div > .solucion-tag-premium {
+        display: flex !important; 
+        align-items: center !important;
+        justify-content: center !important;
+        
+        width: fit-content !important;
+        
+        /* 12px exactos de distancia contra el H3 */
+        margin: 0 auto 12px auto !important; 
+        
+        /* Solo el tamaño */
+        font-size: 1rem !important;       
+    }
+
+    /* Ajuste fino del ícono para que acompañe el tamaño */
+    .solucion-tag-premium svg,
+    .card-mini-title-premium svg {
+        width: 14px !important;
+        height: 14px !important;
+        flex-shrink: 0 !important;
+        margin-right: 6px !important;
+    }
+
+    /* 4. TÍTULOS Y PÁRRAFOS */
+    .solucion-info h3,
+    .solucion-box-mini h3 {
+        font-size: 2.1rem !important; 
+        line-height: 1.15 !important;
+        /* 16px exactos entre título y párrafo */
+        margin: 0 0 16px 0 !important; 
+    }
+
+    .solucion-info p,
+    .solucion-box-mini p {
+        font-size: 0.95rem !important;
+        line-height: 1.5 !important;
+        margin: 0 auto !important; 
+        max-width: 95% !important; 
+    }
+
+    /* 5. MOCKUPS: Aquí aplicamos la separación estricta */
     .solucion-visual-wrapper,
     .mini-visual-wrapper {
-        margin-top: 0 !important; /* Aniquila el desfase viejo de PC */
-        margin-bottom: 0 !important;
-        height: auto !important; /* Aniquila la altura fija de 340px que generaba huecos negros */
+        /* ESTA ES LA MAGIA: 2.5rem de distancia perfecta desde el texto hacia la imagen */
+        margin: 2.5rem 0 0 0 !important; 
+        height: auto !important; 
         min-height: auto !important;
         display: flex !important;
         justify-content: center !important;
         align-items: center !important;
+        width: 100% !important;
     }
+
+/* =========================================
+       11. LUZ DEL TECHO DOMADA (techo-luz)
+    ========================================= */
+
+    .techo-luz {
+        /* Lo encogemos para que no desborde la pantalla física */
+        width: 70vw !important; 
+        
+        /* Lo aplastamos verticalmente para que no baje hacia el texto */
+        height: 120px !important; 
+        
+        /* Lo empujamos más arriba para que solo asome la base */
+        top: -30px !important; 
+        
+        /* Reducimos la niebla de luz a la mitad */
+        filter: blur(40px) !important; 
+        -webkit-filter: blur(40px) !important;
+        
+        /* Suavizamos el blanco para que no contamine el negro */
+        background: rgba(255, 255, 255, 0.13) !important; 
+    }
+
+
 }
