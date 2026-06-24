@@ -783,8 +783,8 @@
         margin-top: 15px !important; /* Genera el "pasillo" para que asome la esfera */
         
         /* Cristal de alta definición */
-        background: rgba(18, 18, 22, 0.65) !important;
-        backdrop-filter: blur(16px) saturate(180%) !important;
+        background: rgba(0, 0, 0, 0.411) !important;
+        backdrop-filter: blur(10px) saturate(180%) !important;
         -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
         border: 1px solid rgba(255, 255, 255, 0.12) !important;
         box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7) !important;
@@ -1210,61 +1210,6 @@
     }
 
 
-    /* --- B. FOOTER "ISLA FLOTANTE" (Idéntico a la tarjeta) --- */
-
-    /* Volvemos invisible el fondo negro tradicional que abarcaba de lado a lado */
-    .footer-premium {
-        background: transparent !important;
-        border: none !important;
-        padding: 0 16px 36px 16px !important; /* Margen inferior para que flote */
-    }
-
-    /* Convertimos su contenido interno en la caja flotante */
-    .footer-inner {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        justify-content: center !important;
-        text-align: center !important;
-        
-        background: #09090b !important; /* El mismo tono de la tarjeta de contacto */
-        border: 1px solid rgba(255, 255, 255, 0.08) !important;
-        border-radius: 24px !important;
-        padding: 32px 24px !important;
-        gap: 24px !important; 
-        
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9) !important;
-        width: 100% !important;
-        max-width: 385px !important;
-        margin: 0 auto !important;
-    }
-
-    /* Logo arriba */
-    .footer-logo-premium {
-        margin: 0 !important;
-        font-size: 1.4rem !important;
-    }
-
-    /* Botones/Links abajo en dos columnas o fila limpia */
-    .footer-links-premium {
-        display: flex !important;
-        flex-direction: row !important;
-        flex-wrap: wrap !important;
-        justify-content: center !important;
-        gap: 20px !important;
-        width: 100% !important;
-    }
-
-    .footer-links-premium a {
-        font-size: 0.9rem !important;
-        color: rgba(255, 255, 255, 0.65) !important;
-    }
-
-    .copyright-premium {
-        font-size: 0.75rem !important;
-        color: rgba(255, 255, 255, 0.3) !important;
-        margin-top: 4px !important;
-    }
 
     /* El banner descriptivo inferior (.banner-metodologia-premium) también a la izquierda */
     .banner-metodologia-premium {
