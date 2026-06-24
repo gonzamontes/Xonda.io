@@ -1,37 +1,27 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    // 1. Evitamos que el navegador intente recordar por su cuenta dónde estaba el scroll al refrescar
+    // 1. Evitamos que el navegador intente recordar el scroll al refrescar
     if ('scrollRestoration' in history) {
         history.scrollRestoration = 'manual';
     }
 
-    // 2. PRELOADER CON "SCROLL FANTASMA" (Fuerza a la GPU a renderizar el cristal)
+    // 2. PRELOADER CON "SCROLL FANTASMA"
     window.addEventListener("load", () => {
-        
         const preloader = document.getElementById("preloader");
-        
-        // EL FIX: Solo ejecutamos toda la animación de bloqueo si la página tiene preloader
         if (preloader) {
-            // Bloqueamos la pantalla
             document.body.style.overflow = "hidden";
-            
-            // Bajamos instantáneamente al final
             window.scrollTo(0, document.body.scrollHeight);
-
             setTimeout(() => {
-                // Volvemos arriba
                 window.scrollTo(0, 0);
-
                 setTimeout(() => {
                     preloader.style.opacity = "0";
                     setTimeout(() => { 
                         preloader.style.visibility = "hidden";
-                        document.body.style.overflow = ""; // Le devolvemos el scroll al usuario
+                        document.body.style.overflow = ""; 
                     }, 800);
                 }, 50);
             }, 600);
         } else {
-            // Si NO hay preloader (como en blueprint.html), garantizamos que el scroll esté libre
             document.body.style.overflow = "";
         }
     });
@@ -56,7 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        // Actualizar puntos
         const dotsContainer = document.querySelector('.carousel-indicators');
         if (dotsContainer) {
             dotsContainer.innerHTML = '';
@@ -86,6 +75,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (next) next.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); idx++; updateCarousel(); });
     if (prev) prev.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); idx--; updateCarousel(); });
 
+    // ====================================================================
+    // 3. PESTAÑAS PRINCIPALES (Auto-Centrado al hacer clic)
+    // ====================================================================
+    const tabsContainer = document.querySelector('.servicios-tabs');
     const tabs = document.querySelectorAll('.tab-btn-crystal');
     const panels = document.querySelectorAll('.service-panel');
     
@@ -96,30 +89,63 @@ document.addEventListener("DOMContentLoaded", () => {
         const btn = e.currentTarget;
         btn.classList.add('active');
         
+        if (tabsContainer && window.innerWidth <= 480) {
+            const scrollPos = btn.offsetLeft - (tabsContainer.offsetWidth / 2) + (btn.offsetWidth / 2);
+            tabsContainer.scrollTo({ left: scrollPos, behavior: 'smooth' });
+        }
+        
         const targetPanel = document.getElementById(btn.getAttribute('data-target'));
         if (targetPanel) targetPanel.classList.add('active');
         
-        idx = 0; // Reinicia el contador de tarjetas al cambiar de sección
+        idx = 0; 
         obs2.disconnect();
         document.querySelectorAll('.tab-btn-crystal.active, .badge-track').forEach(el => obs2.observe(el));
         updateCarousel();
     }));
 
-    // Efecto Parallax 3D aplicado a la tarjeta y a los 3 mockups iniciales
+    // ====================================================================
+    // [ INYECCIÓN MÓVIL B ]: SWIPE CON AISLANTE ANTI-BURBUJEO
+    // ====================================================================
+    const carruselWrapper = document.querySelector('.servicios-interactive-wrapper');
+    if (carruselWrapper) {
+        let touchstartX = 0;
+        let touchendX = 0;
+
+        carruselWrapper.addEventListener('touchstart', e => {
+            // EL ESCUDO: Si pusiste el dedo sobre la barra de pestañas superior, abortamos
+            if (e.target.closest('.servicios-tabs')) return;
+
+            touchstartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        carruselWrapper.addEventListener('touchend', e => {
+            // EL ESCUDO: Verificamos de nuevo al soltar el dedo
+            if (e.target.closest('.servicios-tabs')) return;
+
+            touchendX = e.changedTouches[0].screenX;
+            const umbral = 35; 
+
+            if (touchendX < touchstartX - umbral) {
+                idx++; 
+                updateCarousel();
+            } else if (touchendX > touchstartX + umbral) {
+                idx--; 
+                updateCarousel();
+            }
+        }, { passive: true });
+    }
+
+
+    // Efecto Parallax 3D 
     const cardScene = document.getElementById('card-scene');
     const cardInner = document.getElementById('card-inner');
     const btnFlipForm = document.getElementById('btn-flip-form');
     const btnFlipBack = document.getElementById('btn-flip-back');
-    
-    // Seleccionamos los 3 mockups
     const mockups = document.querySelectorAll('.interfaz-mockup, .mini-mockup-card');
 
     if (cardScene || mockups.length > 0) {
         const updateTilt = () => {
             const winH = window.innerHeight;
-            const scrollY = window.scrollY; // Detecta la posición del scroll
-
-            // 1. Tilt de la tarjeta de contacto
             if (cardScene) {
                 const rect = cardScene.getBoundingClientRect();
                 if (rect.top < winH && rect.bottom > 0) {
@@ -130,7 +156,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
 
-            // 2. Tilt de los mockups al scrollear
             mockups.forEach(mockup => {
                 const rect = mockup.getBoundingClientRect();
                 if (rect.top < winH && rect.bottom > 0) {
@@ -141,17 +166,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
 
-            // 3. Efecto Parallax en figuras 3D de fondo (Ajustado para no esconderlas)
             const parallaxGeometries = document.querySelectorAll('.esfera-central-3d, .geometria-capsula-3d, .geometria-cubo-3d');
             parallaxGeometries.forEach(el => {
                 const speed = 0.05; 
-                // Calculamos la posición relativa al elemento para que no se escape
                 const rectTop = el.parentElement.getBoundingClientRect().top;
-                
-                // Solo aplicamos el efecto si está visible en pantalla
                 if (rectTop < winH && rectTop > -winH) {
                     const yPos = (winH - rectTop) * speed; 
-                    
                     if (el.classList.contains('esfera-central-3d')) {
                         el.style.transform = `translate(-65%, calc(-20% - ${yPos}px)) translateZ(0)`;
                     } else if (el.classList.contains('geometria-capsula-3d')) {
@@ -167,78 +187,20 @@ document.addEventListener("DOMContentLoaded", () => {
         updateTilt(); 
     }
 
-    // Giro 180 del formulario
+    // Giro 180 del formulario + EXPANSIÓN DE ESCENARIO
     if (btnFlipForm && btnFlipBack && cardInner) {
-        btnFlipForm.addEventListener('click', (e) => {
-            e.preventDefault();
-            cardInner.classList.add('is-flipped');
+        btnFlipForm.addEventListener('click', (e) => { 
+            e.preventDefault(); 
+            cardInner.classList.add('is-flipped'); 
+            // Le avisamos al escenario que se estire:
+            if (cardScene) cardScene.classList.add('is-expanded'); 
         });
-        btnFlipBack.addEventListener('click', (e) => {
-            e.preventDefault();
-            cardInner.classList.remove('is-flipped');
+
+        btnFlipBack.addEventListener('click', (e) => { 
+            e.preventDefault(); 
+            cardInner.classList.remove('is-flipped'); 
+            // El escenario vuelve a encogerse:
+            if (cardScene) cardScene.classList.remove('is-expanded'); 
         });
-    }
-    
-});
-
-// ==========================================
-// MOTOR TÁCTIL PARA EL CARRUSEL MÓVIL (Versión Quirúrgica)
-// ==========================================
-document.addEventListener('DOMContentLoaded', () => {
-    const carruselWrapper = document.querySelector('.servicios-interactive-wrapper');
-    const tabsContainer = document.querySelector('.servicios-tabs');
-    const tabs = document.querySelectorAll('.tab-btn-crystal');
-    
-    // 1. AUTO-CENTRADO SEGURO (Mata el bug de la pantalla corrida)
-    tabs.forEach(tab => {
-        tab.addEventListener('click', function() {
-            if (tabsContainer) {
-                // Matemática pura: calculamos el centro exacto del botón respecto a su contenedor
-                const scrollPos = this.offsetLeft - (tabsContainer.offsetWidth / 2) + (this.offsetWidth / 2);
-                
-                // Le ordenamos que mueva SOLO la caja de botones, protegiendo el resto de la página
-                tabsContainer.scrollTo({
-                    left: scrollPos,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-
-    // 2. DETECCIÓN DE DESLIZAMIENTO (SWIPE) PARA LAS TARJETAS
-    if (carruselWrapper) {
-        let touchstartX = 0;
-        let touchendX = 0;
-
-        // Detecta dónde pones el dedo al tocar los mockups
-        carruselWrapper.addEventListener('touchstart', e => {
-            touchstartX = e.changedTouches[0].screenX;
-        }, { passive: true });
-
-        // Detecta hacia dónde sueltas el dedo
-        carruselWrapper.addEventListener('touchend', e => {
-            touchendX = e.changedTouches[0].screenX;
-            procesarDeslizamiento();
-        }, { passive: true });
-
-        function procesarDeslizamiento() {
-            // Buscamos qué tarjeta está activa actualmente
-            let activeIndex = Array.from(tabs).findIndex(t => t.classList.contains('active'));
-            if (activeIndex === -1) return;
-
-            const umbral = 50; // Sensibilidad: debes mover el dedo al menos 50px
-
-            if (touchendX < touchstartX - umbral) {
-                // Deslizaste hacia la izquierda (Avanzar)
-                if (activeIndex < tabs.length - 1) {
-                    tabs[activeIndex + 1].click(); 
-                }
-            } else if (touchendX > touchstartX + umbral) {
-                // Deslizaste hacia la derecha (Retroceder)
-                if (activeIndex > 0) {
-                    tabs[activeIndex - 1].click(); 
-                }
-            }
-        }
     }
 });

@@ -1133,4 +1133,420 @@
         width: 100% !important;
         justify-content: center !important;
     }
+    
+}
+
+/* =================================================================
+   12. ALTA GAMA MÓVIL: TARJETA CONTACTO + FOOTER FLOTANTE
+================================================================= */
+
+@media screen and (max-width: 480px) {
+
+    /* --- A. TARJETA DE CONTACTO (Sin ícono, 100% minimalista) --- */
+    
+    .seccion-contacto {
+        padding: 40px 16px 60px !important;
+        margin-top: 20px !important;
+        width: 100%;
+    }
+
+    .cta-card-scene {
+        width: 100% !important;
+        max-width: 385px !important;
+        margin: 0 auto !important;
+    }
+
+    /* Tarjeta principal: Obsidiana pura, bordes más secos (16px) y texto a la izquierda */
+    .cta-card-front, 
+    .cta-card-back {
+        padding: 36px 24px !important; 
+        background: #000000 !important; /* Negro absoluto */
+        border: 1px solid rgba(255, 255, 255, 0.12) !important;
+        border-radius: 16px !important; 
+        
+        display: flex !important;
+        flex-direction: column !important;
+        
+        /* ALINEACIÓN ESTRICTA A LA IZQUIERDA */
+        align-items: flex-start !important;
+        text-align: left !important;
+        gap: 12px !important;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.95) !important;
+    }
+
+    /* ANIQUILAMOS EL ÍCONO */
+    .cta-card-front .cta-icon-wrapper,
+    .cta-card-back .cta-icon-wrapper {
+        display: none !important;
+    }
+
+    /* Títulos alineados a la izquierda */
+    .cta-card-front h2,
+    .cta-card-back h3 {
+        font-size: 2.2rem !important;
+        line-height: 1.1 !important;
+        margin-bottom: 3rem;
+        letter-spacing: -0.03em !important;
+        text-align: left !important;
+        width: 100% !important;
+    }
+
+    /* Párrafo descriptivo */
+    .cta-card-front p {
+
+        display: none;
+    }
+
+    /* Botón estirado ergonómico para el pulgar */
+    .cta-card-front .btn-blanco-fuerte {
+        width: 100% !important;
+        height: 52px !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        font-size: 1.05rem !important;
+        border-radius: 14px !important;
+        margin: 0 !important;
+    }
+
+
+    /* --- B. FOOTER "ISLA FLOTANTE" (Idéntico a la tarjeta) --- */
+
+    /* Volvemos invisible el fondo negro tradicional que abarcaba de lado a lado */
+    .footer-premium {
+        background: transparent !important;
+        border: none !important;
+        padding: 0 16px 36px 16px !important; /* Margen inferior para que flote */
+    }
+
+    /* Convertimos su contenido interno en la caja flotante */
+    .footer-inner {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        
+        background: #09090b !important; /* El mismo tono de la tarjeta de contacto */
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        border-radius: 24px !important;
+        padding: 32px 24px !important;
+        gap: 24px !important; 
+        
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9) !important;
+        width: 100% !important;
+        max-width: 385px !important;
+        margin: 0 auto !important;
+    }
+
+    /* Logo arriba */
+    .footer-logo-premium {
+        margin: 0 !important;
+        font-size: 1.4rem !important;
+    }
+
+    /* Botones/Links abajo en dos columnas o fila limpia */
+    .footer-links-premium {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 20px !important;
+        width: 100% !important;
+    }
+
+    .footer-links-premium a {
+        font-size: 0.9rem !important;
+        color: rgba(255, 255, 255, 0.65) !important;
+    }
+
+    .copyright-premium {
+        font-size: 0.75rem !important;
+        color: rgba(255, 255, 255, 0.3) !important;
+        margin-top: 4px !important;
+    }
+
+    /* El banner descriptivo inferior (.banner-metodologia-premium) también a la izquierda */
+    .banner-metodologia-premium {
+        background: #000000 !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        border-radius: 16px !important;
+        padding: 24px 20px !important;
+        margin-top: 16px !important;
+        
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        text-align: left !important;
+        gap: 8px !important;
+    }
+
+    /* Botón estirado al 100% */
+    .cta-card-front .btn-blanco-fuerte,
+    .form-contacto .btn-blanco-fuerte {
+        width: 100% !important;
+        height: 48px !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        font-size: 1rem !important;
+        border-radius: 10px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+}
+
+/* =================================================================
+   13. PULIDO MICROMÉTRICO (Sastrería para pantallas de 320px)
+================================================================= */
+
+@media screen and (max-width: 480px) {
+
+    /* --- 1. CANDADO DE 1 SOLA LÍNEA (Minitítulos y Botón Hero) --- */
+    
+    /* Minitítulos coloridos domados */
+    .solucion-tag-premium,
+    .card-mini-title-premium,
+    [class*="mini-title"] {
+        white-space: nowrap !important; /* REGLA FÍSICA: Prohibido saltar de renglón */
+        font-size: 0.64rem !important;  /* Letra microscópica de alta definición */
+        letter-spacing: 0.03em !important; /* Comprimimos el tracking para ganar milímetros */
+        width: fit-content !important;
+        max-width: 100% !important;
+        
+        /* Seguro anti-desborde: si la pantalla mide 280px, pondrá "..." al final en vez de romperse */
+        overflow: hidden !important;
+        text-overflow: ellipsis !important; 
+    }
+
+    /* Botón principal del Hero en una sola línea */
+    .hero .btn-primary {
+        white-space: nowrap !important;
+        font-size: 0.92rem !important; /* Ajuste milimétrico */
+        padding: 15px 24px !important;
+        width: fit-content !important;
+        max-width: 92vw !important;
+    }
+
+
+    /* --- 2. COMPRESIÓN INTERNA DEL CARRUSEL (Todo juntito) --- */
+
+    .card-servicio-ancha.is-center .card-info-group {
+        gap: 6px !important; /* Distancia entre el minitítulo y el H3 */
+        padding: 22px 18px !important; /* Reducimos el aire de la caja */
+        height: auto !important;
+        min-height: 180px !important;
+    }
+
+    .card-servicio-ancha.is-center .card-header-servicio {
+        gap: 2px !important; /* Pegamos el minitítulo al título principal */
+    }
+
+    .card-servicio-ancha.is-center .card-header-servicio h3 {
+        font-size: 1.6rem !important;
+        line-height: 1.1 !important;
+        margin: 0 !important;
+    }
+
+    /* El párrafo gris que acompaña al título del carrusel */
+    .card-servicio-ancha.is-center .card-header-servicio h3 span {
+        display: block !important;
+        margin-top: 4px !important; /* Pegadito al H3 */
+        font-size: 0.88rem !important;
+        line-height: 1.35 !important;
+    }
+
+
+    /* --- 3. ENSANCHAMIENTO PANORÁMICO (A 12px de los bordes del móvil) --- */
+
+    /* Fijamos los "fosos" laterales de las secciones a exactamente 12px */
+    .seccion-capas,
+    .seccion-contacto {
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+    }
+
+    /* Estiramos las 3 tarjetas horizontales para que abracen los bordes */
+    .privacy-card,
+    .cta-card-scene,
+    .banner-metodologia-premium {
+        width: 100% !important;
+        max-width: 420px !important; /* Permite que se estiren al 100% en teléfonos pequeños */
+        margin-left: auto !important;
+        margin-right: auto !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Blindamos el interior de la tarjeta de contacto para que herede el nuevo ancho */
+    .cta-card-front,
+    .cta-card-back {
+        width: 100% !important;
+        box-sizing: border-box !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+}
+
+/* =================================================================
+   14. CORRECCIONES DE CIERRE (El Toque de Gracia)
+================================================================= */
+
+@media screen and (max-width: 480px) {
+
+    /* --- 1. MATAMOS EL VACÍO INFERIOR DEL CARRUSEL --- */
+    .card-servicio-ancha.is-center .card-info-group {
+        min-height: 0 !important; /* Destruye el piso invisible de 180px que generaba el hueco */
+        height: fit-content !important; 
+        padding: 20px 18px 16px 18px !important; /* Tapa de arriba, ajustado milimétricamente abajo */
+    }
+
+
+/* --- 2. EL FORMULARIO ELÁSTICO (Pequeño de frente, expansivo de atrás) --- */
+
+    /* A. El lienzo maestro: En reposo mide unos compactos 215px */
+    .cta-card-scene {
+        height: 215px !important;
+        transition: height 0.5s var(--cubic-apple) !important;
+    }
+
+    /* Cuando el JS avisa que tocaste el botón, el lienzo crece a 375px */
+    .cta-card-scene.is-expanded {
+        height: 375px !important;
+    }
+
+    .cta-card-inner {
+        height: 100% !important;
+    }
+
+    /* B. Las dos caras se amoldan al lienzo en tiempo real */
+    .cta-card-front,
+    .cta-card-back {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 0 !important; /* Matamos el candado rígido anterior */
+        box-sizing: border-box !important;
+    }
+
+    /* C. Cara Frontal (Estuche pequeño centrado) */
+    .cta-card-front {
+        justify-content: center !important;
+        padding: 24px 20px !important;
+    }
+
+    /* D. Cara Trasera (Órganos internos hiper-comprimidos para entrar en los 375px) */
+    .cta-card-back {
+        padding: 24px 20px !important;
+        justify-content: center !important;
+    }
+
+    .cta-card-back h3 {
+        font-size: 1.7rem !important;
+        margin-bottom: 12px !important;
+    }
+
+    .form-contacto {
+        gap: 8px !important; 
+        margin-bottom: 10px !important;
+    }
+
+    .form-input {
+        padding: 11px 14px !important; 
+        font-size: 0.85rem !important;
+        border-radius: 10px !important;
+    }
+
+    .form-textarea {
+        height: 60px !important; 
+    }
+
+    .form-contacto .btn-blanco-fuerte {
+        height: 44px !important;
+        font-size: 0.95rem !important;
+    }
+
+    .btn-volver {
+        margin-top: 4px !important;
+        font-size: 0.85rem !important;
+        padding: 4px !important;
+    }
+
+    /* --- 3. TRANSPARENCIA ABSOLUTA (Clon exacto de la tarjeta Google) --- */
+
+    .banner-metodologia-premium {
+        display: flex !important;
+        flex-direction: row !important; /* Obliga: Ícono a la izq, texto a la der */
+        align-items: flex-start !important;
+        padding: 22px 18px !important;
+        gap: 14px !important;
+        
+        background: #000000 !important;
+        border: 1px solid rgba(255, 255, 255, 0.12) !important;
+        border-radius: 16px !important;
+    }
+
+    /* El ícono de la izquierda blindado */
+    .banner-icon-premium {
+        width: 38px !important;
+        height: 38px !important;
+        flex-shrink: 0 !important; /* Prohíbe al navegador aplastar el ícono */
+        margin: 0 !important;
+    }
+    .banner-icon-premium svg {
+        width: 20px !important;
+        height: 20px !important;
+    }
+
+    /* El bloque de texto a la derecha */
+    .banner-text-premium {
+        display: flex !important;
+        flex-direction: column !important; /* Título arriba, párrafo abajo */
+        align-items: flex-start !important;
+        text-align: left !important;
+        gap: 4px !important;
+    }
+
+    .banner-text-premium h3 {
+        font-size: 1.05rem !important;
+        line-height: 1.25 !important;
+        color: #ffffff !important;
+        margin: 0 !important;
+    }
+
+    .banner-text-premium p {
+        font-size: 0.82rem !important;
+        line-height: 1.4 !important;
+        color: rgba(255, 255, 255, 0.6) !important;
+        margin: 0 !important;
+    }
+
+    /* --- 4. ECLIPSE LUNAR (Control de luz bajo la curva de inicio) --- */
+
+    /* A. El domo físico: Hacemos que su gris metálico dure solo 35px y caiga a negro puro */
+    .seccion-capas::before {
+        background: linear-gradient(to bottom, #151518 0%, #000000 35px, #000000 100%) !important;
+        
+        /* Limpiamos la expansiva sombra de 200px que heredaba de la PC */
+        box-shadow: 0 -1px 3px rgba(255, 255, 255, 0.15), 
+                    0 -20px 40px rgba(255, 255, 255, 0.06) !important; 
+    }
+
+    /* B. El resplandor fantasma: Lo comprimimos de 300px a unos quirúrgicos 55px */
+    .seccion-capas::after {
+        width: 100% !important;
+        height: 85px !important; /* Reducido a casi una sexta parte */
+        top: -25px !important;
+        
+        filter: blur(36px) !important; /* Niebla estrictamente contenida */
+        -webkit-filter: blur(16px) !important;
+        
+        background: radial-gradient(
+            ellipse at 50% 80%, 
+            rgba(255, 255, 255, 0.1) 0%, 
+            rgba(255, 255, 255, 0.05) 45%,
+            transparent 70%
+        ) !important;
+    }
 }
