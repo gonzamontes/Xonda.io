@@ -222,7 +222,7 @@ body {
 .card-mini-title-premium,
 .phase-number {
     font-family: monospace !important;
-    font-size: 0.75rem !important; 
+    font-size: 1.2rem !important; 
     font-weight: 600 !important;
     text-transform: uppercase !important;
     letter-spacing: 0.06em !important;

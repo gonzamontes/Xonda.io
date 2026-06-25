@@ -123,7 +123,7 @@
 
 .solucion-info p, .solucion-box-mini p, .card-header-servicio h3 span {
     font-weight: 400; font-size: 1.3rem; color: rgba(255, 255, 255, 0.72); line-height: 1.55;
-    -webkit-text-fill-color: rgba(255, 255, 255, 0.72);
+    -webkit-text-fill-color: rgba(255, 255, 255, 0.72); margin-bottom: 0;
 }
 
 /* =========================================
