@@ -431,7 +431,6 @@
         padding-top: 120px; /* Le damos aire respecto al Navbar */
     }
     .hero-title { 
-        font-size: 2.6rem !important; /* Domamos el título gigante */
         line-height: 1.15; 
         padding: 0 10px 10px; /* Evita que el degradado se corte abajo */
     }
@@ -452,7 +451,6 @@
         min-height: 85vh; /* Acortamos la sección para que lo que está abajo también suba */
     }
     .hero-title { 
-        font-size: 2.6rem !important; 
         line-height: 1.15; 
         padding: 0 10px 10px; 
     }
@@ -472,11 +470,11 @@
         align-items: flex-start;
         padding-top: 130px; 
         min-height: auto; /* Quitamos el alto forzado de pantalla completa */
-        padding-bottom: 120px; /* Espacio justo antes de que empiece la curva */
+        padding-bottom: 50px; /* Espacio justo antes de que empiece la curva */
     }
     .hero-title { 
-        font-size: 2.5rem !important; 
-        line-height: 1.15; 
+        font-size: 3.2rem !important; /* Domamos el título gigante */
+        font-weight: 600 !important;
         padding: 0 10px 10px; 
     }
     .hero-subtitle { 
@@ -502,7 +500,7 @@
     .seccion-capas::before {
         width: 200%;     /* El ancho exacto que pediste */
         left: -50%;      /* Compensación matemática para centrar el pico */
-        border-radius: 50% 50% 0 0 / 80px 80px 0 0; 
+        border-radius: 50% 50% 0 0 / 355px 355px 0 0; 
     }
 
 /* 3. TARJETA DE PRIVACIDAD ULTRA COMPACTA */
@@ -554,8 +552,9 @@
     .problemas-main-title {
         font-size: 3.2rem; /* EL CAMBIO: Título principal bastante más grande */
         line-height: 1.1;  /* Ajustamos el interlineado para que no choque si baja a dos líneas */
-        margin-bottom: 3.5rem; 
         font-weight: 600 !important;
+        margin-bottom: 3.5rem; 
+        
     }
     
     /* Forzamos el apilamiento vertical estricto */
@@ -1351,6 +1350,10 @@
     
     .seccion-contacto {
         margin-top: 15rem !important; /* Empujamos la tarjeta de contacto hacia abajo */
+    }
+
+    .hero-title, .section-title-premium, .problemas-main-title {
+        font-size: 2.5rem !important;
     }
 }
 
