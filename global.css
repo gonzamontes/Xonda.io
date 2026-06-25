@@ -231,6 +231,6 @@ body {
     -webkit-text-fill-color: transparent !important;
     background-clip: text !important;
     white-space: nowrap !important;
-    margin-bottom: 12px !important;
+    margin-bottom: 1rem !important;
     display: inline-block !important;
 }
