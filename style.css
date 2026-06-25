@@ -470,7 +470,7 @@
         align-items: flex-start;
         padding-top: 130px; 
         min-height: auto; /* Quitamos el alto forzado de pantalla completa */
-        padding-bottom: 50px; /* Espacio justo antes de que empiece la curva */
+        padding-bottom: 15rem; /* Espacio justo antes de que empiece la curva */
     }
     .hero-title { 
         font-size: 3.2rem !important; /* Domamos el título gigante */
