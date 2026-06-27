@@ -1,1565 +1,619 @@
 /* =========================================
-    HERO SECTION
+   1. HERO SECTION
 ========================================= */
-.hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    padding-top: 80px;
-}
-
-.hero-layout {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    max-width: 950px;
-    z-index: 10;
-    margin: 0 auto;
-}
-
-.hero-title {
-    font-weight: 420;
-    font-size: 6rem;
-    margin-bottom: 1rem;
-}
-
-.hero-subtitle {
-    font-size: 2rem;
-    font-weight: 490;
-    color: #949499;
-    max-width: 22em;
-    margin: 0 auto 2.5rem;
-    line-height: 1.2;
-    letter-spacing: -.005em;
-}
+.hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; padding-top: 80px; }
+.hero-layout { display: flex; flex-direction: column; align-items: center; text-align: center; width: 100%; max-width: 950px; z-index: 10; margin: 0 auto; }
+.hero-title { font-weight: 420; font-size: 6rem; margin-bottom: 1rem; }
+.hero-subtitle { font-size: 2rem; font-weight: 490; color: #949499; max-width: 22em; margin: 0 auto 2.5rem; line-height: 1.2; letter-spacing: -.005em; }
 
 /* =========================================
-    SECCIÓN CAPAS (Fondo Oscuro Curvo)
+   2. SECCIÓN CAPAS (Fondo Oscuro Curvo)
 ========================================= */
-.seccion-capas {
-    position: relative;
-    padding: 160px 24px 0; 
-    width: 100%;
-    background-color: var(--bg-pure-black);
-    margin-top: -120px;
-    z-index: 1;
-}
+.seccion-capas { position: relative; padding: 160px 24px 0; width: 100%; background-color: var(--bg-pure-black); margin-top: -120px; z-index: 1; }
+.seccion-capas::before, .seccion-capas::after { content: ""; position: absolute; }
+.seccion-capas::before { top: 0; left: -50%; width: 200%; height: 100%; background: linear-gradient(to bottom, #121214 0, var(--bg-pure-black) 15%); border-radius: 50% 50% 0 0; z-index: -2; box-shadow: 0 -1px 3px rgba(255,255,255,.1), 0 -30px 80px rgba(255,255,255,.12), 0 -80px 200px rgba(255,255,255,.06), 0 20px 50px rgba(0,0,0,.9); }
+.seccion-capas::after { top: -50px; left: 50%; transform: translateX(-50%); width: 800px; height: 300px; filter: blur(40px); z-index: -1; pointer-events: none; background: radial-gradient(ellipse at 50% 100%, rgba(255,255,255,.25) 0, transparent 70%); }
 
-.seccion-capas::before, .seccion-capas::after {
-    content: "";
-    position: absolute;
-}
-
-.seccion-capas::before {
-    top: 0; left: -50%; width: 200%; height: 100%;
-    background: linear-gradient(to bottom, #121214 0, var(--bg-pure-black) 15%);
-    border-radius: 50% 50% 0 0;
-    z-index: -2;
-    box-shadow: 0 -1px 3px rgba(255, 255, 255, .1), 0 -30px 80px rgba(255, 255, 255, .12), 0 -80px 200px rgba(255, 255, 255, .06), 0 20px 50px rgba(0, 0, 0, .9);
-}
-
-.seccion-capas::after {
-    top: -50px; left: 50%; transform: translateX(-50%);
-    width: 800px; height: 300px; filter: blur(40px);
-    z-index: -1; pointer-events: none;
-    background: radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, .25) 0, transparent 70%);
-}
-
-.privacy-card {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    max-width: 80rem;
-    margin: 2rem auto 20rem;
-    padding: 3rem;
-    background: var(--bg-pure-black);
-    border: 1px solid rgba(133, 133, 133, .5);
-    border-radius: 18px;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, .6);
-    z-index: 2;
-}
-
-.privacy-badge {
-    display: flex; align-items: center; justify-content: center;
-    width: 5rem; height: 5rem; flex-shrink: 0;
-}
-
+.privacy-card { display: flex; align-items: center; gap: 24px; max-width: 80rem; margin: 2rem auto 20rem; padding: 3rem; background: var(--bg-pure-black); border: 1px solid rgba(133,133,133,.5); border-radius: 18px; box-shadow: 0 25px 50px rgba(0,0,0,.6); z-index: 2; }
+.privacy-badge { display: flex; align-items: center; justify-content: center; width: 5rem; height: 5rem; flex-shrink: 0; }
 .privacy-content h4 { font-size: 1.6rem; font-weight: 500; margin-bottom: 6px; }
 .privacy-content p { font-size: 1.5rem; color: #8E8E93; line-height: 1.5; }
 
 /* =========================================
-    PROBLEMAS SECTION
+   3. PROBLEMAS SECTION
 ========================================= */
 .problemas-seccion { max-width: 85rem; margin: 0 auto 160px; position: relative; }
 .problemas-main-title { font-size: 4rem; margin-bottom: 6.5rem; }
-
-.solucion-destacada, .soluciones-secundarias {
-    display: grid; grid-template-columns: 1fr 1fr; align-items: center; position: relative;
-}
-
+.solucion-destacada, .soluciones-secundarias { display: grid; grid-template-columns: 1fr 1fr; align-items: center; position: relative; }
 .solucion-destacada { gap: 1rem; margin: 1.5rem 0 12rem; }
-.soluciones-secundarias { gap: 5rem; border-top: 1px solid rgba(255, 255, 255, .04); padding-top: 6rem; margin-top: 4rem; }
-
-.soluciones-secundarias::after {
-    content: ""; position: absolute; top: 6rem; bottom: 0; left: 50%;
-    transform: translateX(-50%); width: 1px; background: rgba(255, 255, 255, .06);
-}
-
+.soluciones-secundarias { gap: 5rem; border-top: 1px solid rgba(255,255,255,.04); padding-top: 6rem; margin-top: 4rem; }
+.soluciones-secundarias::after { content: ""; position: absolute; top: 6rem; bottom: 0; left: 50%; transform: translateX(-50%); width: 1px; background: rgba(255,255,255,.06); }
 .solucion-info, .solucion-box-mini { text-align: left; z-index: 2; display: flex; flex-direction: column; }
 .solucion-info h3, .solucion-box-mini h3 { margin-bottom: 1.2rem; }
 .solucion-info p, .solucion-box-mini p { margin: 0; }
 .solucion-info p { max-width: 440px; }
 
-/* Estilos compartidos para Títulos H3 Premium */
-.solucion-info h3, .solucion-box-mini h3, .card-header-servicio h3 {
-    font-size: 2.9rem; font-weight: 600; letter-spacing: -0.03em; line-height: 1.15;
-    background: linear-gradient(180deg, #FFFFFF 15%, #8e8e93b2 100%);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-}
-
-.solucion-info p, .solucion-box-mini p, .card-header-servicio h3 span {
-    font-weight: 400; font-size: 1.3rem; color: rgba(255, 255, 255, 0.72); line-height: 1.55;
-    -webkit-text-fill-color: rgba(255, 255, 255, 0.72); margin-bottom: 0;
-}
+/* Títulos H3 Premium */
+.solucion-info h3, .solucion-box-mini h3, .card-header-servicio h3 { font-size: 2.9rem; font-weight: 600; letter-spacing: -.03em; line-height: 1.15; background: linear-gradient(180deg, #FFF 15%, #8e8e93b2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.solucion-info p, .solucion-box-mini p, .card-header-servicio h3 span { font-weight: 400; font-size: 1.3rem; color: rgba(255,255,255,.72); line-height: 1.55; -webkit-text-fill-color: rgba(255,255,255,.72); margin-bottom: 0; }
 
 /* =========================================
-    FIGURAS 3D FLOTANTES
+   4. FIGURAS 3D FLOTANTES (Optimizadas para GPU)
 ========================================= */
-.esfera-central-3d, .esfera-fondo-carrusel, .geometria-capsula-3d, .geometria-cubo-3d {
-    position: absolute; z-index: 0; pointer-events: none; border: 1px solid rgba(255, 255, 255, .18);
-}
-
-.esfera-central-3d {
-    width: 10rem; height: 10rem; top: 90%; left: 50%; border-radius: 50%;
-    transform: translate(-65%, -20%);
-    background: radial-gradient(circle at 40% 40%, rgba(255,255,255,.82) 0, rgba(255,255,255,.6) 30%, rgba(255,255,255,.4) 60%, rgba(255,255,255,.3) 100%);
-    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-    box-shadow: -10px 15px 35px rgba(0,0,0,.4), inset -4px -4px 10px rgba(0,0,0,.3), inset 6px 6px 15px rgba(255,255,255,.25);
-}
-
-.esfera-fondo-carrusel {
-    top: 25px; left: 5px; width: 10rem; height: 10rem; border-radius: 50%;
-    background: radial-gradient(circle at 40% 40%, rgba(255,255,255,.68) 0, rgba(255,255,255,.6) 30%, rgba(255,255,255,.3) 60%, rgba(255,255,255,.2) 100%);
-    box-shadow: -15px 15px 40px rgba(0,0,0,.6), inset 5px 5px 15px rgba(255,255,255,.4);
-    animation: flotarEsfera 6s ease-in-out infinite;
-}
-
-.geometria-capsula-3d, .geometria-cubo-3d {
-    background: radial-gradient(circle at 40% 30%, rgba(255,255,255,.82) 0, rgba(255,255,255,.5) 40%, rgba(255,255,255,.2) 70%, rgba(0,0,0,.4) 100%);
-}
-
-.geometria-capsula-3d {
-    width: 90px; height: 140px; border-radius: 50px; bottom: 20px; left: -35px;
-    transform: rotate(35deg) translateZ(-10px); box-shadow: -15px 15px 30px rgba(0,0,0,.5);
-}
-
-.geometria-cubo-3d {
-    width: 110px; height: 110px; border-radius: 28px; top: 10px; right: -30px;
-    transform: rotate(-20deg) rotateX(15deg) translateZ(-10px); box-shadow: 15px 15px 35px rgba(0,0,0,.5);
-}
+.esfera-central-3d, .esfera-fondo-carrusel, .geometria-capsula-3d, .geometria-cubo-3d { position: absolute; z-index: 0; pointer-events: none; border: 1px solid rgba(255,255,255,.18); will-change: transform; }
+.esfera-central-3d { width: 10rem; height: 10rem; top: 90%; left: 50%; border-radius: 50%; transform: translate(-65%, -20%); background: radial-gradient(circle at 40% 40%, rgba(255,255,255,.82) 0, rgba(255,255,255,.6) 30%, rgba(255,255,255,.4) 60%, rgba(255,255,255,.3) 100%); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: -10px 15px 35px rgba(0,0,0,.4), inset -4px -4px 10px rgba(0,0,0,.3), inset 6px 6px 15px rgba(255,255,255,.25); }
+.esfera-fondo-carrusel { top: 25px; left: 5px; width: 10rem; height: 10rem; border-radius: 50%; background: radial-gradient(circle at 40% 40%, rgba(255,255,255,.68) 0, rgba(255,255,255,.6) 30%, rgba(255,255,255,.3) 60%, rgba(255,255,255,.2) 100%); box-shadow: -15px 15px 40px rgba(0,0,0,.6), inset 5px 5px 15px rgba(255,255,255,.4); animation: flotarEsfera 6s ease-in-out infinite; }
+.geometria-capsula-3d, .geometria-cubo-3d { background: radial-gradient(circle at 40% 30%, rgba(255,255,255,.82) 0, rgba(255,255,255,.5) 40%, rgba(255,255,255,.2) 70%, rgba(0,0,0,.4) 100%); }
+.geometria-capsula-3d { width: 90px; height: 140px; border-radius: 50px; bottom: 20px; left: -35px; transform: rotate(35deg) translateZ(-10px); box-shadow: -15px 15px 30px rgba(0,0,0,.5); }
+.geometria-cubo-3d { width: 110px; height: 110px; border-radius: 28px; top: 10px; right: -30px; transform: rotate(-20deg) rotateX(15deg) translateZ(-10px); box-shadow: 15px 15px 35px rgba(0,0,0,.5); }
 
 /* =========================================
-    MOCKUPS VISUALES
+   5. MOCKUPS VISUALES
 ========================================= */
 .solucion-visual-wrapper { display: flex; align-items: center; perspective: 1200px; z-index: 1; width: 100%; margin-left: -30px; }
 .mini-visual-wrapper { position: relative; width: 100%; height: 340px; margin-top: 3.5rem; display: flex; align-items: center; justify-content: center; perspective: 1200px; }
-
-.interfaz-mockup, .mini-mockup-card {
-    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, .06);
-    z-index: 1; cursor: default; user-select: none;
-}
-
-.interfaz-mockup {
-    width: 40rem; height: 30rem; border-radius: 20px; padding: 24px; box-shadow: 0 40px 80px rgba(0, 0, 0, .9); transform: rotateY(-8deg) rotateX(3deg);
-    background: radial-gradient(circle at 80% 0, rgba(6, 182, 212, .28) 0, transparent 50%), radial-gradient(circle at 40% 0, rgba(139, 92, 246, .28) 0, transparent 60%), radial-gradient(circle at 0 0, rgba(236, 72, 153, .18) 0, transparent 40%), linear-gradient(185deg, rgba(17, 17, 21, .75) 0, rgba(5, 5, 7, .35) 100%);
-}
-
-.mini-mockup-card {
-    width: 100%; max-width: 440px; height: 280px; border-radius: 16px; padding: 20px; box-shadow: 0 30px 60px rgba(0, 0, 0, .8); transform: rotateY(-6deg) rotateX(2deg);
-    background: linear-gradient(185deg, rgba(17, 17, 21, .75) 0, rgba(5, 5, 7, .6) 100%);
-} 
-
-.mockup-header { background: rgba(255, 255, 255, .03); border: 1px solid rgba(255, 255, 255, .05); padding: 12px 16px; border-radius: 12px; font-size: 1.4rem; color: #8E8E93; margin-bottom: 20px; }
-.mockup-response-card { background: rgba(255, 255, 255, .01); border: 1px solid rgba(255, 255, 255, .03); border-radius: 14px; padding: 16px; }
+.interfaz-mockup, .mini-mockup-card { backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,.06); z-index: 1; cursor: default; user-select: none; will-change: transform; }
+.interfaz-mockup { width: 40rem; height: 30rem; border-radius: 20px; padding: 24px; box-shadow: 0 40px 80px rgba(0,0,0,.9); transform: rotateY(-8deg) rotateX(3deg); background: radial-gradient(circle at 80% 0, rgba(6,182,212,.28) 0, transparent 50%), radial-gradient(circle at 40% 0, rgba(139,92,246,.28) 0, transparent 60%), radial-gradient(circle at 0 0, rgba(236,72,153,.18) 0, transparent 40%), linear-gradient(185deg, rgba(17,17,21,.75) 0, rgba(5,5,7,.35) 100%); }
+.mini-mockup-card { width: 100%; max-width: 440px; height: 280px; border-radius: 16px; padding: 20px; box-shadow: 0 30px 60px rgba(0,0,0,.8); transform: rotateY(-6deg) rotateX(2deg); background: linear-gradient(185deg, rgba(17,17,21,.75) 0, rgba(5,5,7,.6) 100%); } 
+.mockup-header { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.05); padding: 12px 16px; border-radius: 12px; font-size: 1.4rem; color: #8E8E93; margin-bottom: 20px; }
+.mockup-response-card { background: rgba(255,255,255,.01); border: 1px solid rgba(255,255,255,.03); border-radius: 14px; padding: 16px; }
 .mockup-response-card p { font-size: 1.4rem; line-height: 1.5; color: #E5E5EA; margin-bottom: 12px; }
-.mockup-inner-pill { background: rgba(255, 255, 255, .02); border: 1px solid rgba(255, 255, 255, .04); padding: 10px; border-radius: 8px; display: flex; justify-content: space-between; font-size: 1.3rem; }
+.mockup-inner-pill { background: rgba(255,255,255,.02); border: 1px solid rgba(255,255,255,.04); padding: 10px; border-radius: 8px; display: flex; justify-content: space-between; font-size: 1.3rem; }
 .mockup-inner-pill span { color: #fff; } .mockup-inner-pill small { color: #636366; }
 
+/* Elementos Mini */
 .mini-header { font-size: .8rem; color: #8E8E93; font-weight: 500; margin-bottom: 16px; }
 .mini-list { display: flex; flex-direction: column; gap: 10px; }
-.mini-email-item, .mini-item { display: flex; gap: 12px; padding: 12px; border-radius: 10px; background: rgba(255, 255, 255, .01); border: 1px solid rgba(255, 255, 255, .03); }
-.mini-item.active-todo { background: rgba(255, 255, 255, .03); border-color: rgba(255, 255, 255, .06); }
-
+.mini-email-item, .mini-item { display: flex; gap: 12px; padding: 12px; border-radius: 10px; background: rgba(255,255,255,.01); border: 1px solid rgba(255,255,255,.03); }
+.mini-item.active-todo { background: rgba(255,255,255,.03); border-color: rgba(255,255,255,.06); }
 .todo-check { width: 14px; height: 14px; border: 1px solid #ff9f0a; border-radius: 3px; margin-top: 3px; flex-shrink: 0; }
 .email-body, .todo-body { font-size: .8rem; line-height: 1.4; color: #E5E5EA; }
 .todo-body span { display: block; color: #636366; font-size: .72rem; margin-top: 2px; }
-
-.email-avatar { width: 28px; height: 28px; border-radius: 50%; background: rgba(255, 255, 255, .05); display: flex; align-items: center; justify-content: center; font-size: .7rem; color: #fff; flex-shrink: 0; }
+.email-avatar { width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,.05); display: flex; align-items: center; justify-content: center; font-size: .7rem; color: #fff; flex-shrink: 0; }
 .email-top { display: flex; justify-content: space-between; font-size: .75rem; margin-bottom: 2px; }
 .email-top span, .mini-email-item p { color: #8E8E93; font-size: .75rem; }
 
 /* =========================================
-    CARRUSEL DE SERVICIOS
+   6. CARRUSEL DE SERVICIOS
 ========================================= */
 .section-header { text-align: center; margin: 50px auto 90px; display: flex; flex-direction: column; align-items: center; }
 .section-title-premium { font-size: 4.2rem; font-weight: 450; line-height: 1.1; color: #fff; margin-bottom: 24px; }
 .section-subtitle-premium { font-size: 1.3rem; color: #636366; line-height: 1.5; max-width: 520px; margin: 0 auto; }
 
 .servicios-tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 3rem; width: 100%; position: relative; z-index: 1000; }
-
-.tab-btn-crystal {
-    background: rgba(0, 0, 0, 0.26); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.01); border-radius: 10px;
-    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.15);
-    padding: 1.5rem; text-align: left; cursor: pointer; position: relative; display: flex; flex-direction: column; gap: 6px; z-index: 1; transition: all 0.4s var(--cubic-apple); overflow: hidden;
-}
-
-.tab-btn-crystal .tab-title { font-size: 1.4rem; font-weight: 500; color: #8E8E93; transition: color 0.3s ease; }
-.tab-btn-crystal .tab-desc { font-size: 0.95rem; color: rgba(255, 255, 255, 0.3); line-height: 1.4; transition: color 0.3s ease; }
-
-.tab-btn-crystal:hover { background: rgba(0, 0, 0, 0.26); transform: translateY(-2px); }
+.tab-btn-crystal { background: rgba(0,0,0,.26); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.01); border-radius: 10px; box-shadow: 0 40px 80px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.15); padding: 1.5rem; text-align: left; cursor: pointer; position: relative; display: flex; flex-direction: column; gap: 6px; z-index: 1; transition: all .4s var(--cubic-apple); overflow: hidden; }
+.tab-btn-crystal .tab-title { font-size: 1.4rem; font-weight: 500; color: #8E8E93; transition: color .3s ease; }
+.tab-btn-crystal .tab-desc { font-size: .95rem; color: rgba(255,255,255,.3); line-height: 1.4; transition: color .3s ease; }
+.tab-btn-crystal:hover { background: rgba(0,0,0,.26); transform: translateY(-2px); }
 .tab-btn-crystal:hover .tab-title, .tab-btn-crystal.active .tab-title { color: #fff; }
-.tab-btn-crystal:hover .tab-desc, .tab-btn-crystal.active .tab-desc { color: rgba(255, 255, 255, 0.7); }
-
-.tab-btn-crystal.active {
-    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.08) 0%, rgba(0, 0, 0, 0.25) 55%);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.02); transform: translateY(-4px); pointer-events: none;
-}
-
-.tab-btn-crystal::before {
-    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 1.5px;
-    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.8) 50%, transparent 100%);
-    z-index: 10; opacity: 0; transition: opacity 0.4s ease; pointer-events: none;
-}
+.tab-btn-crystal:hover .tab-desc, .tab-btn-crystal.active .tab-desc { color: rgba(255,255,255,.7); }
+.tab-btn-crystal.active { background: radial-gradient(circle at 50% 50%, rgba(255,255,255,.08) 0%, rgba(0,0,0,.25) 55%); box-shadow: 0 15px 30px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.02); border: 1px solid rgba(255,255,255,.02); transform: translateY(-4px); pointer-events: none; }
+.tab-btn-crystal::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 1.5px; background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.8) 50%, transparent 100%); z-index: 10; opacity: 0; transition: opacity .4s ease; pointer-events: none; }
 .tab-btn-crystal:hover::before, .tab-btn-crystal.active::before { opacity: 1; }
 
-.badge-running-container {
-    position: absolute; top: 22px; right: -65px; background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple)); padding: 5px 0; transform: rotate(35deg); box-shadow: 0 4px 15px rgba(139, 92, 246, .25); width: 260px; overflow: hidden; display: flex; z-index: 0;
-}
+.badge-running-container { position: absolute; top: 22px; right: -65px; background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple)); padding: 5px 0; transform: rotate(35deg); box-shadow: 0 4px 15px rgba(139,92,246,.25); width: 260px; overflow: hidden; display: flex; z-index: 0; }
 .badge-track { display: flex; animation: marqueeContinuo 8s linear infinite; width: max-content; }
 .badge-running-container span { font-size: .58rem; font-weight: 800; color: #000; letter-spacing: .06em; flex-shrink: 0; }
-
-@keyframes marqueeContinuo { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-50%, 0, 0); } }
+@keyframes marqueeContinuo { 0% { transform: translate3d(0,0,0); } 100% { transform: translate3d(-50%,0,0); } }
 
 .servicios-interactive-wrapper { position: relative; max-width: 1040px; margin: 40px auto 160px; width: 100%; height: 440px; z-index: 100; }
 .contenedor-servicios-fijo { position: relative; width: 100%; height: 100%; }
-
 .service-panel { display: none; visibility: hidden; opacity: 0; width: 100%; height: 100%; transition: opacity .4s var(--cubic-apple); }
 .service-panel.active { display: block; visibility: visible; opacity: 1; position: relative; z-index: 10; }
 
-.card-servicio-ancha {
-    position: absolute; top: 0; left: 50%; width: 100%; max-width: 1040px; height: 420px;
-    transform: translateX(-50%) scale(0.96); pointer-events: none; transition: transform 0.4s var(--cubic-apple);
-    display: grid; align-items: center; gap: 40px; padding: 32px 24px; grid-template-columns: 1fr 1.3fr; z-index: 1;
-}
-
+.card-servicio-ancha { position: absolute; top: 0; left: 50%; width: 100%; max-width: 1040px; height: 420px; transform: translateX(-50%) scale(.96); pointer-events: none; transition: transform .4s var(--cubic-apple); display: grid; align-items: center; gap: 40px; padding: 32px 24px; grid-template-columns: 1fr 1.3fr; z-index: 1; will-change: transform; }
 .card-servicio-ancha.is-center { transform: translateX(-50%) scale(1); pointer-events: auto; z-index: 10; }
+.card-info-group, .app-window-mockup { opacity: 0; visibility: hidden; transition: opacity .4s ease, visibility .4s; }
+.card-servicio-ancha.is-center .card-info-group, .card-servicio-ancha.is-center .app-window-mockup { opacity: 1; visibility: visible; transition: opacity .4s ease; }
 
-.card-info-group, .app-window-mockup { opacity: 0; visibility: hidden; transition: opacity 0.4s ease, visibility 0.4s; }
-.card-servicio-ancha.is-center .card-info-group, .card-servicio-ancha.is-center .app-window-mockup { opacity: 1; visibility: visible; transition: opacity 0.4s ease; }
-
-.card-info-group {
-    display: flex; flex-direction: column; justify-content: flex-start; gap: 16px; height: 260px; width: 100%; text-align: left; position: relative; z-index: 2; overflow: hidden;
-    background: rgba(0, 0, 0, 0.26); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.02); border-radius: 10px; padding: 35px 48px; box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.15);
-}
-
-.card-info-group::before {
-    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 1.5px;
-    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 1) 50%, transparent 100%); pointer-events: none;
-}   
-
+.card-info-group { display: flex; flex-direction: column; justify-content: flex-start; gap: 16px; height: 260px; width: 100%; text-align: left; position: relative; z-index: 2; overflow: hidden; background: rgba(0,0,0,.26); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.02); border-radius: 10px; padding: 35px 48px; box-shadow: 0 40px 80px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.15); }
+.card-info-group::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 1.5px; background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,1) 50%, transparent 100%); pointer-events: none; }   
 .card-header-servicio { display: flex; flex-direction: column; gap: 8px; width: 100%; }
 .solucion-tag-premium svg { stroke: #9cc5d6; flex-shrink: 0; }
 #pilares .card-mini-title-premium { color: var(--neon-purple); }
-
-.card-split-mockup {
-    display: flex; flex-direction: column; height: 100%; justify-content: center; width: 100%; position: relative; perspective: 1200px;
-    -webkit-mask-image: linear-gradient(to right, #000 75%, transparent 100%);
-}     
+.card-split-mockup { display: flex; flex-direction: column; height: 100%; justify-content: center; width: 100%; position: relative; perspective: 1200px; -webkit-mask-image: linear-gradient(to right, #000 75%, transparent 100%); }     
 
 .carousel-controls { position: absolute; bottom: -35px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 32px; z-index: 100; }
-
-.carousel-arrow {
-    width: 44px; height: 44px; background: transparent; border: .5px solid rgba(255, 255, 255, 0.15); border-radius: 50%;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    display: flex; align-items: center; justify-content: center; cursor: pointer; color: #fff; transition: all .2s ease;
-}
+.carousel-arrow { width: 44px; height: 44px; background: transparent; border: .5px solid rgba(255,255,255,.15); border-radius: 50%; box-shadow: 0 10px 20px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.2); display: flex; align-items: center; justify-content: center; cursor: pointer; color: #fff; transition: all .2s ease; }
 .carousel-arrow svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; } 
-.carousel-arrow:hover { transform: scale(1.08); background: rgba(15, 15, 20, 0.8); border-color: rgba(255, 255, 255, 0.25); box-shadow: inset 10px 10px 25px rgba(138, 92, 246, 0.12), inset -10px -10px 25px rgba(6, 181, 212, 0.11), 0 8px 15px rgba(0, 0, 0, 0.5); }
-
+.carousel-arrow:hover { transform: scale(1.08); background: rgba(15,15,20,.8); border-color: rgba(255,255,255,.25); box-shadow: inset 10px 10px 25px rgba(138,92,246,.12), inset -10px -10px 25px rgba(6,181,212,.11), 0 8px 15px rgba(0,0,0,.5); }
 .carousel-indicators { display: flex; gap: 12px; }
-.indicator-dot {
-    width: 13px; height: 3px; background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2); backdrop-filter: blur(5px); transition: all 0.3s ease; cursor: pointer;
-}
-.indicator-dot.active {
-    background: rgba(10, 10, 14, 0.9); border: none; transform: scale(1.4); box-shadow: inset 3px 3px 8px rgba(139, 92, 246, 0.7), inset -3px -3px 8px rgba(6, 182, 212, 0.7), 0 4px 8px rgba(0, 0, 0, 0.5);
-}
+.indicator-dot { width: 13px; height: 3px; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.1); box-shadow: inset 0 1px 0 rgba(255,255,255,.2); backdrop-filter: blur(5px); transition: all .3s ease; cursor: pointer; }
+.indicator-dot.active { background: rgba(10,10,14,.9); border: none; transform: scale(1.4); box-shadow: inset 3px 3px 8px rgba(139,92,246,.7), inset -3px -3px 8px rgba(6,182,212,.7), 0 4px 8px rgba(0,0,0,.5); }
 
 /* =========================================
-    MOCKUPS INTERIORES CARRUSEL
+   7. MOCKUPS INTERIORES CARRUSEL
 ========================================= */
-.app-window-mockup {
-    transform: rotateY(-12deg); transform-origin: left center; height: 340px; overflow: hidden; display: flex; flex-direction: column; cursor: default; user-select: none; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background: linear-gradient(185deg, rgba(35, 35, 42, 0.45) 0%, rgba(5, 5, 7, 0.15) 100%); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
-    border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12);
-}
-
-.app-top-bar { display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; background: rgba(0, 0, 0, .15); border-bottom: 1px solid rgba(255, 255, 255, .05); }
-.app-search-trigger { background: rgba(255, 255, 255, .02); border: 1px solid rgba(255, 255, 255, .04); border-radius: 5px; padding: 4px 10px; font-size: .65rem; color: rgba(255, 255, 255, .4); display: flex; align-items: center; gap: 6px; width: 52%; }
+.app-window-mockup { transform: rotateY(-12deg); transform-origin: left center; height: 340px; overflow: hidden; display: flex; flex-direction: column; cursor: default; user-select: none; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: linear-gradient(185deg, rgba(35,35,42,.45) 0%, rgba(5,5,7,.15) 100%); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); border: 1px solid rgba(255,255,255,.08); border-radius: 16px; box-shadow: 0 40px 80px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.12); will-change: transform; }
+.app-top-bar { display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; background: rgba(0,0,0,.15); border-bottom: 1px solid rgba(255,255,255,.05); }
+.app-search-trigger { background: rgba(255,255,255,.02); border: 1px solid rgba(255,255,255,.04); border-radius: 5px; padding: 4px 10px; font-size: .65rem; color: rgba(255,255,255,.4); display: flex; align-items: center; gap: 6px; width: 52%; }
 .app-body-layout { display: flex; flex: 1; height: calc(100% - 35px); width: 100%; }
-.app-side-panel { width: 32%; background: rgba(0, 0, 0, .1); border-right: 1px solid rgba(255, 255, 255, .05); padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+.app-side-panel { width: 32%; background: rgba(0,0,0,.1); border-right: 1px solid rgba(255,255,255,.05); padding: 12px; display: flex; flex-direction: column; gap: 8px; }
 .app-main-content { width: 68%; padding: 12px; display: flex; flex-direction: column; gap: 8px; overflow: hidden; }
 
-.app-list-item { background: rgba(255, 255, 255, .02); border: 1px solid rgba(255, 255, 255, .04); border-radius: 6px; padding: 9px 11px; display: flex; flex-direction: column; gap: 4px; }
-.app-list-item.active { background: rgba(255, 255, 255, .06); border-color: rgba(255, 255, 255, .1); }
-
-.status-pill-mini { padding: 2px 5px; border-radius: 3px; font-size: .52rem; font-weight: 500; font-family: monospace; color: rgba(255, 255, 255, .5); background: rgba(255, 255, 255, .04); border: 1px solid rgba(255, 255, 255, .06); }
+.app-list-item { background: rgba(255,255,255,.02); border: 1px solid rgba(255,255,255,.04); border-radius: 6px; padding: 9px 11px; display: flex; flex-direction: column; gap: 4px; }
+.app-list-item.active { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.1); }
+.status-pill-mini { padding: 2px 5px; border-radius: 3px; font-size: .52rem; font-weight: 500; font-family: monospace; color: rgba(255,255,255,.5); background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.06); }
 .app-item-title { font-size: .7rem; font-weight: 500; color: #fff; }
-.app-item-subtitle { font-size: .62rem; color: rgba(255, 255, 255, .4); line-height: 1.3; }
-.app-item-meta { display: flex; justify-content: space-between; align-items: center; font-size: .58rem; color: rgba(255, 255, 255, .25); font-weight: 400; }
+.app-item-subtitle { font-size: .62rem; color: rgba(255,255,255,.4); line-height: 1.3; }
+.app-item-meta { display: flex; justify-content: space-between; align-items: center; font-size: .58rem; color: rgba(255,255,255,.25); font-weight: 400; }
 
-/* Roadmap / UX Controls / Monitors */
 .roadmap-timeline-flex { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 24px 14px; position: relative; }
 .roadmap-step-node { display: flex; flex-direction: column; align-items: center; gap: 8px; position: relative; z-index: 2; width: 33%; }
-.roadmap-node-circle { width: 38px; height: 38px; border-radius: 50%; background: rgba(255, 255, 255, .02); border: 1px solid rgba(255, 255, 255, .06); display: flex; align-items: center; justify-content: center; font-size: .85rem; font-family: monospace; font-weight: 600; color: rgba(255, 255, 255, .35); }
-.roadmap-step-node.active .roadmap-node-circle { background: rgba(255, 255, 255, .07); border-color: rgba(255, 255, 255, .15); color: #fff; }
-.roadmap-vector-line { position: absolute; top: 42px; left: 15%; right: 15%; height: 1px; border-bottom: 1px dashed rgba(255, 255, 255, .08); z-index: 1; }
+.roadmap-node-circle { width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,.02); border: 1px solid rgba(255,255,255,.06); display: flex; align-items: center; justify-content: center; font-size: .85rem; font-family: monospace; font-weight: 600; color: rgba(255,255,255,.35); }
+.roadmap-step-node.active .roadmap-node-circle { background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.15); color: #fff; }
+.roadmap-vector-line { position: absolute; top: 42px; left: 15%; right: 15%; height: 1px; border-bottom: 1px dashed rgba(255,255,255,.08); z-index: 1; }
 
-.ux-control-card { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; background: rgba(255, 255, 255, .02); border: 1px solid rgba(255, 255, 255, .04); border-radius: 8px; width: 100%; }
-.ux-control-card.active { background: rgba(255, 255, 255, .04); border-color: rgba(255, 255, 255, .08); }
-.ux-wireframe-switch { width: 34px; height: 18px; border-radius: 10px; background: rgba(255, 255, 255, .08); position: relative; border: 1px solid rgba(255, 255, 255, .04); }
-.ux-wireframe-switch.active { background: rgba(255, 255, 255, .16); border-color: rgba(255, 255, 255, .15); }
-.ux-wireframe-switch::after { content: ''; position: absolute; left: 2px; top: 2px; width: 12px; height: 12px; background: rgba(255, 255, 255, .3); border-radius: 50%; }
+.ux-control-card { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; background: rgba(255,255,255,.02); border: 1px solid rgba(255,255,255,.04); border-radius: 8px; width: 100%; }
+.ux-control-card.active { background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.08); }
+.ux-wireframe-switch { width: 34px; height: 18px; border-radius: 10px; background: rgba(255,255,255,.08); position: relative; border: 1px solid rgba(255,255,255,.04); }
+.ux-wireframe-switch.active { background: rgba(255,255,255,.16); border-color: rgba(255,255,255,.15); }
+.ux-wireframe-switch::after { content: ''; position: absolute; left: 2px; top: 2px; width: 12px; height: 12px; background: rgba(255,255,255,.3); border-radius: 50%; }
 .ux-wireframe-switch.active::after { left: auto; right: 2px; background: #fff; }
-.ux-slider-track { flex: 1; max-width: 150px; height: 4px; background: rgba(255, 255, 255, .04); border-radius: 2px; position: relative; }
-.ux-slider-fill { width: 75%; height: 100%; background: rgba(255, 255, 255, .15); border-radius: 2px; }
+.ux-slider-track { flex: 1; max-width: 150px; height: 4px; background: rgba(255,255,255,.04); border-radius: 2px; position: relative; }
+.ux-slider-fill { width: 75%; height: 100%; background: rgba(255,255,255,.15); border-radius: 2px; }
 
 .monitor-grid-bars { display: flex; align-items: flex-end; justify-content: space-between; height: 70px; width: 100%; padding: 0 4px; gap: 6px; margin-top: 8px; }
-.monitor-bar-pillar { flex: 1; background: rgba(255, 255, 255, .03); border: 1px solid rgba(255, 255, 255, .02); border-radius: 2px; }
-.monitor-bar-pillar.active { background: rgba(255, 255, 255, .12); border-color: rgba(255, 255, 255, .18); }
+.monitor-bar-pillar { flex: 1; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.02); border-radius: 2px; }
+.monitor-bar-pillar.active { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.18); }
 
 .scale-blocks-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; width: 100%; margin-top: 4px; }
-.scale-cube-unit { height: 48px; border-radius: 6px; border: 1px solid rgba(255, 255, 255, .04); background: rgba(255, 255, 255, .01); display: flex; flex-direction: column; justify-content: space-between; padding: 8px 10px; }
-.scale-cube-unit.active { background: rgba(255, 255, 255, .06); border-color: rgba(255, 255, 255, .12); }
+.scale-cube-unit { height: 48px; border-radius: 6px; border: 1px solid rgba(255,255,255,.04); background: rgba(255,255,255,.01); display: flex; flex-direction: column; justify-content: space-between; padding: 8px 10px; }
+.scale-cube-unit.active { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.12); }
 
-.window-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255, 255, 255, 0.15); }
+.window-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.15); }
 .window-dots { display: flex; align-items: center; gap: 6px; }
-.window-dots .window-dot:nth-child(1) { background-color: rgba(255, 95, 87, 0.6); }
-.window-dots .window-dot:nth-child(2) { background-color: rgba(255, 189, 46, 0.6); }
-.window-dots .window-dot:nth-child(3) { background-color: rgba(39, 201, 63, 0.6); }
+.window-dots .window-dot:nth-child(1) { background-color: rgba(255,95,87,.6); }
+.window-dots .window-dot:nth-child(2) { background-color: rgba(255,189,46,.6); }
+.window-dots .window-dot:nth-child(3) { background-color: rgba(39,201,63,.6); }
 
-/* Obligatorios para sobreescribir estilos generados en línea (HTML style="") */
-.app-item-title { font-size: 0.9rem !important; } 
-.app-item-subtitle { font-size: 0.78rem !important; line-height: 1.45 !important; } 
-.app-item-meta { font-size: 0.65rem !important; } 
-.status-pill-mini { font-size: 0.65rem !important; padding: 3px 8px !important; }
-.app-search-trigger { font-size: 0.75rem !important; padding: 6px 12px !important; }
-.app-window-mockup div[style*="font-size: 0.5"] { font-size: 0.65rem !important; }
-.app-window-mockup div[style*="font-size: 0.6"] { font-size: 0.75rem !important; }
-.app-window-mockup div[style*="font-size: 0.7"] { font-size: 0.85rem !important; }
-.app-window-mockup div[style*="font-size: 0.8"] { font-size: 0.95rem !important; }
+/* Overrides para HTML en línea */
+.app-item-title { font-size: .9rem !important; } 
+.app-item-subtitle { font-size: .78rem !important; line-height: 1.45 !important; } 
+.app-item-meta { font-size: .65rem !important; } 
+.status-pill-mini { font-size: .65rem !important; padding: 3px 8px !important; }
+.app-search-trigger { font-size: .75rem !important; padding: 6px 12px !important; }
+.app-window-mockup div[style*="font-size: 0.5"] { font-size: .65rem !important; }
+.app-window-mockup div[style*="font-size: 0.6"] { font-size: .75rem !important; }
+.app-window-mockup div[style*="font-size: 0.7"] { font-size: .85rem !important; }
+.app-window-mockup div[style*="font-size: 0.8"] { font-size: .95rem !important; }
 
 /* =========================================
-    SECCIÓN DE CONTACTO PREMIUM
+   8. SECCIÓN CONTACTO Y FOOTER
 ========================================= */
 .seccion-contacto { position: relative; width: 100%; display: flex; justify-content: center; align-items: center; padding: 140px 24px 160px; margin-top: 100px; z-index: 2; }
-
 .seccion-contacto::before, .seccion-contacto::after { content: ""; position: absolute; top: 35%; left: -50%; width: 200%; bottom: 0; border-radius: 50% 50% 0 0; }
-.seccion-contacto::before { background: var(--bg-pure-black); z-index: -2; box-shadow: 0 -15px 100px rgba(255, 255, 255, 0.15), 0 -40px 200px rgba(255, 255, 255, 0.08), 0 -90px 500px rgba(255, 255, 255, 0.03); }
-.seccion-contacto::after { z-index: -1; pointer-events: none; -webkit-mask-image: radial-gradient(ellipse 45% 100% at 50% 0%, black 0%, transparent 100%); mask-image: radial-gradient(ellipse 45% 100% at 50% 0%, black 0%, transparent 100%); }
+.seccion-contacto::before { background: var(--bg-pure-black); z-index: -2; box-shadow: 0 -15px 100px rgba(255,255,255,.15), 0 -40px 200px rgba(255,255,255,.08), 0 -90px 500px rgba(255,255,255,.03); }
+.seccion-contacto::after { z-index: -1; pointer-events: none; -webkit-mask-image: radial-gradient(ellipse 45% 100% at 50% 0%, #000 0%, transparent 100%); mask-image: radial-gradient(ellipse 45% 100% at 50% 0%, #000 0%, transparent 100%); }
 
-.cta-icon-wrapper { display: inline-flex; align-items: center; justify-content: center; width: 54px; height: 54px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 50%; margin-bottom: 32px; box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.05); }
-
-.cta-card-scene { position: relative; z-index: 10; width: 100%; max-width: 1000px; perspective: 2000px; transform-origin: center 60%; transition: transform 0.1s ease-out; }
-.cta-card-inner { position: relative; width: 100%; transform-style: preserve-3d; transition: transform 0.8s var(--cubic-apple); }
+.cta-icon-wrapper { display: inline-flex; align-items: center; justify-content: center; width: 54px; height: 54px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.1); border-radius: 50%; margin-bottom: 32px; box-shadow: inset 0 2px 4px rgba(255,255,255,.05); }
+.cta-card-scene { position: relative; z-index: 10; width: 100%; max-width: 1000px; perspective: 2000px; transform-origin: center 60%; transition: transform .1s ease-out; }
+.cta-card-inner { position: relative; width: 100%; transform-style: preserve-3d; transition: transform .8s var(--cubic-apple); will-change: transform; }
 .cta-card-inner.is-flipped { transform: rotateY(180deg); }
 
-.cta-card-front, .cta-card-back { width: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; background: rgb(0, 0, 0); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 15px; padding: 80px 70px; box-shadow: 0 50px 100px rgba(0, 0, 0, 0.8), inset 0 0 30px rgba(255, 255, 255, 0.02); }
+.cta-card-front, .cta-card-back { width: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; background: #000; border: 1px solid rgba(255,255,255,.08); border-radius: 15px; padding: 80px 70px; box-shadow: 0 50px 100px rgba(0,0,0,.8), inset 0 0 30px rgba(255,255,255,.02); }
 .cta-card-front { z-index: 2; display: flex; flex-direction: column; align-items: flex-start; text-align: left; }
 .cta-card-back { position: absolute; top: 0; left: 0; height: 100%; transform: rotateY(180deg); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
 
-.cta-card-front h2, .cta-card-back h3 { font-weight: 500; letter-spacing: -0.03em; background: linear-gradient(90deg, #ffffff 20%, #6b6b6b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.cta-card-front h2, .cta-card-back h3 { font-weight: 500; letter-spacing: -.03em; background: linear-gradient(90deg, #FFF 20%, #6b6b6b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .cta-card-front h2 { font-size: 4.2rem; line-height: 1.05; margin-bottom: 24px; max-width: 600px; }
 .cta-card-back h3 { font-size: 3.2rem; line-height: 1.1; margin-bottom: 32px; }
+.cta-card-front p { font-size: 1.15rem; color: rgba(255,255,255,.6); margin-bottom: 48px; line-height: 1.5; max-width: 500px; }
+.cta-card-front::before, .cta-card-back::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 1.5px; background: linear-gradient(90deg, transparent 0%, #FFF 50%, transparent 100%); pointer-events: none; }
 
-.cta-card-front p { font-size: 1.15rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 48px; line-height: 1.5; max-width: 500px; }
-
-.cta-card-front::before, .cta-card-back::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 1.5px; background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 1) 50%, transparent 100%); pointer-events: none; }
-
-/* Formularios y Botones de Contacto */
 .form-contacto { width: 100%; max-width: 440px; display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px; }
-.form-input { width: 100%; padding: 16px 20px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; color: #fff; font-size: 1rem; outline: none; transition: all 0.3s ease; }
-.form-input::placeholder { color: rgba(255, 255, 255, 0.4); }
-.form-input:focus { border-color: rgba(255, 255, 255, 0.4); background: rgba(255, 255, 255, 0.08); }
+.form-input { width: 100%; padding: 16px 20px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); border-radius: 12px; color: #fff; font-size: 1rem; outline: none; transition: all .3s ease; }
+.form-input::placeholder { color: rgba(255,255,255,.4); }
+.form-input:focus { border-color: rgba(255,255,255,.4); background: rgba(255,255,255,.08); }
 .form-textarea { resize: none; height: 110px; font-family: inherit; }
 
-.btn-volver { background: none; border: none; color: rgba(255, 255, 255, 0.5); font-size: 0.95rem; cursor: pointer; transition: color 0.3s ease; }
+.btn-volver { background: none; border: none; color: rgba(255,255,255,.5); font-size: .95rem; cursor: pointer; transition: color .3s ease; }
 .btn-volver:hover { color: #fff; }
 
-.btn-blanco-fuerte {
-    display: inline-flex; align-items: center; justify-content: space-between; gap: 24px; background: #ffffff; color: #000000; font-size: 1.15rem; font-weight: 600; padding: 16px 32px; border-radius: 12px; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 0 40px rgba(255, 255, 255, 0.3), 0 10px 20px rgba(0, 0, 0, 0.5);
-}
-.btn-blanco-fuerte:hover { transform: translateY(-3px); box-shadow: 0 0 60px rgba(255, 255, 255, 0.5), 0 15px 25px rgba(0, 0, 0, 0.6); background: #fafafa; }
+.btn-blanco-fuerte { display: inline-flex; align-items: center; justify-content: space-between; gap: 24px; background: #FFF; color: #000; font-size: 1.15rem; font-weight: 600; padding: 16px 32px; border-radius: 12px; text-decoration: none; transition: all .3s ease; box-shadow: 0 0 40px rgba(255,255,255,.3), 0 10px 20px rgba(0,0,0,.5); }
+.btn-blanco-fuerte:hover { transform: translateY(-3px); box-shadow: 0 0 60px rgba(255,255,255,.5), 0 15px 25px rgba(0,0,0,.6); background: #fafafa; }
 
-/* =========================================
-    BANNER METODOLOGÍA
-========================================= */
-.banner-metodologia-premium {
-    display: flex; align-items: center; gap: 28px; width: 100%; max-width: 900px; margin-top: 60px; padding: 32px 40px; background: #000000; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.05); box-shadow: inset 0 30px 40px -20px rgba(255, 255, 255, 0.15), 0 30px 60px rgba(0, 0, 0, 0.8); position: relative; z-index: 10; overflow: hidden; 
-}
-.banner-metodologia-premium::before {
-    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 1.5px; background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.9) 50%, transparent 100%); pointer-events: none;
-}
-.banner-icon-premium { display: flex; align-items: center; justify-content: center; flex-shrink: 0; width: 54px; height: 54px; color: #fff; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 50%; z-index: 12; }
+.banner-metodologia-premium { display: flex; align-items: center; gap: 28px; width: 100%; max-width: 900px; margin-top: 60px; padding: 32px 40px; background: #000; border-radius: 20px; border: 1px solid rgba(255,255,255,.05); box-shadow: inset 0 30px 40px -20px rgba(255,255,255,.15), 0 30px 60px rgba(0,0,0,.8); position: relative; z-index: 10; overflow: hidden; }
+.banner-metodologia-premium::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 1.5px; background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.9) 50%, transparent 100%); pointer-events: none; }
+.banner-icon-premium { display: flex; align-items: center; justify-content: center; flex-shrink: 0; width: 54px; height: 54px; color: #fff; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08); border-radius: 50%; z-index: 12; }
 .banner-icon-premium svg { width: 24px; height: 24px; }
 .banner-text-premium { display: flex; flex-direction: column; gap: 8px; text-align: left; z-index: 12; }
-.banner-text-premium h3 { font-size: 2rem; line-height: 1.1; font-weight: 600; margin: 0; letter-spacing: -.02em; background: linear-gradient(90deg, #ffffff 20%, #9ca3af 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.banner-text-premium h3 { font-size: 2rem; line-height: 1.1; font-weight: 600; margin: 0; letter-spacing: -.02em; background: linear-gradient(90deg, #FFF 20%, #9ca3af 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .banner-text-premium p { font-size: 1.25rem; color: #8ab4f8; margin: 0; line-height: 1.5; max-width: 800px; }
-.banner-text-premium p a { color: inherit; text-decoration: underline; text-underline-offset: 4px; transition: color 0.3s ease; }
+.banner-text-premium p a { color: inherit; text-decoration: underline; text-underline-offset: 4px; transition: color .3s ease; }
 .banner-text-premium p a:hover { color: #fff; }
 
-/* =========================================
-    AJUSTES MÓVILES EXTREMOS (Hero)
-========================================= */
-@media(max-width: 480px) {
-    .hero { 
-        padding-top: 120px; /* Le damos aire respecto al Navbar */
-    }
-    .hero-title { 
-        line-height: 1.15; 
-        padding: 0 10px 10px; /* Evita que el degradado se corte abajo */
-    }
-    .hero-subtitle { 
-        font-size: 1.15rem; 
-        padding: 0 15px; 
-        margin-bottom: 2.5rem;
-    }
-}
+
 
 /* =========================================
-    AJUSTES MÓVILES EXTREMOS (Hero)
+   9. JERARQUÍA MAESTRA MÓVIL (Max 480px)
 ========================================= */
-@media(max-width: 480px) {
-    .hero { 
-        align-items: flex-start; /* Rompe el centrado vertical estricto */
-        padding-top: 150px; /* Controlamos exactamente la distancia desde el techo */
-        min-height: 85vh; /* Acortamos la sección para que lo que está abajo también suba */
-    }
-    .hero-title { 
-        line-height: 1.15; 
-        padding: 0 10px 10px; 
-    }
-    .hero-subtitle { 
-        font-size: 1.15rem; 
-        padding: 0 15px; 
-        margin-bottom: 2rem; /* Achicamos el aire entre el subtítulo y el botón */
-    }
-}
+@media screen and (max-width: 480px) {
 
-/* =========================================
-    AJUSTES MÓVILES EXTREMOS (Compresión de espacios)
-========================================= */
-@media(max-width: 480px) {
-    /* 1. HERO MÁS COMPACTO */
-    .hero { 
-        align-items: flex-start;
-        padding-top: 130px; 
-        min-height: auto; /* Quitamos el alto forzado de pantalla completa */
-        padding-bottom: 15rem; /* Espacio justo antes de que empiece la curva */
-    }
-    .hero-title { 
-        font-size: 3.2rem !important; /* Domamos el título gigante */
-        font-weight: 600 !important;
-        padding: 0 10px 10px; 
-    }
-    .hero-subtitle { 
-        font-size: 1.1rem; 
-        padding: 0 15px; 
-        margin-bottom: 1.5rem; 
-    }
+    /* --- HERO --- */
+    .hero { align-items: flex-start; padding-top: 130px; min-height: auto; padding-bottom: 15rem; }
+    .hero-title { font-size: 3.2rem !important; font-weight: 600 !important; padding: 0 10px 10px; line-height: 1.15; }
+    .hero-subtitle { font-size: 1.1rem; padding: 0 15px; margin-bottom: 1.5rem; }
+    .hero .btn-primary { font-weight: 500; font-size: .92rem !important; padding: 15px 24px !important; border-radius: 5px; width: fit-content !important; max-width: 92vw !important; white-space: nowrap !important; }
+    .hero-title, .section-title-premium, .problemas-main-title { font-size: 2.5rem !important; }
 
-    .btn-primary {font-weight: 500; 
-        font-size: 1.3rem !important; 
-        padding: 1rem 1rem !important; 
-        border-radius: 5px; 
-        width: 100%;
-        max-width: 70%;
-    }
-
-/* 2. SUBIMOS Y CALIBRAMOS LA CURVA (Ajuste a 200%) */
-    .seccion-capas {
-        margin-top: -80px; 
-        padding-top: 80px; 
-    }
+    /* --- CURVAS Y PRIVACIDAD --- */
+    .seccion-capas { margin-top: -80px; padding-top: 80px; padding-left: 12px !important; padding-right: 12px !important; }
+    .seccion-capas::before { width: 200%; left: -50%; border-radius: 50% 50% 0 0 / 355px 355px 0 0; background: linear-gradient(to bottom, #151518 0%, #000 35px, #000 100%) !important; box-shadow: 0 -1px 3px rgba(255,255,255,.15), 0 -20px 40px rgba(255,255,255,.06) !important; }
+    .seccion-capas::after { width: 100% !important; height: 85px !important; top: -25px !important; filter: blur(36px) !important; -webkit-filter: blur(16px) !important; background: radial-gradient(ellipse at 50% 80%, rgba(255,255,255,.1) 0%, rgba(255,255,255,.05) 45%, transparent 70%) !important; }
     
-    .seccion-capas::before {
-        width: 200%;     /* El ancho exacto que pediste */
-        left: -50%;      /* Compensación matemática para centrar el pico */
-        border-radius: 50% 50% 0 0 / 355px 355px 0 0; 
-    }
+    .privacy-card, .cta-card-scene, .banner-metodologia-premium { width: 100% !important; max-width: 420px !important; margin-left: auto !important; margin-right: auto !important; box-sizing: border-box !important; }
+    .privacy-card { display: grid; grid-template-columns: min-content 1fr; align-items: center; gap: 8px 12px; padding: 1rem 1.2rem; margin: 0 1rem 4rem; border-radius: 12px; }
+    .privacy-content { display: contents; }
+    .privacy-badge { grid-column: 1; grid-row: 1; width: 2.2rem; height: 2.2rem; }
+    .privacy-content h4 { grid-column: 2; grid-row: 1; font-size: .95rem; margin: 0; text-align: left; }
+    .privacy-content p { grid-column: 1 / 3; grid-row: 2; font-size: .8rem; line-height: 1.4; margin: 0; text-align: left; color: rgba(255,255,255,.6); }
 
-/* 3. TARJETA DE PRIVACIDAD ULTRA COMPACTA */
-    .privacy-card {
-        display: grid;
-        grid-template-columns: min-content 1fr; /* Columna 1 ajustada al ícono, Columna 2 toma el resto */
-        align-items: center;
-        gap: 8px 12px; /* 8px vertical, 12px horizontal */
-        padding: 1rem 1.2rem; /* Reducción extrema de relleno */
-        margin: 0 1rem 4rem; 
-        border-radius: 12px;
-    }
+    /* --- PROBLEMAS --- */
+    .problemas-seccion { margin-bottom: 80px; margin-top: 12rem; }
+    .problemas-main-title { font-size: 3.2rem; line-height: 1.1; font-weight: 600 !important; margin-bottom: 3.5rem; }
+    .solucion-destacada, .soluciones-secundarias { display: flex !important; flex-direction: column !important; gap: 2.5rem !important; margin-bottom: 4rem; margin-top: 0; }
+    .solucion-destacada { margin: 0 0 5rem 0 !important; display: block !important; }
+    .soluciones-secundarias { gap: 5rem !important; padding-top: 0 !important; border-top: none !important; }
+    .soluciones-secundarias::after { display: none !important; }
+    .soluciones-secundarias > div { display: block !important; margin: 0 !important; }
     
-    .privacy-content {
-        display: contents; /* MAGIA CSS: Ignora la caja contenedora y aplica la grilla directo al h4 y al p */
-    }
+    .solucion-info, .solucion-box-mini { width: 100% !important; display: flex !important; flex-direction: column !important; align-items: center !important; text-align: center !important; gap: 0 !important; }
+    .solucion-info h3, .solucion-box-mini h3 { font-size: 2.1rem !important; line-height: 1.15 !important; margin: 0 0 16px 0 !important; }
+    .solucion-info p, .solucion-box-mini p { max-width: 95% !important; font-size: .95rem !important; line-height: 1.5 !important; margin: 0 auto !important; }
     
-    .privacy-badge {
-        grid-column: 1;
-        grid-row: 1;
-        width: 2.2rem; /* Ícono miniatura */
-        height: 2.2rem;
-    }
+    .solucion-visual-wrapper, .mini-visual-wrapper { width: 100% !important; margin: 2.5rem 0 0 0 !important; justify-content: center !important; height: auto !important; min-height: auto !important; display: flex !important; align-items: center !important; }
+    .interfaz-mockup, .mini-mockup-card { width: 100% !important; max-width: 350px !important; height: auto !important; min-height: 280px !important; padding: 16px !important; transform: rotateY(-3deg) rotateX(2deg); display: flex !important; flex-direction: column !important; margin: 0 !important; }
     
-    .privacy-content h4 { 
-        grid-column: 2;
-        grid-row: 1;
-        font-size: 0.95rem; /* Tamaño de título nativo de app */
-        margin: 0;
-        text-align: left;
-    }
-    
-    .privacy-content p { 
-        grid-column: 1 / 3; /* Hace que el texto ocupe todo el ancho, pasando por debajo del ícono */
-        grid-row: 2;
-        font-size: 0.8rem; /* Tamaño de letra chica/legal */
-        line-height: 1.4;
-        margin: 0;
-        text-align: left;
-        color: rgba(255, 255, 255, 0.6);
-    }
+    .esfera-central-3d { display: block !important; width: 7rem; height: 7rem; top: auto; bottom: -140px; left: 50%; transform: translate(-50%, 0); z-index: 0; }
 
-    /* 4. SECCIÓN PROBLEMAS EN CASCADA (1 Columna Centrada) */
-    .problemas-seccion {
-        margin-bottom: 80px; 
-        margin-top: 12rem;
-    }
-    
-    .problemas-main-title {
-        font-size: 3.2rem; /* EL CAMBIO: Título principal bastante más grande */
-        line-height: 1.1;  /* Ajustamos el interlineado para que no choque si baja a dos líneas */
-        font-weight: 600 !important;
-        margin-bottom: 3.5rem; 
-        
-    }
-    
-    /* Forzamos el apilamiento vertical estricto */
-    .solucion-destacada, 
-    .soluciones-secundarias {
-        display: flex; 
-        flex-direction: column; 
-        gap: 2.5rem; 
-        margin-bottom: 4rem;
-        margin-top: 0;
-    }
-
-    /* EL CAMBIO: Centramos todos los textos y las etiquetas violetas */
-    .solucion-info,
-    .solucion-box-mini {
-        width: 100%;
-        text-align: center; 
-        align-items: center; /* Centra la etiqueta flex superior */
-    }
-    
-    .solucion-info h3,
-    .solucion-box-mini h3 { 
-        font-size: 2.2rem; /* Mantenemos el tamaño que te pareció bien */
-    }
-    
-    .solucion-info p,
-    .solucion-box-mini p {
-        max-width: 100%; 
-    }
-
-    /* DOMAMOS EL MOCKUP DESBORDADO */
-    .solucion-visual-wrapper {
-        width: 100%;
-        margin-left: 0; 
-        justify-content: center;
-    }
-
-    .interfaz-mockup, 
-    .mini-mockup-card {
-        width: 100%;
-        max-width: 350px; 
-        height: auto; 
-        min-height: 280px; 
-        padding: 16px;
-        transform: rotateY(-3deg) rotateX(2deg);
-    }
-
-    /* EFECTO GLASSMORPHISM: HACEMOS QUE LA ESFERA ASOME */
-    .esfera-central-3d {
-        display: block !important; /* Forzamos su aparición por si estaba oculta */
-        width: 7rem;  /* Tamaño proporcional al móvil */
-        height: 7rem;
-        top: auto;      /* Matamos la posición vertical de PC */
-        bottom: -140px;  /* La empujamos para que asome por debajo del cristal */
-        left: 50%;      /* La desplazamos hacia la derecha */
-        transform: translate(-50%, 0); /* Ajuste del centro geométrico */
-        z-index: 0;     /* Aseguramos que quede detrás del mockup (que tiene z-index 1) */
-    }
-    /* =========================================
-       5. CARRUSEL DE SERVICIOS (Botones Originales PC + Scroll Móvil)
-    ========================================= */
-
-
+    /* --- CARRUSEL TÁCTIL --- */
     .section-header .solucion-tag-premium { display: none !important; }
+    .section-header { margin: 110px auto 30px !important; padding: 0 16px !important; }
+    .section-title-premium { font-size: 2.8rem !important; line-height: 1.2 !important; margin-bottom: 16px !important; font-weight: 600 !important; }
+    .section-subtitle-premium { font-size: .5rem !important; line-height: 1.45; padding: 0 10px; }
 
-    .section-header { 
-        margin: 110px auto 30px !important; 
-        padding: 0 16px !important; 
-    }
-    .section-title-premium { 
-        font-size: 2.8rem !important; 
-        line-height: 1.2 !important; 
-        margin-bottom: 16px !important; 
-        font-weight: 600 !important; 
-    }    .section-subtitle-premium { font-size: 0.5rem !important; line-height: 1.45; padding: 0 10px; }
-
-    /* Contenedor horizontal deslizable (Swipe táctil) */
-    .servicios-tabs {
-        display: flex !important;
-        flex-direction: row !important;
-        gap: 16px !important;
-        overflow-x: auto !important;
-        overflow-y: hidden !important;
-        scroll-snap-type: x mandatory !important;
-        
-        /* Rompemos márgenes para que el scroll toque el borde del celular */
-        width: calc(100% + 32px) !important;
-        margin-left: -16px !important;
-        padding: 0 16px 20px !important;
-        scrollbar-width: none !important; 
-        
-        /* Limpiamos cualquier rastro de la 'isla' fallida */
-        background: transparent !important;
-        border: none !important;
-        backdrop-filter: none !important;
-        border-radius: 0 !important;
-        box-shadow: none !important;
-    }
+    .servicios-interactive-wrapper, .servicios-tabs { touch-action: pan-y !important; }
+    .servicios-interactive-wrapper { width: 100%; height: 485px !important; min-height: 485px !important; margin-bottom: 35px !important; }
+    
+    .servicios-tabs { display: flex !important; flex-direction: row !important; gap: 16px !important; overflow-x: auto !important; overflow-y: hidden !important; scroll-snap-type: x mandatory !important; width: calc(100% + 32px) !important; margin-left: -16px !important; padding: 0 16px 20px !important; scrollbar-width: none !important; background: transparent !important; border: none !important; backdrop-filter: none !important; border-radius: 0 !important; box-shadow: none !important; }
     .servicios-tabs::-webkit-scrollbar { display: none; }
 
-    /* El Botón Original de PC, adaptado a móvil */
-    .tab-btn-crystal {
-        flex: 0 0 82% !important; /* Ocupa el 82% de la pantalla, deja asomar el siguiente botón */
-        scroll-snap-align: center !important;
-        padding: 20px !important;
-        
-        /* Estética Original: Cristal Oscuro */
-        background: rgba(0, 0, 0, 0.4) !important;
-        backdrop-filter: blur(15px) !important;
-        -webkit-backdrop-filter: blur(15px) !important;
-        border: 1px solid rgba(255, 255, 255, 0.05) !important;
-        border-radius: 16px !important;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
-        
-        text-align: left !important;
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 8px !important;
-        align-items: flex-start !important;
-        justify-content: center !important;
-        transition: all 0.3s ease !important;
-    }
-
-    .tab-btn-crystal .tab-title {
-        font-size: 1.15rem !important;
-        font-weight: 500 !important;
-        color: #8E8E93 !important;
-        margin: 0 !important;
-    }
-
-    .tab-btn-crystal .tab-desc {
-        display: block !important;
-        font-size: 0.85rem !important;
-        color: rgba(255, 255, 255, 0.4) !important;
-        line-height: 1.4 !important;
-        text-align: left !important;
-    }
-
-    /* Estado Activo Original */
-    .tab-btn-crystal.active {
-        background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.08) 0%, rgba(0, 0, 0, 0.4) 60%) !important;
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
-        border: 1px solid rgba(255, 255, 255, 0.15) !important;
-    }
-
+    .tab-btn-crystal { flex: 0 0 82% !important; scroll-snap-align: center !important; padding: 20px !important; background: rgba(0,0,0,.4) !important; backdrop-filter: blur(15px) !important; -webkit-backdrop-filter: blur(15px) !important; border: 1px solid rgba(255,255,255,.05) !important; border-radius: 16px !important; box-shadow: 0 20px 40px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.1) !important; text-align: left !important; display: flex !important; flex-direction: column !important; gap: 8px !important; align-items: flex-start !important; justify-content: center !important; transition: all .3s ease !important; }
+    .tab-btn-crystal .tab-title { font-size: 1.15rem !important; font-weight: 500 !important; color: #8E8E93 !important; margin: 0 !important; }
+    .tab-btn-crystal .tab-desc { display: block !important; font-size: .85rem !important; color: rgba(255,255,255,.4) !important; line-height: 1.4 !important; text-align: left !important; }
+    .tab-btn-crystal.active { background: radial-gradient(circle at 50% 50%, rgba(255,255,255,.08) 0%, rgba(0,0,0,.4) 60%) !important; box-shadow: 0 15px 30px rgba(0,0,0,.8), inset 0 1px 0 rgba(255,255,255,.05) !important; border: 1px solid rgba(255,255,255,.15) !important; }
     .tab-btn-crystal.active .tab-title { color: #fff !important; }
-    .tab-btn-crystal.active .tab-desc { color: rgba(255, 255, 255, 0.7) !important; }
-
-    /* =========================================
-       5.1 ESFERA DEL CARRUSEL (Nivel Subsuelo)
-    ========================================= */
-    .servicios-interactive-wrapper .esfera-fondo-carrusel {
-        display: block !important;
-        position: absolute !important;
-        width: 8.5rem !important;
-        height: 8.5rem !important;
-        top: 35% !important; /* La bajamos para que quede detrás del vidrio del código */
-        left: 5% !important;
-        transform: translate(-50%, -50%) !important;
-        z-index: 0 !important; /* Nivel 0 garantiza que las tarjetas la tapen */
-    }
-/* =========================================
-       6. PANELES DEL CARRUSEL (Solución Atómica)
-    ========================================= */
+    .tab-btn-crystal.active .tab-desc { color: rgba(255,255,255,.7) !important; }
     
-    .servicios-interactive-wrapper {
-        width: 100%;
-        height: auto !important;
-        margin-bottom: 80px; 
-    }
-
-    /* 1. REGLA ESTRICTA: Tarjeta que no esté activa, ES DESTRUIDA del plano físico */
-    .card-servicio-ancha:not(.is-center) {
-        display: none !important;
-    }
-
-    /* 2. Tarjeta activa toma el control absoluto del piso 1 */
-    .card-servicio-ancha.is-center {
-        display: flex !important;
-        flex-direction: column !important; 
-        position: relative !important;
-        top: 0 !important;
-        left: 0 !important;
-        transform: none !important;
-        width: 100% !important;
-        height: auto !important;
-        gap: 16px !important;
-        padding: 0 16px !important;
-        z-index: 5;
-    }
-
-    /* Tarjeta superior de texto */
-    .card-info-group {
-        height: auto !important;
-        padding: 24px 20px !important; 
-        width: 100% !important;
-    }
-    .card-header-servicio h3 { font-size: 1.7rem !important; }
-    .card-header-servicio h3 span { font-size: 1.05rem !important; margin-top: 8px !important; }
-
-    /* Tarjeta inferior de código */
-    .card-split-mockup {
-        width: 100% !important;
-        height: auto !important;
-        -webkit-mask-image: none !important; 
-        mask-image: none !important;
-    }
-
-    /* =========================================
-       MOCKUP CÓDIGO (Ángulo 0° + Cristal Premium)
-    ========================================= */
-    /* MAGIA RECURSIVA (*): Obliga a la ventana Y A TODOS SUS HIJOS a perder el 3D */
-    .app-window-mockup,
-    .app-window-mockup * {
-        transform: none !important;
-        perspective: none !important;
-        rotate: none !important;
-        scale: none !important;
-        filter: none !important; /* Mata cualquier blur de herencia */
-    }
-
-    .app-window-mockup {
-        width: 100% !important;
-        height: 230px !important;
-        margin-top: 15px !important; /* Genera el "pasillo" para que asome la esfera */
-        
-        /* Cristal de alta definición */
-        background: rgba(0, 0, 0, 0.411) !important;
-        backdrop-filter: blur(10px) saturate(180%) !important;
-        -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
-        border: 1px solid rgba(255, 255, 255, 0.12) !important;
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7) !important;
-        
-        border-radius: 14px !important;
-        position: relative;
-        z-index: 3 !important; /* Se superpone a la mitad inferior de la esfera */
-    }
-
-/* =========================================
-       7. REESTRUCTURACIÓN MÓVIL (Ancho Extremo y 3D)
-    ========================================= */
-
-    /* Tarjeta base del carrusel al límite */
-    .card-servicio-ancha.is-center {
-        width: 100vw !important;
-        max-width: 100vw !important;
-        margin-left: calc(-50vw + 50%) !important; 
-        padding: 0 !important; 
-        gap: 12px !important;
-        align-content: start !important;
-    }
-
-    .card-info-group {
-        width: calc(100% - 24px) !important;
-        margin: 0 auto !important;
-    }
-
-    .card-split-mockup {
-        width: calc(100% - 12px) !important; 
-        margin: 0 auto !important;
-    }
-
-    /* Regla base de tamaño para TODOS los mockups en móvil */
-    .app-window-mockup,
-    .interfaz-mockup,
-    .mini-mockup-card {
-        width: 100% !important; 
-        max-width: 100% !important;
-        height: auto !important; 
-        min-height: 230px !important; 
-        margin: 0 !important; 
-        padding: 10px 0 !important;
-        display: flex !important;
-        flex-direction: column !important;
-    }
-
-    /* EL ARREGLO DEL 3D: SOLO le quitamos la inclinación a los mockups DEL CARRUSEL */
-    .servicios-interactive-wrapper .app-window-mockup,
-    .servicios-interactive-wrapper .app-window-mockup * {
-        transform: none !important;
-        -webkit-font-smoothing: antialiased !important;
-        -moz-osx-font-smoothing: grayscale !important;
-    }
-
-    /* Si el mockup tiene la barrita negra superior, matamos el padding para que toque el techo */
-    .app-window-mockup:has(.app-top-bar) {
-        padding-top: 0 !important;
-    }
-
-
-    /* =========================================
-       8. MICRO-IDE: APLANADORA DE JERARQUÍAS 
-    ========================================= */
+    .servicios-interactive-wrapper .esfera-fondo-carrusel { display: block !important; position: absolute !important; width: 8.5rem !important; height: 8.5rem !important; top: 35% !important; left: 5% !important; transform: translate(-50%, -50%) !important; z-index: 0 !important; }
     
-    /* 1. MANTENEMOS COLUMNAS EXACTAS DE PC */
-    .app-body-layout {
-        display: flex !important;
-        flex-direction: row !important; 
-        width: 100% !important;
-        height: 100% !important;
-    }
+    .card-servicio-ancha:not(.is-center) { display: none !important; }
+    .card-servicio-ancha.is-center { display: flex !important; flex-direction: column !important; position: relative !important; top: 0 !important; left: 0 !important; transform: none !important; width: 100vw !important; max-width: 100vw !important; height: auto !important; gap: 12px !important; padding: 0 !important; margin-left: calc(-50vw + 50%) !important; z-index: 5; align-content: start !important; }
 
-    .app-side-panel { width: 36% !important; padding: 4px 6px !important; flex-shrink: 0 !important; border-right: 1px solid rgba(255,255,255,0.08) !important; }
+    .card-info-group { width: calc(100% - 24px) !important; margin: 0 auto !important; height: fit-content !important; min-height: 0 !important; max-height: none !important; padding: 24px 20px !important; gap: 6px !important; }
+    .card-header-servicio { gap: 2px !important; }
+    .card-header-servicio h3 { font-size: 1.6rem !important; line-height: 1.1 !important; margin: 0 !important; }
+    .card-header-servicio h3 span { font-size: .88rem !important; display: block !important; margin-top: 4px !important; line-height: 1.35 !important; }
+
+    .card-split-mockup { width: calc(100% - 12px) !important; height: auto !important; margin: 0 auto !important; -webkit-mask-image: none !important; mask-image: none !important; }
+    .app-window-mockup, .servicios-interactive-wrapper .app-window-mockup * { transform: none !important; perspective: none !important; rotate: none !important; scale: none !important; filter: none !important; -webkit-font-smoothing: antialiased !important; -moz-osx-font-smoothing: grayscale !important; }
+    .app-window-mockup { width: 100% !important; height: 230px !important; margin-top: 15px !important; background: rgba(0,0,0,.411) !important; backdrop-filter: blur(10px) saturate(180%) !important; -webkit-backdrop-filter: blur(16px) saturate(180%) !important; border: 1px solid rgba(255,255,255,.12) !important; box-shadow: 0 20px 50px rgba(0,0,0,.7) !important; border-radius: 14px !important; position: relative; z-index: 3 !important; }
+    .app-window-mockup:has(.app-top-bar) { padding-top: 0 !important; }
+    
+    .app-body-layout { display: flex !important; flex-direction: row !important; width: 100% !important; height: 100% !important; }
+    .app-side-panel { width: 36% !important; padding: 4px 6px !important; flex-shrink: 0 !important; border-right: 1px solid rgba(255,255,255,.08) !important; }
     .app-main-content { width: 64% !important; padding: 4px 6px !important; flex-shrink: 0 !important; }
     .app-top-bar { padding: 6px 12px !important; }
+    .app-window-mockup > div:not(.app-top-bar):not(.app-body-layout) { padding: 6px 10px !important; width: 100% !important; }
+
+    .app-window-mockup div, .app-window-mockup span, .app-window-mockup p { font-size: .5rem !important; line-height: 1.25 !important; }
+    .app-window-mockup .app-item-title, .app-window-mockup [class*="title"], .app-window-mockup .roadmap-node-circle { font-size: .58rem !important; white-space: normal !important; }
+    .app-window-mockup .app-item-subtitle { font-size: .5rem !important; }
+    .app-window-mockup .app-item-meta, .app-window-mockup .app-item-meta span, .app-window-mockup .status-pill-mini, .app-window-mockup [class*="header"] span { font-size: .44rem !important; white-space: nowrap !important; }
+    .app-window-mockup .app-search-trigger { font-size: .48rem !important; padding: 4px 8px !important; }
+    .app-window-mockup pre, .app-window-mockup code { font-size: .48rem !important; line-height: 1.4 !important; white-space: pre !important; overflow-x: auto !important; scrollbar-width: none; }
     
-    /* Para los mockups que no tienen barra lateral (Ej. Infraestructura Cloud) */
-    .app-window-mockup > div:not(.app-top-bar):not(.app-body-layout) {
-        padding: 6px 10px !important; 
-        width: 100% !important;
-    }
-
-    /* 2. LA MAGIA: FORZAMOS EL TAMAÑO DE TODO ELEMENTO INTERNO */
-    /* Base: Todo texto no clasificado cae aquí */
-    .app-window-mockup div, 
-    .app-window-mockup span, 
-    .app-window-mockup p {
-        font-size: 0.5rem !important; 
-        line-height: 1.25 !important;
-    }
-
-    /* Jerarquía 1: Títulos principales (Como el de tu foto UX) */
-    .app-window-mockup .app-item-title,
-    .app-window-mockup [class*="title"],
-    .app-window-mockup .roadmap-node-circle {
-        font-size: 0.58rem !important; 
-        white-space: normal !important;
-    }
-
-    /* Jerarquía 2: Subtítulos descriptivos */
-    .app-window-mockup .app-item-subtitle {
-        font-size: 0.5rem !important; 
-    }
-
-    /* Jerarquía 3: Metadatos, píldoras y cabeceras */
-    .app-window-mockup .app-item-meta,
-    .app-window-mockup .app-item-meta span,
-    .app-window-mockup .status-pill-mini,
-    .app-window-mockup [class*="header"] span {
-        font-size: 0.44rem !important; 
-        white-space: nowrap !important; /* Impide que las fechas se partan en dos renglones */
-    }
-
-    .app-window-mockup .app-search-trigger {
-        font-size: 0.48rem !important;
-        padding: 4px 8px !important;
-    }
-
-    /* Códigos de terminal */
-    .app-window-mockup pre,
-    .app-window-mockup code {
-        font-size: 0.48rem !important; 
-        line-height: 1.4 !important;
-        white-space: pre !important; 
-        overflow-x: auto !important;
-        scrollbar-width: none;
-    }
-
-    /* 3. BLINDAJE DE COMPONENTES Y CAJITAS MODULARES */
     .scale-blocks-grid { gap: 4px !important; }
+    .scale-cube-unit { height: auto !important; min-height: 38px !important; padding: 4px !important; justify-content: center !important; align-items: center !important; text-align: center !important; }
+    .scale-cube-unit span:first-child { font-size: .38rem !important; margin-bottom: 2px !important; }
+    .scale-cube-unit .app-item-title { font-size: .46rem !important; white-space: nowrap !important; }
+    .app-list-item, .ux-control-card { padding: 6px 8px !important; gap: 4px !important; }
+
+    .carousel-arrow { display: none !important; }
+    .carousel-controls { justify-content: center !important; width: 100% !important; bottom: 5px !important; top: auto !important; z-index: 1000 !important; }
+
+    /* --- MINITÍTULOS Y LUCES --- */
+    .solucion-tag-premium, .card-mini-title-premium, [class*="mini-title"] { white-space: nowrap !important; font-size: .64rem !important; letter-spacing: .03em !important; width: fit-content !important; max-width: 100% !important; overflow: hidden !important; text-overflow: ellipsis !important; }
+    .solucion-destacada .solucion-tag-premium, .soluciones-secundarias .solucion-tag-premium, .solucion-info .card-mini-title-premium, .solucion-box-mini .card-mini-title-premium, .soluciones-secundarias > div > .solucion-tag-premium { display: flex !important; align-items: center !important; justify-content: center !important; width: fit-content !important; margin: 0 auto 12px auto !important; font-size: 1rem !important; }
+    .solucion-tag-premium svg, .card-mini-title-premium svg { width: 14px !important; height: 14px !important; flex-shrink: 0 !important; margin-right: 6px !important; }
     
-    .scale-cube-unit { 
-        height: auto !important; 
-        min-height: 38px !important;
-        padding: 4px !important; 
-        justify-content: center !important;
-        align-items: center !important;
-        text-align: center !important;
-    }
+    .techo-luz { width: 70vw !important; height: 120px !important; top: -30px !important; filter: blur(40px) !important; -webkit-filter: blur(40px) !important; background: rgba(255,255,255,.13) !important; }
 
-    .scale-cube-unit span:first-child {
-        font-size: 0.38rem !important;
-        margin-bottom: 2px !important;
-    }
+    /* --- CONTACTO Y FOOTER --- */
+    .seccion-contacto { padding: 40px 16px 60px !important; margin-top: 15rem !important; width: 100%; padding-left: 12px !important; padding-right: 12px !important; }
+    .cta-card-scene { width: 100% !important; max-width: 385px !important; margin: 0 auto !important; height: 215px !important; transition: height .5s var(--cubic-apple) !important; }
+    .cta-card-inner { height: 100% !important; }
     
-    .scale-cube-unit .app-item-title {
-        font-size: 0.46rem !important;
-        white-space: nowrap !important;
-    }
-
-    /* Gaps internos de listas */
-    .app-list-item, .ux-control-card { 
-        padding: 6px 8px !important; 
-        gap: 4px !important; 
-    }
-
-    /* =========================================
-       9. CONTROLES DEL CARRUSEL (Solo Puntos)
-    ========================================= */
-    .carousel-arrow { 
-        display: none !important; /* Aniquilamos las flechas */
-    }
+    .cta-card-front, .cta-card-back { position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; min-height: 0 !important; box-sizing: border-box !important; padding: 24px 20px !important; background: #000 !important; border: 1px solid rgba(255,255,255,.12) !important; border-radius: 16px !important; display: flex !important; flex-direction: column !important; justify-content: center !important; align-items: flex-start !important; text-align: left !important; gap: 12px !important; box-shadow: 0 20px 40px rgba(0,0,0,.95) !important; }
+    .cta-card-front .cta-icon-wrapper, .cta-card-back .cta-icon-wrapper { display: none !important; }
     
-    .carousel-controls { 
-        justify-content: center !important; /* Centramos los puntitos */
-        width: 100% !important;
-        bottom: -25px !important; /* Los acercamos un poco más al mockup */
-    }
-
-/* =========================================
-       10. SECCIÓN PROBLEMAS (Espaciado Perfecto y Minitítulos Intactos)
-    ========================================= */
-
-    /* 1. ESPACIADO ENTRE PROBLEMAS */
-    .solucion-destacada {
-        margin: 0 0 5rem 0 !important; 
-        display: block !important;
-    }
-
-    .soluciones-secundarias {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 5rem !important; 
-        margin: 0 !important;
-        padding-top: 0 !important;
-        border-top: none !important;
-    }
-    .soluciones-secundarias::after { display: none !important; }
-
-    /* EL ARREGLO DEL ESPACIO GIGANTE: Matamos el flex/gap que separaba el mini-título */
-    .soluciones-secundarias > div {
-        display: block !important; 
-        margin: 0 !important;
-    }
-
-    /* 2. ALINEACIÓN AL CENTRO */
-    .solucion-info,
-    .solucion-box-mini {
-        width: 100% !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important; 
-        text-align: center !important;  
-        gap: 0 !important; 
-    }
-
-    /* 3. MINI-TÍTULOS (Solo Tamaño y Centrado. NADA de transparencias) */
-    .solucion-destacada .solucion-tag-premium,
-    .soluciones-secundarias .solucion-tag-premium,
-    .solucion-info .card-mini-title-premium,
-    .solucion-box-mini .card-mini-title-premium,
-    .soluciones-secundarias > div > .solucion-tag-premium {
-        display: flex !important; 
-        align-items: center !important;
-        justify-content: center !important;
-        
-        width: fit-content !important;
-        
-        /* 12px exactos de distancia contra el H3 */
-        margin: 0 auto 12px auto !important; 
-        
-        /* Solo el tamaño */
-        font-size: 1rem !important;       
-    }
-
-    /* Ajuste fino del ícono para que acompañe el tamaño */
-    .solucion-tag-premium svg,
-    .card-mini-title-premium svg {
-        width: 14px !important;
-        height: 14px !important;
-        flex-shrink: 0 !important;
-        margin-right: 6px !important;
-    }
-
-    /* 4. TÍTULOS Y PÁRRAFOS */
-    .solucion-info h3,
-    .solucion-box-mini h3 {
-        font-size: 2.1rem !important; 
-        line-height: 1.15 !important;
-        /* 16px exactos entre título y párrafo */
-        margin: 0 0 16px 0 !important; 
-    }
-
-    .solucion-info p,
-    .solucion-box-mini p {
-        font-size: 0.95rem !important;
-        line-height: 1.5 !important;
-        margin: 0 auto !important; 
-        max-width: 95% !important; 
-    }
-
-    /* 5. MOCKUPS: Aquí aplicamos la separación estricta */
-    .solucion-visual-wrapper,
-    .mini-visual-wrapper {
-        /* ESTA ES LA MAGIA: 2.5rem de distancia perfecta desde el texto hacia la imagen */
-        margin: 2.5rem 0 0 0 !important; 
-        height: auto !important; 
-        min-height: auto !important;
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        width: 100% !important;
-    }
-
-/* =========================================
-       11. LUZ DEL TECHO DOMADA (techo-luz)
-    ========================================= */
-
-    .techo-luz {
-        /* Lo encogemos para que no desborde la pantalla física */
-        width: 70vw !important; 
-        
-        /* Lo aplastamos verticalmente para que no baje hacia el texto */
-        height: 120px !important; 
-        
-        /* Lo empujamos más arriba para que solo asome la base */
-        top: -30px !important; 
-        
-        /* Reducimos la niebla de luz a la mitad */
-        filter: blur(40px) !important; 
-        -webkit-filter: blur(40px) !important;
-        
-        /* Suavizamos el blanco para que no contamine el negro */
-        background: rgba(255, 255, 255, 0.13) !important; 
-    }
-
+    .cta-card-front h2, .cta-card-back h3 { font-size: 2.3rem !important; line-height: 1.08 !important; margin: 0 !important; letter-spacing: -.03em !important; text-align: left !important; width: 100% !important; }
+    .cta-card-back h3 { font-size: 1.7rem !important; margin-bottom: 12px !important; }
+    .cta-card-front p { display: none; }
     
-
-
-}
-
-/* =======================================================
-   RECONSTRUCCIÓN FINAL: PRIORIDAD A LA LECTURA
-======================================================= */
-
-@media screen and (max-width: 480px) {
+    .cta-card-front .btn-blanco-fuerte, .form-contacto .btn-blanco-fuerte { width: 100% !important; height: 50px !important; display: flex !important; justify-content: center !important; align-items: center !important; font-size: 1.02rem !important; border-radius: 10px !important; margin: 0 !important; padding: 0 !important; }
+    .form-contacto .btn-blanco-fuerte { height: 44px !important; font-size: .95rem !important; }
     
-    .seccion-contacto {
-        padding: 60px 20px 80px !important;
-        margin-top: 40px !important;
-    }
+    .form-contacto { gap: 8px !important; margin-bottom: 10px !important; }
+    .form-input { padding: 11px 14px !important; font-size: .85rem !important; border-radius: 10px !important; }
+    .form-textarea { height: 60px !important; }
+    .btn-volver { margin-top: 0 !important; margin-bottom: 0 !important; font-size: .85rem !important; padding: 4px !important; }
 
-    .cta-card-scene {
-        width: 100% !important;
-        max-width: 400px !important;
-    }
+    .banner-metodologia-premium { display: flex !important; flex-direction: row !important; align-items: flex-start !important; padding: 22px 18px !important; gap: 14px !important; background: #000 !important; border: 1px solid rgba(255,255,255,.12) !important; border-radius: 16px !important; margin-top: 16px !important; text-align: left !important; }
+    .banner-icon-premium { width: 38px !important; height: 38px !important; flex-shrink: 0 !important; margin: 0 !important; }
+    .banner-icon-premium svg { width: 20px !important; height: 20px !important; }
+    .banner-text-premium { display: flex !important; flex-direction: column !important; align-items: flex-start !important; text-align: left !important; gap: 4px !important; }
+    .banner-text-premium h3 { font-size: 1.05rem !important; line-height: 1.25 !important; color: #fff !important; margin: 0 !important; }
+    .banner-text-premium p { font-size: .82rem !important; line-height: 1.4 !important; color: rgba(255,255,255,.6) !important; margin: 0 !important; }
 
-    .cta-card-front, .cta-card-back {
-        padding: 40px 28px !important; 
-        border-radius: 24px !important;
+    /* Optimización de espacios móviles */
+    .form-contacto { 
+        gap: 6px !important; /* Reducimos el espacio entre inputs */
+        margin-bottom: 0 !important;
     }
-
-    /* 1. Ícono más pequeño (el detalle que acompaña, no el protagonista) */
-    .cta-icon-wrapper {
-        width: 40px !important;
-        height: 40px !important;
-        margin-bottom: 24px !important;
+    .form-input { 
+        padding: 10px 14px !important; /* Inputs más compactos */
+        font-size: 0.9rem !important; 
     }
-    .cta-icon-wrapper svg {
-        width: 22px !important;
-        height: 22px !important;
+    .form-textarea { 
+        height: 50px !important; /* Mensaje más chico para ahorrar espacio */
     }
-
-    /* 2. Títulos más grandes y legibles */
-    .cta-card-front h2 {
-        font-size: 2.6rem !important; 
-        line-height: 1 !important;
-        margin-bottom: 20px !important;
+    .btn-blanco-fuerte { 
+        height: 42px !important; 
+        font-size: 0.95rem !important; 
     }
-    .cta-card-back h3 {
-        font-size: 2.2rem !important;
-        margin-bottom: 24px !important;
+    .cta-card-scene.is-expanded { 
+        height: 480px !important; /* Ajuste de altura dinámica para móviles */
     }
-
-    /* 3. Textos con mayor peso visual */
-    .cta-card-front p {
-        font-size: 1.05rem !important; /* Texto un poco más grande para mejor lectura */
-        margin-bottom: 32px !important;
-        color: rgba(255, 255, 255, 0.7) !important; /* Subimos un poco el contraste */
+    /* 3. Título ajustado */
+    .card-title-centered {
+        font-size: 1.4rem !important;
+        margin: 0 0 10px 0 !important;
     }
-
-    /* 4. Botón ajustado para ser una llamada a la acción clara */
-    .btn-blanco-fuerte {
-        font-size: 1.05rem !important;
-        padding: 16px 28px !important;
-        width: 100% !important;
-        justify-content: center !important;
+    /* 2. Flex compacto: Eliminamos el flex-start forzado para usar un espacio controlado */
+    .cta-card-back {
+        padding: 20px 20px !important; 
+        justify-content: flex-start !important;
+        gap: 15px !important; /* Controla el espacio entre el título, form y botón */
     }
-    
-}
-
-/* =================================================================
-   12. ALTA GAMA MÓVIL: TARJETA CONTACTO + FOOTER FLOTANTE
-================================================================= */
-
-@media screen and (max-width: 480px) {
-
-    /* --- A. TARJETA DE CONTACTO (Sin ícono, 100% minimalista) --- */
-    
-    .seccion-contacto {
-        padding: 40px 16px 60px !important;
-        margin-top: 20px !important;
+    /* 4. Compactamos el panel interno */
+    .panels-wrapper {
         width: 100%;
-    }
-
-    .cta-card-scene {
-        width: 100% !important;
-        max-width: 385px !important;
-        margin: 0 auto !important;
-    }
-
-    /* Tarjeta principal: Obsidiana pura, bordes más secos (16px) y texto a la izquierda */
-    .cta-card-front, 
-    .cta-card-back {
-        padding: 36px 24px !important; 
-        background: #000000 !important; /* Negro absoluto */
-        border: 1px solid rgba(255, 255, 255, 0.12) !important;
-        border-radius: 16px !important; 
-        
-        display: flex !important;
-        flex-direction: column !important;
-        
-        /* ALINEACIÓN ESTRICTA A LA IZQUIERDA */
-        align-items: flex-start !important;
-        text-align: left !important;
-        gap: 12px !important;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.95) !important;
-    }
-
-    /* ANIQUILAMOS EL ÍCONO */
-    .cta-card-front .cta-icon-wrapper,
-    .cta-card-back .cta-icon-wrapper {
-        display: none !important;
-    }
-
-    /* Títulos alineados a la izquierda */
-    .cta-card-front h2,
-    .cta-card-back h3 {
-        font-size: 2.2rem !important;
-        line-height: 1.1 !important;
-        margin-bottom: 3rem;
-        letter-spacing: -0.03em !important;
-        text-align: left !important;
-        width: 100% !important;
-    }
-
-    /* Párrafo descriptivo */
-    .cta-card-front p {
-
-        display: none;
-    }
-
-    /* Botón estirado ergonómico para el pulgar */
-    .cta-card-front .btn-blanco-fuerte {
-        width: 100% !important;
-        height: 52px !important;
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        font-size: 1.05rem !important;
-        border-radius: 14px !important;
         margin: 0 !important;
-    }
-
-
-
-    /* El banner descriptivo inferior (.banner-metodologia-premium) también a la izquierda */
-    .banner-metodologia-premium {
-        background: #000000 !important;
-        border: 1px solid rgba(255, 255, 255, 0.08) !important;
-        border-radius: 16px !important;
-        padding: 24px 20px !important;
-        margin-top: 16px !important;
-        
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: flex-start !important;
-        text-align: left !important;
-        gap: 8px !important;
-    }
-
-    /* Botón estirado al 100% */
-    .cta-card-front .btn-blanco-fuerte,
-    .form-contacto .btn-blanco-fuerte {
-        width: 100% !important;
-        height: 48px !important;
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        font-size: 1rem !important;
-        border-radius: 10px !important;
-        margin: 0 !important;
-        padding: 0 !important;
+        gap: 10px !important;
     }
 }
 
-/* =================================================================
-   13. PULIDO MICROMÉTRICO (Sastrería para pantallas de 320px)
-================================================================= */
-
-@media screen and (max-width: 480px) {
-
-    /* --- 1. CANDADO DE 1 SOLA LÍNEA (Minitítulos y Botón Hero) --- */
-    
-    /* Minitítulos coloridos domados */
-    .solucion-tag-premium,
-    .card-mini-title-premium,
-    [class*="mini-title"] {
-        white-space: nowrap !important; /* REGLA FÍSICA: Prohibido saltar de renglón */
-        font-size: 0.64rem !important;  /* Letra microscópica de alta definición */
-        letter-spacing: 0.03em !important; /* Comprimimos el tracking para ganar milímetros */
-        width: fit-content !important;
-        max-width: 100% !important;
-        
-        /* Seguro anti-desborde: si la pantalla mide 280px, pondrá "..." al final en vez de romperse */
-        overflow: hidden !important;
-        text-overflow: ellipsis !important; 
-    }
-
-    /* Botón principal del Hero en una sola línea */
-    .hero .btn-primary {
-        white-space: nowrap !important;
-        font-size: 0.92rem !important; /* Ajuste milimétrico */
-        padding: 15px 24px !important;
-        width: fit-content !important;
-        max-width: 92vw !important;
-    }
-
-
-    /* --- 2. COMPRESIÓN INTERNA DEL CARRUSEL (Todo juntito) --- */
-
-    .card-servicio-ancha.is-center .card-info-group {
-        gap: 6px !important; /* Distancia entre el minitítulo y el H3 */
-        padding: 22px 18px !important; /* Reducimos el aire de la caja */
-        height: auto !important;
-        min-height: 180px !important;
-    }
-
-    .card-servicio-ancha.is-center .card-header-servicio {
-        gap: 2px !important; /* Pegamos el minitítulo al título principal */
-    }
-
-    .card-servicio-ancha.is-center .card-header-servicio h3 {
-        font-size: 1.6rem !important;
-        line-height: 1.1 !important;
-        margin: 0 !important;
-    }
-
-    /* El párrafo gris que acompaña al título del carrusel */
-    .card-servicio-ancha.is-center .card-header-servicio h3 span {
-        display: block !important;
-        margin-top: 4px !important; /* Pegadito al H3 */
-        font-size: 0.88rem !important;
-        line-height: 1.35 !important;
-    }
-
-
-    /* --- 3. ENSANCHAMIENTO PANORÁMICO (A 12px de los bordes del móvil) --- */
-
-    /* Fijamos los "fosos" laterales de las secciones a exactamente 12px */
-    .seccion-capas,
-    .seccion-contacto {
-        padding-left: 12px !important;
-        padding-right: 12px !important;
-    }
-
-    /* Estiramos las 3 tarjetas horizontales para que abracen los bordes */
-    .privacy-card,
-    .cta-card-scene,
-    .banner-metodologia-premium {
-        width: 100% !important;
-        max-width: 420px !important; /* Permite que se estiren al 100% en teléfonos pequeños */
-        margin-left: auto !important;
-        margin-right: auto !important;
-        box-sizing: border-box !important;
-    }
-
-    /* Blindamos el interior de la tarjeta de contacto para que herede el nuevo ancho */
-    .cta-card-front,
-    .cta-card-back {
-        width: 100% !important;
-        box-sizing: border-box !important;
-        padding-left: 20px !important;
-        padding-right: 20px !important;
-    }
-
-    /* =================================================================
-       16. EL FIX FINAL (Carrusel suave, Espacios y Blueprint)
-    ================================================================= */
-
-    /* --- 1. EL SECRETO DEL CARRUSEL SUAVE --- */
-    .servicios-interactive-wrapper,
-    .servicios-tabs {
-        /* Magia negra de CSS: Le prohíbe al iPhone intentar hacer scroll horizontal nativo.
-           Ahora el 100% de tu dedo es controlado por tu JavaScript. Cero bugs. */
-        touch-action: pan-y !important; 
-    }
-
-    /* --- 2. SEPARACIÓN: PUNTOS DEL CARRUSEL VS CONTACTO --- */
-    .servicios-interactive-wrapper {
-        margin-bottom:0 !important; /* Le damos piso al carrusel para que respiren los puntos */
-    }
-    
-    .seccion-contacto {
-        margin-top: 15rem !important; /* Empujamos la tarjeta de contacto hacia abajo */
-    }
-
-    .hero-title, .section-title-premium, .problemas-main-title {
-        font-size: 2.5rem !important;
-    }
-}
-
-/* =================================================================
-   14. CORRECCIONES DE CIERRE (El Toque de Gracia)
-================================================================= */
-
-@media screen and (max-width: 480px) {
-
-    /* --- 1. MATAMOS EL VACÍO INFERIOR DEL CARRUSEL --- */
-    .card-servicio-ancha.is-center .card-info-group {
-        min-height: 0 !important; /* Destruye el piso invisible de 180px que generaba el hueco */
-        height: fit-content !important; 
-        padding: 20px 18px 16px 18px !important; /* Tapa de arriba, ajustado milimétricamente abajo */
-    }
-
-
-/* --- 2. EL FORMULARIO ELÁSTICO (Pequeño de frente, expansivo de atrás) --- */
-
-    /* A. El lienzo maestro: En reposo mide unos compactos 215px */
-    .cta-card-scene {
-        height: 215px !important;
-        transition: height 0.5s var(--cubic-apple) !important;
-    }
-
-    /* Cuando el JS avisa que tocaste el botón, el lienzo crece a 375px */
-    .cta-card-scene.is-expanded {
-        height: 375px !important;
-    }
-
-    .cta-card-inner {
-        height: 100% !important;
-    }
-
-    /* B. Las dos caras se amoldan al lienzo en tiempo real */
-    .cta-card-front,
-    .cta-card-back {
-        position: absolute !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: 100% !important;
-        min-height: 0 !important; /* Matamos el candado rígido anterior */
-        box-sizing: border-box !important;
-    }
-
-    /* C. Cara Frontal (Estuche pequeño centrado) */
-    .cta-card-front {
-        justify-content: center !important;
-        padding: 24px 20px !important;
-    }
-
-    /* D. Cara Trasera (Órganos internos hiper-comprimidos para entrar en los 375px) */
-    .cta-card-back {
-        padding: 24px 20px !important;
-        justify-content: center !important;
-    }
-
-    .cta-card-back h3 {
-        font-size: 1.7rem !important;
-        margin-bottom: 12px !important;
-    }
-
-    .form-contacto {
-        gap: 8px !important; 
-        margin-bottom: 10px !important;
-    }
-
-    .form-input {
-        padding: 11px 14px !important; 
-        font-size: 0.85rem !important;
-        border-radius: 10px !important;
-    }
-
-    .form-textarea {
-        height: 60px !important; 
-    }
-
-    .form-contacto .btn-blanco-fuerte {
-        height: 44px !important;
-        font-size: 0.95rem !important;
-    }
-
-    .btn-volver {
-        margin-top: 4px !important;
-        font-size: 0.85rem !important;
-        padding: 4px !important;
-    }
-
-    /* --- 3. TRANSPARENCIA ABSOLUTA (Clon exacto de la tarjeta Google) --- */
-
-    .banner-metodologia-premium {
-        display: flex !important;
-        flex-direction: row !important; /* Obliga: Ícono a la izq, texto a la der */
-        align-items: flex-start !important;
-        padding: 22px 18px !important;
-        gap: 14px !important;
-        
-        background: #000000 !important;
-        border: 1px solid rgba(255, 255, 255, 0.12) !important;
-        border-radius: 16px !important;
-    }
-
-    /* El ícono de la izquierda blindado */
-    .banner-icon-premium {
-        width: 38px !important;
-        height: 38px !important;
-        flex-shrink: 0 !important; /* Prohíbe al navegador aplastar el ícono */
-        margin: 0 !important;
-    }
-    .banner-icon-premium svg {
-        width: 20px !important;
-        height: 20px !important;
-    }
-
-    /* El bloque de texto a la derecha */
-    .banner-text-premium {
-        display: flex !important;
-        flex-direction: column !important; /* Título arriba, párrafo abajo */
-        align-items: flex-start !important;
-        text-align: left !important;
-        gap: 4px !important;
-    }
-
-    .banner-text-premium h3 {
-        font-size: 1.05rem !important;
-        line-height: 1.25 !important;
-        color: #ffffff !important;
-        margin: 0 !important;
-    }
-
-    .banner-text-premium p {
-        font-size: 0.82rem !important;
-        line-height: 1.4 !important;
-        color: rgba(255, 255, 255, 0.6) !important;
-        margin: 0 !important;
-    }
-
-    /* --- 4. ECLIPSE LUNAR (Control de luz bajo la curva de inicio) --- */
-
-    /* A. El domo físico: Hacemos que su gris metálico dure solo 35px y caiga a negro puro */
-    .seccion-capas::before {
-        background: linear-gradient(to bottom, #151518 0%, #000000 35px, #000000 100%) !important;
-        
-        /* Limpiamos la expansiva sombra de 200px que heredaba de la PC */
-        box-shadow: 0 -1px 3px rgba(255, 255, 255, 0.15), 
-                    0 -20px 40px rgba(255, 255, 255, 0.06) !important; 
-    }
-
-    /* B. El resplandor fantasma: Lo comprimimos de 300px a unos quirúrgicos 55px */
-    .seccion-capas::after {
-        width: 100% !important;
-        height: 85px !important; /* Reducido a casi una sexta parte */
-        top: -25px !important;
-        
-        filter: blur(36px) !important; /* Niebla estrictamente contenida */
-        -webkit-filter: blur(16px) !important;
-        
-        background: radial-gradient(
-            ellipse at 50% 80%, 
-            rgba(255, 255, 255, 0.1) 0%, 
-            rgba(255, 255, 255, 0.05) 45%,
-            transparent 70%
-        ) !important;
-    }
-}
-
-/* --- B. FIX BUG "DOBLE TOQUE" EN MÓVILES (iOS Hover Bug) --- */
 @media (hover: none) {
-    /* Si el dispositivo es táctil, aniquilamos el hover físico */
-    .btn-blanco-fuerte:hover, 
-    .carousel-arrow:hover,
-    .btn-primary:hover {
-        transform: none !important;
-        box-shadow: inherit !important;
-        background: inherit !important;
+    .btn-blanco-fuerte:hover, .carousel-arrow:hover, .btn-primary:hover { transform: none !important; box-shadow: inherit !important; background: inherit !important; }
+}
+
+/* =========================================
+   Selector de Canales Premium (Tarjeta Posterior)
+   ========================================= */
+.contact-switcher {
+    display: flex;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 4px;
+    border-radius: 30px;
+    margin: 0 auto 24px auto;
+    width: fit-content;
+    z-index: 5;
+}
+
+.switch-btn {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 6px 18px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.switch-btn.active {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Control de Paneles Dinámicos */
+.contact-panel {
+    display: none;
+    width: 100%;
+}
+
+.contact-panel.active {
+    display: block;
+    animation: panelFadeIn 0.35s ease-out forwards;
+}
+
+@keyframes panelFadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Tarjeta WhatsApp Interna */
+.wsp-direct-card {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.btn-whatsapp-direct {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 440px;
+    height: 46px;
+    background: #25D366;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: 10px;
+    text-decoration: none;
+    margin: 16px auto 0 auto;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.2);
+}
+
+.btn-whatsapp-direct:hover {
+    background: #20ba59;
+    transform: translateY(-1px);
+}
+
+/* Forzar Centrados Absolutos en Tarjeta */
+.card-title-centered {
+    width: 100% !important;
+    text-align: center !important;
+    margin-bottom: 16px !important;
+    font-size: 5rem;
+}
+
+.card-btn-centered {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block !important;
+}
+
+/* =========================================
+   FIX DEFINITIVO: FORMULARIO Y TELÉFONO (INTL-TEL-INPUT)
+   ========================================= */
+
+/* Layout Grid a 2 columnas limpio */
+.form-contacto {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 14px !important;
+    width: 100%;
+    margin-bottom: 0 !important;
+}
+
+.form-full-width {
+    grid-column: span 2 !important;
+    margin-bottom: 1.3rem;
+}
+
+@media (max-width: 768px) {
+    .form-contacto {
+        grid-template-columns: 1fr !important;
+    }
+    .form-full-width {
+        grid-column: span 1 !important;
     }
 }
 
-/* --- C. CONGELAMIENTO DE ALTURA (Anti-saltos en el Carrusel) --- */
+/* Contenedor principal de la librería */
+.iti {
+    width: 100%;
+    display: block;
+}
+
+/* PARCHE AL BUG 404 DE CDNJS: Forzamos la ruta absoluta real del sprite */
+/* BLINDAJE DE ALTA ESPECIFICIDAD PARA LAS BANDERAS */
+.iti .iti__flag {
+    background-image: url("https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/img/flags.png") !important;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .iti .iti__flag {
+        background-image: url("https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/img/flags@2x.png") !important;
+    }
+}
+
+/* Caja de la bandera y prefijo */
+.iti__flag-container {
+    z-index: 10;
+}
+
+.iti__selected-flag {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border-radius: 12px 0 0 12px !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+    padding: 0 12px 0 14px !important;
+}
+
+/* Tipografía del código de país (+54) */
+.iti__selected-dial-code {
+    color: #ffffff !important;
+    font-size: 0.95rem !important;
+    font-weight: 500 !important;
+    margin-left: 6px !important;
+}
+
+/* Desplazamos el texto del usuario exactamente 88px para no pisar la bandera */
+.iti input[type="tel"] {
+    width: 100% !important;
+    padding-left: 88px !important;
+}
+
+/* Menú desplegable de países (Estilo Dark Glass) */
+.iti__country-list {
+    background-color: #0a0a0a !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 10px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.95) !important;
+    max-width: 320px;
+    white-space: normal !important;
+    z-index: 999999 !important; /* Blindaje: evita que el campo Email lo tape */
+}
+
+.iti__country:hover {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    color: #ffffff !important;
+}
+
 @media screen and (max-width: 480px) {
-    /* Fijamos el contenedor maestro para que no suba ni baje */
-    .servicios-interactive-wrapper {
-        height: 480px !important; 
-        min-height: 480px !important;
-    }
-    /* Fijamos la caja de texto interna a una altura estricta */
-    .card-servicio-ancha.is-center .card-info-group {
-            height: fit-content !important; 
-            min-height: 0 !important;
-            max-height: none !important;
-            padding: 24px 20px !important; /* Respiro interno parejo, sin vacío abajo */
+    /* Eliminamos la altura fija, dejamos que el contenido dicte el tamaño */
+    .cta-card-scene.is-expanded {
+        height: auto !important; 
+        min-height: 400px !important;
     }
 
-    /* --- 6. AJUSTE DE ALTURA FINAL DEL CARRUSEL --- */
-    /* --- 6. AJUSTE REAL PARA iPHONE FÍSICO (Anti-solapamiento) --- */
-    .servicios-interactive-wrapper {
-        height: 485px !important; /* Expandido de 410px a 485px para absorber la fuente de iOS */
-        min-height: 485px !important;
-        margin-bottom: 35px !important; /* Empuja la tarjeta de contacto hacia abajo */
+    .cta-card-back {
+        position: relative !important; /* Cambiamos a relativo para que crezca */
+        height: auto !important;      /* La tarjeta se adapta al contenido */
+        padding: 20px 20px 30px !important; 
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 15px !important;
     }
-    
-    .carousel-controls {
-        bottom: 5px !important; /* Clava los puntos estrictamente en el piso de los 485px */
-        top: auto !important;
-        z-index: 1000 !important;
+
+    /* El panel de WhatsApp será más pequeño naturalmente */
+    #panel-whatsapp {
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+    }
+
+    /* Ajuste del título */
+    .card-title-centered {
+        font-size: 1.4rem !important;
+        margin: 0 !important;
+    }
+
+    /* Aseguramos que el botón de volver quede siempre al final del contenido */
+    .btn-volver {
+        margin-top: 10px !important;
+        margin-bottom: 0 !important;
+        align-self: center;
     }
 }
-

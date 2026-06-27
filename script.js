@@ -217,6 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         window.addEventListener('scroll', updateTilt, { passive: true });
         updateTilt(); 
+        
     }
 
     // Giro 180 del formulario + EXPANSIÓN DE ESCENARIO
@@ -235,4 +236,80 @@ document.addEventListener("DOMContentLoaded", () => {
             if (cardScene) cardScene.classList.remove('is-expanded'); 
         });
     }
+    // --- NUEVA LÓGICA DE DETECCIÓN MÓVIL ---
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+    if (isMobile) {
+        // Desactivamos el form por defecto
+        document.querySelector('[data-panel="form"]').classList.remove('active');
+        document.getElementById('panel-form').classList.remove('active');
+
+        // Activamos el panel de WhatsApp
+        document.querySelector('[data-panel="whatsapp"]').classList.add('active');
+        document.getElementById('panel-whatsapp').classList.add('active');
+        
+        // Opcional: marca el botón de WhatsApp como activo visualmente
+        document.querySelectorAll('.switch-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelector('[data-panel="whatsapp"]').classList.add('active');
+    }
+    // ====================================================================
+    // Inicialización BULLETPROOF del Teléfono (Con prefijo y blindaje)
+    // ====================================================================
+    const phoneInput = document.querySelector("#phone");
+    
+    if (phoneInput) {
+        setTimeout(() => {
+            if (typeof window.intlTelInput !== "undefined") {
+                const iti = window.intlTelInput(phoneInput, {
+                    initialCountry: "ar",
+                    preferredCountries: ["ar", "cl", "uy", "br", "mx", "es", "us"],
+                    separateDialCode: true,
+                    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+                });
+
+                // ESCUDO 1: Destruye al instante cualquier tecla que no sea un número (0-9)
+                phoneInput.addEventListener("input", function() {
+                    this.value = this.value.replace(/\D/g, "");
+                });
+
+                // ESCUDO 2 (Crítico para Formspree): Captura el prefijo (+54) justo antes de enviar
+                const form = phoneInput.closest("form");
+                if (form) {
+                    form.addEventListener("submit", function() {
+                        if (iti.isValidNumber() || iti.getNumber().length > 0) {
+                            phoneInput.value = iti.getNumber(); // Convierte "9261..." en "+549261..."
+                        }
+                    });
+                }
+
+            } else {
+                console.error("Error: La librería intl-tel-input no se cargó correctamente.");
+            }
+        }, 200);
+    }
+});
+
+
+
+// Lógica para alternar canales de contacto en la parte trasera de la tarjeta
+const switchButtons = document.querySelectorAll('.switch-btn');
+
+switchButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        // Remover estado activo de todos los botones y añadir al seleccionado
+        switchButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        
+        // Ocultar todos los paneles de contacto
+        const targetPanelId = button.getAttribute('data-panel');
+        document.querySelectorAll('.contact-panel').forEach(panel => {
+            panel.classList.remove('active');
+        });
+        
+        // Mostrar el panel seleccionado
+        const activePanel = document.getElementById(`panel-${targetPanelId}`);
+        if (activePanel) {
+            activePanel.classList.add('active');
+        }
+    });
 });

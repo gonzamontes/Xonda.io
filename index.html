@@ -3,13 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="Xonda: Ingeniería Absoluta. Automatizamos y escalamos tu arquitectura empresarial con software a medida, ecosistemas web premium y agentes autónomos de Inteligencia Artificial.">
+    <meta name="keywords" content="desarrollo de software, inteligencia artificial, automatización de empresas, diseño web premium, arquitectura corporativa, Xonda">
+    <meta name="author" content="Xonda">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Xonda | Tu Empresa, Automatizada">
+    <meta property="og:description" content="Automatizamos y escalamos tu arquitectura empresarial con software a medida y agentes de IA.">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#000000">
+    
     <title>Xonda</title>
+    
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.min.css">    
+
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="global.css">
+</head>
+
 </head>
 <body>
     <div id="preloader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background-color: #000000; z-index: 999999; display: flex; align-items: center; justify-content: center; transition: opacity 0.6s ease, visibility 0.6s ease;">
@@ -19,17 +34,16 @@
     <div class="techo-luz"></div>
     
     <nav class="navbar">
-        <a href="#" class="logo">
-            <svg width="28" height="25" viewBox="0 0 2490 2242" xmlns="http://www.w3.org/2000/svg">
+        <a href="#" class="logo" aria-label="Inicio Xonda">
+            <svg width="28" height="25" viewBox="0 0 2490 2242" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
                 <g transform="translate(0, 2242) scale(0.1, -0.1)" fill="currentColor" stroke="none">
                     <path d="M12160 22313 c-315 -7 -880 -52 -1180 -93 -551 -76 -1030 -174 -1540 -314 -306 -85 -725 -228 -853 -292 -16 -8 -35 -14 -43 -14 -8 0 -25 -6 -37 -14 -12 -8 -51 -24 -85 -35 -35 -11 -79 -30 -97 -41 -18 -11 -44 -20 -59 -20 -14 0 -26 -3 -26 -7 0 -9 -69 -38 -112 -49 -16 -3 -28 -10 -28 -15 0 -5 -7 -9 -15 -9 -8 0 -38 -11 -67 -25 -28 -14 -56 -25 -61 -25 -6 0 -52 -20 -104 -45 -51 -25 -96 -45 -98 -45 -3 0 -42 -17 -88 -39 -45 -21 -120 -56 -167 -77 -361 -164 -886 -471 -1365 -798 -769 -524 -1523 -1203 -2160 -1946 -389 -453 -799 -1026 -1101 -1536 -206 -349 -498 -918 -634 -1234 -204 -473 -381 -968 -489 -1365 -42 -156 -102 -384 -111 -425 -5 -19 -25 -109 -45 -200 -20 -91 -45 -201 -55 -245 -32 -133 -107 -569 -129 -750 -31 -261 -59 -586 -71 -845 -6 -129 -13 -241 -16 -249 -12 -35 -4 -810 11 -1013 45 -642 122 -1215 225 -1668 4 -19 20 -89 34 -155 83 -375 241 -922 351 -1215 30 -80 55 -149 55 -152 0 -4 18 -46 40 -93 22 -47 40 -92 40 -98 1 -7 14 -37 30 -67 17 -30 30 -65 30 -77 0 -13 3 -23 8 -23 8 0 37 -69 48 -112 3 -16 10 -28 15 -28 5 0 9 -7 9 -16 0 -8 11 -34 23 -57 13 -23 27 -55 31 -72 11 -44 39 -105 48 -105 4 0 8 -5 8 -11 0 -15 93 -203 102 -207 4 -2 8 -8 8 -14 0 -34 385 -789 478 -938 8 -12 300 276 1378 1357 753 754 2212 2217 3243 3250 1030 1033 1884 1892 1898 1909 l24 32 -26 38 c-14 22 -883 894 -1931 1939 l-1906 1900 1 1975 c1 1864 2 1976 19 1989 14 11 416 12 2507 6 1370 -4 2560 -10 2645 -14 l155 -6 6 -960 c3 -528 7 -1939 8 -3135 1 -1196 4 -2185 7 -2198 5 -16 13 -22 26 -20 21 3 -102 -119 3596 3583 1467 1468 2686 2686 2710 2707 l43 38 1055 0 c580 0 1054 4 1054 8 0 11 -46 32 -70 32 -25 0 -80 48 -80 70 0 33 -452 363 -845 617 -580 374 -1364 775 -1892 967 -40 14 -103 37 -141 51 -37 14 -74 25 -82 25 -8 0 -24 7 -34 15 -11 8 -28 15 -39 15 -10 0 -33 6 -50 14 -18 7 -63 23 -101 35 -37 12 -86 30 -109 41 -22 11 -55 20 -72 20 -17 0 -40 7 -51 15 -10 8 -31 15 -46 15 -15 0 -29 4 -32 9 -3 5 -23 12 -43 16 -21 4 -42 10 -48 15 -5 4 -37 15 -70 24 -33 9 -73 22 -90 27 -16 6 -43 15 -60 19 -16 5 -77 23 -135 40 -370 112 -664 176 -1215 264 -432 69 -842 107 -1360 126 -253 9 -340 10 -605 3z"/>
-                    <path d="M21915 16839 c-66 -35 -141 -95 -187 -151 -24 -29 -104 -111 -177 -183 -74 -71 -189 -185 -255 -253 -285 -289 -869 -865 -956 -943 -96 -85 -181 -171 -530 -532 -107 -111 -386 -390 -619 -622 -234 -231 -540 -537 -680 -680 -140 -143 -357 -361 -481 -485 -2170 -2164 -2652 -2648 -2656 -2666 -3 -13 -2 -33 2 -46 4 -13 330 -345 725 -738 1576 -1568 3109 -3101 3124 -3123 13 -21 15 -242 15 -1963 0 -1734 -1 -1940 -15 -1950 -35 -26 -5222 -30 -5289 -4 -18 6 -24 19 -30 56 -10 74 -6 2564 4 2709 21 285 23 410 9 565 -11 123 -14 439 -14 1530 0 1300 -1 1377 -18 1403 -9 15 -23 27 -29 27 -14 0 45 59 -2112 -2095 -2751 -2747 -4205 -4190 -4228 -4197 -13 -3 -451 -6 -975 -7 -523 -1 -958 -4 -966 -7 -23 -8 8 -41 133 -141 166 -132 596 -430 816 -563 31 -19 73 -45 92 -58 19 -13 128 -78 241 -144 235 -138 417 -231 701 -360 25 -11 95 -45 157 -74 61 -30 116 -54 122 -54 6 0 11 -4 11 -8 0 -9 61 -37 105 -48 17 -4 49 -18 72 -31 23 -12 49 -23 57 -23 9 0 16 -4 16 -9 0 -5 12 -12 28 -15 43 -11 112 -40 112 -48 0 -5 12 -8 26 -8 15 0 41 -9 58 -19 17 -11 63 -31 101 -45 70 -26 105 -41 137 -57 18 -9 48 -20 158 -59 36 -12 70 -26 75 -30 15 -12 284 -94 435 -134 72 -19 159 -43 205 -56 17 -5 48 -12 70 -16 22 -4 54 -13 72 -21 18 -7 46 -13 62 -13 16 0 33 -5 36 -10 3 -6 21 -10 39 -10 19 0 50 -7 69 -15 20 -8 52 -15 71 -15 19 0 36 -5 38 -11 2 -6 26 -13 53 -16 28 -3 55 -10 62 -15 7 -6 40 -12 73 -15 33 -3 63 -10 66 -14 3 -5 26 -9 52 -9 26 -1 58 -7 72 -15 14 -8 40 -14 58 -15 18 0 43 -5 54 -11 11 -6 44 -15 72 -19 28 -5 114 -19 191 -33 77 -14 185 -30 240 -37 55 -6 136 -16 180 -22 44 -6 136 -15 205 -19 69 -4 168 -14 220 -23 73 -13 105 -14 140 -6 31 7 68 7 120 0 182 -26 366 -40 408 -31 26 5 74 5 120 -1 91 -12 582 -4 792 12 80 7 161 11 180 11 19 -1 80 6 135 15 55 9 154 19 220 23 66 3 130 12 142 19 12 6 55 12 97 12 41 0 87 5 103 11 15 6 73 15 128 19 179 15 384 50 590 100 51 12 79 19 170 40 28 6 68 14 90 17 22 3 49 12 60 19 11 8 32 14 48 14 16 0 38 5 50 12 12 6 42 15 67 19 48 8 126 26 225 54 33 9 76 20 95 25 159 40 491 139 560 166 36 14 83 33 105 41 22 8 53 21 68 29 16 8 36 14 45 14 9 0 26 7 36 15 11 8 26 15 33 15 7 0 36 11 65 25 28 14 59 25 67 25 9 0 41 13 71 30 30 16 67 29 82 30 14 0 28 3 30 8 5 11 69 40 106 47 17 4 32 11 32 16 0 5 7 9 16 9 8 0 34 11 57 23 23 13 56 27 72 31 44 11 105 39 105 48 0 4 5 8 11 8 15 0 203 93 207 102 2 4 10 8 17 8 7 0 53 20 101 44 78 39 173 84 334 159 25 11 92 48 150 81 91 52 133 77 225 133 11 7 40 23 65 35 25 13 47 25 50 28 3 3 32 23 65 45 33 22 62 42 65 45 3 3 23 14 45 24 22 11 63 36 90 57 28 20 66 45 85 55 19 10 39 23 45 27 5 4 66 45 135 91 202 134 270 181 370 261 52 42 114 90 138 107 24 18 42 40 42 51 0 27 37 57 70 57 26 0 90 51 90 72 0 4 7 8 15 8 8 0 15 4 15 8 0 5 18 16 40 26 21 9 54 36 72 59 48 62 59 72 99 90 21 9 66 43 102 74 251 224 334 303 540 512 349 355 641 679 828 921 37 47 150 198 251 335 240 325 401 563 553 817 18 30 41 72 192 347 42 77 82 153 209 401 38 74 75 141 82 148 6 7 12 19 12 27 0 17 33 75 43 75 4 0 7 5 7 10 0 6 28 68 61 138 57 118 113 250 211 497 22 55 53 134 70 175 17 41 44 113 60 160 16 47 43 119 59 160 36 95 149 473 149 501 0 11 5 30 12 42 6 12 15 38 19 57 4 19 15 62 24 95 28 99 46 177 54 225 4 25 13 55 19 67 7 12 12 34 12 50 0 16 6 37 14 48 7 11 16 38 19 60 5 37 15 82 37 175 60 248 120 576 120 659 0 14 6 64 14 111 23 132 37 237 46 335 5 50 13 126 19 170 27 198 51 668 51 988 0 557 -38 1180 -85 1399 -8 37 -15 82 -15 101 0 19 -7 51 -15 70 -8 20 -15 64 -15 97 0 33 -4 68 -10 78 -10 17 -25 112 -39 237 -4 39 -13 83 -19 98 -7 16 -12 45 -12 65 -1 20 -7 48 -15 62 -8 14 -14 48 -15 77 0 28 -4 54 -9 57 -4 3 -11 35 -14 72 -4 36 -11 71 -15 78 -5 6 -12 36 -14 66 -3 30 -11 56 -17 58 -6 2 -11 19 -11 39 0 19 -6 58 -14 86 -7 29 -21 88 -31 132 -30 139 -133 490 -190 645 -7 19 -18 53 -25 75 -7 22 -18 54 -25 70 -8 17 -29 77 -48 135 -19 58 -40 116 -45 130 -6 14 -36 95 -68 180 -67 183 -158 395 -243 572 -33 70 -61 132 -61 137 0 5 -3 11 -8 13 -8 4 -102 193 -102 207 0 5 -3 11 -7 13 -5 2 -26 39 -47 83 -22 44 -42 82 -46 85 -3 3 -14 24 -23 48 -9 23 -27 59 -40 80 -13 20 -40 71 -61 112 -21 41 -63 117 -93 168 -60 103 -69 107 -138 71z"/>
-                </g>
+                    <path d="M21915 16839 c-66 -35 -141 -95 -187 -151 -24 -29 -104 -111 -177 -183 -74 -71 -189 -185 -255 -253 -285 -289 -869 -865 -956 -943 -96 -85 -181 -171 -530 -532 -107 -111 -386 -390 -619 -622 -234 -231 -540 -537 -680 -680 -140 -143 -357 -361 -481 -485 -2170 -2164 -2652 -2648 -2656 -2666 -3 -13 -2 -33 2 -46 4 -13 330 -345 725 -738 1576 -1568 3109 -3101 3124 -3123 13 -21 15 -242 15 -1963 0 -1734 -1 -1940 -15 -1950 -35 -26 -5222 -30 -5289 -4 -18 6 -24 19 -30 56 -10 74 -6 2564 4 2709 21 285 23 410 9 565 -11 123 -14 439 -14 1530 0 1300 -1 1377 -18 1403 -9 15 -23 27 -29 27 -14 0 45 59 -2112 -2095 -2751 -2747 -4205 -4190 -4228 -4197 -13 -3 -451 -6 -975 -7 -523 -1 -958 -4 -966 -7 -23 -8 8 -41 133 -141 166 -132 596 -430 816 -563 31 -19 73 -45 92 -58 19 -13 128 -78 241 -144 235 -138 417 -231 701 -360 25 -11 95 -45 157 -74 61 -30 116 -54 122 -54 6 0 11 -4 11 -8 0 -9 61 -37 105 -48 17 -4 49 -18 72 -31 23 -12 49 -23 57 -23 9 0 16 -4 16 -9 0 -5 12 -12 28 -15 43 -11 112 -40 112 -48 0 -5 12 -8 26 -8 15 0 41 -9 58 -19 17 -11 63 -31 101 -45 70 -26 105 -41 137 -57 18 -9 48 -20 158 -59 36 -12 70 -26 75 -30 15 -12 284 -94 435 -134 72 -19 159 -43 205 -56 17 -5 48 -12 70 -16 22 -4 54 -13 72 -21 18 -7 46 -13 62 -13 16 0 33 -5 36 -10 3 -6 21 -10 39 -10 19 0 50 -7 69 -15 20 -8 52 -15 71 -15 19 0 36 -5 38 -11 2 -6 26 -13 53 -16 28 -3 55 -10 62 -15 7 -6 40 -12 73 -15 33 -3 63 -10 66 -14 3 -5 26 -9 52 -9 26 -1 58 -7 72 -15 14 -8 40 -14 58 -15 18 0 43 -5 54 -11 11 -6 44 -15 72 -19 28 -5 114 -19 191 -33 77 -14 185 -30 240 -37 55 -6 136 -16 180 -22 44 -6 136 -15 205 -19 69 -4 168 -14 220 -23 73 -13 105 -14 140 -6 31 7 68 7 120 0 182 -26 366 -40 408 -31 26 5 74 5 120 -1 91 -12 582 -4 792 12 80 7 161 11 180 11 19 -1 80 6 135 15 55 9 154 19 220 23 66 3 130 12 142 19 12 6 55 12 97 12 41 0 87 5 103 11 15 6 73 15 128 19 179 15 384 50 590 100 51 12 79 19 170 40 28 6 68 14 90 17 22 3 49 12 60 19 11 8 32 14 48 14 16 0 38 5 50 12 12 6 42 15 67 19 48 8 126 26 225 54 33 9 76 20 95 25 159 40 491 139 560 166 36 14 83 33 105 41 22 8 53 21 68 29 16 8 36 14 45 14 9 0 26 7 36 15 11 8 26 15 33 15 7 0 36 11 65 25 28 14 59 25 67 25 9 0 41 13 71 30 30 16 67 29 82 30 14 0 28 3 30 8 5 11 69 40 106 47 17 4 32 11 32 16 0 5 7 9 16 9 8 0 34 11 57 23 23 13 56 27 72 31 44 11 105 39 105 48 0 4 5 8 11 8 15 0 203 93 207 102 2 4 10 8 17 8 7 0 53 20 101 44 78 39 173 84 334 159 25 11 92 48 150 81 91 52 133 77 225 133 11 7 40 23 65 35 25 13 47 25 50 28 3 3 32 23 65 45 33 22 62 42 65 45 3 3 23 14 45 24 22 11 63 36 90 57 28 20 66 45 85 55 19 10 39 23 45 27 5 4 66 45 135 91 202 134 270 181 370 261 52 42 114 90 138 107 24 18 42 40 42 51 0 27 37 57 70 57 26 0 90 51 90 72 0 4 7 8 15 8 8 0 15 4 15 8 0 5 18 16 40 26 21 9 54 36 72 59 48 62 59 72 99 90 21 9 66 43 102 74 251 224 334 303 540 512 349 355 641 679 828 921 37 47 150 198 251 335 240 325 401 563 553 817 18 30 41 72 192 347 42 77 82 153 209 401 38 74 75 141 82 148 6 7 12 19 12 27 0 17 33 75 43 75 4 0 7 5 7 10 0 6 28 68 61 138 57 118 113 250 211 497 22 55 53 134 70 175 17 41 44 113 60 160 16 47 43 119 59 160 36 95 149 473 149 501 0 11 5 30 12 42 6 12 15 38 19 57 4 19 15 62 24 95 28 99 46 177 54 225 4 25 13 55 19 67 7 12 12 34 12 50 0 16 6 37 14 48 7 11 16 38 19 60 5 37 15 82 37 175 60 248 120 576 120 659 0 14 6 64 14 111 23 132 37 237 46 335 5 50 13 126 19 170 27 198 51 668 51 988 0 557 -38 1180 -85 1399 -8 37 -15 82 -15 101 0 19 -7 51 -15 70 -8 20 -15 64 -15 97 0 33 -4 68 -10 78 -10 17 -25 112 -39 237 -4 39 -13 83 -19 98 -7 16 -12 45 -12 65 -1 20 -7 48 -15 62 -8 14 -14 48 -15 77 0 28 -4 54 -9 57 -4 3 -11 35 -14 72 -4 36 -11 71 -15 78 -5 6 -12 36 -14 66 -3 30 -11 56 -17 58 -6 2 -11 19 -11 39 0 19 -6 58 -14 86 -7 29 -21 88 -31 132 -30 139 -133 490 -190 645 -7 19 -18 53 -25 75 -7 22 -18 54 -25 70 -8 17 -29 77 -48 135 -19 58 -40 116 -45 130 -6 14 -36 95 -68 180 -67 183 -158 395 -243 572 -33 70 -61 132 -61 137 0 5 -3 11 -8 13 -8 4 -102 193 -102 207 0 5 -3 11 -7 13 -5 2 -26 39 -47 83 -22 44 -42 82 -46 85 -3 3 -14 24 -23 48 -9 23 -27 59 -40 80 -13 20 -40 71 -61 112 -21 41 -63 117 -93 168 -60 103 -69 107 -138 71z"/></g>
             </svg>
             <span>Xonda</span>
         </a>
-        <a href="blueprint.html" class="btn-contact">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+        <a href="blueprint.html" class="btn-contact" aria-label="Nuestra Metodología">
+            <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="16" y="16" width="6" height="6" rx="1"></rect>
                 <rect x="2" y="16" width="6" height="6" rx="1"></rect>
                 <rect x="9" y="2" width="6" height="6" rx="1"></rect>
@@ -43,7 +57,7 @@
         <div class="container hero-layout reveal">
             <h1 class="hero-title">Tu Empresa,<br>Automatizada.</h1>
             <p class="hero-subtitle">Simplificamos tareas. Desarrollamos sitios web, software a medida y agentes autónomos de IA.</p>
-            <a href="#ingenieria-target" class="btn-primary">Descubre nuestros servicios</a>
+            <a href="#ingenieria-target" class="btn-primary" aria-label="Descubre nuestros servicios">Descubre nuestros servicios</a>
         </div>
     </main>
     
@@ -51,7 +65,7 @@
         <div class="container">
             <div class="privacy-card reveal">
                 <div class="privacy-badge">
-                    <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none">
+                    <svg width="100%" height="100%" viewBox="0 0 24 24" aria-hidden="true" fill="none">
                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M12 11h4.5c.1.4.1.7.1 1.1 0 2.7-1.8 4.7-4.6 4.7-2.7 0-4.9-2.2-4.9-4.9s2.2-4.9 4.9-4.9c1.3 0 2.4.5 3.3 1.3l-1.3 1.3c-.5-.5-1.2-.8-2-.8-1.7 0-3.1 1.4-3.1 3.1s1.4 3.1 3.1 3.1c2 0 2.7-1.4 2.8-2.1H12v-1.9z" fill="white"/>
                     </svg>
@@ -68,7 +82,7 @@
                 <div class="solucion-destacada">
                     <div class="solucion-info">
                         <span class="solucion-tag-premium">
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> 
+                            <svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> 
                             Pérdida de Oportunidades
                         </span>
                         <h3>Clientes sin respuesta.<br>Ventas perdidas por no estar 24/7.</h3>
@@ -103,7 +117,7 @@
                     
                     <div class="solucion-box-mini reveal">
                         <span class="solucion-tag-premium">
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+                            <svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
                             Cuellos de Botella
                         </span>
                         <h3>Dependencia manual.<br>Tu equipo está saturado.</h3>
@@ -132,7 +146,7 @@
 
                     <div class="solucion-box-mini reveal">
                         <span class="solucion-tag-premium">
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                            <svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
                             Ecosistemas Frágiles
                         </span>
                         <h3>El caos del Excel.<br>Tu negocio atado con alambre.</h3>
@@ -177,11 +191,11 @@
             
             <div class="servicios-interactive-wrapper reveal">
                 <div class="servicios-tabs">
-                    <button class="tab-btn-crystal active" data-target="software">
+                    <button class="tab-btn-crystal active" data-target="software" aria-label="Ver servicio Software a Medida">
                         <span class="tab-title">Software a Medida</span>
                         <span class="tab-desc">Sistemas y plataformas web de alta gama</span>
                     </button>
-                    <button class="tab-btn-crystal" data-target="ia">
+                    <button class="tab-btn-crystal" data-target="ia" aria-label="Ver servicio Inteligencia Artificial">
                         <div class="badge-running-container">
                             <div class="badge-track">
                                 <span>NUEVA ERA • IA AUTÓNOMA • NUEVA ERA • IA AUTÓNOMA •&nbsp;</span>
@@ -191,7 +205,7 @@
                         <span class="tab-title font-neon">Inteligencia Artificial</span>
                         <span class="tab-desc">Agentes autónomos y flujos cognitivos</span>
                     </button>
-                    <button class="tab-btn-crystal" data-target="pilares">
+                    <button class="tab-btn-crystal" data-target="pilares" aria-label="Ver Pilares Fundamentales">
                         <span class="tab-title">Pilares Fundamentales</span>
                         <span class="tab-desc">Garantía, diseño y soporte continuo</span>
                     </button>
@@ -201,9 +215,9 @@
                     <div class="esfera-fondo-carrusel"></div>
                     
                     <div class="carousel-controls">
-                        <button class="carousel-arrow prev" aria-label="Tarjeta anterior"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+                        <button class="carousel-arrow prev" aria-label="Tarjeta anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
                         <div class="carousel-indicators"></div>
-                        <button class="carousel-arrow next" aria-label="Siguiente tarjeta"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+                        <button class="carousel-arrow next" aria-label="Siguiente tarjeta"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
                     </div>
                     
                     <div id="software" class="service-panel active">
@@ -219,7 +233,7 @@
                                 <div class="app-window-mockup">
                                     <div class="app-top-bar" style="background: rgba(0, 0, 0, 0.25); padding: 12px 16px;">
                                         <div class="window-dots"><div class="window-dot"></div><div class="window-dot"></div><div class="window-dot"></div></div>
-                                        <div class="app-search-trigger"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg><span>Habla con tu asistente corporativo...</span></div>
+                                        <div class="app-search-trigger"><svg width="10" height="10" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg><span>Habla con tu asistente corporativo...</span></div>
                                         <div style="width: 20px;"></div>
                                     </div>
                                     <div class="app-body-layout">
@@ -249,7 +263,7 @@
                                 <div class="app-window-mockup" style="padding-bottom: 12px;">
                                     <div class="app-top-bar" style="background: rgba(0, 0, 0, 0.2); padding: 12px 16px;">
                                         <div class="window-dots"><div class="window-dot"></div><div class="window-dot"></div><div class="window-dot"></div></div>
-                                        <div class="app-search-trigger" style="width: 45%;"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>https://empresa.com</span></div>
+                                        <div class="app-search-trigger" style="width: 45%;"><svg width="8" height="8" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>https://empresa.com</span></div>
                                         <div class="status-pill-mini" style="font-size: 0.55rem; padding: 2px 6px;">Motor UX: 100%</div>
                                     </div>
                                     <div style="display: flex; flex-direction: column; flex: 1; padding: 16px; gap: 14px; overflow: hidden;">
@@ -283,7 +297,7 @@
                                 <div class="app-window-mockup">
                                     <div class="app-top-bar" style="background: rgba(0, 0, 0, 0.25); padding: 12px 16px;">
                                         <div class="window-dots"><div class="window-dot"></div><div class="window-dot"></div><div class="window-dot"></div></div>
-                                        <div class="app-search-trigger"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg><span>orquestador_enlace // canales-activos</span></div>
+                                        <div class="app-search-trigger"><svg width="10" height="10" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg><span>orquestador_enlace // canales-activos</span></div>
                                         <div style="width: 20px;"></div>
                                     </div>
                                     <div class="app-body-layout">
@@ -362,8 +376,8 @@
                                         </div>
                                         <div class="app-main-content" style="width: 68%; left: 32%; padding: 16px 14px; gap: 12px;">
                                             <div style="font-size: 0.6rem; font-weight: 600; color: rgba(255,255,255,0.2); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 2px;">Ejecución Cognitiva en Vivo</div>
-                                            <div class="app-list-item active" style="padding: 12px 14px; gap: 4px; background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1);"><div class="app-item-meta" style="font-size: 0.58rem;"><span>PASO 01 // OCR COGNITIVO</span><span>Justo ahora</span></div><div class="app-item-title" style="font-size: 0.8rem; font-weight: 600;">Lectura e Inteligencia Documental.</div><div class="app-item-subtitle" style="font-size: 0.75rem; color: rgba(255,255,255,0.7); white-space: normal; line-height: 1.4;">Procesando lote de 42 facturas. Extrayendo montos, fechas y datos fiscales sin intervención humana.</div></div>
-                                            <div class="app-list-item" style="padding: 12px 14px; gap: 4px; background: rgba(255,255,255,0.02); border-color: rgba(255,255,255,0.04);"><div class="app-item-meta" style="font-size: 0.58rem;"><span>PASO 02 // BUCLE_SINC</span><span>Hace 1m</span></div><div class="app-item-title" style="font-size: 0.8rem; font-weight: 500; color: rgba(255,255,255,0.8);">Actualización de Base de Datos.</div><div class="app-item-subtitle" style="font-size: 0.75rem; color: rgba(255,255,255,0.5); white-space: normal; line-height: 1.4;">Registros conciliados e indexados directamente en el ERP Core. Cero margen de error manual.</div></div>
+                                            <div class="app-list-item active" style="padding: 12px 14px; gap: 4px; background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1);"><div class="app-item-meta" style="font-size: 0.58rem;"><span>PASO 01 // OCR COGNITIVO</span><span>Justo ahora</span></div><div class="app-item-title" style="font-size: 0.8rem; font-weight: 600;">Lectura e Inteligencia Documental.</div><div class="app-item-subtitle" style="font-size: 0.75rem; color: rgba(255,255,255,0.7); white-space: normal; line-height: 1.4;">Procesando lote de 42 facturas. Extrayendo montos y datos fiscales sin intervención humana.</div></div>
+                                            <div class="app-list-item" style="padding: 12px 14px; gap: 4px; background: rgba(255,255,255,0.02); border-color: rgba(255,255,255,0.04);"><div class="app-item-meta" style="font-size: 0.58rem;"><span>PASO 02 // BUCLE_SINC</span><span>Hace 1m</span></div><div class="app-item-title" style="font-size: 0.8rem; font-weight: 500; color: rgba(255,255,255,0.8);">Actualización de Base de Datos.</div><div class="app-item-subtitle" style="font-size: 0.75rem; color: rgba(255,255,255,0.5); white-space: normal; line-height: 1.4;">Registros conciliados e indexados directamente en el ERP Core.</div></div>
                                         </div>
                                     </div>
                                 </div>
@@ -528,93 +542,125 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div id="contacto" class="seccion-contacto">
-            <div class="container" style="width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-                
-                <div class="cta-card-scene" id="card-scene">
-                    <div class="cta-card-inner" id="card-inner">
-                        
-                        <div class="cta-card-front">
-                            <div class="cta-icon-wrapper">
-                                <svg width="34" height="30" viewBox="0 0 2490 2242" xmlns="http://www.w3.org/2000/svg">
-                                    <g transform="translate(0, 2242) scale(0.1, -0.1)" fill="currentColor" stroke="none">
-                                        <path d="M12160 22313 c-315 -7 -880 -52 -1180 -93 -551 -76 -1030 -174 -1540 -314 -306 -85 -725 -228 -853 -292 -16 -8 -35 -14 -43 -14 -8 0 -25 -6 -37 -14 -12 -8 -51 -24 -85 -35 -35 -11 -79 -30 -97 -41 -18 -11 -44 -20 -59 -20 -14 0 -26 -3 -26 -7 0 -9 -69 -38 -112 -49 -16 -3 -28 -10 -28 -15 0 -5 -7 -9 -15 -9 -8 0 -38 -11 -67 -25 -28 -14 -56 -25 -61 -25 -6 0 -52 -20 -104 -45 -51 -25 -96 -45 -98 -45 -3 0 -42 -17 -88 -39 -45 -21 -120 -56 -167 -77 -361 -164 -886 -471 -1365 -798 -769 -524 -1523 -1203 -2160 -1946 -389 -453 -799 -1026 -1101 -1536 -206 -349 -498 -918 -634 -1234 -204 -473 -381 -968 -489 -1365 -42 -156 -102 -384 -111 -425 -5 -19 -25 -109 -45 -200 -20 -91 -45 -201 -55 -245 -32 -133 -107 -569 -129 -750 -31 -261 -59 -586 -71 -845 -6 -129 -13 -241 -16 -249 -12 -35 -4 -810 11 -1013 45 -642 122 -1215 225 -1668 4 -19 20 -89 34 -155 83 -375 241 -922 351 -1215 30 -80 55 -149 55 -152 0 -4 18 -46 40 -93 22 -47 40 -92 40 -98 1 -7 14 -37 30 -67 17 -30 30 -65 30 -77 0 -13 3 -23 8 -23 8 0 37 -69 48 -112 3 -16 10 -28 15 -28 5 0 9 -7 9 -16 0 -8 11 -34 23 -57 13 -23 27 -55 31 -72 11 -44 39 -105 48 -105 4 0 8 -5 8 -11 0 -15 93 -203 102 -207 4 -2 8 -8 8 -14 0 -34 385 -789 478 -938 8 -12 300 276 1378 1357 753 754 2212 2217 3243 3250 1030 1033 1884 1892 1898 1909 l24 32 -26 38 c-14 22 -883 894 -1931 1939 l-1906 1900 1 1975 c1 1864 2 1976 19 1989 14 11 416 12 2507 6 1370 -4 2560 -10 2645 -14 l155 -6 6 -960 c3 -528 7 -1939 8 -3135 1 -1196 4 -2185 7 -2198 5 -16 13 -22 26 -20 21 3 -102 -119 3596 3583 1467 1468 2686 2686 2710 2707 l43 38 1055 0 c580 0 1054 4 1054 8 0 11 -46 32 -70 32 -25 0 -80 48 -80 70 0 33 -452 363 -845 617 -580 374 -1364 775 -1892 967 -40 14 -103 37 -141 51 -37 14 -74 25 -82 25 -8 0 -24 7 -34 15 -11 8 -28 15 -39 15 -10 0 -33 6 -50 14 -18 7 -63 23 -101 35 -37 12 -86 30 -109 41 -22 11 -55 20 -72 20 -17 0 -40 7 -51 15 -10 8 -31 15 -46 15 -15 0 -29 4 -32 9 -3 5 -23 12 -43 16 -21 4 -42 10 -48 15 -5 4 -37 15 -70 24 -33 9 -73 22 -90 27 -16 6 -43 15 -60 19 -16 5 -77 23 -135 40 -370 112 -664 176 -1215 264 -432 69 -842 107 -1360 126 -253 9 -340 10 -605 3z"/>
-                                        <path d="M21915 16839 c-66 -35 -141 -95 -187 -151 -24 -29 -104 -111 -177 -183 -74 -71 -189 -185 -255 -253 -285 -289 -869 -865 -956 -943 -96 -85 -181 -171 -530 -532 -107 -111 -386 -390 -619 -622 -234 -231 -540 -537 -680 -680 -140 -143 -357 -361 -481 -485 -2170 -2164 -2652 -2648 -2656 -2666 -3 -13 -2 -33 2 -46 4 -13 330 -345 725 -738 1576 -1568 3109 -3101 3124 -3123 13 -21 15 -242 15 -1963 0 -1734 -1 -1940 -15 -1950 -35 -26 -5222 -30 -5289 -4 -18 6 -24 19 -30 56 -10 74 -6 2564 4 2709 21 285 23 410 9 565 -11 123 -14 439 -14 1530 0 1300 -1 1377 -18 1403 -9 15 -23 27 -29 27 -14 0 45 59 -2112 -2095 -2751 -2747 -4205 -4190 -4228 -4197 -13 -3 -451 -6 -975 -7 -523 -1 -958 -4 -966 -7 -23 -8 8 -41 133 -141 166 -132 596 -430 816 -563 31 -19 73 -45 92 -58 19 -13 128 -78 241 -144 235 -138 417 -231 701 -360 25 -11 95 -45 157 -74 61 -30 116 -54 122 -54 6 0 11 -4 11 -8 0 -9 61 -37 105 -48 17 -4 49 -18 72 -31 23 -12 49 -23 57 -23 9 0 16 -4 16 -9 0 -5 12 -12 28 -15 43 -11 112 -40 112 -48 0 -5 12 -8 26 -8 15 0 41 -9 58 -19 17 -11 63 -31 101 -45 70 -26 105 -41 137 -57 18 -9 48 -20 158 -59 36 -12 70 -26 75 -30 15 -12 284 -94 435 -134 72 -19 159 -43 205 -56 17 -5 48 -12 70 -16 22 -4 54 -13 72 -21 18 -7 46 -13 62 -13 16 0 33 -5 36 -10 3 -6 21 -10 39 -10 19 0 50 -7 69 -15 20 -8 52 -15 71 -15 19 0 36 -5 38 -11 2 -6 26 -13 53 -16 28 -3 55 -10 62 -15 7 -6 40 -12 73 -15 33 -3 63 -10 66 -14 3 -5 26 -9 52 -9 26 -1 58 -7 72 -15 14 -8 40 -14 58 -15 18 0 43 -5 54 -11 11 -6 44 -15 72 -19 28 -5 114 -19 191 -33 77 -14 185 -30 240 -37 55 -6 136 -16 180 -22 44 -6 136 -15 205 -19 69 -4 168 -14 220 -23 73 -13 105 -14 140 -6 31 7 68 7 120 0 182 -26 366 -40 408 -31 26 5 74 5 120 -1 91 -12 582 -4 792 12 80 7 161 11 180 11 19 -1 80 6 135 15 55 9 154 19 220 23 66 3 130 12 142 19 12 6 55 12 97 12 41 0 87 5 103 11 15 6 73 15 128 19 179 15 384 50 590 100 51 12 79 19 170 40 28 6 68 14 90 17 22 3 49 12 60 19 11 8 32 14 48 14 16 0 38 5 50 12 12 6 42 15 67 19 48 8 126 26 225 54 33 9 76 20 95 25 159 40 491 139 560 166 36 14 83 33 105 41 22 8 53 21 68 29 16 8 36 14 45 14 9 0 26 7 36 15 11 8 26 15 33 15 7 0 36 11 65 25 28 14 59 25 67 25 9 0 41 13 71 30 30 16 67 29 82 30 14 0 28 3 30 8 5 11 69 40 106 47 17 4 32 11 32 16 0 5 7 9 16 9 8 0 34 11 57 23 23 13 56 27 72 31 44 11 105 39 105 48 0 4 5 8 11 8 15 0 203 93 207 102 2 4 10 8 17 8 7 0 53 20 101 44 78 39 173 84 334 159 25 11 92 48 150 81 91 52 133 77 225 133 11 7 40 23 65 35 25 13 47 25 50 28 3 3 32 23 65 45 33 22 62 42 65 45 3 3 23 14 45 24 22 11 63 36 90 57 28 20 66 45 85 55 19 10 39 23 45 27 5 4 66 45 135 91 202 134 270 181 370 261 52 42 114 90 138 107 24 18 42 40 42 51 0 27 37 57 70 57 26 0 90 51 90 72 0 4 7 8 15 8 8 0 15 4 15 8 0 5 18 16 40 26 21 9 54 36 72 59 48 62 59 72 99 90 21 9 66 43 102 74 251 224 334 303 540 512 349 355 641 679 828 921 37 47 150 198 251 335 240 325 401 563 553 817 18 30 41 72 192 347 42 77 82 153 209 401 38 74 75 141 82 148 6 7 12 19 12 27 0 17 33 75 43 75 4 0 7 5 7 10 0 6 28 68 61 138 57 118 113 250 211 497 22 55 53 134 70 175 17 41 44 113 60 160 16 47 43 119 59 160 36 95 149 473 149 501 0 11 5 30 12 42 6 12 15 38 19 57 4 19 15 62 24 95 28 99 46 177 54 225 4 25 13 55 19 67 7 12 12 34 12 50 0 16 6 37 14 48 7 11 16 38 19 60 5 37 15 82 37 175 60 248 120 576 120 659 0 14 6 64 14 111 23 132 37 237 46 335 5 50 13 126 19 170 27 198 51 668 51 988 0 557 -38 1180 -85 1399 -8 37 -15 82 -15 101 0 19 -7 51 -15 70 -8 20 -15 64 -15 97 0 33 -4 68 -10 78 -10 17 -25 112 -39 237 -4 39 -13 83 -19 98 -7 16 -12 45 -12 65 -1 20 -7 48 -15 62 -8 14 -14 48 -15 77 0 28 -4 54 -9 57 -4 3 -11 35 -14 72 -4 36 -11 71 -15 78 -5 6 -12 36 -14 66 -3 30 -11 56 -17 58 -6 2 -11 19 -11 39 0 19 -6 58 -14 86 -7 29 -21 88 -31 132 -30 139 -133 490 -190 645 -7 19 -18 53 -25 75 -7 22 -18 54 -25 70 -8 17 -29 77 -48 135 -19 58 -40 116 -45 130 -6 14 -36 95 -68 180 -67 183 -158 395 -243 572 -33 70 -61 132 -61 137 0 5 -3 11 -8 13 -8 4 -102 193 -102 207 0 5 -3 11 -7 13 -5 2 -26 39 -47 83 -22 44 -42 82 -46 85 -3 3 -14 24 -23 48 -9 23 -27 59 -40 80 -13 20 -40 71 -61 112 -21 41 -63 117 -93 168 -60 103 -69 107 -138 71z"/>
-                                    </g>
-                                </svg>
-                            </div>
-                            <h2>Lleva tu empresa<br> al siguiente nivel.</h2>
-                            <p>Agenda una reunión para simplificar tus procesos y potenciar tu operación.</p>
-                            <button id="btn-flip-form" class="btn-blanco-fuerte" style="border:none; cursor:pointer;">
-                                Agendar consultoría
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    <polyline points="12 5 19 12 12 19"></polyline>
-                                </svg>
-                            </button>
-                        </div>
-
-                        <div class="cta-card-back">
-                            <h3>Comencemos.</h3>
-                            <form class="form-contacto">
-                                <input type="text" class="form-input" placeholder="Nombre completo" required>
-                                <input type="email" class="form-input" placeholder="Correo corporativo" required>
-                                <textarea class="form-input form-textarea" placeholder="Mensaje (opcional)"></textarea>
-                                
-                                <button type="submit" class="btn-blanco-fuerte" style="width: 100%; justify-content: center; border:none; cursor:pointer;">
-                                    Enviar solicitud
+            <div id="contacto" class="seccion-contacto">
+                <div class="container" style="width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    
+                    <div class="cta-card-scene" id="card-scene">
+                        <div class="cta-card-inner" id="card-inner">
+                            
+                            <div class="cta-card-front">
+                                <div class="cta-icon-wrapper">
+                                    <svg width="34" height="30" viewBox="0 0 2490 2242" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                                        <g transform="translate(0, 2242) scale(0.1, -0.1)" fill="currentColor" stroke="none">
+                                            <path d="M12160 22313 c-315 -7 -880 -52 -1180 -93 -551 -76 -1030 -174 -1540 -314 -306 -85 -725 -228 -853 -292 -16 -8 -35 -14 -43 -14 -8 0 -25 -6 -37 -14 -12 -8 -51 -24 -85 -35 -35 -11 -79 -30 -97 -41 -18 -11 -44 -20 -59 -20 -14 0 -26 -3 -26 -7 0 -9 -69 -38 -112 -49 -16 -3 -28 -10 -28 -15 0 -5 -7 -9 -15 -9 -8 0 -38 -11 -67 -25 -28 -14 -56 -25 -61 -25 -6 0 -52 -20 -104 -45 -51 -25 -96 -45 -98 -45 -3 0 -42 -17 -88 -39 -45 -21 -120 -56 -167 -77 -361 -164 -886 -471 -1365 -798 -769 -524 -1523 -1203 -2160 -1946 -389 -453 -799 -1026 -1101 -1536 -206 -349 -498 -918 -634 -1234 -204 -473 -381 -968 -489 -1365 -42 -156 -102 -384 -111 -425 -5 -19 -25 -109 -45 -200 -20 -91 -45 -201 -55 -245 -32 -133 -107 -569 -129 -750 -31 -261 -59 -586 -71 -845 -6 -129 -13 -241 -16 -249 -12 -35 -4 -810 11 -1013 45 -642 122 -1215 225 -1668 4 -19 20 -89 34 -155 83 -375 241 -922 351 -1215 30 -80 55 -149 55 -152 0 -4 18 -46 40 -93 22 -47 40 -92 40 -98 1 -7 14 -37 30 -67 17 -30 30 -65 30 -77 0 -13 3 -23 8 -23 8 0 37 -69 48 -112 3 -16 10 -28 15 -28 5 0 9 -7 9 -16 0 -8 11 -34 23 -57 13 -23 27 -55 31 -72 11 -44 39 -105 48 -105 4 0 8 -5 8 -11 0 -15 93 -203 102 -207 4 -2 8 -8 8 -14 0 -34 385 -789 478 -938 8 -12 300 276 1378 1357 753 754 2212 2217 3243 3250 1030 1033 1884 1892 1898 1909 l24 32 -26 38 c-14 22 -883 894 -1931 1939 l-1906 1900 1 1975 c1 1864 2 1976 19 1989 14 11 416 12 2507 6 1370 -4 2560 -10 2645 -14 l155 -6 6 -960 c3 -528 7 -1939 8 -3135 1 -1196 4 -2185 7 -2198 5 -16 13 -22 26 -20 21 3 -102 -119 3596 3583 1467 1468 2686 2686 2710 2707 l43 38 1055 0 c580 0 1054 4 1054 8 0 11 -46 32 -70 32 -25 0 -80 48 -80 70 0 33 -452 363 -845 617 -580 374 -1364 775 -1892 967 -40 14 -103 37 -141 51 -37 14 -74 25 -82 25 -8 0 -24 7 -34 15 -11 8 -28 15 -39 15 -10 0 -33 6 -50 14 -18 7 -63 23 -101 35 -37 12 -86 30 -109 41 -22 11 -55 20 -72 20 -17 0 -40 7 -51 15 -10 8 -31 15 -46 15 -15 0 -29 4 -32 9 -3 5 -23 12 -43 16 -21 4 -42 10 -48 15 -5 4 -37 15 -70 24 -33 9 -73 22 -90 27 -16 6 -43 15 -60 19 -16 5 -77 23 -135 40 -370 112 -664 176 -1215 264 -432 69 -842 107 -1360 126 -253 9 -340 10 -605 3z"/>
+                                            <path d="M21915 16839 c-66 -35 -141 -95 -187 -151 -24 -29 -104 -111 -177 -183 -74 -71 -189 -185 -255 -253 -285 -289 -869 -865 -956 -943 -96 -85 -181 -171 -530 -532 -107 -111 -386 -390 -619 -622 -234 -231 -540 -537 -680 -680 -140 -143 -357 -361 -481 -485 -2170 -2164 -2652 -2648 -2656 -2666 -3 -13 -2 -33 2 -46 4 -13 330 -345 725 -738 1576 -1568 3109 -3101 3124 -3123 13 -21 15 -242 15 -1963 0 -1734 -1 -1940 -15 -1950 -35 -26 -5222 -30 -5289 -4 -18 6 -24 19 -30 56 -10 74 -6 2564 4 2709 21 285 23 410 9 565 -11 123 -14 439 -14 1530 0 1300 -1 1377 -18 1403 -9 15 -23 27 -29 27 -14 0 45 59 -2112 -2095 -2751 -2747 -4205 -4190 -4228 -4197 -13 -3 -451 -6 -975 -7 -523 -1 -958 -4 -966 -7 -23 -8 8 -41 133 -141 166 -132 596 -430 816 -563 31 -19 73 -45 92 -58 19 -13 128 -78 241 -144 235 -138 417 -231 701 -360 25 -11 95 -45 157 -74 61 -30 116 -54 122 -54 6 0 11 -4 11 -8 0 -9 61 -37 105 -48 17 -4 49 -18 72 -31 23 -12 49 -23 57 -23 9 0 16 -4 16 -9 0 -5 12 -12 28 -15 43 -11 112 -40 112 -48 0 -5 12 -8 26 -8 15 0 41 -9 58 -19 17 -11 63 -31 101 -45 70 -26 105 -41 137 -57 18 -9 48 -20 158 -59 36 -12 70 -26 75 -30 15 -12 284 -94 435 -134 72 -19 159 -43 205 -56 17 -5 48 -12 70 -16 22 -4 54 -13 72 -21 18 -7 46 -13 62 -13 16 0 33 -5 36 -10 3 -6 21 -10 39 -10 19 0 50 -7 69 -15 20 -8 52 -15 71 -15 19 0 36 -5 38 -11 2 -6 26 -13 53 -16 28 -3 55 -10 62 -15 7 -6 40 -12 73 -15 33 -3 63 -10 66 -14 3 -5 26 -9 52 -9 26 -1 58 -7 72 -15 14 -8 40 -14 58 -15 18 0 43 -5 54 -11 11 -6 44 -15 72 -19 28 -5 114 -19 191 -33 77 -14 185 -30 240 -37 55 -6 136 -16 180 -22 44 -6 136 -15 205 -19 69 -4 168 -14 220 -23 73 -13 105 -14 140 -6 31 7 68 7 120 0 182 -26 366 -40 408 -31 26 5 74 5 120 -1 91 -12 582 -4 792 12 80 7 161 11 180 11 19 -1 80 6 135 15 55 9 154 19 220 23 66 3 130 12 142 19 12 6 55 12 97 12 41 0 87 5 103 11 15 6 73 15 128 19 179 15 384 50 590 100 51 12 79 19 170 40 28 6 68 14 90 17 22 3 49 12 60 19 11 8 32 14 48 14 16 0 38 5 50 12 12 6 42 15 67 19 48 8 126 26 225 54 33 9 76 20 95 25 159 40 491 139 560 166 36 14 83 33 105 41 22 8 53 21 68 29 16 8 36 14 45 14 9 0 26 7 36 15 11 8 26 15 33 15 7 0 36 11 65 25 28 14 59 25 67 25 9 0 41 13 71 30 30 16 67 29 82 30 14 0 28 3 30 8 5 11 69 40 106 47 17 4 32 11 32 16 0 5 7 9 16 9 8 0 34 11 57 23 23 13 56 27 72 31 44 11 105 39 105 48 0 4 5 8 11 8 15 0 203 93 207 102 2 4 10 8 17 8 7 0 53 20 101 44 78 39 173 84 334 159 25 11 92 48 150 81 91 52 133 77 225 133 11 7 40 23 65 35 25 13 47 25 50 28 3 3 32 23 65 45 33 22 62 42 65 45 3 3 23 14 45 24 22 11 63 36 90 57 28 20 66 45 85 55 19 10 39 23 45 27 5 4 66 45 135 91 202 134 270 181 370 261 52 42 114 90 138 107 24 18 42 40 42 51 0 27 37 57 70 57 26 0 90 51 90 72 0 4 7 8 15 8 8 0 15 4 15 8 0 5 18 16 40 26 21 9 54 36 72 59 48 62 59 72 99 90 21 9 66 43 102 74 251 224 334 303 540 512 349 355 641 679 828 921 37 47 150 198 251 335 240 325 401 563 553 817 18 30 41 72 192 347 42 77 82 153 209 401 38 74 75 141 82 148 6 7 12 19 12 27 0 17 33 75 43 75 4 0 7 5 7 10 0 6 28 68 61 138 57 118 113 250 211 497 22 55 53 134 70 175 17 41 44 113 60 160 16 47 43 119 59 160 36 95 149 473 149 501 0 11 5 30 12 42 6 12 15 38 19 57 4 19 15 62 24 95 28 99 46 177 54 225 4 25 13 55 19 67 7 12 12 34 12 50 0 16 6 37 14 48 7 11 16 38 19 60 5 37 15 82 37 175 60 248 120 576 120 659 0 14 6 64 14 111 23 132 37 237 46 335 5 50 13 126 19 170 27 198 51 668 51 988 0 557 -38 1180 -85 1399 -8 37 -15 82 -15 101 0 19 -7 51 -15 70 -8 20 -15 64 -15 97 0 33 -4 68 -10 78 -10 17 -25 112 -39 237 -4 39 -13 83 -19 98 -7 16 -12 45 -12 65 -1 20 -7 48 -15 62 -8 14 -14 48 -15 77 0 28 -4 54 -9 57 -4 3 -11 35 -14 72 -4 36 -11 71 -15 78 -5 6 -12 36 -14 66 -3 30 -11 56 -17 58 -6 2 -11 19 -11 39 0 19 -6 58 -14 86 -7 29 -21 88 -31 132 -30 139 -133 490 -190 645 -7 19 -18 53 -25 75 -7 22 -18 54 -25 70 -8 17 -29 77 -48 135 -19 58 -40 116 -45 130 -6 14 -36 95 -68 180 -67 183 -158 395 -243 572 -33 70 -61 132 -61 137 0 5 -3 11 -8 13 -8 4 -102 193 -102 207 0 5 -3 11 -7 13 -5 2 -26 39 -47 83 -22 44 -42 82 -46 85 -3 3 -14 24 -23 48 -9 23 -27 59 -40 80 -13 20 -40 71 -61 112 -21 41 -63 117 -93 168 -60 103 -69 107 -138 71z"/></g>
+                                    </svg>
+                                </div>
+                                <h2>Lleva tu empresa<br> al siguiente nivel.</h2>
+                                <p>Agenda una reunión para simplificar tus procesos y potenciar tu operación.</p>
+                                <button id="btn-flip-form" class="btn-blanco-fuerte" style="border:none; cursor:pointer;" aria-label="Abrir formulario de contacto">
+                                    Agendar consultoría
+                                    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
                                 </button>
-                            </form>
-                            <button id="btn-flip-back" class="btn-volver">← Volver atrás</button>
+                            </div>
+
+                            <div class="cta-card-back">
+                                
+                                <h3 class="card-title-centered" style="font-size:2rem; margin-bottom: 16px;">Comencemos.</h3>
+
+                                <div class="contact-switcher">
+                                    <button type="button" class="switch-btn active" data-panel="form">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                                        Formulario
+                                    </button>
+                                    <button type="button" class="switch-btn" data-panel="whatsapp">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.82 9.82 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                                        WhatsApp Directo
+                                    </button>
+                                </div>
+
+                                <div class="panels-wrapper">
+                                    
+                                    <div class="contact-panel active" id="panel-form">
+                                        <form class="form-contacto" action="https://formspree.io/f/TU_CODIGO_AQUI" method="POST">
+                                            
+                                            <input type="text" name="Nombre" class="form-input" placeholder="Nombre completo" required>
+                                            <input type="text" name="Empresa" class="form-input" placeholder="Nombre corporativo" required>
+                                            
+                                            <input type="tel" id="phone" name="Telefono" class="form-input" placeholder="    Teléfono" inputmode="numeric" pattern="[0-9]*" required>
+                                            <input type="email" name="Email" class="form-input" placeholder="Correo corporativo" required>                                            <textarea name="Mensaje" class="form-input form-textarea form-full-width" placeholder="Mensaje (opcional)"></textarea>
+                                            
+                                            <input type="text" name="_gotcha" style="display:none">
+                                            
+                                            <button type="submit" class="btn-blanco-fuerte form-full-width" style="justify-content: center !important;border:none; cursor:pointer;">
+                                                Enviar solicitud
+                                            </button>
+                                        </form>
+                                    </div>
+
+                                    <div class="contact-panel" id="panel-whatsapp">
+                                        <div class="wsp-direct-card">
+                                            <p style="font-size: 0.95rem; color: rgba(255,255,255,0.5); line-height: 1.5; margin: 0 0 16px 0;">
+                                                ¿Prefieres una comunicación inmediata? Conéctate directo con nuestro equipo sin rellenar planillas.
+                                            </p>
+                                            <a href="https://wa.me/549261XXXXXXX" target="_blank" class="btn-whatsapp-direct">
+                                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.82 9.82 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                                                Iniciar Conversación
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <button id="btn-flip-back" class="btn-volver card-btn-centered" aria-label="Volver a la tarjeta anterior">← Volver atrás</button>
+                            </div>
                         </div>
+                    </div>
 
+                    <div class="banner-metodologia-premium">
+                        <div class="banner-icon-premium">
+                            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                                <polyline points="9 12 11 14 15 10"></polyline>
+                            </svg>
+                        </div>
+                        <div class="banner-text-premium">
+                            <h3>Transparencia absoluta. Calidad garantizada.</h3>
+                            <p>Te invitamos a leer nuestra <a href="blueprint.html" aria-label="Leer Metodología de Trabajo">Metodología de trabajo</a> para conocer cómo estructuramos cada ecosistema.</p>
+                        </div>
                     </div>
+                    
                 </div>
-
-                <div class="banner-metodologia-premium">
-                    <div class="banner-icon-premium">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                            <polyline points="9 12 11 14 15 10"></polyline>
-                        </svg>
-                    </div>
-                    <div class="banner-text-premium">
-                        <h3>Transparencia absoluta. Calidad garantizada.</h3>
-                        <p>Te invitamos a leer nuestra <a href="blueprint.html">Metodología de trabajo</a> para conocer cómo estructuramos cada ecosistema.</p>
-                    </div>
-                </div>
-                
+                <div class="luz-cenital-fondo"></div>
             </div>
-            <div class="luz-cenital-fondo"></div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <footer class="footer-premium">
         <div class="footer-inner">
             
-            <a href="#hero" class="footer-logo-premium">
-                <svg width="24" height="21" viewBox="0 0 2490 2242" xmlns="http://www.w3.org/2000/svg">
+            <a href="#hero" class="footer-logo-premium" aria-label="Volver al inicio">
+                <svg width="24" height="21" viewBox="0 0 2490 2242" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
                     <g transform="translate(0, 2242) scale(0.1, -0.1)" fill="currentColor" stroke="none">
                         <path d="M12160 22313 c-315 -7 -880 -52 -1180 -93 -551 -76 -1030 -174 -1540 -314 -306 -85 -725 -228 -853 -292 -16 -8 -35 -14 -43 -14 -8 0 -25 -6 -37 -14 -12 -8 -51 -24 -85 -35 -35 -11 -79 -30 -97 -41 -18 -11 -44 -20 -59 -20 -14 0 -26 -3 -26 -7 0 -9 -69 -38 -112 -49 -16 -3 -28 -10 -28 -15 0 -5 -7 -9 -15 -9 -8 0 -38 -11 -67 -25 -28 -14 -56 -25 -61 -25 -6 0 -52 -20 -104 -45 -51 -25 -96 -45 -98 -45 -3 0 -42 -17 -88 -39 -45 -21 -120 -56 -167 -77 -361 -164 -886 -471 -1365 -798 -769 -524 -1523 -1203 -2160 -1946 -389 -453 -799 -1026 -1101 -1536 -206 -349 -498 -918 -634 -1234 -204 -473 -381 -968 -489 -1365 -42 -156 -102 -384 -111 -425 -5 -19 -25 -109 -45 -200 -20 -91 -45 -201 -55 -245 -32 -133 -107 -569 -129 -750 -31 -261 -59 -586 -71 -845 -6 -129 -13 -241 -16 -249 -12 -35 -4 -810 11 -1013 45 -642 122 -1215 225 -1668 4 -19 20 -89 34 -155 83 -375 241 -922 351 -1215 30 -80 55 -149 55 -152 0 -4 18 -46 40 -93 22 -47 40 -92 40 -98 1 -7 14 -37 30 -67 17 -30 30 -65 30 -77 0 -13 3 -23 8 -23 8 0 37 -69 48 -112 3 -16 10 -28 15 -28 5 0 9 -7 9 -16 0 -8 11 -34 23 -57 13 -23 27 -55 31 -72 11 -44 39 -105 48 -105 4 0 8 -5 8 -11 0 -15 93 -203 102 -207 4 -2 8 -8 8 -14 0 -34 385 -789 478 -938 8 -12 300 276 1378 1357 753 754 2212 2217 3243 3250 1030 1033 1884 1892 1898 1909 l24 32 -26 38 c-14 22 -883 894 -1931 1939 l-1906 1900 1 1975 c1 1864 2 1976 19 1989 14 11 416 12 2507 6 1370 -4 2560 -10 2645 -14 l155 -6 6 -960 c3 -528 7 -1939 8 -3135 1 -1196 4 -2185 7 -2198 5 -16 13 -22 26 -20 21 3 -102 -119 3596 3583 1467 1468 2686 2686 2710 2707 l43 38 1055 0 c580 0 1054 4 1054 8 0 11 -46 32 -70 32 -25 0 -80 48 -80 70 0 33 -452 363 -845 617 -580 374 -1364 775 -1892 967 -40 14 -103 37 -141 51 -37 14 -74 25 -82 25 -8 0 -24 7 -34 15 -11 8 -28 15 -39 15 -10 0 -33 6 -50 14 -18 7 -63 23 -101 35 -37 12 -86 30 -109 41 -22 11 -55 20 -72 20 -17 0 -40 7 -51 15 -10 8 -31 15 -46 15 -15 0 -29 4 -32 9 -3 5 -23 12 -43 16 -21 4 -42 10 -48 15 -5 4 -37 15 -70 24 -33 9 -73 22 -90 27 -16 6 -43 15 -60 19 -16 5 -77 23 -135 40 -370 112 -664 176 -1215 264 -432 69 -842 107 -1360 126 -253 9 -340 10 -605 3z"/>
-                        <path d="M21915 16839 c-66 -35 -141 -95 -187 -151 -24 -29 -104 -111 -177 -183 -74 -71 -189 -185 -255 -253 -285 -289 -869 -865 -956 -943 -96 -85 -181 -171 -530 -532 -107 -111 -386 -390 -619 -622 -234 -231 -540 -537 -680 -680 -140 -143 -357 -361 -481 -485 -2170 -2164 -2652 -2648 -2656 -2666 -3 -13 -2 -33 2 -46 4 -13 330 -345 725 -738 1576 -1568 3109 -3101 3124 -3123 13 -21 15 -242 15 -1963 0 -1734 -1 -1940 -15 -1950 -35 -26 -5222 -30 -5289 -4 -18 6 -24 19 -30 56 -10 74 -6 2564 4 2709 21 285 23 410 9 565 -11 123 -14 439 -14 1530 0 1300 -1 1377 -18 1403 -9 15 -23 27 -29 27 -14 0 45 59 -2112 -2095 -2751 -2747 -4205 -4190 -4228 -4197 -13 -3 -451 -6 -975 -7 -523 -1 -958 -4 -966 -7 -23 -8 8 -41 133 -141 166 -132 596 -430 816 -563 31 -19 73 -45 92 -58 19 -13 128 -78 241 -144 235 -138 417 -231 701 -360 25 -11 95 -45 157 -74 61 -30 116 -54 122 -54 6 0 11 -4 11 -8 0 -9 61 -37 105 -48 17 -4 49 -18 72 -31 23 -12 49 -23 57 -23 9 0 16 -4 16 -9 0 -5 12 -12 28 -15 43 -11 112 -40 112 -48 0 -5 12 -8 26 -8 15 0 41 -9 58 -19 17 -11 63 -31 101 -45 70 -26 105 -41 137 -57 18 -9 48 -20 158 -59 36 -12 70 -26 75 -30 15 -12 284 -94 435 -134 72 -19 159 -43 205 -56 17 -5 48 -12 70 -16 22 -4 54 -13 72 -21 18 -7 46 -13 62 -13 16 0 33 -5 36 -10 3 -6 21 -10 39 -10 19 0 50 -7 69 -15 20 -8 52 -15 71 -15 19 0 36 -5 38 -11 2 -6 26 -13 53 -16 28 -3 55 -10 62 -15 7 -6 40 -12 73 -15 33 -3 63 -10 66 -14 3 -5 26 -9 52 -9 26 -1 58 -7 72 -15 14 -8 40 -14 58 -15 18 0 43 -5 54 -11 11 -6 44 -15 72 -19 28 -5 114 -19 191 -33 77 -14 185 -30 240 -37 55 -6 136 -16 180 -22 44 -6 136 -15 205 -19 69 -4 168 -14 220 -23 73 -13 105 -14 140 -6 31 7 68 7 120 0 182 -26 366 -40 408 -31 26 5 74 5 120 -1 91 -12 582 -4 792 12 80 7 161 11 180 11 19 -1 80 6 135 15 55 9 154 19 220 23 66 3 130 12 142 19 12 6 55 12 97 12 41 0 87 5 103 11 15 6 73 15 128 19 179 15 384 50 590 100 51 12 79 19 170 40 28 6 68 14 90 17 22 3 49 12 60 19 11 8 32 14 48 14 16 0 38 5 50 12 12 6 42 15 67 19 48 8 126 26 225 54 33 9 76 20 95 25 159 40 491 139 560 166 36 14 83 33 105 41 22 8 53 21 68 29 16 8 36 14 45 14 9 0 26 7 36 15 11 8 26 15 33 15 7 0 36 11 65 25 28 14 59 25 67 25 9 0 41 13 71 30 30 16 67 29 82 30 14 0 28 3 30 8 5 11 69 40 106 47 17 4 32 11 32 16 0 5 7 9 16 9 8 0 34 11 57 23 23 13 56 27 72 31 44 11 105 39 105 48 0 4 5 8 11 8 15 0 203 93 207 102 2 4 10 8 17 8 7 0 53 20 101 44 78 39 173 84 334 159 25 11 92 48 150 81 91 52 133 77 225 133 11 7 40 23 65 35 25 13 47 25 50 28 3 3 32 23 65 45 33 22 62 42 65 45 3 3 23 14 45 24 22 11 63 36 90 57 28 20 66 45 85 55 19 10 39 23 45 27 5 4 66 45 135 91 202 134 270 181 370 261 52 42 114 90 138 107 24 18 42 40 42 51 0 27 37 57 70 57 26 0 90 51 90 72 0 4 7 8 15 8 8 0 15 4 15 8 0 5 18 16 40 26 21 9 54 36 72 59 48 62 59 72 99 90 21 9 66 43 102 74 251 224 334 303 540 512 349 355 641 679 828 921 37 47 150 198 251 335 240 325 401 563 553 817 18 30 41 72 192 347 42 77 82 153 209 401 38 74 75 141 82 148 6 7 12 19 12 27 0 17 33 75 43 75 4 0 7 5 7 10 0 6 28 68 61 138 57 118 113 250 211 497 22 55 53 134 70 175 17 41 44 113 60 160 16 47 43 119 59 160 36 95 149 473 149 501 0 11 5 30 12 42 6 12 15 38 19 57 4 19 15 62 24 95 28 99 46 177 54 225 4 25 13 55 19 67 7 12 12 34 12 50 0 16 6 37 14 48 7 11 16 38 19 60 5 37 15 82 37 175 60 248 120 576 120 659 0 14 6 64 14 111 23 132 37 237 46 335 5 50 13 126 19 170 27 198 51 668 51 988 0 557 -38 1180 -85 1399 -8 37 -15 82 -15 101 0 19 -7 51 -15 70 -8 20 -15 64 -15 97 0 33 -4 68 -10 78 -10 17 -25 112 -39 237 -4 39 -13 83 -19 98 -7 16 -12 45 -12 65 -1 20 -7 48 -15 62 -8 14 -14 48 -15 77 0 28 -4 54 -9 57 -4 3 -11 35 -14 72 -4 36 -11 71 -15 78 -5 6 -12 36 -14 66 -3 30 -11 56 -17 58 -6 2 -11 19 -11 39 0 19 -6 58 -14 86 -7 29 -21 88 -31 132 -30 139 -133 490 -190 645 -7 19 -18 53 -25 75 -7 22 -18 54 -25 70 -8 17 -29 77 -48 135 -19 58 -40 116 -45 130 -6 14 -36 95 -68 180 -67 183 -158 395 -243 572 -33 70 -61 132 -61 137 0 5 -3 11 -8 13 -8 4 -102 193 -102 207 0 5 -3 11 -7 13 -5 2 -26 39 -47 83 -22 44 -42 82 -46 85 -3 3 -14 24 -23 48 -9 23 -27 59 -40 80 -13 20 -40 71 -61 112 -21 41 -63 117 -93 168 -60 103 -69 107 -138 71z"/>
-                    </g>
+                        <path d="M21915 16839 c-66 -35 -141 -95 -187 -151 -24 -29 -104 -111 -177 -183 -74 -71 -189 -185 -255 -253 -285 -289 -869 -865 -956 -943 -96 -85 -181 -171 -530 -532 -107 -111 -386 -390 -619 -622 -234 -231 -540 -537 -680 -680 -140 -143 -357 -361 -481 -485 -2170 -2164 -2652 -2648 -2656 -2666 -3 -13 -2 -33 2 -46 4 -13 330 -345 725 -738 1576 -1568 3109 -3101 3124 -3123 13 -21 15 -242 15 -1963 0 -1734 -1 -1940 -15 -1950 -35 -26 -5222 -30 -5289 -4 -18 6 -24 19 -30 56 -10 74 -6 2564 4 2709 21 285 23 410 9 565 -11 123 -14 439 -14 1530 0 1300 -1 1377 -18 1403 -9 15 -23 27 -29 27 -14 0 45 59 -2112 -2095 -2751 -2747 -4205 -4190 -4228 -4197 -13 -3 -451 -6 -975 -7 -523 -1 -958 -4 -966 -7 -23 -8 8 -41 133 -141 166 -132 596 -430 816 -563 31 -19 73 -45 92 -58 19 -13 128 -78 241 -144 235 -138 417 -231 701 -360 25 -11 95 -45 157 -74 61 -30 116 -54 122 -54 6 0 11 -4 11 -8 0 -9 61 -37 105 -48 17 -4 49 -18 72 -31 23 -12 49 -23 57 -23 9 0 16 -4 16 -9 0 -5 12 -12 28 -15 43 -11 112 -40 112 -48 0 -5 12 -8 26 -8 15 0 41 -9 58 -19 17 -11 63 -31 101 -45 70 -26 105 -41 137 -57 18 -9 48 -20 158 -59 36 -12 70 -26 75 -30 15 -12 284 -94 435 -134 72 -19 159 -43 205 -56 17 -5 48 -12 70 -16 22 -4 54 -13 72 -21 18 -7 46 -13 62 -13 16 0 33 -5 36 -10 3 -6 21 -10 39 -10 19 0 50 -7 69 -15 20 -8 52 -15 71 -15 19 0 36 -5 38 -11 2 -6 26 -13 53 -16 28 -3 55 -10 62 -15 7 -6 40 -12 73 -15 33 -3 63 -10 66 -14 3 -5 26 -9 52 -9 26 -1 58 -7 72 -15 14 -8 40 -14 58 -15 18 0 43 -5 54 -11 11 -6 44 -15 72 -19 28 -5 114 -19 191 -33 77 -14 185 -30 240 -37 55 -6 136 -16 180 -22 44 -6 136 -15 205 -19 69 -4 168 -14 220 -23 73 -13 105 -14 140 -6 31 7 68 7 120 0 182 -26 366 -40 408 -31 26 5 74 5 120 -1 91 -12 582 -4 792 12 80 7 161 11 180 11 19 -1 80 6 135 15 55 9 154 19 220 23 66 3 130 12 142 19 12 6 55 12 97 12 41 0 87 5 103 11 15 6 73 15 128 19 179 15 384 50 590 100 51 12 79 19 170 40 28 6 68 14 90 17 22 3 49 12 60 19 11 8 32 14 48 14 16 0 38 5 50 12 12 6 42 15 67 19 48 8 126 26 225 54 33 9 76 20 95 25 159 40 491 139 560 166 36 14 83 33 105 41 22 8 53 21 68 29 16 8 36 14 45 14 9 0 26 7 36 15 11 8 26 15 33 15 7 0 36 11 65 25 28 14 59 25 67 25 9 0 41 13 71 30 30 16 67 29 82 30 14 0 28 3 30 8 5 11 69 40 106 47 17 4 32 11 32 16 0 5 7 9 16 9 8 0 34 11 57 23 23 13 56 27 72 31 44 11 105 39 105 48 0 4 5 8 11 8 15 0 203 93 207 102 2 4 10 8 17 8 7 0 53 20 101 44 78 39 173 84 334 159 25 11 92 48 150 81 91 52 133 77 225 133 11 7 40 23 65 35 25 13 47 25 50 28 3 3 32 23 65 45 33 22 62 42 65 45 3 3 23 14 45 24 22 11 63 36 90 57 28 20 66 45 85 55 19 10 39 23 45 27 5 4 66 45 135 91 202 134 270 181 370 261 52 42 114 90 138 107 24 18 42 40 42 51 0 27 37 57 70 57 26 0 90 51 90 72 0 4 7 8 15 8 8 0 15 4 15 8 0 5 18 16 40 26 21 9 54 36 72 59 48 62 59 72 99 90 21 9 66 43 102 74 251 224 334 303 540 512 349 355 641 679 828 921 37 47 150 198 251 335 240 325 401 563 553 817 18 30 41 72 192 347 42 77 82 153 209 401 38 74 75 141 82 148 6 7 12 19 12 27 0 17 33 75 43 75 4 0 7 5 7 10 0 6 28 68 61 138 57 118 113 250 211 497 22 55 53 134 70 175 17 41 44 113 60 160 16 47 43 119 59 160 36 95 149 473 149 501 0 11 5 30 12 42 6 12 15 38 19 57 4 19 15 62 24 95 28 99 46 177 54 225 4 25 13 55 19 67 7 12 12 34 12 50 0 16 6 37 14 48 7 11 16 38 19 60 5 37 15 82 37 175 60 248 120 576 120 659 0 14 6 64 14 111 23 132 37 237 46 335 5 50 13 126 19 170 27 198 51 668 51 988 0 557 -38 1180 -85 1399 -8 37 -15 82 -15 101 0 19 -7 51 -15 70 -8 20 -15 64 -15 97 0 33 -4 68 -10 78 -10 17 -25 112 -39 237 -4 39 -13 83 -19 98 -7 16 -12 45 -12 65 -1 20 -7 48 -15 62 -8 14 -14 48 -15 77 0 28 -4 54 -9 57 -4 3 -11 35 -14 72 -4 36 -11 71 -15 78 -5 6 -12 36 -14 66 -3 30 -11 56 -17 58 -6 2 -11 19 -11 39 0 19 -6 58 -14 86 -7 29 -21 88 -31 132 -30 139 -133 490 -190 645 -7 19 -18 53 -25 75 -7 22 -18 54 -25 70 -8 17 -29 77 -48 135 -19 58 -40 116 -45 130 -6 14 -36 95 -68 180 -67 183 -158 395 -243 572 -33 70 -61 132 -61 137 0 5 -3 11 -8 13 -8 4 -102 193 -102 207 0 5 -3 11 -7 13 -5 2 -26 39 -47 83 -22 44 -42 82 -46 85 -3 3 -14 24 -23 48 -9 23 -27 59 -40 80 -13 20 -40 71 -61 112 -21 41 -63 117 -93 168 -60 103 -69 107 -138 71z"/></g>
                 </svg>
                 <span>Xonda</span>
             </a>
-            
             <div class="footer-links-premium">
-                <a href="blueprint.html">Metodología de Trabajo</a>
-                <a href="terms.html">Términos de servicio</a>
-                <a href="priv.html">Política de privacidad</a>
+                <a href="blueprint.html" aria-label="Metodología de Trabajo">Metodología de Trabajo</a>
+                <a href="terms.html" aria-label="Términos de servicio">Términos de servicio</a>
+                <a href="priv.html" aria-label="Política de privacidad">Política de privacidad</a>
             </div>
-            
             <p class="copyright-premium">© 2026 Xonda. Ingeniería Absoluta. Mendoza, Argentina.</p>
-            
         </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

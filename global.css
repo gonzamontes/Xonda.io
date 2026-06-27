@@ -55,7 +55,7 @@ body {
 .reveal {opacity: 0; transform: translateY(30px); transition: all 1s var(--cubic-apple);}
 .reveal.activa { opacity: 1; transform: translateY(0); }
 
-.techo-luz {position: absolute; top: -150px; left: 50%; transform: translateX(-50%);width: 800px; height: 400px; background: rgba(255, 255, 255, .09);border-radius: 0 0 400px 400px; filter: blur(80px); z-index: 0; pointer-events: none;}
+.techo-luz {position: absolute; top: -150px; left: 50%; transform: translateX(-50%);width: 450px; height: 200px; background: rgba(255, 255, 255, 0.212);border-radius: 0 0 400px 400px; filter: blur(60px); z-index: 0; pointer-events: none;}
 
 .solucion-tag-premium, .card-mini-title-premium {display: inline-flex; align-items: center; gap: 8px; width: fit-content; margin-bottom: 1.2rem;font-size: 1.3rem; font-weight: 400; text-transform: uppercase; letter-spacing: 0.16em; font-family: monospace;background: linear-gradient(90deg, #9cc5d6 0%, #d3aaf8 50%, #dfb7e6 100%);-webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;}
 
