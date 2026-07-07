@@ -111,7 +111,7 @@
 .card-header-servicio { display: flex; flex-direction: column; gap: 8px; width: 100%; }
 .solucion-tag-premium svg { stroke: #9cc5d6; flex-shrink: 0; }
 #pilares .card-mini-title-premium { color: var(--neon-purple); }
-.card-split-mockup { display: flex; flex-direction: column; height: 100%; justify-content: center; width: 100%; position: relative; perspective: 1200px; -webkit-mask-image: linear-gradient(to right, #000 75%, transparent 100%); }     
+.card-split-mockup { display: flex; flex-direction: column; height: 100%; justify-content: center; width: 100%; position: relative; perspective: 1200px; -webkit-mask-image: linear-gradient(to right, #000 75%, transparent 100%); }    
 
 .carousel-controls { position: absolute; bottom: -35px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 32px; z-index: 100; }
 .carousel-arrow { width: 44px; height: 44px; background: transparent; border: .5px solid rgba(255,255,255,.15); border-radius: 50%; box-shadow: 0 10px 20px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.2); display: flex; align-items: center; justify-content: center; cursor: pointer; color: #fff; transition: all .2s ease; }
@@ -167,7 +167,7 @@
 .window-dots .window-dot:nth-child(2) { background-color: rgba(255,189,46,.6); }
 .window-dots .window-dot:nth-child(3) { background-color: rgba(39,201,63,.6); }
 
-/* Overrides para HTML en línea */
+/* Overrides para HTML en línea (MANTENIDOS para no romper los mockups) */
 .app-item-title { font-size: .9rem !important; } 
 .app-item-subtitle { font-size: .78rem !important; line-height: 1.45 !important; } 
 .app-item-meta { font-size: .65rem !important; } 
@@ -201,7 +201,6 @@
 .cta-card-front p { font-size: 1.15rem; color: rgba(255,255,255,.6); margin-bottom: 48px; line-height: 1.5; max-width: 500px; }
 .cta-card-front::before, .cta-card-back::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 1.5px; background: linear-gradient(90deg, transparent 0%, #FFF 50%, transparent 100%); pointer-events: none; }
 
-.form-contacto { width: 100%; max-width: 440px; display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px; }
 .form-input { width: 100%; padding: 16px 20px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); border-radius: 12px; color: #fff; font-size: 1rem; outline: none; transition: all .3s ease; }
 .form-input::placeholder { color: rgba(255,255,255,.4); }
 .form-input:focus { border-color: rgba(255,255,255,.4); background: rgba(255,255,255,.08); }
@@ -223,6 +222,45 @@
 .banner-text-premium p a { color: inherit; text-decoration: underline; text-underline-offset: 4px; transition: color .3s ease; }
 .banner-text-premium p a:hover { color: #fff; }
 
+/* =========================================
+   FIX DEFINITIVO: FORMULARIO Y TELÉFONO (INTL-TEL-INPUT)
+   ========================================= */
+.form-contacto { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; width: 100%; margin-bottom: 0; }
+.form-full-width { grid-column: span 2; margin-bottom: 1.3rem; }
+
+.iti { width: 100%; display: block; }
+
+.iti .iti__flag { background-image: url("https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/img/flags.png") !important; }
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .iti .iti__flag { background-image: url("https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/img/flags@2x.png") !important; }
+}
+
+.iti__flag-container { z-index: 10; }
+.iti__selected-flag { background-color: rgba(255, 255, 255, 0.05) !important; border-radius: 12px 0 0 12px !important; border-right: 1px solid rgba(255, 255, 255, 0.1) !important; padding: 0 12px 0 14px !important; }
+.iti__selected-dial-code { color: #ffffff !important; font-size: 0.95rem !important; font-weight: 500 !important; margin-left: 6px !important; }
+.iti input[type="tel"] { width: 100% !important; padding-left: 88px !important; }
+
+.iti__country-list { background-color: #0a0a0a !important; border: 1px solid rgba(255, 255, 255, 0.12) !important; color: rgba(255, 255, 255, 0.85) !important; font-family: 'Roboto', sans-serif; border-radius: 10px; box-shadow: 0 20px 50px rgba(0,0,0,0.95) !important; max-width: 320px; white-space: normal !important; z-index: 999999 !important; }
+.iti__country:hover { background-color: rgba(255, 255, 255, 0.08) !important; color: #ffffff !important; }
+
+
+/* =========================================
+   Selector de Canales Premium (Tarjeta Posterior)
+========================================= */
+.contact-switcher { display: flex; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); padding: 4px; border-radius: 30px; margin: 0 auto 24px auto; width: fit-content; z-index: 5; }
+.switch-btn { background: none; border: none; color: rgba(255, 255, 255, 0.4); font-size: 0.8rem; font-weight: 500; padding: 6px 18px; border-radius: 20px; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); }
+.switch-btn.active { background: rgba(255, 255, 255, 0.08); color: #ffffff; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); }
+
+.contact-panel { display: none; width: 100%; }
+.contact-panel.active { display: block; animation: panelFadeIn 0.35s ease-out forwards; }
+@keyframes panelFadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+.wsp-direct-card { text-align: center; padding: 10px 0; }
+.btn-whatsapp-direct { display: flex; align-items: center; justify-content: center; width: 100%; max-width: 440px; height: 46px; background: #25D366; color: #ffffff; font-weight: 600; font-size: 0.95rem; border-radius: 10px; text-decoration: none; margin: 16px auto 0 auto; transition: background 0.3s ease, transform 0.2s ease; box-shadow: 0 4px 14px rgba(37, 211, 102, 0.2); }
+.btn-whatsapp-direct:hover { background: #20ba59; transform: translateY(-1px); }
+
+.card-title-centered { width: 100% !important; text-align: center !important; margin-bottom: 16px !important; }
+.card-btn-centered { margin-left: auto !important; margin-right: auto !important; display: block !important; }
 
 
 /* =========================================
@@ -331,11 +369,16 @@
     .techo-luz { width: 70vw !important; height: 120px !important; top: -30px !important; filter: blur(40px) !important; -webkit-filter: blur(40px) !important; background: rgba(255,255,255,.13) !important; }
 
     /* --- CONTACTO Y FOOTER --- */
-    .seccion-contacto { padding: 40px 16px 60px !important; margin-top: 15rem !important; width: 100%; padding-left: 12px !important; padding-right: 12px !important; }
-    .cta-card-scene { width: 100% !important; max-width: 385px !important; margin: 0 auto !important; height: 215px !important; transition: height .5s var(--cubic-apple) !important; }
+    /* 1. Expandimos el contenedor general reduciendo el padding lateral a 8px */
+    .seccion-contacto { padding: 40px 2px 60px !important; margin-top: 15rem !important; width: 100%; }
+    
+    /* 2. Forzamos la tarjeta para que ocupe el 100% del ancho disponible */
+    .cta-card-scene { width: 100% !important; max-width: 100% !important; margin: 0 auto !important; height: 215px !important; transition: height .5s var(--cubic-apple) !important; }
+    .cta-card-scene.is-expanded { height: auto !important; min-height: 400px !important; }
     .cta-card-inner { height: 100% !important; }
     
-    .cta-card-front, .cta-card-back { position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; min-height: 0 !important; box-sizing: border-box !important; padding: 24px 20px !important; background: #000 !important; border: 1px solid rgba(255,255,255,.12) !important; border-radius: 16px !important; display: flex !important; flex-direction: column !important; justify-content: center !important; align-items: flex-start !important; text-align: left !important; gap: 12px !important; box-shadow: 0 20px 40px rgba(0,0,0,.95) !important; }
+    /* 3. Optimizamos el padding interno de la tarjeta para aprovechar el nuevo ancho */
+    .cta-card-front, .cta-card-back { position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; min-height: 0 !important; box-sizing: border-box !important; padding: 24px 16px !important; background: #000 !important; border: 1px solid rgba(255,255,255,.12) !important; border-radius: 16px !important; display: flex !important; flex-direction: column !important; justify-content: center !important; align-items: flex-start !important; text-align: left !important; gap: 12px !important; box-shadow: 0 20px 40px rgba(0,0,0,.95) !important; }
     .cta-card-front .cta-icon-wrapper, .cta-card-back .cta-icon-wrapper { display: none !important; }
     
     .cta-card-front h2, .cta-card-back h3 { font-size: 2.3rem !important; line-height: 1.08 !important; margin: 0 !important; letter-spacing: -.03em !important; text-align: left !important; width: 100% !important; }
@@ -345,275 +388,32 @@
     .cta-card-front .btn-blanco-fuerte, .form-contacto .btn-blanco-fuerte { width: 100% !important; height: 50px !important; display: flex !important; justify-content: center !important; align-items: center !important; font-size: 1.02rem !important; border-radius: 10px !important; margin: 0 !important; padding: 0 !important; }
     .form-contacto .btn-blanco-fuerte { height: 44px !important; font-size: .95rem !important; }
     
-    .form-contacto { gap: 8px !important; margin-bottom: 10px !important; }
+    /* Layout formulario mobile expandido */
+    .form-contacto { grid-template-columns: 1fr !important; gap: 8px !important; margin-bottom: 0 !important; }
+    .form-full-width { grid-column: span 1 !important; }
     .form-input { padding: 11px 14px !important; font-size: .85rem !important; border-radius: 10px !important; }
     .form-textarea { height: 60px !important; }
-    .btn-volver { margin-top: 0 !important; margin-bottom: 0 !important; font-size: .85rem !important; padding: 4px !important; }
+    .btn-volver { margin-top: 10px !important; margin-bottom: 0 !important; font-size: .85rem !important; padding: 4px !important; align-self: center; }
 
-    .banner-metodologia-premium { display: flex !important; flex-direction: row !important; align-items: flex-start !important; padding: 22px 18px !important; gap: 14px !important; background: #000 !important; border: 1px solid rgba(255,255,255,.12) !important; border-radius: 16px !important; margin-top: 16px !important; text-align: left !important; }
+    /* Fluididad de Tarjeta Posterior Mobile */
+    .cta-card-back { position: relative !important; height: auto !important; padding: 20px 16px 30px !important; display: flex !important; flex-direction: column !important; gap: 15px !important; justify-content: flex-start !important; }
+    #panel-whatsapp { padding-top: 10px !important; padding-bottom: 10px !important; }
+    .card-title-centered { font-size: 1.4rem !important; margin: 0 !important; }
+    .panels-wrapper { width: 100%; margin: 0 !important; gap: 10px !important; }
+
+    /* 4. Banner de Metodología expandido al 100% */
+    .banner-metodologia-premium { width: 100% !important; max-width: 100% !important; display: flex !important; flex-direction: row !important; align-items: flex-start !important; padding: 22px 16px !important; gap: 14px !important; background: #000 !important; border: 1px solid rgba(255,255,255,.12) !important; border-radius: 16px !important; margin-top: 16px !important; text-align: left !important; box-sizing: border-box !important; }
     .banner-icon-premium { width: 38px !important; height: 38px !important; flex-shrink: 0 !important; margin: 0 !important; }
     .banner-icon-premium svg { width: 20px !important; height: 20px !important; }
     .banner-text-premium { display: flex !important; flex-direction: column !important; align-items: flex-start !important; text-align: left !important; gap: 4px !important; }
     .banner-text-premium h3 { font-size: 1.05rem !important; line-height: 1.25 !important; color: #fff !important; margin: 0 !important; }
     .banner-text-premium p { font-size: .82rem !important; line-height: 1.4 !important; color: rgba(255,255,255,.6) !important; margin: 0 !important; }
 
-    /* Optimización de espacios móviles */
-    .form-contacto { 
-        gap: 6px !important; /* Reducimos el espacio entre inputs */
-        margin-bottom: 0 !important;
-    }
-    .form-input { 
-        padding: 10px 14px !important; /* Inputs más compactos */
-        font-size: 0.9rem !important; 
-    }
-    .form-textarea { 
-        height: 50px !important; /* Mensaje más chico para ahorrar espacio */
-    }
-    .btn-blanco-fuerte { 
-        height: 42px !important; 
-        font-size: 0.95rem !important; 
-    }
-    .cta-card-scene.is-expanded { 
-        height: 480px !important; /* Ajuste de altura dinámica para móviles */
-    }
-    /* 3. Título ajustado */
-    .card-title-centered {
-        font-size: 1.4rem !important;
-        margin: 0 0 10px 0 !important;
-    }
-    /* 2. Flex compacto: Eliminamos el flex-start forzado para usar un espacio controlado */
-    .cta-card-back {
-        padding: 20px 20px !important; 
-        justify-content: flex-start !important;
-        gap: 15px !important; /* Controla el espacio entre el título, form y botón */
-    }
-    /* 4. Compactamos el panel interno */
-    .panels-wrapper {
-        width: 100%;
-        margin: 0 !important;
-        gap: 10px !important;
-    }
+    /* 5. Footer expandido al 100% */
+    .footer-premium { padding-left: 12px !important; padding-right: 12px !important; }
+    .footer-inner { width: 100% !important; max-width: 100% !important; padding: 0 !important; box-sizing: border-box !important; }
 }
 
 @media (hover: none) {
     .btn-blanco-fuerte:hover, .carousel-arrow:hover, .btn-primary:hover { transform: none !important; box-shadow: inherit !important; background: inherit !important; }
-}
-
-/* =========================================
-   Selector de Canales Premium (Tarjeta Posterior)
-   ========================================= */
-.contact-switcher {
-    display: flex;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 4px;
-    border-radius: 30px;
-    margin: 0 auto 24px auto;
-    width: fit-content;
-    z-index: 5;
-}
-
-.switch-btn {
-    background: none;
-    border: none;
-    color: rgba(255, 255, 255, 0.4);
-    font-size: 0.8rem;
-    font-weight: 500;
-    padding: 6px 18px;
-    border-radius: 20px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.switch-btn.active {
-    background: rgba(255, 255, 255, 0.08);
-    color: #ffffff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-/* Control de Paneles Dinámicos */
-.contact-panel {
-    display: none;
-    width: 100%;
-}
-
-.contact-panel.active {
-    display: block;
-    animation: panelFadeIn 0.35s ease-out forwards;
-}
-
-@keyframes panelFadeIn {
-    from { opacity: 0; transform: translateY(4px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Tarjeta WhatsApp Interna */
-.wsp-direct-card {
-    text-align: center;
-    padding: 10px 0;
-}
-
-.btn-whatsapp-direct {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    max-width: 440px;
-    height: 46px;
-    background: #25D366;
-    color: #ffffff;
-    font-weight: 600;
-    font-size: 0.95rem;
-    border-radius: 10px;
-    text-decoration: none;
-    margin: 16px auto 0 auto;
-    transition: background 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.2);
-}
-
-.btn-whatsapp-direct:hover {
-    background: #20ba59;
-    transform: translateY(-1px);
-}
-
-/* Forzar Centrados Absolutos en Tarjeta */
-.card-title-centered {
-    width: 100% !important;
-    text-align: center !important;
-    margin-bottom: 16px !important;
-    font-size: 5rem;
-}
-
-.card-btn-centered {
-    margin-left: auto !important;
-    margin-right: auto !important;
-    display: block !important;
-}
-
-/* =========================================
-   FIX DEFINITIVO: FORMULARIO Y TELÉFONO (INTL-TEL-INPUT)
-   ========================================= */
-
-/* Layout Grid a 2 columnas limpio */
-.form-contacto {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 14px !important;
-    width: 100%;
-    margin-bottom: 0 !important;
-}
-
-.form-full-width {
-    grid-column: span 2 !important;
-    margin-bottom: 1.3rem;
-}
-
-@media (max-width: 768px) {
-    .form-contacto {
-        grid-template-columns: 1fr !important;
-    }
-    .form-full-width {
-        grid-column: span 1 !important;
-    }
-}
-
-/* Contenedor principal de la librería */
-.iti {
-    width: 100%;
-    display: block;
-}
-
-/* PARCHE AL BUG 404 DE CDNJS: Forzamos la ruta absoluta real del sprite */
-/* BLINDAJE DE ALTA ESPECIFICIDAD PARA LAS BANDERAS */
-.iti .iti__flag {
-    background-image: url("https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/img/flags.png") !important;
-}
-
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    .iti .iti__flag {
-        background-image: url("https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/img/flags@2x.png") !important;
-    }
-}
-
-/* Caja de la bandera y prefijo */
-.iti__flag-container {
-    z-index: 10;
-}
-
-.iti__selected-flag {
-    background-color: rgba(255, 255, 255, 0.05) !important;
-    border-radius: 12px 0 0 12px !important;
-    border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
-    padding: 0 12px 0 14px !important;
-}
-
-/* Tipografía del código de país (+54) */
-.iti__selected-dial-code {
-    color: #ffffff !important;
-    font-size: 0.95rem !important;
-    font-weight: 500 !important;
-    margin-left: 6px !important;
-}
-
-/* Desplazamos el texto del usuario exactamente 88px para no pisar la bandera */
-.iti input[type="tel"] {
-    width: 100% !important;
-    padding-left: 88px !important;
-}
-
-/* Menú desplegable de países (Estilo Dark Glass) */
-.iti__country-list {
-    background-color: #0a0a0a !important;
-    border: 1px solid rgba(255, 255, 255, 0.12) !important;
-    color: rgba(255, 255, 255, 0.85) !important;
-    font-family: 'Roboto', sans-serif;
-    border-radius: 10px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.95) !important;
-    max-width: 320px;
-    white-space: normal !important;
-    z-index: 999999 !important; /* Blindaje: evita que el campo Email lo tape */
-}
-
-.iti__country:hover {
-    background-color: rgba(255, 255, 255, 0.08) !important;
-    color: #ffffff !important;
-}
-
-@media screen and (max-width: 480px) {
-    /* Eliminamos la altura fija, dejamos que el contenido dicte el tamaño */
-    .cta-card-scene.is-expanded {
-        height: auto !important; 
-        min-height: 400px !important;
-    }
-
-    .cta-card-back {
-        position: relative !important; /* Cambiamos a relativo para que crezca */
-        height: auto !important;      /* La tarjeta se adapta al contenido */
-        padding: 20px 20px 30px !important; 
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 15px !important;
-    }
-
-    /* El panel de WhatsApp será más pequeño naturalmente */
-    #panel-whatsapp {
-        padding-top: 10px !important;
-        padding-bottom: 10px !important;
-    }
-
-    /* Ajuste del título */
-    .card-title-centered {
-        font-size: 1.4rem !important;
-        margin: 0 !important;
-    }
-
-    /* Aseguramos que el botón de volver quede siempre al final del contenido */
-    .btn-volver {
-        margin-top: 10px !important;
-        margin-bottom: 0 !important;
-        align-self: center;
-    }
 }

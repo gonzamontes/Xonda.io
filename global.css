@@ -39,6 +39,8 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+
+
 /* =========================================
     ESTÉTICA DE TÍTULOS GLOBALES
 ========================================= */
@@ -215,6 +217,9 @@ body {
     .card-mini-title-premium {
         font-size: 0.65rem !important; /* Pequeña reducción para que entre en 320px */
         letter-spacing: 0.03em !important;
+    }
+    .pantalla-carga{
+        height: 100% !important;
     }
 }
 

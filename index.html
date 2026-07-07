@@ -4,536 +4,582 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <title>Xonda | Tu Empresa, Automatizada</title>
     <meta name="description" content="Xonda: Ingeniería Absoluta. Automatizamos y escalamos tu arquitectura empresarial con software a medida, ecosistemas web premium y agentes autónomos de Inteligencia Artificial.">
-    <meta name="keywords" content="desarrollo de software, inteligencia artificial, automatización de empresas, diseño web premium, arquitectura corporativa, Xonda">
+    <meta name="keywords" content="desarrollo de software, inteligencia artificial, automatización de empresas, diseño web premium, arquitectura corporativa, Xonda, Mendoza">
     <meta name="author" content="Xonda">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://xonda.io/">
+    <meta name="theme-color" content="#000000">
+
     <meta property="og:title" content="Xonda | Tu Empresa, Automatizada">
     <meta property="og:description" content="Automatizamos y escalamos tu arquitectura empresarial con software a medida y agentes de IA.">
     <meta property="og:type" content="website">
-    <meta name="theme-color" content="#000000">
-    
-    <title>Xonda</title>
-    
+    <meta property="og:url" content="https://xonda.io/">
+    <meta property="og:image" content="https://xonda.io/og-image.jpg">
+
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.min.css">    
-
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="global.css">
-</head>
 
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Xonda",
+      "description": "Ingeniería Absoluta. Automatización de empresas con software a medida y agentes autónomos de IA.",
+      "url": "https://xonda.io/",
+      "logo": "https://xonda.io/favicon.svg",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Mendoza",
+        "addressCountry": "AR"
+      },
+      "areaServed": "Worldwide",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Servicios de Ingeniería Digital",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Software a Medida"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Agentes Autónomos de Inteligencia Artificial"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Ecosistemas Web Premium"
+            }
+          }
+        ]
+      }
+    }
+    </script>
 </head>
 <body>
-    <div id="preloader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background-color: #000000; z-index: 999999; display: flex; align-items: center; justify-content: center; transition: opacity 0.6s ease, visibility 0.6s ease;">
+    <div class="pantalla-carga" id="preloader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #000000; z-index: 999999; display: flex; align-items: center; justify-content: center; transition: opacity 0.6s ease, visibility 0.6s ease;">
         <div style="width: 24px; height: 24px; border: 1.5px solid rgba(255,255,255,0.1); border-top-color: #ffffff; border-radius: 50%; animation: spinner 0.8s linear infinite;"></div>
     </div>
 
     <div class="techo-luz"></div>
     
-    <nav class="navbar">
-        <a href="#" class="logo" aria-label="Inicio Xonda">
-            <svg width="28" height="25" viewBox="0 0 2490 2242" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-                <g transform="translate(0, 2242) scale(0.1, -0.1)" fill="currentColor" stroke="none">
-                    <path d="M12160 22313 c-315 -7 -880 -52 -1180 -93 -551 -76 -1030 -174 -1540 -314 -306 -85 -725 -228 -853 -292 -16 -8 -35 -14 -43 -14 -8 0 -25 -6 -37 -14 -12 -8 -51 -24 -85 -35 -35 -11 -79 -30 -97 -41 -18 -11 -44 -20 -59 -20 -14 0 -26 -3 -26 -7 0 -9 -69 -38 -112 -49 -16 -3 -28 -10 -28 -15 0 -5 -7 -9 -15 -9 -8 0 -38 -11 -67 -25 -28 -14 -56 -25 -61 -25 -6 0 -52 -20 -104 -45 -51 -25 -96 -45 -98 -45 -3 0 -42 -17 -88 -39 -45 -21 -120 -56 -167 -77 -361 -164 -886 -471 -1365 -798 -769 -524 -1523 -1203 -2160 -1946 -389 -453 -799 -1026 -1101 -1536 -206 -349 -498 -918 -634 -1234 -204 -473 -381 -968 -489 -1365 -42 -156 -102 -384 -111 -425 -5 -19 -25 -109 -45 -200 -20 -91 -45 -201 -55 -245 -32 -133 -107 -569 -129 -750 -31 -261 -59 -586 -71 -845 -6 -129 -13 -241 -16 -249 -12 -35 -4 -810 11 -1013 45 -642 122 -1215 225 -1668 4 -19 20 -89 34 -155 83 -375 241 -922 351 -1215 30 -80 55 -149 55 -152 0 -4 18 -46 40 -93 22 -47 40 -92 40 -98 1 -7 14 -37 30 -67 17 -30 30 -65 30 -77 0 -13 3 -23 8 -23 8 0 37 -69 48 -112 3 -16 10 -28 15 -28 5 0 9 -7 9 -16 0 -8 11 -34 23 -57 13 -23 27 -55 31 -72 11 -44 39 -105 48 -105 4 0 8 -5 8 -11 0 -15 93 -203 102 -207 4 -2 8 -8 8 -14 0 -34 385 -789 478 -938 8 -12 300 276 1378 1357 753 754 2212 2217 3243 3250 1030 1033 1884 1892 1898 1909 l24 32 -26 38 c-14 22 -883 894 -1931 1939 l-1906 1900 1 1975 c1 1864 2 1976 19 1989 14 11 416 12 2507 6 1370 -4 2560 -10 2645 -14 l155 -6 6 -960 c3 -528 7 -1939 8 -3135 1 -1196 4 -2185 7 -2198 5 -16 13 -22 26 -20 21 3 -102 -119 3596 3583 1467 1468 2686 2686 2710 2707 l43 38 1055 0 c580 0 1054 4 1054 8 0 11 -46 32 -70 32 -25 0 -80 48 -80 70 0 33 -452 363 -845 617 -580 374 -1364 775 -1892 967 -40 14 -103 37 -141 51 -37 14 -74 25 -82 25 -8 0 -24 7 -34 15 -11 8 -28 15 -39 15 -10 0 -33 6 -50 14 -18 7 -63 23 -101 35 -37 12 -86 30 -109 41 -22 11 -55 20 -72 20 -17 0 -40 7 -51 15 -10 8 -31 15 -46 15 -15 0 -29 4 -32 9 -3 5 -23 12 -43 16 -21 4 -42 10 -48 15 -5 4 -37 15 -70 24 -33 9 -73 22 -90 27 -16 6 -43 15 -60 19 -16 5 -77 23 -135 40 -370 112 -664 176 -1215 264 -432 69 -842 107 -1360 126 -253 9 -340 10 -605 3z"/>
-                    <path d="M21915 16839 c-66 -35 -141 -95 -187 -151 -24 -29 -104 -111 -177 -183 -74 -71 -189 -185 -255 -253 -285 -289 -869 -865 -956 -943 -96 -85 -181 -171 -530 -532 -107 -111 -386 -390 -619 -622 -234 -231 -540 -537 -680 -680 -140 -143 -357 -361 -481 -485 -2170 -2164 -2652 -2648 -2656 -2666 -3 -13 -2 -33 2 -46 4 -13 330 -345 725 -738 1576 -1568 3109 -3101 3124 -3123 13 -21 15 -242 15 -1963 0 -1734 -1 -1940 -15 -1950 -35 -26 -5222 -30 -5289 -4 -18 6 -24 19 -30 56 -10 74 -6 2564 4 2709 21 285 23 410 9 565 -11 123 -14 439 -14 1530 0 1300 -1 1377 -18 1403 -9 15 -23 27 -29 27 -14 0 45 59 -2112 -2095 -2751 -2747 -4205 -4190 -4228 -4197 -13 -3 -451 -6 -975 -7 -523 -1 -958 -4 -966 -7 -23 -8 8 -41 133 -141 166 -132 596 -430 816 -563 31 -19 73 -45 92 -58 19 -13 128 -78 241 -144 235 -138 417 -231 701 -360 25 -11 95 -45 157 -74 61 -30 116 -54 122 -54 6 0 11 -4 11 -8 0 -9 61 -37 105 -48 17 -4 49 -18 72 -31 23 -12 49 -23 57 -23 9 0 16 -4 16 -9 0 -5 12 -12 28 -15 43 -11 112 -40 112 -48 0 -5 12 -8 26 -8 15 0 41 -9 58 -19 17 -11 63 -31 101 -45 70 -26 105 -41 137 -57 18 -9 48 -20 158 -59 36 -12 70 -26 75 -30 15 -12 284 -94 435 -134 72 -19 159 -43 205 -56 17 -5 48 -12 70 -16 22 -4 54 -13 72 -21 18 -7 46 -13 62 -13 16 0 33 -5 36 -10 3 -6 21 -10 39 -10 19 0 50 -7 69 -15 20 -8 52 -15 71 -15 19 0 36 -5 38 -11 2 -6 26 -13 53 -16 28 -3 55 -10 62 -15 7 -6 40 -12 73 -15 33 -3 63 -10 66 -14 3 -5 26 -9 52 -9 26 -1 58 -7 72 -15 14 -8 40 -14 58 -15 18 0 43 -5 54 -11 11 -6 44 -15 72 -19 28 -5 114 -19 191 -33 77 -14 185 -30 240 -37 55 -6 136 -16 180 -22 44 -6 136 -15 205 -19 69 -4 168 -14 220 -23 73 -13 105 -14 140 -6 31 7 68 7 120 0 182 -26 366 -40 408 -31 26 5 74 5 120 -1 91 -12 582 -4 792 12 80 7 161 11 180 11 19 -1 80 6 135 15 55 9 154 19 220 23 66 3 130 12 142 19 12 6 55 12 97 12 41 0 87 5 103 11 15 6 73 15 128 19 179 15 384 50 590 100 51 12 79 19 170 40 28 6 68 14 90 17 22 3 49 12 60 19 11 8 32 14 48 14 16 0 38 5 50 12 12 6 42 15 67 19 48 8 126 26 225 54 33 9 76 20 95 25 159 40 491 139 560 166 36 14 83 33 105 41 22 8 53 21 68 29 16 8 36 14 45 14 9 0 26 7 36 15 11 8 26 15 33 15 7 0 36 11 65 25 28 14 59 25 67 25 9 0 41 13 71 30 30 16 67 29 82 30 14 0 28 3 30 8 5 11 69 40 106 47 17 4 32 11 32 16 0 5 7 9 16 9 8 0 34 11 57 23 23 13 56 27 72 31 44 11 105 39 105 48 0 4 5 8 11 8 15 0 203 93 207 102 2 4 10 8 17 8 7 0 53 20 101 44 78 39 173 84 334 159 25 11 92 48 150 81 91 52 133 77 225 133 11 7 40 23 65 35 25 13 47 25 50 28 3 3 32 23 65 45 33 22 62 42 65 45 3 3 23 14 45 24 22 11 63 36 90 57 28 20 66 45 85 55 19 10 39 23 45 27 5 4 66 45 135 91 202 134 270 181 370 261 52 42 114 90 138 107 24 18 42 40 42 51 0 27 37 57 70 57 26 0 90 51 90 72 0 4 7 8 15 8 8 0 15 4 15 8 0 5 18 16 40 26 21 9 54 36 72 59 48 62 59 72 99 90 21 9 66 43 102 74 251 224 334 303 540 512 349 355 641 679 828 921 37 47 150 198 251 335 240 325 401 563 553 817 18 30 41 72 192 347 42 77 82 153 209 401 38 74 75 141 82 148 6 7 12 19 12 27 0 17 33 75 43 75 4 0 7 5 7 10 0 6 28 68 61 138 57 118 113 250 211 497 22 55 53 134 70 175 17 41 44 113 60 160 16 47 43 119 59 160 36 95 149 473 149 501 0 11 5 30 12 42 6 12 15 38 19 57 4 19 15 62 24 95 28 99 46 177 54 225 4 25 13 55 19 67 7 12 12 34 12 50 0 16 6 37 14 48 7 11 16 38 19 60 5 37 15 82 37 175 60 248 120 576 120 659 0 14 6 64 14 111 23 132 37 237 46 335 5 50 13 126 19 170 27 198 51 668 51 988 0 557 -38 1180 -85 1399 -8 37 -15 82 -15 101 0 19 -7 51 -15 70 -8 20 -15 64 -15 97 0 33 -4 68 -10 78 -10 17 -25 112 -39 237 -4 39 -13 83 -19 98 -7 16 -12 45 -12 65 -1 20 -7 48 -15 62 -8 14 -14 48 -15 77 0 28 -4 54 -9 57 -4 3 -11 35 -14 72 -4 36 -11 71 -15 78 -5 6 -12 36 -14 66 -3 30 -11 56 -17 58 -6 2 -11 19 -11 39 0 19 -6 58 -14 86 -7 29 -21 88 -31 132 -30 139 -133 490 -190 645 -7 19 -18 53 -25 75 -7 22 -18 54 -25 70 -8 17 -29 77 -48 135 -19 58 -40 116 -45 130 -6 14 -36 95 -68 180 -67 183 -158 395 -243 572 -33 70 -61 132 -61 137 0 5 -3 11 -8 13 -8 4 -102 193 -102 207 0 5 -3 11 -7 13 -5 2 -26 39 -47 83 -22 44 -42 82 -46 85 -3 3 -14 24 -23 48 -9 23 -27 59 -40 80 -13 20 -40 71 -61 112 -21 41 -63 117 -93 168 -60 103 -69 107 -138 71z"/></g>
-            </svg>
-            <span>Xonda</span>
-        </a>
-        <a href="blueprint.html" class="btn-contact" aria-label="Nuestra Metodología">
-            <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="16" y="16" width="6" height="6" rx="1"></rect>
-                <rect x="2" y="16" width="6" height="6" rx="1"></rect>
-                <rect x="9" y="2" width="6" height="6" rx="1"></rect>
-                <path d="M5 16v-3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v3"></path>
-                <line x1="12" y1="8" x2="12" y2="11"></line>
-            </svg> ¿Cómo trabajamos?
-        </a>
-    </nav>
-    
-    <main class="hero" id="hero">
-        <div class="container hero-layout reveal">
-            <h1 class="hero-title">Tu Empresa,<br>Automatizada.</h1>
-            <p class="hero-subtitle">Simplificamos tareas. Desarrollamos sitios web, software a medida y agentes autónomos de IA.</p>
-            <a href="#ingenieria-target" class="btn-primary" aria-label="Descubre nuestros servicios">Descubre nuestros servicios</a>
-        </div>
-    </main>
-    
-    <section id="ingenieria" class="seccion-capas">
-        <div class="container">
-            <div class="privacy-card reveal">
-                <div class="privacy-badge">
-                    <svg width="100%" height="100%" viewBox="0 0 24 24" aria-hidden="true" fill="none">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M12 11h4.5c.1.4.1.7.1 1.1 0 2.7-1.8 4.7-4.6 4.7-2.7 0-4.9-2.2-4.9-4.9s2.2-4.9 4.9-4.9c1.3 0 2.4.5 3.3 1.3l-1.3 1.3c-.5-.5-1.2-.8-2-.8-1.7 0-3.1 1.4-3.1 3.1s1.4 3.1 3.1 3.1c2 0 2.7-1.4 2.8-2.1H12v-1.9z" fill="white"/>
-                    </svg>
-                </div>
-                <div class="privacy-content">
-                    <h4>Aprobado por Google. Privacidad Protegida.</h4>
-                    <p class="privacy-text">Xonda ha superado un riguroso proceso con Google para garantizar la seguridad de tus sistemas.</p>
-                </div>
-            </div>
-            
-            <div class="problemas-seccion reveal">
-                <h2 class="problemas-main-title">¿Has tenido estos problemas?</h2>
-                
-                <div class="solucion-destacada">
-                    <div class="solucion-info">
-                        <span class="solucion-tag-premium">
-                            <svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> 
-                            Pérdida de Oportunidades
-                        </span>
-                        <h3>Clientes sin respuesta.<br>Ventas perdidas por no estar 24/7.</h3>
-                        <p>En la era de la inmediatez, hacer esperar a un cliente por una cotización o consulta técnica significa regalarle la venta a tu competencia directa.</p>
-                    </div>
-                    <div class="esfera-central-3d"></div>
-                    <div class="solucion-visual-wrapper">
-                        <div class="interfaz-mockup">
-                            <div class="mockup-header">💬 Bandeja de entrada saturada</div>
-                            
-                            <div class="mockup-response-card" style="margin-bottom: 12px; padding: 14px;">
-                                <p style="font-size: 0.9rem; color: #8E8E93; margin-bottom: 4px;">De: <strong style="color: #E5E5EA;">Cliente Potencial</strong></p>
-                                <p style="font-size: 1.05rem; line-height: 1.4; margin-bottom: 10px;">"Hola, pedí un presupuesto hace 2 días, ¿tienen stock disponible para envío inmediato?"</p>
-                                <div class="mockup-inner-pill" style="border-color: rgba(255, 59, 48, 0.2); background: rgba(255, 59, 48, 0.05); padding: 8px 10px;">
-                                    <span style="color: #ff3b30; font-size: 0.9rem;">Estado: Sin responder ❌</span><small>Hace 48 hrs</small>
-                                </div>
-                            </div>
-                            
-                            <div class="mockup-response-card" style="padding: 14px;">
-                                <p style="font-size: 0.9rem; color: #8E8E93; margin-bottom: 4px;">De: <strong style="color: #E5E5EA;">Proveedor</strong></p>
-                                <p style="font-size: 1.05rem; line-height: 1.4; margin-bottom: 10px;">"Necesitamos confirmación urgente del pedido corporativo para mantener el precio pactado."</p>
-                                <div class="mockup-inner-pill" style="border-color: rgba(255, 59, 48, 0.2); background: rgba(255, 59, 48, 0.05); padding: 8px 10px;">
-                                    <span style="color: #ff3b30; font-size: 0.9rem;">Estado: Demorado ⚠️</span><small>Hace 12 hrs</small>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo" aria-label="Inicio Xonda">
+                <svg width="28" height="25" viewBox="0 0 2490 2242" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="translate(0, 2242) scale(0.1, -0.1)" fill="currentColor" stroke="none">
+                        <path d="M12160 22313 c-315 -7 -880 -52 -1180 -93 -551 -76 -1030 -174 -1540 -314 -306 -85 -725 -228 -853 -292 -16 -8 -35 -14 -43 -14 -8 0 -25 -6 -37 -14 -12 -8 -51 -24 -85 -35 -35 -11 -79 -30 -97 -41 -18 -11 -44 -20 -59 -20 -14 0 -26 -3 -26 -7 0 -9 -69 -38 -112 -49 -16 -3 -28 -10 -28 -15 0 -5 -7 -9 -15 -9 -8 0 -38 -11 -67 -25 -28 -14 -56 -25 -61 -25 -6 0 -52 -20 -104 -45 -51 -25 -96 -45 -98 -45 -3 0 -42 -17 -88 -39 -45 -21 -120 -56 -167 -77 -361 -164 -886 -471 -1365 -798 -769 -524 -1523 -1203 -2160 -1946 -389 -453 -799 -1026 -1101 -1536 -206 -349 -498 -918 -634 -1234 -204 -473 -381 -968 -489 -1365 -42 -156 -102 -384 -111 -425 -5 -19 -25 -109 -45 -200 -20 -91 -45 -201 -55 -245 -32 -133 -107 -569 -129 -750 -31 -261 -59 -586 -71 -845 -6 -129 -13 -241 -16 -249 -12 -35 -4 -810 11 -1013 45 -642 122 -1215 225 -1668 4 -19 20 -89 34 -155 83 -375 241 -922 351 -1215 30 -80 55 -149 55 -152 0 -4 18 -46 40 -93 22 -47 40 -92 40 -98 1 -7 14 -37 30 -67 17 -30 30 -65 30 -77 0 -13 3 -23 8 -23 8 0 37 -69 48 -112 3 -16 10 -28 15 -28 5 0 9 -7 9 -16 0 -8 11 -34 23 -57 13 -23 27 -55 31 -72 11 -44 39 -105 48 -105 4 0 8 -5 8 -11 0 -15 93 -203 102 -207 4 -2 8 -8 8 -14 0 -34 385 -789 478 -938 8 -12 300 276 1378 1357 753 754 2212 2217 3243 3250 1030 1033 1884 1892 1898 1909 l24 32 -26 38 c-14 22 -883 894 -1931 1939 l-1906 1900 1 1975 c1 1864 2 1976 19 1989 14 11 416 12 2507 6 1370 -4 2560 -10 2645 -14 l155 -6 6 -960 c3 -528 7 -1939 8 -3135 1 -1196 4 -2185 7 -2198 5 -16 13 -22 26 -20 21 3 -102 -119 3596 3583 1467 1468 2686 2686 2710 2707 l43 38 1055 0 c580 0 1054 4 1054 8 0 11 -46 32 -70 32 -25 0 -80 48 -80 70 0 33 -452 363 -845 617 -580 374 -1364 775 -1892 967 -40 14 -103 37 -141 51 -37 14 -74 25 -82 25 -8 0 -24 7 -34 15 -11 8 -28 15 -39 15 -10 0 -33 6 -50 14 -18 7 -63 23 -101 35 -37 12 -86 30 -109 41 -22 11 -55 20 -72 20 -17 0 -40 7 -51 15 -10 8 -31 15 -46 15 -15 0 -29 4 -32 9 -3 5 -23 12 -43 16 -21 4 -42 10 -48 15 -5 4 -37 15 -70 24 -33 9 -73 22 -90 27 -16 6 -43 15 -60 19 -16 5 -77 23 -135 40 -370 112 -664 176 -1215 264 -432 69 -842 107 -1360 126 -253 9 -340 10 -605 3z"/>
+                        <path d="M21915 16839 c-66 -35 -141 -95 -187 -151 -24 -29 -104 -111 -177 -183 -74 -71 -189 -185 -255 -253 -285 -289 -869 -865 -956 -943 -96 -85 -181 -171 -530 -532 -107 -111 -386 -390 -619 -622 -234 -231 -540 -537 -680 -680 -140 -143 -357 -361 -481 -485 -2170 -2164 -2652 -2648 -2656 -2666 -3 -13 -2 -33 2 -46 4 -13 330 -345 725 -738 1576 -1568 3109 -3101 3124 -3123 13 -21 15 -242 15 -1963 0 -1734 -1 -1940 -15 -1950 -35 -26 -5222 -30 -5289 -4 -18 6 -24 19 -30 56 -10 74 -6 2564 4 2709 21 285 23 410 9 565 -11 123 -14 439 -14 1530 0 1300 -1 1377 -18 1403 -9 15 -23 27 -29 27 -14 0 45 59 -2112 -2095 -2751 -2747 -4205 -4190 -4228 -4197 -13 -3 -451 -6 -975 -7 -523 -1 -958 -4 -966 -7 -23 -8 8 -41 133 -141 166 -132 596 -430 816 -563 31 -19 73 -45 92 -58 19 -13 128 -78 241 -144 235 -138 417 -231 701 -360 25 -11 95 -45 157 -74 61 -30 116 -54 122 -54 6 0 11 -4 11 -8 0 -9 61 -37 105 -48 17 -4 49 -18 72 -31 23 -12 49 -23 57 -23 9 0 16 -4 16 -9 0 -5 12 -12 28 -15 43 -11 112 -40 112 -48 0 -5 12 -8 26 -8 15 0 41 -9 58 -19 17 -11 63 -31 101 -45 70 -26 105 -41 137 -57 18 -9 48 -20 158 -59 36 -12 70 -26 75 -30 15 -12 284 -94 435 -134 72 -19 159 -43 205 -56 17 -5 48 -12 70 -16 22 -4 54 -13 72 -21 18 -7 46 -13 62 -13 16 0 33 -5 36 -10 3 -6 21 -10 39 -10 19 0 50 -7 69 -15 20 -8 52 -15 71 -15 19 0 36 -5 38 -11 2 -6 26 -13 53 -16 28 -3 55 -10 62 -15 7 -6 40 -12 73 -15 33 -3 63 -10 66 -14 3 -5 26 -9 52 -9 26 -1 58 -7 72 -15 14 -8 40 -14 58 -15 18 0 43 -5 54 -11 11 -6 44 -15 72 -19 28 -5 114 -19 191 -33 77 -14 185 -30 240 -37 55 -6 136 -16 180 -22 44 -6 136 -15 205 -19 69 -4 168 -14 220 -23 73 -13 105 -14 140 -6 31 7 68 7 120 0 182 -26 366 -40 408 -31 26 5 74 5 120 -1 91 -12 582 -4 792 12 80 7 161 11 180 11 19 -1 80 6 135 15 55 9 154 19 220 23 66 3 130 12 142 19 12 6 55 12 97 12 41 0 87 5 103 11 15 6 73 15 128 19 179 15 384 50 590 100 51 12 79 19 170 40 28 6 68 14 90 17 22 3 49 12 60 19 11 8 32 14 48 14 16 0 38 5 50 12 12 6 42 15 67 19 48 8 126 26 225 54 33 9 76 20 95 25 159 40 491 139 560 166 36 14 83 33 105 41 22 8 53 21 68 29 16 8 36 14 45 14 9 0 26 7 36 15 11 8 26 15 33 15 7 0 36 11 65 25 28 14 59 25 67 25 9 0 41 13 71 30 30 16 67 29 82 30 14 0 28 3 30 8 5 11 69 40 106 47 17 4 32 11 32 16 0 5 7 9 16 9 8 0 34 11 57 23 23 13 56 27 72 31 44 11 105 39 105 48 0 4 5 8 11 8 15 0 203 93 207 102 2 4 10 8 17 8 7 0 53 20 101 44 78 39 173 84 334 159 25 11 92 48 150 81 91 52 133 77 225 133 11 7 40 23 65 35 25 13 47 25 50 28 3 3 32 23 65 45 33 22 62 42 65 45 3 3 23 14 45 24 22 11 63 36 90 57 28 20 66 45 85 55 19 10 39 23 45 27 5 4 66 45 135 91 202 134 270 181 370 261 52 42 114 90 138 107 24 18 42 40 42 51 0 27 37 57 70 57 26 0 90 51 90 72 0 4 7 8 15 8 8 0 15 4 15 8 0 5 18 16 40 26 21 9 54 36 72 59 48 62 59 72 99 90 21 9 66 43 102 74 251 224 334 303 540 512 349 355 641 679 828 921 37 47 150 198 251 335 240 325 401 563 553 817 18 30 41 72 192 347 42 77 82 153 209 401 38 74 75 141 82 148 6 7 12 19 12 27 0 17 33 75 43 75 4 0 7 5 7 10 0 6 28 68 61 138 57 118 113 250 211 497 22 55 53 134 70 175 17 41 44 113 60 160 16 47 43 119 59 160 36 95 149 473 149 501 0 11 5 30 12 42 6 12 15 38 19 57 4 19 15 62 24 95 28 99 46 177 54 225 4 25 13 55 19 67 7 12 12 34 12 50 0 16 6 37 14 48 7 11 16 38 19 60 5 37 15 82 37 175 60 248 120 576 120 659 0 14 6 64 14 111 23 132 37 237 46 335 5 50 13 126 19 170 27 198 51 668 51 988 0 557 -38 1180 -85 1399 -8 37 -15 82 -15 101 0 19 -7 51 -15 70 -8 20 -15 64 -15 97 0 33 -4 68 -10 78 -10 17 -25 112 -39 237 -4 39 -13 83 -19 98 -7 16 -12 45 -12 65 -1 20 -7 48 -15 62 -8 14 -14 48 -15 77 0 28 -4 54 -9 57 -4 3 -11 35 -14 72 -4 36 -11 71 -15 78 -5 6 -12 36 -14 66 -3 30 -11 56 -17 58 -6 2 -11 19 -11 39 0 19 -6 58 -14 86 -7 29 -21 88 -31 132 -30 139 -133 490 -190 645 -7 19 -18 53 -25 75 -7 22 -18 54 -25 70 -8 17 -29 77 -48 135 -19 58 -40 116 -45 130 -6 14 -36 95 -68 180 -67 183 -158 395 -243 572 -33 70 -61 132 -61 137 0 5 -3 11 -8 13 -8 4 -102 193 -102 207 0 5 -3 11 -7 13 -5 2 -26 39 -47 83 -22 44 -42 82 -46 85 -3 3 -14 24 -23 48 -9 23 -27 59 -40 80 -13 20 -40 71 -61 112 -21 41 -63 117 -93 168 -60 103 -69 107 -138 71z"/>
+                    </g>
+                </svg>
+                <span>Xonda</span>
+            </a>
+            <a href="blueprint.html" class="btn-contact" aria-label="Nuestra Metodología">
+                <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="16" y="16" width="6" height="6" rx="1"></rect>
+                    <rect x="2" y="16" width="6" height="6" rx="1"></rect>
+                    <rect x="9" y="2" width="6" height="6" rx="1"></rect>
+                    <path d="M5 16v-3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v3"></path>
+                    <line x1="12" y1="8" x2="12" y2="11"></line>
+                </svg> ¿Cómo trabajamos?
+            </a>
+        </nav>
+    </header>
 
-                <div class="soluciones-secundarias">
-                    
-                    <div class="solucion-box-mini reveal">
-                        <span class="solucion-tag-premium">
-                            <svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
-                            Cuellos de Botella
-                        </span>
-                        <h3>Dependencia manual.<br>Tu equipo está saturado.</h3>
-                        <p>Copiar y pegar datos, facturación manual y tareas de bajo valor que agotan a tu equipo y consumen el 40% de su jornada útil.</p>
-                        <div class="mini-visual-wrapper">
-                            <div class="geometria-capsula-3d"></div>
-                            <div class="mini-mockup-card">
-                                <div class="mini-header">⚠️ Tareas operativas pendientes</div>
-                                <div class="mini-list">
-                                    <div class="mini-item active-todo">
-                                        <div class="todo-check"></div>
-                                        <div class="todo-body"><strong>Ingreso de Datos:</strong> Migrar 250 leads al CRM<span>Impacto: Retraso en ciclo de ventas...</span></div>
-                                    </div>
-                                    <div class="mini-item">
-                                        <div class="todo-check"></div>
-                                        <div class="todo-body"><strong>Finanzas:</strong> Cargar y conciliar facturas<span>Impacto: Cierre de mes demorado...</span></div>
-                                    </div>
-                                    <div class="mini-item">
-                                        <div class="todo-check"></div>
-                                        <div class="todo-body"><strong>Logística:</strong> Actualizar stock en tienda<span>Impacto: Riesgo de quiebre de stock...</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="solucion-box-mini reveal">
-                        <span class="solucion-tag-premium">
-                            <svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-                            Ecosistemas Frágiles
-                        </span>
-                        <h3>El caos del Excel.<br>Tu negocio atado con alambre.</h3>
-                        <p>Tomar decisiones críticas basadas en hojas de cálculo desactualizadas y software genérico que no se adapta a la forma real en que trabajas.</p>
-                        <div class="mini-visual-wrapper">
-                            <div class="geometria-cubo-3d"></div>
-                            <div class="mini-mockup-card">
-                                <div class="mini-header">📊 Reporte de Sincronización</div>
-                                <div class="mini-list">
-                                    <div class="mini-email-item">
-                                        <div class="email-avatar" style="background: rgba(255, 59, 48, 0.1); color: #ff3b30; border: 1px solid rgba(255, 59, 48, 0.2);">XL</div>
-                                        <div class="email-body">
-                                            <div class="email-top"><strong style="color: #E5E5EA;">Inventario_Final_v4.xlsx</strong> <span>10:42 AM</span></div>
-                                            <p style="color: #ff3b30;">Error crítico: Fórmulas rotas en fila 42.</p>
-                                        </div>
-                                    </div>
-                                    <div class="mini-email-item">
-                                        <div class="email-avatar" style="background: rgba(255, 255, 255, 0.05); color: #E5E5EA; border: 1px solid rgba(255, 255, 255, 0.1);">BD</div>
-                                        <div class="email-body">
-                                            <div class="email-top"><strong style="color: #E5E5EA;">Base de Datos (CRM)</strong> <span>09:15 AM</span></div>
-                                            <p style="color: rgba(255, 255, 255, 0.6);">Aviso: Discrepancia de datos.</p>
-                                        </div>
-                                    </div>
-                                    <div class="mini-email-item">
-                                        <div class="email-avatar" style="background: rgba(255, 59, 48, 0.1); color: #ff3b30; border: 1px solid rgba(255, 59, 48, 0.2);">SG</div>
-                                        <div class="email-body">
-                                            <div class="email-top"><strong style="color: #E5E5EA;">Software Genérico</strong> <span>Ayer</span></div>
-                                            <p style="color: #ff3b30;">Error: Límite de integraciones superado.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
+    <main>
+        <section class="hero" id="hero">
+            <div class="container hero-layout reveal">
+                <h1 class="hero-title">Tu Empresa,<br>Automatizada.</h1>
+                <p class="hero-subtitle">Simplificamos tareas. Desarrollamos sitios web, software a medida y agentes autónomos de IA.</p>
+                <a href="#ingenieria-target" class="btn-primary" aria-label="Descubre nuestros servicios">Descubre nuestros servicios</a>
             </div>
-            
-            <div id="ingenieria-target" class="section-header reveal">
-                <h2 class="section-title-premium"> Nuestra ingeniería <br><span>al servicio de tu expansión.</span></h2>
-            </div>
-            
-            <div class="servicios-interactive-wrapper reveal">
-                <div class="servicios-tabs">
-                    <button class="tab-btn-crystal active" data-target="software" aria-label="Ver servicio Software a Medida">
-                        <span class="tab-title">Software a Medida</span>
-                        <span class="tab-desc">Sistemas y plataformas web de alta gama</span>
-                    </button>
-                    <button class="tab-btn-crystal" data-target="ia" aria-label="Ver servicio Inteligencia Artificial">
-                        <div class="badge-running-container">
-                            <div class="badge-track">
-                                <span>NUEVA ERA • IA AUTÓNOMA • NUEVA ERA • IA AUTÓNOMA •&nbsp;</span>
-                                <span>NUEVA ERA • IA AUTÓNOMA • NUEVA ERA • IA AUTÓNOMA •&nbsp;</span>
-                            </div>
-                        </div>
-                        <span class="tab-title font-neon">Inteligencia Artificial</span>
-                        <span class="tab-desc">Agentes autónomos y flujos cognitivos</span>
-                    </button>
-                    <button class="tab-btn-crystal" data-target="pilares" aria-label="Ver Pilares Fundamentales">
-                        <span class="tab-title">Pilares Fundamentales</span>
-                        <span class="tab-desc">Garantía, diseño y soporte continuo</span>
-                    </button>
+        </section>
+        
+        <section id="ingenieria" class="seccion-capas">
+            <div class="container">
+                <div class="privacy-card reveal">
+                    <div class="privacy-badge">
+                        <svg width="100%" height="100%" viewBox="0 0 24 24" aria-hidden="true" fill="none">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 11h4.5c.1.4.1.7.1 1.1 0 2.7-1.8 4.7-4.6 4.7-2.7 0-4.9-2.2-4.9-4.9s2.2-4.9 4.9-4.9c1.3 0 2.4.5 3.3 1.3l-1.3 1.3c-.5-.5-1.2-.8-2-.8-1.7 0-3.1 1.4-3.1 3.1s1.4 3.1 3.1 3.1c2 0 2.7-1.4 2.8-2.1H12v-1.9z" fill="white"/>
+                        </svg>
+                    </div>
+                    <div class="privacy-content">
+                        <h4>Aprobado por Google. Privacidad Protegida.</h4>
+                        <p class="privacy-text">Xonda ha superado un riguroso proceso con Google para garantizar la seguridad de tus sistemas.</p>
+                    </div>
                 </div>
                 
-                <div class="contenedor-servicios-fijo">
-                    <div class="esfera-fondo-carrusel"></div>
+                <div class="problemas-seccion reveal">
+                    <h2 class="problemas-main-title">¿Has tenido estos problemas?</h2>
                     
-                    <div class="carousel-controls">
-                        <button class="carousel-arrow prev" aria-label="Tarjeta anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
-                        <div class="carousel-indicators"></div>
-                        <button class="carousel-arrow next" aria-label="Siguiente tarjeta"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+                    <div class="solucion-destacada">
+                        <div class="solucion-info">
+                            <span class="solucion-tag-premium">
+                                <svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> 
+                                Pérdida de Oportunidades
+                            </span>
+                            <h3>Clientes sin respuesta.<br>Ventas perdidas por no estar 24/7.</h3>
+                            <p>En la era de la inmediatez, hacer esperar a un cliente por una cotización o consulta técnica significa regalarle la venta a tu competencia directa.</p>
+                        </div>
+                        <div class="esfera-central-3d"></div>
+                        <div class="solucion-visual-wrapper">
+                            <div class="interfaz-mockup">
+                                <div class="mockup-header">💬 Bandeja de entrada saturada</div>
+                                
+                                <div class="mockup-response-card" style="margin-bottom: 12px; padding: 14px;">
+                                    <p style="font-size: 0.9rem; color: #8E8E93; margin-bottom: 4px;">De: <strong style="color: #E5E5EA;">Cliente Potencial</strong></p>
+                                    <p style="font-size: 1.05rem; line-height: 1.4; margin-bottom: 10px;">"Hola, pedí un presupuesto hace 2 días, ¿tienen stock disponible para envío inmediato?"</p>
+                                    <div class="mockup-inner-pill" style="border-color: rgba(255, 59, 48, 0.2); background: rgba(255, 59, 48, 0.05); padding: 8px 10px;">
+                                        <span style="color: #ff3b30; font-size: 0.9rem;">Estado: Sin responder ❌</span><small>Hace 48 hrs</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="mockup-response-card" style="padding: 14px;">
+                                    <p style="font-size: 0.9rem; color: #8E8E93; margin-bottom: 4px;">De: <strong style="color: #E5E5EA;">Proveedor</strong></p>
+                                    <p style="font-size: 1.05rem; line-height: 1.4; margin-bottom: 10px;">"Necesitamos confirmación urgente del pedido corporativo para mantener el precio pactado."</p>
+                                    <div class="mockup-inner-pill" style="border-color: rgba(255, 59, 48, 0.2); background: rgba(255, 59, 48, 0.05); padding: 8px 10px;">
+                                        <span style="color: #ff3b30; font-size: 0.9rem;">Estado: Demorado ⚠️</span><small>Hace 12 hrs</small>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="soluciones-secundarias">
+                        
+                        <div class="solucion-box-mini reveal">
+                            <span class="solucion-tag-premium">
+                                <svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+                                Cuellos de Botella
+                            </span>
+                            <h3>Dependencia manual.<br>Tu equipo está saturado.</h3>
+                            <p>Copiar y pegar datos, facturación manual y tareas de bajo valor que agotan a tu equipo y consumen el 40% de su jornada útil.</p>
+                            <div class="mini-visual-wrapper">
+                                <div class="geometria-capsula-3d"></div>
+                                <div class="mini-mockup-card">
+                                    <div class="mini-header">⚠️ Tareas operativas pendientes</div>
+                                    <div class="mini-list">
+                                        <div class="mini-item active-todo">
+                                            <div class="todo-check"></div>
+                                            <div class="todo-body"><strong>Ingreso de Datos:</strong> Migrar 250 leads al CRM<span>Impacto: Retraso en ciclo de ventas...</span></div>
+                                        </div>
+                                        <div class="mini-item">
+                                            <div class="todo-check"></div>
+                                            <div class="todo-body"><strong>Finanzas:</strong> Cargar y conciliar facturas<span>Impacto: Cierre de mes demorado...</span></div>
+                                        </div>
+                                        <div class="mini-item">
+                                            <div class="todo-check"></div>
+                                            <div class="todo-body"><strong>Logística:</strong> Actualizar stock en tienda<span>Impacto: Riesgo de quiebre de stock...</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="solucion-box-mini reveal">
+                            <span class="solucion-tag-premium">
+                                <svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                                Ecosistemas Frágiles
+                            </span>
+                            <h3>El caos del Excel.<br>Tu negocio atado con alambre.</h3>
+                            <p>Tomar decisiones críticas basadas en hojas de cálculo desactualizadas y software genérico que no se adapta a la forma real en que trabajas.</p>
+                            <div class="mini-visual-wrapper">
+                                <div class="geometria-cubo-3d"></div>
+                                <div class="mini-mockup-card">
+                                    <div class="mini-header">📊 Reporte de Sincronización</div>
+                                    <div class="mini-list">
+                                        <div class="mini-email-item">
+                                            <div class="email-avatar" style="background: rgba(255, 59, 48, 0.1); color: #ff3b30; border: 1px solid rgba(255, 59, 48, 0.2);">XL</div>
+                                            <div class="email-body">
+                                                <div class="email-top"><strong style="color: #E5E5EA;">Inventario_Final_v4.xlsx</strong> <span>10:42 AM</span></div>
+                                                <p style="color: #ff3b30;">Error crítico: Fórmulas rotas en fila 42.</p>
+                                            </div>
+                                        </div>
+                                        <div class="mini-email-item">
+                                            <div class="email-avatar" style="background: rgba(255, 255, 255, 0.05); color: #E5E5EA; border: 1px solid rgba(255, 255, 255, 0.1);">BD</div>
+                                            <div class="email-body">
+                                                <div class="email-top"><strong style="color: #E5E5EA;">Base de Datos (CRM)</strong> <span>09:15 AM</span></div>
+                                                <p style="color: rgba(255, 255, 255, 0.6);">Aviso: Discrepancia de datos.</p>
+                                            </div>
+                                        </div>
+                                        <div class="mini-email-item">
+                                            <div class="email-avatar" style="background: rgba(255, 59, 48, 0.1); color: #ff3b30; border: 1px solid rgba(255, 59, 48, 0.2);">SG</div>
+                                            <div class="email-body">
+                                                <div class="email-top"><strong style="color: #E5E5EA;">Software Genérico</strong> <span>Ayer</span></div>
+                                                <p style="color: #ff3b30;">Error: Límite de integraciones superado.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                
+                <div id="ingenieria-target" class="section-header reveal">
+                    <h2 class="section-title-premium"> Nuestra ingeniería <br><span>al servicio de tu expansión.</span></h2>
+                </div>
+                
+                <div class="servicios-interactive-wrapper reveal">
+                    <div class="servicios-tabs">
+                        <button class="tab-btn-crystal active" data-target="software" aria-label="Ver servicio Software a Medida">
+                            <span class="tab-title">Software a Medida</span>
+                            <span class="tab-desc">Sistemas y plataformas web de alta gama</span>
+                        </button>
+                        <button class="tab-btn-crystal" data-target="ia" aria-label="Ver servicio Inteligencia Artificial">
+                            <div class="badge-running-container">
+                                <div class="badge-track">
+                                    <span>NUEVA ERA • IA AUTÓNOMA • NUEVA ERA • IA AUTÓNOMA •&nbsp;</span>
+                                    <span>NUEVA ERA • IA AUTÓNOMA • NUEVA ERA • IA AUTÓNOMA •&nbsp;</span>
+                                </div>
+                            </div>
+                            <span class="tab-title font-neon">Inteligencia Artificial</span>
+                            <span class="tab-desc">Agentes autónomos y flujos cognitivos</span>
+                        </button>
+                        <button class="tab-btn-crystal" data-target="pilares" aria-label="Ver Pilares Fundamentales">
+                            <span class="tab-title">Pilares Fundamentales</span>
+                            <span class="tab-desc">Garantía, diseño y soporte continuo</span>
+                        </button>
                     </div>
                     
-                    <div id="software" class="service-panel active">
+                    <div class="contenedor-servicios-fijo">
+                        <div class="esfera-fondo-carrusel"></div>
                         
-                        <div class="card-servicio-ancha">
-                            <div class="card-info-group">
-                                <div class="card-header-servicio">
-                                    <span class="card-mini-title-premium">✦ Arquitectura Corporativa</span>
-                                    <h3>Software a medida.<br><span>Diseñados específicamente para optimizar tus tareas.</span></h3>
-                                </div>
-                            </div>
-                            <div class="card-split-mockup">
-                                <div class="app-window-mockup">
-                                    <div class="app-top-bar" style="background: rgba(0, 0, 0, 0.25); padding: 12px 16px;">
-                                        <div class="window-dots"><div class="window-dot"></div><div class="window-dot"></div><div class="window-dot"></div></div>
-                                        <div class="app-search-trigger"><svg width="10" height="10" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg><span>Habla con tu asistente corporativo...</span></div>
-                                        <div style="width: 20px;"></div>
-                                    </div>
-                                    <div class="app-body-layout">
-                                        <div class="app-side-panel" style="padding: 14px 12px;">
-                                            <div style="font-size: 0.6rem; font-weight: 600; color: rgba(255,255,255,0.2); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px;">Sistemas Centrales</div>
-                                            <div class="app-list-item" style="padding: 10px 12px;"><div class="app-item-meta" style="font-size: 0.62rem; margin-bottom: 2px;"><span>NODO API</span><span class="status-pill-mini">99.9%</span></div><div class="app-item-title" style="font-size: 0.75rem; font-weight: 600;">Ecosistema Base</div></div>
-                                            <div class="app-list-item" style="padding: 10px 12px;"><div class="app-item-meta" style="font-size: 0.62rem; margin-bottom: 2px;"><span>REPO DE DATOS</span><span class="status-pill-mini">ACTIVO</span></div><div class="app-item-title" style="font-size: 0.75rem; font-weight: 600;">Bases Seguras</div></div>
-                                        </div>
-                                        <div class="app-main-content" style="padding: 16px 14px; gap: 12px;">
-                                            <div style="font-size: 0.6rem; font-weight: 600; color: rgba(255,255,255,0.2); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 2px;">Operaciones Globales</div>
-                                            <div class="app-list-item active" style="padding: 12px 14px; gap: 4px; background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1);"><div class="app-item-meta" style="font-size: 0.58rem;"><span>Acciones Automatizadas</span><span>Justo ahora</span></div><div class="app-item-title" style="font-size: 0.8rem; font-weight: 600;">Procesamiento de Clientes.</div><div class="app-item-subtitle" style="font-size: 0.75rem; color: rgba(255,255,255,0.7); white-space: normal; line-height: 1.4;">Sincronizando el lote mensual de transacciones activas de forma directa con el CRM Core.</div></div>
-                                            <div class="app-list-item" style="padding: 12px 14px; gap: 4px; background: rgba(255,255,255,0.02); border-color: rgba(255,255,255,0.04);"><div class="app-item-meta" style="font-size: 0.58rem;"><span>Sistema de Logística</span><span>Hace 2m</span></div><div class="app-item-title" style="font-size: 0.8rem; font-weight: 500; color: rgba(255,255,255,0.8);">Inventario Conciliado.</div><div class="app-item-subtitle" style="font-size: 0.75rem; color: rgba(255,255,255,0.5); white-space: normal; line-height: 1.4;">0 discrepancias encontradas en las auditorías automáticas de los servidores cloud.</div></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="carousel-controls">
+                            <button class="carousel-arrow prev" aria-label="Tarjeta anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+                            <div class="carousel-indicators"></div>
+                            <button class="carousel-arrow next" aria-label="Siguiente tarjeta"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
                         </div>
                         
-                        <div class="card-servicio-ancha">
-                            <div class="card-info-group">
-                                <div class="card-header-servicio">
-                                    <span class="card-mini-title-premium">✦ Experiencia Digital</span>
-                                    <h3>Sitios web premium.<br><span>Proyecta autoridad inmediata.</span></h3>
-                                </div>
-                            </div>
-                            <div class="card-split-mockup">
-                                <div class="app-window-mockup" style="padding-bottom: 12px;">
-                                    <div class="app-top-bar" style="background: rgba(0, 0, 0, 0.2); padding: 12px 16px;">
-                                        <div class="window-dots"><div class="window-dot"></div><div class="window-dot"></div><div class="window-dot"></div></div>
-                                        <div class="app-search-trigger" style="width: 45%;"><svg width="8" height="8" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>https://empresa.com</span></div>
-                                        <div class="status-pill-mini" style="font-size: 0.55rem; padding: 2px 6px;">Motor UX: 100%</div>
-                                    </div>
-                                    <div style="display: flex; flex-direction: column; flex: 1; padding: 16px; gap: 14px; overflow: hidden;">
-                                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 8px;">
-                                            <div style="width: 32px; height: 5px; background: rgba(255,255,255,0.3); border-radius: 1px;"></div>
-                                            <div style="display: flex; gap: 10px;"><div style="width: 22px; height: 3px; background: rgba(255,255,255,0.1); border-radius: 1px;"></div><div style="width: 22px; height: 3px; background: rgba(255,255,255,0.1); border-radius: 1px;"></div></div>
-                                            <div style="width: 38px; height: 12px; background: rgba(255,255,255,0.1); border-radius: 3px;"></div>
-                                        </div>
-                                        <div class="app-list-item" style="background: rgba(255, 255, 255, 0.01); border-color: rgba(255,255,255,0.03); padding: 18px 14px; align-items: center; text-align: center; gap: 8px;">
-                                            <div class="app-item-title" style="font-size: 0.85rem; font-weight: 600; letter-spacing: -0.02em; line-height: 1.2;">Interfaces Digitales Cinemáticas.</div>
-                                            <div class="app-item-subtitle" style="font-size: 0.75rem; width: 85%; line-height: 1.45; color: rgba(255,255,255,0.7);"> Arquitecturas web de alta gama diseñadas exclusivamente para escalar la autoridad corporativa y cerrar ventas de alto valor.</div>
-                                            <div style="display: flex; gap: 8px; margin-top: 4px;"><div style="width: 48px; height: 12px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 3px;"></div><div style="width: 48px; height: 12px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); border-radius: 3px;"></div></div>
-                                        </div>
-                                        <div style="display: flex; gap: 12px; width: 100%;">
-                                            <div class="app-list-item active" style="flex: 1.3; padding: 12px; gap: 4px;"><div class="app-item-meta"><span style="font-size: 0.52rem;">NODO DE CONVERSIÓN</span></div><div class="app-item-title" style="font-size: 0.75rem; font-weight: 600;">Embudo de Alto Valor</div></div>
-                                            <div class="app-list-item" style="flex: 1; padding: 12px; gap: 4px; background: rgba(255,255,255,0.01); border-color: rgba(255,255,255,0.03);"><div class="app-item-meta"><span style="font-size: 0.52rem;">RENDIMIENTO</span></div><div class="app-item-title" style="font-size: 0.75rem; font-weight: 500; color: rgba(255,255,255,0.8);">Núcleo de Velocidad</div></div>
-                                        </div>
+                        <div id="software" class="service-panel active">
+                            <div class="card-servicio-ancha">
+                                <div class="card-info-group">
+                                    <div class="card-header-servicio">
+                                        <span class="card-mini-title-premium">✦ Arquitectura Corporativa</span>
+                                        <h3>Software a medida.<br><span>Diseñados específicamente para optimizar tus tareas.</span></h3>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        
-                        <div class="card-servicio-ancha">
-                            <div class="card-info-group">
-                                <div class="card-header-servicio">
-                                    <span class="card-mini-title-premium">✦ Centro de Datos</span>
-                                    <h3>Flujos unificados.<br><span>Facturación, ventas y stock en un solo idioma.</span></h3>
-                                </div>
-                            </div>
-                            <div class="card-split-mockup">
-                                <div class="app-window-mockup">
-                                    <div class="app-top-bar" style="background: rgba(0, 0, 0, 0.25); padding: 12px 16px;">
-                                        <div class="window-dots"><div class="window-dot"></div><div class="window-dot"></div><div class="window-dot"></div></div>
-                                        <div class="app-search-trigger"><svg width="10" height="10" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg><span>orquestador_enlace // canales-activos</span></div>
-                                        <div style="width: 20px;"></div>
-                                    </div>
-                                    <div class="app-body-layout">
-                                        <div class="app-side-panel" style="padding: 14px 12px; gap: 10px;">
-                                            <div style="font-size: 0.6rem; font-weight: 600; color: rgba(255,255,255,0.2); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px;">Apps Externas</div>
-                                            <div class="app-list-item" style="padding: 10px 12px; background: rgba(255,255,255,0.01); border-color: transparent;"><div class="app-item-meta" style="font-size: 0.62rem; margin-bottom: 2px;"><span>WEBHOOK ENTRADA</span></div><div class="app-item-title" style="font-size: 0.75rem; color: rgba(255,255,255,0.6);">Stripe / Pagos</div></div>
-                                            <div class="app-list-item" style="padding: 10px 12px; background: rgba(255,255,255,0.01); border-color: transparent;"><div class="app-item-meta" style="font-size: 0.62rem; margin-bottom: 2px;"><span>PETICIÓN API</span></div><div class="app-item-title" style="font-size: 0.75rem; color: rgba(255,255,255,0.4);">HubSpot CRM</div></div>
+                                <div class="card-split-mockup">
+                                    <div class="app-window-mockup">
+                                        <div class="app-top-bar" style="background: rgba(0, 0, 0, 0.25); padding: 12px 16px;">
+                                            <div class="window-dots"><div class="window-dot"></div><div class="window-dot"></div><div class="window-dot"></div></div>
+                                            <div class="app-search-trigger"><svg width="10" height="10" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg><span>Habla con tu asistente corporativo...</span></div>
+                                            <div style="width: 20px;"></div>
                                         </div>
-                                        <div class="app-main-content" style="padding: 16px 14px; gap: 12px;">
-                                            <div style="font-size: 0.6rem; font-weight: 600; color: rgba(255,255,255,0.2); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 2px;">Motor de Traducción Xonda</div>
-                                            <div class="app-list-item active" style="padding: 12px 14px; gap: 4px; background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1);"><div class="app-item-meta" style="font-size: 0.58rem;"><span>CANAL UNIFICADO</span><span>0.02ms</span></div><div class="app-item-title" style="font-size: 0.8rem; font-weight: 600;">Traducción de Datos Central.</div><div class="app-item-subtitle" style="font-size: 0.75rem; color: rgba(255,255,255,0.7); white-space: normal; line-height: 1.4;">Eventos entrantes unificados de forma instantánea en un solo idioma de datos estructurado.</div></div>
-                                            <div class="app-list-item" style="background: rgba(0,0,0,0.2); font-family: monospace; padding: 10px 12px; gap: 4px; border-color: rgba(255,255,255,0.02);"><div style="font-size: 0.65rem; color: rgba(255,255,255,0.5);"><span style="color: rgba(255,255,255,0.2);">14:02</span> -> Datos traducidos desde Apps Externas</div><div style="font-size: 0.65rem; color: rgba(255,255,255,0.4);"><span style="color: rgba(255,255,255,0.2);">14:02</span> -> Sincronizando: Ventas = Stock = ERP</div></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="ia" class="service-panel">
-                        
-                        <div class="card-servicio-ancha">
-                            <div class="card-info-group">
-                                <div class="card-header-servicio">
-                                    <span class="card-mini-title-premium">✦ Agentes Autónomos IA</span>
-                                    <h3>Atención ininterrumpida.<br><span>Respuestas precisas 24/7.</span></h3>
-                                </div>
-                            </div>
-                            <div class="card-split-mockup">
-                                <div class="app-window-mockup">
-                                    <div class="app-top-bar" style="background: rgba(0, 0, 0, 0.25); padding: 12px 16px;">
-                                        <div class="window-dots"><div class="window-dot"></div><div class="window-dot"></div><div class="window-dot"></div></div>
-                                        <div style="font-size: 0.7rem; color: rgba(255,255,255,0.7); font-family: monospace; display: flex; align-items: center; gap: 6px;"><span>puerta_enlace_whatsapp // activo</span></div>
-                                        <div class="status-pill-mini" style="font-size: 0.55rem; padding: 2px 6px;">CHAT IA ACTIVO</div>
-                                    </div>
-                                    <div class="app-body-layout">
-                                        <div class="app-side-panel" style="width: 32%; padding: 14px 12px;">
-                                            <div style="font-size: 0.6rem; font-weight: 600; color: rgba(255,255,255,0.2); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px;">Entrantes</div>
-                                            <div class="app-list-item active" style="padding: 10px 12px;"><div class="app-item-meta" style="font-size: 0.62rem; margin-bottom: 2px;"><span>WhatsApp</span></div><div class="app-item-title" style="font-size: 0.75rem; font-weight: 600;">Carlos M. (CEO)</div></div>
-                                            <div class="app-list-item" style="padding: 10px 12px; background: rgba(255,255,255,0.01); border-color: transparent;"><div class="app-item-meta" style="font-size: 0.62rem; margin-bottom: 2px;"><span>Telegram</span></div><div class="app-item-title" style="font-size: 0.75rem; color: rgba(255,255,255,0.4);">Marta S. (Logística)</div></div>
-                                        </div>
-                                        <div class="app-main-content" style="width: 68%; left: 32%; padding: 16px 14px; gap: 14px; justify-content: flex-end;">
-                                            <div style="display: flex; flex-direction: column; align-items: flex-end; width: 100%; gap: 4px;">
-                                                <div style="font-size: 0.58rem; color: rgba(255,255,255,0.25); font-weight: 500;">CLIENTE // 16:14</div>
-                                                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 8px 12px; border-radius: 10px 10px 2px 10px; font-size: 0.78rem; color: rgba(255,255,255,0.85); max-width: 85%; line-height: 1.4; white-space: normal;">Hola, necesito posponer la entrega para mañana e incluir 10 licencias Pro más en el pedido corporativo.</div>
+                                        <div class="app-body-layout">
+                                            <div class="app-side-panel" style="padding: 14px 12px;">
+                                                <div style="font-size: 0.6rem; font-weight: 600; color: rgba(255,255,255,0.2); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px;">Sistemas Centrales</div>
+                                                <div class="app-list-item" style="padding: 10px 12px;"><div class="app-item-meta" style="font-size: 0.62rem; margin-bottom: 2px;"><span>NODO API</span><span class="status-pill-mini">99.9%</span></div><div class="app-item-title" style="font-size: 0.75rem; font-weight: 600;">Ecosistema Base</div></div>
+                                                <div class="app-list-item" style="padding: 10px 12px;"><div class="app-item-meta" style="font-size: 0.62rem; margin-bottom: 2px;"><span>REPO DE DATOS</span><span class="status-pill-mini">ACTIVO</span></div><div class="app-item-title" style="font-size: 0.75rem; font-weight: 600;">Bases Seguras</div></div>
                                             </div>
-                                            <div style="display: flex; flex-direction: column; align-items: flex-start; width: 100%; gap: 4px;">
-                                                <div style="font-size: 0.58rem; color: rgba(255,255,255,0.4); font-weight: 500;">XONDA_AI // Instante posterior</div>
-                                                <div class="app-list-item active" style="padding: 12px 14px; border-radius: 10px 10px 10px 2px; max-width: 92%; gap: 4px; background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1);"><div class="app-item-title" style="font-size: 0.8rem; font-weight: 600;">Pedido actualizado en el acto.</div><div class="app-item-subtitle" style="font-size: 0.75rem; color: rgba(255,255,255,0.75); white-space: normal; line-height: 1.4;">¡Hecho, Carlos! Reprogramé la entrega en logística e indexé las 10 licencias Pro adicionales en tu facturación automáticamente.</div></div>
+                                            <div class="app-main-content" style="padding: 16px 14px; gap: 12px;">
+                                                <div style="font-size: 0.6rem; font-weight: 600; color: rgba(255,255,255,0.2); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 2px;">Operaciones Globales</div>
+                                                <div class="app-list-item active" style="padding: 12px 14px; gap: 4px; background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1);"><div class="app-item-meta" style="font-size: 0.58rem;"><span>Acciones Automatizadas</span><span>Justo ahora</span></div><div class="app-item-title" style="font-size: 0.8rem; font-weight: 600;">Procesamiento de Clientes.</div><div class="app-item-subtitle" style="font-size: 0.75rem; color: rgba(255,255,255,0.7); white-space: normal; line-height: 1.4;">Sincronizando el lote mensual de transacciones activas de forma directa con el CRM Core.</div></div>
+                                                <div class="app-list-item" style="padding: 12px 14px; gap: 4px; background: rgba(255,255,255,0.02); border-color: rgba(255,255,255,0.04);"><div class="app-item-meta" style="font-size: 0.58rem;"><span>Sistema de Logística</span><span>Hace 2m</span></div><div class="app-item-title" style="font-size: 0.8rem; font-weight: 500; color: rgba(255,255,255,0.8);">Inventario Conciliado.</div><div class="app-item-subtitle" style="font-size: 0.75rem; color: rgba(255,255,255,0.5); white-space: normal; line-height: 1.4;">0 discrepancias encontradas en las auditorías automáticas de los servidores cloud.</div></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                
+                            <div class="card-servicio-ancha">
+                                <div class="card-info-group">
+                                    <div class="card-header-servicio">
+                                        <span class="card-mini-title-premium">✦ Experiencia Digital</span>
+                                        <h3>Sitios web premium.<br><span>Proyecta autoridad inmediata.</span></h3>
+                                    </div>
+                                </div>
+                                <div class="card-split-mockup">
+                                    <div class="app-window-mockup" style="padding-bottom: 12px;">
+                                        <div class="app-top-bar" style="background: rgba(0, 0, 0, 0.2); padding: 12px 16px;">
+                                            <div class="window-dots"><div class="window-dot"></div><div class="window-dot"></div><div class="window-dot"></div></div>
+                                            <div class="app-search-trigger" style="width: 45%;"><svg width="8" height="8" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>https://empresa.com</span></div>
+                                            <div class="status-pill-mini" style="font-size: 0.55rem; padding: 2px 6px;">Motor UX: 100%</div>
+                                        </div>
+                                        <div style="display: flex; flex-direction: column; flex: 1; padding: 16px; gap: 14px; overflow: hidden;">
+                                            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 8px;">
+                                                <div style="width: 32px; height: 5px; background: rgba(255,255,255,0.3); border-radius: 1px;"></div>
+                                                <div style="display: flex; gap: 10px;"><div style="width: 22px; height: 3px; background: rgba(255,255,255,0.1); border-radius: 1px;"></div><div style="width: 22px; height: 3px; background: rgba(255,255,255,0.1); border-radius: 1px;"></div></div>
+                                                <div style="width: 38px; height: 12px; background: rgba(255,255,255,0.1); border-radius: 3px;"></div>
+                                            </div>
+                                            <div class="app-list-item" style="background: rgba(255, 255, 255, 0.01); border-color: rgba(255,255,255,0.03); padding: 18px 14px; align-items: center; text-align: center; gap: 8px;">
+                                                <div class="app-item-title" style="font-size: 0.85rem; font-weight: 600; letter-spacing: -0.02em; line-height: 1.2;">Interfaces Digitales Cinemáticas.</div>
+                                                <div class="app-item-subtitle" style="font-size: 0.75rem; width: 85%; line-height: 1.45; color: rgba(255,255,255,0.7);"> Arquitecturas web de alta gama diseñadas exclusivamente para escalar la autoridad corporativa y cerrar ventas de alto valor.</div>
+                                                <div style="display: flex; gap: 8px; margin-top: 4px;"><div style="width: 48px; height: 12px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 3px;"></div><div style="width: 48px; height: 12px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); border-radius: 3px;"></div></div>
+                                            </div>
+                                            <div style="display: flex; gap: 12px; width: 100%;">
+                                                <div class="app-list-item active" style="flex: 1.3; padding: 12px; gap: 4px;"><div class="app-item-meta"><span style="font-size: 0.52rem;">NODO DE CONVERSIÓN</span></div><div class="app-item-title" style="font-size: 0.75rem; font-weight: 600;">Embudo de Alto Valor</div></div>
+                                                <div class="app-list-item" style="flex: 1; padding: 12px; gap: 4px; background: rgba(255,255,255,0.01); border-color: rgba(255,255,255,0.03);"><div class="app-item-meta"><span style="font-size: 0.52rem;">RENDIMIENTO</span></div><div class="app-item-title" style="font-size: 0.75rem; font-weight: 500; color: rgba(255,255,255,0.8);">Núcleo de Velocidad</div></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                
+                            <div class="card-servicio-ancha">
+                                <div class="card-info-group">
+                                    <div class="card-header-servicio">
+                                        <span class="card-mini-title-premium">✦ Centro de Datos</span>
+                                        <h3>Flujos unificados.<br><span>Facturación, ventas y stock en un solo idioma.</span></h3>
+                                    </div>
+                                </div>
+                                <div class="card-split-mockup">
+                                    <div class="app-window-mockup">
+                                        <div class="app-top-bar" style="background: rgba(0, 0, 0, 0.25); padding: 12px 16px;">
+                                            <div class="window-dots"><div class="window-dot"></div><div class="window-dot"></div><div class="window-dot"></div></div>
+                                            <div class="app-search-trigger"><svg width="10" height="10" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg><span>orquestador_enlace // canales-activos</span></div>
+                                            <div style="width: 20px;"></div>
+                                        </div>
+                                        <div class="app-body-layout">
+                                            <div class="app-side-panel" style="padding: 14px 12px; gap: 10px;">
+                                                <div style="font-size: 0.6rem; font-weight: 600; color: rgba(255,255,255,0.2); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px;">Apps Externas</div>
+                                                <div class="app-list-item" style="padding: 10px 12px; background: rgba(255,255,255,0.01); border-color: transparent;"><div class="app-item-meta" style="font-size: 0.62rem; margin-bottom: 2px;"><span>WEBHOOK ENTRADA</span></div><div class="app-item-title" style="font-size: 0.75rem; color: rgba(255,255,255,0.6);">Stripe / Pagos</div></div>
+                                                <div class="app-list-item" style="padding: 10px 12px; background: rgba(255,255,255,0.01); border-color: transparent;"><div class="app-item-meta" style="font-size: 0.62rem; margin-bottom: 2px;"><span>PETICIÓN API</span></div><div class="app-item-title" style="font-size: 0.75rem; color: rgba(255,255,255,0.4);">HubSpot CRM</div></div>
+                                            </div>
+                                            <div class="app-main-content" style="padding: 16px 14px; gap: 12px;">
+                                                <div style="font-size: 0.6rem; font-weight: 600; color: rgba(255,255,255,0.2); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 2px;">Motor de Traducción Xonda</div>
+                                                <div class="app-list-item active" style="padding: 12px 14px; gap: 4px; background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1);"><div class="app-item-meta" style="font-size: 0.58rem;"><span>CANAL UNIFICADO</span><span>0.02ms</span></div><div class="app-item-title" style="font-size: 0.8rem; font-weight: 600;">Traducción de Datos Central.</div><div class="app-item-subtitle" style="font-size: 0.75rem; color: rgba(255,255,255,0.7); white-space: normal; line-height: 1.4;">Eventos entrantes unificados de forma instantánea en un solo idioma de datos estructurado.</div></div>
+                                                <div class="app-list-item" style="background: rgba(0,0,0,0.2); font-family: monospace; padding: 10px 12px; gap: 4px; border-color: rgba(255,255,255,0.02);"><div style="font-size: 0.65rem; color: rgba(255,255,255,0.5);"><span style="color: rgba(255,255,255,0.2);">14:02</span> -> Datos traducidos desde Apps Externas</div><div style="font-size: 0.65rem; color: rgba(255,255,255,0.4);"><span style="color: rgba(255,255,255,0.2);">14:02</span> -> Sincronizando: Ventas = Stock = ERP</div></div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="card-servicio-ancha">
-                            <div class="card-info-group">
-                                <div class="card-header-servicio">
-                                    <span class="card-mini-title-premium">✦ Flujos de Trabajo Inteligentes</span>
-                                    <h3>Inteligencia Operativa.<br><span>Procesos que se gestionan solos.</span></h3>
-                                </div>
-                            </div>
-                            <div class="card-split-mockup">
-                                <div class="app-window-mockup">
-                                    <div class="app-top-bar" style="background: rgba(0, 0, 0, 0.25); padding: 12px 16px;">
-                                        <div class="window-dots"><div class="window-dot"></div><div class="window-dot"></div><div class="window-dot"></div></div>
-                                        <div style="font-size: 0.7rem; color: rgba(255,255,255,0.7); font-family: monospace; display: flex; align-items: center; gap: 6px;"><span>motor_flujos // monitor_procesos</span></div>
-                                        <div class="status-pill-mini" style="font-size: 0.55rem; padding: 2px 6px;">AUTOMATIZACIÓN ACTIVA</div>
-                                    </div>
-                                    <div class="app-body-layout">
-                                        <div class="app-side-panel" style="width: 32%; padding: 14px 12px; gap: 10px;">
-                                            <div style="font-size: 0.6rem; font-weight: 600; color: rgba(255,255,255,0.2); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px;">Fuentes de Datos</div>
-                                            <div class="app-list-item" style="padding: 10px 12px; background: rgba(255,255,255,0.01); border-color: transparent;"><div class="app-item-meta" style="font-size: 0.62rem; margin-bottom: 2px;"><span>INGRESO_DOCS</span></div><div class="app-item-title" style="font-size: 0.75rem; color: rgba(255,255,255,0.6);">Facturas (PDF)</div></div>
-                                            <div class="app-list-item" style="padding: 10px 12px; background: rgba(255,255,255,0.01); border-color: transparent;"><div class="app-item-meta" style="font-size: 0.62rem; margin-bottom: 2px;"><span>ESCANEO_CORREOS</span></div><div class="app-item-title" style="font-size: 0.75rem; color: rgba(255,255,255,0.4);">Correos Clientes</div></div>
-                                        </div>
-                                        <div class="app-main-content" style="width: 68%; left: 32%; padding: 16px 14px; gap: 12px;">
-                                            <div style="font-size: 0.6rem; font-weight: 600; color: rgba(255,255,255,0.2); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 2px;">Ejecución Cognitiva en Vivo</div>
-                                            <div class="app-list-item active" style="padding: 12px 14px; gap: 4px; background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1);"><div class="app-item-meta" style="font-size: 0.58rem;"><span>PASO 01 // OCR COGNITIVO</span><span>Justo ahora</span></div><div class="app-item-title" style="font-size: 0.8rem; font-weight: 600;">Lectura e Inteligencia Documental.</div><div class="app-item-subtitle" style="font-size: 0.75rem; color: rgba(255,255,255,0.7); white-space: normal; line-height: 1.4;">Procesando lote de 42 facturas. Extrayendo montos y datos fiscales sin intervención humana.</div></div>
-                                            <div class="app-list-item" style="padding: 12px 14px; gap: 4px; background: rgba(255,255,255,0.02); border-color: rgba(255,255,255,0.04);"><div class="app-item-meta" style="font-size: 0.58rem;"><span>PASO 02 // BUCLE_SINC</span><span>Hace 1m</span></div><div class="app-item-title" style="font-size: 0.8rem; font-weight: 500; color: rgba(255,255,255,0.8);">Actualización de Base de Datos.</div><div class="app-item-subtitle" style="font-size: 0.75rem; color: rgba(255,255,255,0.5); white-space: normal; line-height: 1.4;">Registros conciliados e indexados directamente en el ERP Core.</div></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="card-servicio-ancha">
-                            <div class="card-info-group">
-                                <div class="card-header-servicio">
-                                    <span class="card-mini-title-premium">✦ Analítica Cognitiva</span>
-                                    <h3>Inteligencia estratégica.<br><span>Tus datos convertidos en decisiones.</span></h3>
-                                </div>
-                            </div>
-                            <div class="card-split-mockup">
-                                <div class="app-window-mockup" style="padding-bottom: 14px;">
-                                    <div class="app-top-bar" style="background: rgba(0, 0, 0, 0.2); padding: 12px 16px;">
-                                        <div class="window-dots"><div class="window-dot"></div><div class="window-dot"></div><div class="window-dot"></div></div>
-                                        <div style="font-size: 0.7rem; color: rgba(255,255,255,0.7); font-family: monospace; display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.02); padding: 4px 10px; border-radius: 4px;"><span>analitica_cognitiva // reporte_ejecutivo</span></div>
-                                        <div class="status-pill-mini" style="font-size: 0.55rem; padding: 2px 6px;">INSIGHTS DE DATOS ACTIVOS</div>
-                                    </div>
-                                    <div style="display: flex; flex-direction: column; flex: 1; padding: 16px; gap: 14px; overflow: hidden;">
-                                        <div class="app-list-item active" style="padding: 14px 16px; gap: 4px; background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1);"><div class="app-item-meta" style="font-size: 0.58rem;"><span>INSIGHT IA GENERAL</span><span>Sincronizado</span></div><div class="app-item-title" style="font-size: 0.82rem; font-weight: 600; letter-spacing: -0.01em;">Detección Automática de Cuellos de Botella.</div><div class="app-item-subtitle" style="font-size: 0.75rem; color: rgba(255,255,255,0.72); white-space: normal; line-height: 1.45;">El procesamiento de facturas en logística ralentizaba el flujo comercial. La automatización del nodo liberó un 34% de capacidad operativa esta semana.</div></div>
-                                        <div style="display: flex; gap: 12px; width: 100%;">
-                                            <div class="app-list-item" style="flex: 1.2; padding: 12px; gap: 4px; background: rgba(255,255,255,0.01); border-color: rgba(255,255,255,0.03);"><div class="app-item-meta" style="font-size: 0.55rem;"><span>EFICIENCIA GLOBAL</span></div><div class="app-item-title" style="font-size: 0.78rem; font-weight: 500;">Operaciones en Alza</div><div class="app-item-subtitle" style="font-size: 0.72rem; color: rgba(255,255,255,0.45);">Reducción de fricción: +45.8%</div></div>
-                                            <div class="app-list-item" style="flex: 1; padding: 12px; gap: 4px; background: rgba(255,255,255,0.01); border-color: rgba(255,255,255,0.03);"><div class="app-item-meta" style="font-size: 0.55rem;"><span>LIMPIEZA DE DATOS</span></div><div class="app-item-title" style="font-size: 0.78rem; font-weight: 500;">Caos Eliminado</div><div class="app-item-subtitle" style="font-size: 0.72rem; color: rgba(255,255,255,0.45);">Planillas migradas: 100%</div></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div id="pilares" class="service-panel">
-                        
-                        <div class="card-servicio-ancha">
-                            <div class="card-info-group">
-                                <div class="card-header-servicio">
-                                    <span class="card-mini-title-premium">✦ Hoja de Ruta Estratégica</span>
-                                    <h3>Auditoría profunda.<br><span>Claridad antes de codificar.</span></h3>
+                        <div id="ia" class="service-panel">
+                            <div class="card-servicio-ancha">
+                                <div class="card-info-group">
+                                    <div class="card-header-servicio">
+                                        <span class="card-mini-title-premium">✦ Agentes Autónomos IA</span>
+                                        <h3>Atención ininterrumpida.<br><span>Respuestas precisas 24/7.</span></h3>
+                                    </div>
+                                </div>
+                                <div class="card-split-mockup">
+                                    <div class="app-window-mockup">
+                                        <div class="app-top-bar" style="background: rgba(0, 0, 0, 0.25); padding: 12px 16px;">
+                                            <div class="window-dots"><div class="window-dot"></div><div class="window-dot"></div><div class="window-dot"></div></div>
+                                            <div style="font-size: 0.7rem; color: rgba(255,255,255,0.7); font-family: monospace; display: flex; align-items: center; gap: 6px;"><span>puerta_enlace_whatsapp // activo</span></div>
+                                            <div class="status-pill-mini" style="font-size: 0.55rem; padding: 2px 6px;">CHAT IA ACTIVO</div>
+                                        </div>
+                                        <div class="app-body-layout">
+                                            <div class="app-side-panel" style="width: 32%; padding: 14px 12px;">
+                                                <div style="font-size: 0.6rem; font-weight: 600; color: rgba(255,255,255,0.2); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px;">Entrantes</div>
+                                                <div class="app-list-item active" style="padding: 10px 12px;"><div class="app-item-meta" style="font-size: 0.62rem; margin-bottom: 2px;"><span>WhatsApp</span></div><div class="app-item-title" style="font-size: 0.75rem; font-weight: 600;">Carlos M. (CEO)</div></div>
+                                                <div class="app-list-item" style="padding: 10px 12px; background: rgba(255,255,255,0.01); border-color: transparent;"><div class="app-item-meta" style="font-size: 0.62rem; margin-bottom: 2px;"><span>Telegram</span></div><div class="app-item-title" style="font-size: 0.75rem; color: rgba(255,255,255,0.4);">Marta S. (Logística)</div></div>
+                                            </div>
+                                            <div class="app-main-content" style="width: 68%; left: 32%; padding: 16px 14px; gap: 14px; justify-content: flex-end;">
+                                                <div style="display: flex; flex-direction: column; align-items: flex-end; width: 100%; gap: 4px;">
+                                                    <div style="font-size: 0.58rem; color: rgba(255,255,255,0.25); font-weight: 500;">CLIENTE // 16:14</div>
+                                                    <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 8px 12px; border-radius: 10px 10px 2px 10px; font-size: 0.78rem; color: rgba(255,255,255,0.85); max-width: 85%; line-height: 1.4; white-space: normal;">Hola, necesito posponer la entrega para mañana e incluir 10 licencias Pro más en el pedido corporativo.</div>
+                                                </div>
+                                                <div style="display: flex; flex-direction: column; align-items: flex-start; width: 100%; gap: 4px;">
+                                                    <div style="font-size: 0.58rem; color: rgba(255,255,255,0.4); font-weight: 500;">XONDA_AI // Instante posterior</div>
+                                                    <div class="app-list-item active" style="padding: 12px 14px; border-radius: 10px 10px 10px 2px; max-width: 92%; gap: 4px; background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1);"><div class="app-item-title" style="font-size: 0.8rem; font-weight: 600;">Pedido actualizado en el acto.</div><div class="app-item-subtitle" style="font-size: 0.75rem; color: rgba(255,255,255,0.75); white-space: normal; line-height: 1.4;">¡Hecho, Carlos! Reprogramé la entrega en logística e indexé las 10 licencias Pro adicionales en tu facturación automáticamente.</div></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="card-split-mockup">
-                                <div class="app-window-mockup" style="justify-content: center; padding: 24px 0; gap: 14px;">
-                                    <div style="font-size: 0.65rem; font-weight: 600; color: rgba(255,255,255,0.2); text-transform: uppercase; letter-spacing: 0.04em; padding-left: 24px;">Pasos de Despliegue Estratégico</div>
-                                    <div class="roadmap-timeline-flex">
-                                        <div class="roadmap-vector-line"></div>
-                                        <div class="roadmap-step-node"><div class="roadmap-node-circle">01</div><div style="font-size: 0.78rem; font-weight: 500; color: rgba(255,255,255,0.4);">Auditoría</div></div>
-                                        <div class="roadmap-step-node"><div class="roadmap-node-circle">02</div><div style="font-size: 0.78rem; font-weight: 500; color: rgba(255,255,255,0.4);">Optimización</div></div>
-                                        <div class="roadmap-step-node active"><div class="roadmap-node-circle">03</div><div style="font-size: 0.82rem; font-weight: 600; color: #FFFFFF;">Despliegue</div></div>
+                            
+                            <div class="card-servicio-ancha">
+                                <div class="card-info-group">
+                                    <div class="card-header-servicio">
+                                        <span class="card-mini-title-premium">✦ Flujos de Trabajo Inteligentes</span>
+                                        <h3>Inteligencia Operativa.<br><span>Procesos que se gestionan solos.</span></h3>
                                     </div>
-                                    <div style="font-size: 0.75rem; color: rgba(255,255,255,0.4); text-align: center; padding: 0 24px; line-height: 1.4;">Mapeo exhaustivo completado. Cuellos de botella aislados y listos para automatizar.</div>
+                                </div>
+                                <div class="card-split-mockup">
+                                    <div class="app-window-mockup">
+                                        <div class="app-top-bar" style="background: rgba(0, 0, 0, 0.25); padding: 12px 16px;">
+                                            <div class="window-dots"><div class="window-dot"></div><div class="window-dot"></div><div class="window-dot"></div></div>
+                                            <div style="font-size: 0.7rem; color: rgba(255,255,255,0.7); font-family: monospace; display: flex; align-items: center; gap: 6px;"><span>motor_flujos // monitor_procesos</span></div>
+                                            <div class="status-pill-mini" style="font-size: 0.55rem; padding: 2px 6px;">AUTOMATIZACIÓN ACTIVA</div>
+                                        </div>
+                                        <div class="app-body-layout">
+                                            <div class="app-side-panel" style="width: 32%; padding: 14px 12px; gap: 10px;">
+                                                <div style="font-size: 0.6rem; font-weight: 600; color: rgba(255,255,255,0.2); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px;">Fuentes de Datos</div>
+                                                <div class="app-list-item" style="padding: 10px 12px; background: rgba(255,255,255,0.01); border-color: transparent;"><div class="app-item-meta" style="font-size: 0.62rem; margin-bottom: 2px;"><span>INGRESO_DOCS</span></div><div class="app-item-title" style="font-size: 0.75rem; color: rgba(255,255,255,0.6);">Facturas (PDF)</div></div>
+                                                <div class="app-list-item" style="padding: 10px 12px; background: rgba(255,255,255,0.01); border-color: transparent;"><div class="app-item-meta" style="font-size: 0.62rem; margin-bottom: 2px;"><span>ESCANEO_CORREOS</span></div><div class="app-item-title" style="font-size: 0.75rem; color: rgba(255,255,255,0.4);">Correos Clientes</div></div>
+                                            </div>
+                                            <div class="app-main-content" style="width: 68%; left: 32%; padding: 16px 14px; gap: 12px;">
+                                                <div style="font-size: 0.6rem; font-weight: 600; color: rgba(255,255,255,0.2); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 2px;">Ejecución Cognitiva en Vivo</div>
+                                                <div class="app-list-item active" style="padding: 12px 14px; gap: 4px; background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1);"><div class="app-item-meta" style="font-size: 0.58rem;"><span>PASO 01 // OCR COGNITIVO</span><span>Justo ahora</span></div><div class="app-item-title" style="font-size: 0.8rem; font-weight: 600;">Lectura e Inteligencia Documental.</div><div class="app-item-subtitle" style="font-size: 0.75rem; color: rgba(255,255,255,0.7); white-space: normal; line-height: 1.4;">Procesando lote de 42 facturas. Extrayendo montos y datos fiscales sin intervention humana.</div></div>
+                                                <div class="app-list-item" style="padding: 12px 14px; gap: 4px; background: rgba(255,255,255,0.02); border-color: rgba(255,255,255,0.04);"><div class="app-item-meta" style="font-size: 0.58rem;"><span>PASO 02 // BUCLE_SINC</span><span>Hace 1m</span></div><div class="app-item-title" style="font-size: 0.8rem; font-weight: 500; color: rgba(255,255,255,0.8);">Actualización de Base de Datos.</div><div class="app-item-subtitle" style="font-size: 0.75rem; color: rgba(255,255,255,0.5); white-space: normal; line-height: 1.4;">Registros conciliados e indexados directamente en el ERP Core.</div></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card-servicio-ancha">
+                                <div class="card-info-group">
+                                    <div class="card-header-servicio">
+                                        <span class="card-mini-title-premium">✦ Analítica Cognitiva</span>
+                                        <h3>Inteligencia estratégica.<br><span>Tus datos convertidos en decisiones.</span></h3>
+                                    </div>
+                                </div>
+                                <div class="card-split-mockup">
+                                    <div class="app-window-mockup" style="padding-bottom: 14px;">
+                                        <div class="app-top-bar" style="background: rgba(0, 0, 0, 0.2); padding: 12px 16px;">
+                                            <div class="window-dots"><div class="window-dot"></div><div class="window-dot"></div><div class="window-dot"></div></div>
+                                            <div style="font-size: 0.7rem; color: rgba(255,255,255,0.7); font-family: monospace; display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.02); padding: 4px 10px; border-radius: 4px;"><span>analitica_cognitiva // reporte_ejecutivo</span></div>
+                                            <div class="status-pill-mini" style="font-size: 0.55rem; padding: 2px 6px;">INSIGHTS DE DATOS ACTIVOS</div>
+                                        </div>
+                                        <div style="display: flex; flex-direction: column; flex: 1; padding: 16px; gap: 14px; overflow: hidden;">
+                                            <div class="app-list-item active" style="padding: 14px 16px; gap: 4px; background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1);"><div class="app-item-meta" style="font-size: 0.58rem;"><span>INSIGHT IA GENERAL</span><span>Sincronizado</span></div><div class="app-item-title" style="font-size: 0.82rem; font-weight: 600; letter-spacing: -0.01em;">Detección Automática de Cuellos de Botella.</div><div class="app-item-subtitle" style="font-size: 0.75rem; color: rgba(255,255,255,0.72); white-space: normal; line-height: 1.45;">El procesamiento de facturas en logística ralentizaba el flujo comercial. La automatización del nodo liberó un 34% de capacidad operativa esta semana.</div></div>
+                                            <div style="display: flex; gap: 12px; width: 100%;">
+                                                <div class="app-list-item" style="flex: 1.2; padding: 12px; gap: 4px; background: rgba(255,255,255,0.01); border-color: rgba(255,255,255,0.03);"><div class="app-item-meta" style="font-size: 0.55rem;"><span>EFICIENCIA GLOBAL</span></div><div class="app-item-title" style="font-size: 0.78rem; font-weight: 500;">Operaciones en Alza</div><div class="app-item-subtitle" style="font-size: 0.72rem; color: rgba(255,255,255,0.45);">Reducción de fricción: +45.8%</div></div>
+                                                <div class="app-list-item" style="flex: 1; padding: 12px; gap: 4px; background: rgba(255,255,255,0.01); border-color: rgba(255,255,255,0.03);"><div class="app-item-meta" style="font-size: 0.55rem;"><span>LIMPIEZA DE DATOS</span></div><div class="app-item-title" style="font-size: 0.78rem; font-weight: 500;">Caos Eliminado</div><div class="app-item-subtitle" style="font-size: 0.72rem; color: rgba(255,255,255,0.45);">Planillas migradas: 100%</div></div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="card-servicio-ancha">
-                            <div class="card-info-group">
-                                <div class="card-header-servicio">
-                                    <span class="card-mini-title-premium">✦ Diseño Centrado</span>
-                                    <h3>Adopción inmediata.<br><span>Interfaces intuitivas para tu equipo.</span></h3>
+
+                        <div id="pilares" class="service-panel">
+                            <div class="card-servicio-ancha">
+                                <div class="card-info-group">
+                                    <div class="card-header-servicio">
+                                        <span class="card-mini-title-premium">✦ Hoja de Ruta Estratégica</span>
+                                        <h3>Auditoría profunda.<br><span>Claridad antes de codificar.</span></h3>
+                                    </div>
+                                </div>
+                                <div class="card-split-mockup">
+                                    <div class="app-window-mockup" style="justify-content: center; padding: 24px 0; gap: 14px;">
+                                        <div style="font-size: 0.65rem; font-weight: 600; color: rgba(255,255,255,0.2); text-transform: uppercase; letter-spacing: 0.04em; padding-left: 24px;">Pasos de Despliegue Estratégico</div>
+                                        <div class="roadmap-timeline-flex">
+                                            <div class="roadmap-vector-line"></div>
+                                            <div class="roadmap-step-node"><div class="roadmap-node-circle">01</div><div style="font-size: 0.78rem; font-weight: 500; color: rgba(255,255,255,0.4);">Auditoría</div></div>
+                                            <div class="roadmap-step-node"><div class="roadmap-node-circle">02</div><div style="font-size: 0.78rem; font-weight: 500; color: rgba(255,255,255,0.4);">Optimización</div></div>
+                                            <div class="roadmap-step-node active"><div class="roadmap-node-circle">03</div><div style="font-size: 0.82rem; font-weight: 600; color: #FFFFFF;">Despliegue</div></div>
+                                        </div>
+                                        <div style="font-size: 0.75rem; color: rgba(255,255,255,0.4); text-align: center; padding: 0 24px; line-height: 1.4;">Mapeo exhaustivo completado. Cuellos de botella aislados y listos para automatizar.</div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="card-split-mockup">
-                                <div class="app-window-mockup" style="padding: 18px 16px; gap: 14px;">
-                                    <div style="font-size: 0.65rem; font-weight: 600; color: rgba(255,255,255,0.2); text-transform: uppercase; letter-spacing: 0.04em;">Arquitectura de Componentes UX</div>
-                                    <div style="display: flex; flex-direction: column; gap: 12px; width: 100%;">
-                                        <div class="ux-control-card active">
+                            
+                            <div class="card-servicio-ancha">
+                                <div class="card-info-group">
+                                    <div class="card-header-servicio">
+                                        <span class="card-mini-title-premium">✦ Diseño Centrado</span>
+                                        <h3>Adopción inmediata.<br><span>Interfaces intuitivas para tu equipo.</span></h3>
+                                    </div>
+                                </div>
+                                <div class="card-split-mockup">
+                                    <div class="app-window-mockup" style="padding: 18px 16px; gap: 14px;">
+                                        <div style="font-size: 0.65rem; font-weight: 600; color: rgba(255,255,255,0.2); text-transform: uppercase; letter-spacing: 0.04em;">Arquitectura de Componentes UX</div>
+                                        <div style="display: flex; flex-direction: column; gap: 12px; width: 100%;">
+                                            <div class="ux-control-card active">
+                                                <div style="display: flex; flex-direction: column; gap: 4px;">
+                                                    <div class="app-item-title" style="font-size: 0.8rem; font-weight: 600;">Interfaz Central Simplificada</div>
+                                                    <div class="app-item-subtitle" style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">Oculta la complejidad técnica para operarios en planta.</div>
+                                                </div>
+                                                <div class="ux-wireframe-switch active"></div>
+                                            </div>
+                                            <div class="ux-control-card">
+                                                <div style="display: flex; flex-direction: column; gap: 4px;">
+                                                    <div class="app-item-title" style="font-size: 0.8rem; font-weight: 500; color: rgba(255,255,255,0.8);">Umbral de Respuesta</div>
+                                                    <div class="app-item-subtitle" style="font-size: 0.75rem; color: rgba(255,255,255,0.35);">Filtro adaptativo de tolerancia para reducir la carga cognitiva.</div>
+                                                </div>
+                                                <div class="ux-slider-track"><div class="ux-slider-fill"></div></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card-servicio-ancha">
+                                <div class="card-info-group">
+                                    <div class="card-header-servicio">
+                                        <span class="card-mini-title-premium">✦ Monitoreo Continuo</span>
+                                        <h3>Mantenimiento activo.<br><span>Tu negocio nunca se detiene.</span></h3>
+                                    </div>
+                                </div>
+                                <div class="card-split-mockup">
+                                    <div class="app-window-mockup" style="padding: 18px 16px; gap: 16px;">
+                                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.04); padding-bottom: 10px;">
                                             <div style="display: flex; flex-direction: column; gap: 4px;">
-                                                <div class="app-item-title" style="font-size: 0.8rem; font-weight: 600;">Interfaz Central Simplificada</div>
-                                                <div class="app-item-subtitle" style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">Oculta la complejidad técnica para operarios en planta.</div>
+                                                <div style="font-size: 0.65rem; font-weight: 600; color: rgba(255,255,255,0.2); text-transform: uppercase; letter-spacing: 0.04em;">Sistema de Infraestructura</div>
+                                                <div class="app-item-title" style="font-size: 0.82rem; font-weight: 600; color: #FFFFFF;">Estado: 99.99% Operativo</div>
                                             </div>
-                                            <div class="ux-wireframe-switch active"></div>
+                                            <div class="status-pill-mini" style="font-size: 0.55rem; padding: 2px 6px;">MONITOREO ACTIVO</div>
                                         </div>
-                                        <div class="ux-control-card">
-                                            <div style="display: flex; flex-direction: column; gap: 4px;">
-                                                <div class="app-item-title" style="font-size: 0.8rem; font-weight: 500; color: rgba(255,255,255,0.8);">Umbral de Respuesta</div>
-                                                <div class="app-item-subtitle" style="font-size: 0.75rem; color: rgba(255,255,255,0.35);">Filtro adaptativo de tolerancia para reducir la carga cognitiva.</div>
+                                        <div class="monitor-grid-bars">
+                                            <div class="monitor-bar-pillar active" style="height: 85%;"></div>
+                                            <div class="monitor-bar-pillar active" style="height: 92%;"></div>
+                                            <div class="monitor-bar-pillar active" style="height: 95%;"></div>
+                                            <div class="monitor-bar-pillar active" style="height: 88%;"></div>
+                                            <div class="monitor-bar-pillar active" style="height: 100%;"></div>
+                                            <div class="monitor-bar-pillar active" style="height: 94%;"></div>
+                                            <div class="monitor-bar-pillar active" style="height: 96%;"></div>
+                                            <div class="monitor-bar-pillar active" style="height: 91%;"></div>
+                                            <div class="monitor-bar-pillar active" style="height: 95%;"></div>
+                                            <div class="monitor-bar-pillar active" style="height: 100%;"></div>
+                                        </div>
+                                        <div style="font-size: 0.72rem; color: rgba(255,255,255,0.4); text-align: center; width: 100%; line-height: 1.3;">Frecuencia de escaneo pasivo en la sombra: Activo cada 500ms</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card-servicio-ancha">
+                                <div class="card-info-group">
+                                    <div class="card-header-servicio">
+                                        <span class="card-mini-title-premium">✦ Arquitectura Modular</span>
+                                        <h3>Crecimiento sin límites.<br><span>Sistemas listos para el futuro.</span></h3>
+                                    </div>
+                                </div>
+                                <div class="card-split-mockup">
+                                    <div class="app-window-mockup" style="padding-bottom: 0;">
+                                        <div class="app-top-bar" style="background: rgba(0, 0, 0, 0.2); padding: 12px 16px;">
+                                            <div class="window-dots"><div class="window-dot"></div><div class="window-dot"></div><div class="window-dot"></div></div>
+                                            <div style="font-size: 0.7rem; color: rgba(255,255,255,0.7); font-family: monospace; display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.02); padding: 4px 10px; border-radius: 4px;"><span>arquitectura_sistema // activo</span></div>
+                                            <div class="status-pill-mini" style="font-size: 0.55rem; padding: 2px 6px;">LISTO PARA MÓDULOS</div>
+                                        </div>
+                                        <div style="display: flex; flex-direction: column; flex: 1; padding: 18px 16px; gap: 18px; overflow: hidden;">
+                                            <div style="display: flex; flex-direction: column; gap: 10px;">
+                                                <div style="font-size: 0.65rem; font-weight: 600; color: rgba(255,255,255,0.2); text-transform: uppercase; letter-spacing: 0.04em;">Nodos Centrales Activos</div>
+                                                <div class="scale-blocks-grid" style="margin-top: 0;">
+                                                    <div class="scale-cube-unit active"><span style="font-size: 0.5rem; color: rgba(255,255,255,0.3); font-family: monospace;">NÚCLEO_01</span><span class="app-item-title" style="font-size: 0.75rem; font-weight: 600;">Nodo de Acceso</span></div>
+                                                    <div class="scale-cube-unit active"><span style="font-size: 0.5rem; color: rgba(255,255,255,0.3); font-family: monospace;">NÚCLEO_02</span><span class="app-item-title" style="font-size: 0.75rem; font-weight: 600;">Enlace BD</span></div>
+                                                    <div class="scale-cube-unit active"><span style="font-size: 0.5rem; color: rgba(255,255,255,0.3); font-family: monospace;">NÚCLEO_03</span><span class="app-item-title" style="font-size: 0.75rem; font-weight: 600;">Puerta API</span></div>
+                                                    <div class="scale-cube-unit active"><span style="font-size: 0.5rem; color: rgba(255,255,255,0.3); font-family: monospace;">NÚCLEO_04</span><span class="app-item-title" style="font-size: 0.75rem; font-weight: 600;">Seguridad</span></div>
+                                                </div>
                                             </div>
-                                            <div class="ux-slider-track"><div class="ux-slider-fill"></div></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="card-servicio-ancha">
-                            <div class="card-info-group">
-                                <div class="card-header-servicio">
-                                    <span class="card-mini-title-premium">✦ Monitoreo Continuo</span>
-                                    <h3>Mantenimiento activo.<br><span>Tu negocio nunca se detiene.</span></h3>
-                                </div>
-                            </div>
-                            <div class="card-split-mockup">
-                                <div class="app-window-mockup" style="padding: 18px 16px; gap: 16px;">
-                                    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.04); padding-bottom: 10px;">
-                                        <div style="display: flex; flex-direction: column; gap: 4px;">
-                                            <div style="font-size: 0.65rem; font-weight: 600; color: rgba(255,255,255,0.2); text-transform: uppercase; letter-spacing: 0.04em;">Sistema de Infraestructura</div>
-                                            <div class="app-item-title" style="font-size: 0.82rem; font-weight: 600; color: #FFFFFF;">Estado: 99.99% Operativo</div>
-                                        </div>
-                                        <div class="status-pill-mini" style="font-size: 0.55rem; padding: 2px 6px;">MONITOREO ACTIVO</div>
-                                    </div>
-                                    <div class="monitor-grid-bars">
-                                        <div class="monitor-bar-pillar active" style="height: 85%;"></div>
-                                        <div class="monitor-bar-pillar active" style="height: 92%;"></div>
-                                        <div class="monitor-bar-pillar active" style="height: 95%;"></div>
-                                        <div class="monitor-bar-pillar active" style="height: 88%;"></div>
-                                        <div class="monitor-bar-pillar active" style="height: 100%;"></div>
-                                        <div class="monitor-bar-pillar active" style="height: 94%;"></div>
-                                        <div class="monitor-bar-pillar active" style="height: 96%;"></div>
-                                        <div class="monitor-bar-pillar active" style="height: 91%;"></div>
-                                        <div class="monitor-bar-pillar active" style="height: 95%;"></div>
-                                        <div class="monitor-bar-pillar active" style="height: 100%;"></div>
-                                    </div>
-                                    <div style="font-size: 0.72rem; color: rgba(255,255,255,0.4); text-align: center; width: 100%; line-height: 1.3;">Frecuencia de escaneo pasivo en la sombra: Activo cada 500ms</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="card-servicio-ancha">
-                            <div class="card-info-group">
-                                <div class="card-header-servicio">
-                                    <span class="card-mini-title-premium">✦ Arquitectura Modular</span>
-                                    <h3>Crecimiento sin límites.<br><span>Sistemas listos para el futuro.</span></h3>
-                                </div>
-                            </div>
-                            <div class="card-split-mockup">
-                                <div class="app-window-mockup" style="padding-bottom: 0;">
-                                    <div class="app-top-bar" style="background: rgba(0, 0, 0, 0.2); padding: 12px 16px;">
-                                        <div class="window-dots"><div class="window-dot"></div><div class="window-dot"></div><div class="window-dot"></div></div>
-                                        <div style="font-size: 0.7rem; color: rgba(255,255,255,0.7); font-family: monospace; display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.02); padding: 4px 10px; border-radius: 4px;"><span>arquitectura_sistema // activo</span></div>
-                                        <div class="status-pill-mini" style="font-size: 0.55rem; padding: 2px 6px;">LISTO PARA MÓDULOS</div>
-                                    </div>
 
-                                    <div style="display: flex; flex-direction: column; flex: 1; padding: 18px 16px; gap: 18px; overflow: hidden;">
-                                        <div style="display: flex; flex-direction: column; gap: 10px;">
-                                            <div style="font-size: 0.65rem; font-weight: 600; color: rgba(255,255,255,0.2); text-transform: uppercase; letter-spacing: 0.04em;">Nodos Centrales Activos</div>
-                                            <div class="scale-blocks-grid" style="margin-top: 0;">
-                                                <div class="scale-cube-unit active"><span style="font-size: 0.5rem; color: rgba(255,255,255,0.3); font-family: monospace;">NÚCLEO_01</span><span class="app-item-title" style="font-size: 0.75rem; font-weight: 600;">Nodo de Acceso</span></div>
-                                                <div class="scale-cube-unit active"><span style="font-size: 0.5rem; color: rgba(255,255,255,0.3); font-family: monospace;">NÚCLEO_02</span><span class="app-item-title" style="font-size: 0.75rem; font-weight: 600;">Enlace BD</span></div>
-                                                <div class="scale-cube-unit active"><span style="font-size: 0.5rem; color: rgba(255,255,255,0.3); font-family: monospace;">NÚCLEO_03</span><span class="app-item-title" style="font-size: 0.75rem; font-weight: 600;">Puerta API</span></div>
-                                                <div class="scale-cube-unit active"><span style="font-size: 0.5rem; color: rgba(255,255,255,0.3); font-family: monospace;">NÚCLEO_04</span><span class="app-item-title" style="font-size: 0.75rem; font-weight: 600;">Seguridad</span></div>
+                                            <div style="display: flex; flex-direction: column; gap: 10px;">
+                                                <div style="font-size: 0.65rem; font-weight: 600; color: rgba(255,255,255,0.2); text-transform: uppercase; letter-spacing: 0.04em;">Ranuras de Expansión Disponibles</div>
+                                                <div class="scale-blocks-grid" style="margin-top: 0;">
+                                                    <div class="scale-cube-unit" style="border-style: dashed; background: transparent; border-color: rgba(255,255,255,0.08);"><span style="font-size: 0.5rem; color: rgba(255,255,255,0.15); font-family: monospace;">EXT_05</span><span class="app-item-title" style="font-size: 0.75rem; color: rgba(255,255,255,0.2); font-weight: 400;">+ Agente IA</span></div>
+                                                    <div class="scale-cube-unit" style="border-style: dashed; background: transparent; border-color: rgba(255,255,255,0.08);"><span style="font-size: 0.5rem; color: rgba(255,255,255,0.15); font-family: monospace;">EXT_06</span><span class="app-item-title" style="font-size: 0.75rem; color: rgba(255,255,255,0.2); font-weight: 400;">+ Sinc. ERP</span></div>
+                                                    <div class="scale-cube-unit" style="border-style: dashed; background: transparent; border-color: rgba(255,255,255,0.08);"><span style="font-size: 0.5rem; color: rgba(255,255,255,0.15); font-family: monospace;">EXT_07</span><span class="app-item-title" style="font-size: 0.75rem; color: rgba(255,255,255,0.2); font-weight: 400;">+ Analítica</span></div>
+                                                    <div class="scale-cube-unit" style="border-style: dashed; background: transparent; border-color: rgba(255,255,255,0.08);"><span style="font-size: 0.5rem; color: rgba(255,255,255,0.15); font-family: monospace;">EXT_08</span><span class="app-item-title" style="font-size: 0.75rem; color: rgba(255,255,255,0.2); font-weight: 400;">+ Nodo CRM</span></div>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div style="display: flex; flex-direction: column; gap: 10px;">
-                                            <div style="font-size: 0.65rem; font-weight: 600; color: rgba(255,255,255,0.2); text-transform: uppercase; letter-spacing: 0.04em;">Ranuras de Expansión Disponibles</div>
-                                            <div class="scale-blocks-grid" style="margin-top: 0;">
-                                                <div class="scale-cube-unit" style="border-style: dashed; background: transparent; border-color: rgba(255,255,255,0.08);"><span style="font-size: 0.5rem; color: rgba(255,255,255,0.15); font-family: monospace;">EXT_05</span><span class="app-item-title" style="font-size: 0.75rem; color: rgba(255,255,255,0.2); font-weight: 400;">+ Agente IA</span></div>
-                                                <div class="scale-cube-unit" style="border-style: dashed; background: transparent; border-color: rgba(255,255,255,0.08);"><span style="font-size: 0.5rem; color: rgba(255,255,255,0.15); font-family: monospace;">EXT_06</span><span class="app-item-title" style="font-size: 0.75rem; color: rgba(255,255,255,0.2); font-weight: 400;">+ Sinc. ERP</span></div>
-                                                <div class="scale-cube-unit" style="border-style: dashed; background: transparent; border-color: rgba(255,255,255,0.08);"><span style="font-size: 0.5rem; color: rgba(255,255,255,0.15); font-family: monospace;">EXT_07</span><span class="app-item-title" style="font-size: 0.75rem; color: rgba(255,255,255,0.2); font-weight: 400;">+ Analítica</span></div>
-                                                <div class="scale-cube-unit" style="border-style: dashed; background: transparent; border-color: rgba(255,255,255,0.08);"><span style="font-size: 0.5rem; color: rgba(255,255,255,0.15); font-family: monospace;">EXT_08</span><span class="app-item-title" style="font-size: 0.75rem; color: rgba(255,255,255,0.2); font-weight: 400;">+ Nodo CRM</span></div>
+                                            <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); border-radius: 8px; padding: 10px 14px; margin-top: auto;">
+                                                <div style="font-size: 0.75rem; color: rgba(255,255,255,0.6); line-height: 1.45;">Estructura desacoplada. Inyecta nuevos nodos de expansión sin comprometer la velocidad ni alterar el código central.</div>
                                             </div>
-                                        </div>
-
-                                        <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); border-radius: 8px; padding: 10px 14px; margin-top: auto;">
-                                            <div style="font-size: 0.75rem; color: rgba(255,255,255,0.6); line-height: 1.45;">Estructura desacoplada. Inyecta nuevos nodos de expansión sin comprometer la velocidad ni alterar el código central.</div>
                                         </div>
                                     </div>
                                 </div>
@@ -554,7 +600,8 @@
                                     <svg width="34" height="30" viewBox="0 0 2490 2242" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
                                         <g transform="translate(0, 2242) scale(0.1, -0.1)" fill="currentColor" stroke="none">
                                             <path d="M12160 22313 c-315 -7 -880 -52 -1180 -93 -551 -76 -1030 -174 -1540 -314 -306 -85 -725 -228 -853 -292 -16 -8 -35 -14 -43 -14 -8 0 -25 -6 -37 -14 -12 -8 -51 -24 -85 -35 -35 -11 -79 -30 -97 -41 -18 -11 -44 -20 -59 -20 -14 0 -26 -3 -26 -7 0 -9 -69 -38 -112 -49 -16 -3 -28 -10 -28 -15 0 -5 -7 -9 -15 -9 -8 0 -38 -11 -67 -25 -28 -14 -56 -25 -61 -25 -6 0 -52 -20 -104 -45 -51 -25 -96 -45 -98 -45 -3 0 -42 -17 -88 -39 -45 -21 -120 -56 -167 -77 -361 -164 -886 -471 -1365 -798 -769 -524 -1523 -1203 -2160 -1946 -389 -453 -799 -1026 -1101 -1536 -206 -349 -498 -918 -634 -1234 -204 -473 -381 -968 -489 -1365 -42 -156 -102 -384 -111 -425 -5 -19 -25 -109 -45 -200 -20 -91 -45 -201 -55 -245 -32 -133 -107 -569 -129 -750 -31 -261 -59 -586 -71 -845 -6 -129 -13 -241 -16 -249 -12 -35 -4 -810 11 -1013 45 -642 122 -1215 225 -1668 4 -19 20 -89 34 -155 83 -375 241 -922 351 -1215 30 -80 55 -149 55 -152 0 -4 18 -46 40 -93 22 -47 40 -92 40 -98 1 -7 14 -37 30 -67 17 -30 30 -65 30 -77 0 -13 3 -23 8 -23 8 0 37 -69 48 -112 3 -16 10 -28 15 -28 5 0 9 -7 9 -16 0 -8 11 -34 23 -57 13 -23 27 -55 31 -72 11 -44 39 -105 48 -105 4 0 8 -5 8 -11 0 -15 93 -203 102 -207 4 -2 8 -8 8 -14 0 -34 385 -789 478 -938 8 -12 300 276 1378 1357 753 754 2212 2217 3243 3250 1030 1033 1884 1892 1898 1909 l24 32 -26 38 c-14 22 -883 894 -1931 1939 l-1906 1900 1 1975 c1 1864 2 1976 19 1989 14 11 416 12 2507 6 1370 -4 2560 -10 2645 -14 l155 -6 6 -960 c3 -528 7 -1939 8 -3135 1 -1196 4 -2185 7 -2198 5 -16 13 -22 26 -20 21 3 -102 -119 3596 3583 1467 1468 2686 2686 2710 2707 l43 38 1055 0 c580 0 1054 4 1054 8 0 11 -46 32 -70 32 -25 0 -80 48 -80 70 0 33 -452 363 -845 617 -580 374 -1364 775 -1892 967 -40 14 -103 37 -141 51 -37 14 -74 25 -82 25 -8 0 -24 7 -34 15 -11 8 -28 15 -39 15 -10 0 -33 6 -50 14 -18 7 -63 23 -101 35 -37 12 -86 30 -109 41 -22 11 -55 20 -72 20 -17 0 -40 7 -51 15 -10 8 -31 15 -46 15 -15 0 -29 4 -32 9 -3 5 -23 12 -43 16 -21 4 -42 10 -48 15 -5 4 -37 15 -70 24 -33 9 -73 22 -90 27 -16 6 -43 15 -60 19 -16 5 -77 23 -135 40 -370 112 -664 176 -1215 264 -432 69 -842 107 -1360 126 -253 9 -340 10 -605 3z"/>
-                                            <path d="M21915 16839 c-66 -35 -141 -95 -187 -151 -24 -29 -104 -111 -177 -183 -74 -71 -189 -185 -255 -253 -285 -289 -869 -865 -956 -943 -96 -85 -181 -171 -530 -532 -107 -111 -386 -390 -619 -622 -234 -231 -540 -537 -680 -680 -140 -143 -357 -361 -481 -485 -2170 -2164 -2652 -2648 -2656 -2666 -3 -13 -2 -33 2 -46 4 -13 330 -345 725 -738 1576 -1568 3109 -3101 3124 -3123 13 -21 15 -242 15 -1963 0 -1734 -1 -1940 -15 -1950 -35 -26 -5222 -30 -5289 -4 -18 6 -24 19 -30 56 -10 74 -6 2564 4 2709 21 285 23 410 9 565 -11 123 -14 439 -14 1530 0 1300 -1 1377 -18 1403 -9 15 -23 27 -29 27 -14 0 45 59 -2112 -2095 -2751 -2747 -4205 -4190 -4228 -4197 -13 -3 -451 -6 -975 -7 -523 -1 -958 -4 -966 -7 -23 -8 8 -41 133 -141 166 -132 596 -430 816 -563 31 -19 73 -45 92 -58 19 -13 128 -78 241 -144 235 -138 417 -231 701 -360 25 -11 95 -45 157 -74 61 -30 116 -54 122 -54 6 0 11 -4 11 -8 0 -9 61 -37 105 -48 17 -4 49 -18 72 -31 23 -12 49 -23 57 -23 9 0 16 -4 16 -9 0 -5 12 -12 28 -15 43 -11 112 -40 112 -48 0 -5 12 -8 26 -8 15 0 41 -9 58 -19 17 -11 63 -31 101 -45 70 -26 105 -41 137 -57 18 -9 48 -20 158 -59 36 -12 70 -26 75 -30 15 -12 284 -94 435 -134 72 -19 159 -43 205 -56 17 -5 48 -12 70 -16 22 -4 54 -13 72 -21 18 -7 46 -13 62 -13 16 0 33 -5 36 -10 3 -6 21 -10 39 -10 19 0 50 -7 69 -15 20 -8 52 -15 71 -15 19 0 36 -5 38 -11 2 -6 26 -13 53 -16 28 -3 55 -10 62 -15 7 -6 40 -12 73 -15 33 -3 63 -10 66 -14 3 -5 26 -9 52 -9 26 -1 58 -7 72 -15 14 -8 40 -14 58 -15 18 0 43 -5 54 -11 11 -6 44 -15 72 -19 28 -5 114 -19 191 -33 77 -14 185 -30 240 -37 55 -6 136 -16 180 -22 44 -6 136 -15 205 -19 69 -4 168 -14 220 -23 73 -13 105 -14 140 -6 31 7 68 7 120 0 182 -26 366 -40 408 -31 26 5 74 5 120 -1 91 -12 582 -4 792 12 80 7 161 11 180 11 19 -1 80 6 135 15 55 9 154 19 220 23 66 3 130 12 142 19 12 6 55 12 97 12 41 0 87 5 103 11 15 6 73 15 128 19 179 15 384 50 590 100 51 12 79 19 170 40 28 6 68 14 90 17 22 3 49 12 60 19 11 8 32 14 48 14 16 0 38 5 50 12 12 6 42 15 67 19 48 8 126 26 225 54 33 9 76 20 95 25 159 40 491 139 560 166 36 14 83 33 105 41 22 8 53 21 68 29 16 8 36 14 45 14 9 0 26 7 36 15 11 8 26 15 33 15 7 0 36 11 65 25 28 14 59 25 67 25 9 0 41 13 71 30 30 16 67 29 82 30 14 0 28 3 30 8 5 11 69 40 106 47 17 4 32 11 32 16 0 5 7 9 16 9 8 0 34 11 57 23 23 13 56 27 72 31 44 11 105 39 105 48 0 4 5 8 11 8 15 0 203 93 207 102 2 4 10 8 17 8 7 0 53 20 101 44 78 39 173 84 334 159 25 11 92 48 150 81 91 52 133 77 225 133 11 7 40 23 65 35 25 13 47 25 50 28 3 3 32 23 65 45 33 22 62 42 65 45 3 3 23 14 45 24 22 11 63 36 90 57 28 20 66 45 85 55 19 10 39 23 45 27 5 4 66 45 135 91 202 134 270 181 370 261 52 42 114 90 138 107 24 18 42 40 42 51 0 27 37 57 70 57 26 0 90 51 90 72 0 4 7 8 15 8 8 0 15 4 15 8 0 5 18 16 40 26 21 9 54 36 72 59 48 62 59 72 99 90 21 9 66 43 102 74 251 224 334 303 540 512 349 355 641 679 828 921 37 47 150 198 251 335 240 325 401 563 553 817 18 30 41 72 192 347 42 77 82 153 209 401 38 74 75 141 82 148 6 7 12 19 12 27 0 17 33 75 43 75 4 0 7 5 7 10 0 6 28 68 61 138 57 118 113 250 211 497 22 55 53 134 70 175 17 41 44 113 60 160 16 47 43 119 59 160 36 95 149 473 149 501 0 11 5 30 12 42 6 12 15 38 19 57 4 19 15 62 24 95 28 99 46 177 54 225 4 25 13 55 19 67 7 12 12 34 12 50 0 16 6 37 14 48 7 11 16 38 19 60 5 37 15 82 37 175 60 248 120 576 120 659 0 14 6 64 14 111 23 132 37 237 46 335 5 50 13 126 19 170 27 198 51 668 51 988 0 557 -38 1180 -85 1399 -8 37 -15 82 -15 101 0 19 -7 51 -15 70 -8 20 -15 64 -15 97 0 33 -4 68 -10 78 -10 17 -25 112 -39 237 -4 39 -13 83 -19 98 -7 16 -12 45 -12 65 -1 20 -7 48 -15 62 -8 14 -14 48 -15 77 0 28 -4 54 -9 57 -4 3 -11 35 -14 72 -4 36 -11 71 -15 78 -5 6 -12 36 -14 66 -3 30 -11 56 -17 58 -6 2 -11 19 -11 39 0 19 -6 58 -14 86 -7 29 -21 88 -31 132 -30 139 -133 490 -190 645 -7 19 -18 53 -25 75 -7 22 -18 54 -25 70 -8 17 -29 77 -48 135 -19 58 -40 116 -45 130 -6 14 -36 95 -68 180 -67 183 -158 395 -243 572 -33 70 -61 132 -61 137 0 5 -3 11 -8 13 -8 4 -102 193 -102 207 0 5 -3 11 -7 13 -5 2 -26 39 -47 83 -22 44 -42 82 -46 85 -3 3 -14 24 -23 48 -9 23 -27 59 -40 80 -13 20 -40 71 -61 112 -21 41 -63 117 -93 168 -60 103 -69 107 -138 71z"/></g>
+                                            <path d="M21915 16839 c-66 -35 -141 -95 -187 -151 -24 -29 -104 -111 -177 -183 -74 -71 -189 -185 -255 -253 -285 -289 -869 -865 -956 -943 -96 -85 -181 -171 -530 -532 -107 -111 -386 -390 -619 -622 -234 -231 -540 -537 -680 -680 -140 -143 -357 -361 -481 -485 -2170 -2164 -2652 -2648 -2656 -2666 -3 -13 -2 -33 2 -46 4 -13 330 -345 725 -738 1576 -1568 3109 -3101 3124 -3123 13 -21 15 -242 15 -1963 0 -1734 -1 -1940 -15 -1950 -35 -26 -5222 -30 -5289 -4 -18 6 -24 19 -30 56 -10 74 -6 2564 4 2709 21 285 23 410 9 565 -11 123 -14 439 -14 1530 0 1300 -1 1377 -18 1403 -9 15 -23 27 -29 27 -14 0 45 59 -2112 -2095 -2751 -2747 -4205 -4190 -4228 -4197 -13 -3 -451 -6 -975 -7 -523 -1 -958 -4 -966 -7 -23 -8 8 -41 133 -141 166 -132 596 -430 816 -563 31 -19 73 -45 92 -58 19 -13 128 -78 241 -144 235 -138 417 -231 701 -360 25 -11 95 -45 157 -74 61 -30 116 -54 122 -54 6 0 11 -4 11 -8 0 -9 61 -37 105 -48 17 -4 49 -18 72 -31 23 -12 49 -23 57 -23 9 0 16 -4 16 -9 0 -5 12 -12 28 -15 43 -11 112 -40 112 -48 0 -5 12 -8 26 -8 15 0 41 -9 58 -19 17 -11 63 -31 101 -45 70 -26 105 -41 137 -57 18 -9 48 -20 158 -59 36 -12 70 -26 75 -30 15 -12 284 -94 435 -134 72 -19 159 -43 205 -56 17 -5 48 -12 70 -16 22 -4 54 -13 72 -21 18 -7 46 -13 62 -13 16 0 33 -5 36 -10 3 -6 21 -10 39 -10 19 0 50 -7 69 -15 20 -8 52 -15 71 -15 19 0 36 -5 38 -11 2 -6 26 -13 53 -16 28 -3 55 -10 62 -15 7 -6 40 -12 73 -15 33 -3 63 -10 66 -14 3 -5 26 -9 52 -9 26 -1 58 -7 72 -15 14 -8 40 -14 58 -15 18 0 43 -5 54 -11 11 -6 44 -15 72 -19 28 -5 114 -19 191 -33 77 -14 185 -30 240 -37 55 -6 136 -16 180 -22 44 -6 136 -15 205 -19 69 -4 168 -14 220 -23 73 -13 105 -14 140 -6 31 7 68 7 120 0 182 -26 366 -40 408 -31 26 5 74 5 120 -1 91 -12 582 -4 792 12 80 7 161 11 180 11 19 -1 80 6 135 15 55 9 154 19 220 23 66 3 130 12 142 19 12 6 55 12 97 12 41 0 87 5 103 11 15 6 73 15 128 19 179 15 384 50 590 100 51 12 79 19 170 40 28 6 68 14 90 17 22 3 49 12 60 19 11 8 32 14 48 14 16 0 38 5 50 12 12 6 42 15 67 19 48 8 126 26 225 54 33 9 76 20 95 25 159 40 491 139 560 166 36 14 83 33 105 41 22 8 53 21 68 29 16 8 36 14 45 14 9 0 26 7 36 15 11 8 26 15 33 15 7 0 36 11 65 25 28 14 59 25 67 25 9 0 41 13 71 30 30 16 67 29 82 30 14 0 28 3 30 8 5 11 69 40 106 47 17 4 32 11 32 16 0 5 7 9 16 9 8 0 34 11 57 23 23 13 56 27 72 31 44 11 105 39 105 48 0 4 5 8 11 8 15 0 203 93 207 102 2 4 10 8 17 8 7 0 53 20 101 44 78 39 173 84 334 159 25 11 92 48 150 81 91 52 133 77 225 133 11 7 40 23 65 35 25 13 47 25 50 28 3 3 32 23 65 45 33 22 62 42 65 45 3 3 23 14 45 24 22 11 63 36 90 57 28 20 66 45 85 55 19 10 39 23 45 27 5 4 66 45 135 91 202 134 270 181 370 261 52 42 114 90 138 107 24 18 42 40 42 51 0 27 37 57 70 57 26 0 90 51 90 72 0 4 7 8 15 8 8 0 15 4 15 8 0 5 18 16 40 26 21 9 54 36 72 59 48 62 59 72 99 90 21 9 66 43 102 74 251 224 334 303 540 512 349 355 641 679 828 921 37 47 150 198 251 335 240 325 401 563 553 817 18 30 41 72 192 347 42 77 82 153 209 401 38 74 75 141 82 148 6 7 12 19 12 27 0 17 33 75 43 75 4 0 7 5 7 10 0 6 28 68 61 138 57 118 113 250 211 497 22 55 53 134 70 175 17 41 44 113 60 160 16 47 43 119 59 160 36 95 149 473 149 501 0 11 5 30 12 42 6 12 15 38 19 57 4 19 15 62 24 95 28 99 46 177 54 225 4 25 13 55 19 67 7 12 12 34 12 50 0 16 6 37 14 48 7 11 16 38 19 60 5 37 15 82 37 175 60 248 120 576 120 659 0 14 6 64 14 111 23 132 37 237 46 335 5 50 13 126 19 170 27 198 51 668 51 988 0 557 -38 1180 -85 1399 -8 37 -15 82 -15 101 0 19 -7 51 -15 70 -8 20 -15 64 -15 97 0 33 -4 68 -10 78 -10 17 -25 112 -39 237 -4 39 -13 83 -19 98 -7 16 -12 45 -12 65 -1 20 -7 48 -15 62 -8 14 -14 48 -15 77 0 28 -4 54 -9 57 -4 3 -11 35 -14 72 -4 36 -11 71 -15 78 -5 6 -12 36 -14 66 -3 30 -11 56 -17 58 -6 2 -11 19 -11 39 0 19 -6 58 -14 86 -7 29 -21 88 -31 132 -30 139 -133 490 -190 645 -7 19 -18 53 -25 75 -7 22 -18 54 -25 70 -8 17 -29 77 -48 135 -19 58 -40 116 -45 130 -6 14 -36 95 -68 180 -67 183 -158 395 -243 572 -33 70 -61 132 -61 137 0 5 -3 11 -8 13 -8 4 -102 193 -102 207 0 5 -3 11 -7 13 -5 2 -26 39 -47 83 -22 44 -42 82 -46 85 -3 3 -14 24 -23 48 -9 23 -27 59 -40 80 -13 20 -40 71 -61 112 -21 41 -63 117 -93 168 -60 103 -69 107 -138 71z"/>
+                                        </g>
                                     </svg>
                                 </div>
                                 <h2>Lleva tu empresa<br> al siguiente nivel.</h2>
@@ -569,7 +616,6 @@
                             </div>
 
                             <div class="cta-card-back">
-                                
                                 <h3 class="card-title-centered" style="font-size:2rem; margin-bottom: 16px;">Comencemos.</h3>
 
                                 <div class="contact-switcher">
@@ -584,19 +630,15 @@
                                 </div>
 
                                 <div class="panels-wrapper">
-                                    
                                     <div class="contact-panel active" id="panel-form">
                                         <form class="form-contacto" action="https://formspree.io/f/TU_CODIGO_AQUI" method="POST">
-                                            
                                             <input type="text" name="Nombre" class="form-input" placeholder="Nombre completo" required>
                                             <input type="text" name="Empresa" class="form-input" placeholder="Nombre corporativo" required>
-                                            
-                                            <input type="tel" id="phone" name="Telefono" class="form-input" placeholder="    Teléfono" inputmode="numeric" pattern="[0-9]*" required>
-                                            <input type="email" name="Email" class="form-input" placeholder="Correo corporativo" required>                                            <textarea name="Mensaje" class="form-input form-textarea form-full-width" placeholder="Mensaje (opcional)"></textarea>
-                                            
+                                            <input type="tel" id="phone" name="Telefono" class="form-input" placeholder="Teléfono" inputmode="numeric" pattern="[0-9]*" required>
+                                            <input type="email" name="Email" class="form-input" placeholder="Correo corporativo" required>
+                                            <textarea name="Mensaje" class="form-input form-textarea form-full-width" placeholder="Mensaje (opcional)"></textarea>
                                             <input type="text" name="_gotcha" style="display:none">
-                                            
-                                            <button type="submit" class="btn-blanco-fuerte form-full-width" style="justify-content: center !important;border:none; cursor:pointer;">
+                                            <button type="submit" class="btn-blanco-fuerte form-full-width" style="justify-content: center !important; border:none; cursor:pointer;">
                                                 Enviar solicitud
                                             </button>
                                         </form>
@@ -613,7 +655,6 @@
                                             </a>
                                         </div>
                                     </div>
-
                                 </div>
 
                                 <button id="btn-flip-back" class="btn-volver card-btn-centered" aria-label="Volver a la tarjeta anterior">← Volver atrás</button>
@@ -642,12 +683,12 @@
 
     <footer class="footer-premium">
         <div class="footer-inner">
-            
             <a href="#hero" class="footer-logo-premium" aria-label="Volver al inicio">
                 <svg width="24" height="21" viewBox="0 0 2490 2242" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
                     <g transform="translate(0, 2242) scale(0.1, -0.1)" fill="currentColor" stroke="none">
                         <path d="M12160 22313 c-315 -7 -880 -52 -1180 -93 -551 -76 -1030 -174 -1540 -314 -306 -85 -725 -228 -853 -292 -16 -8 -35 -14 -43 -14 -8 0 -25 -6 -37 -14 -12 -8 -51 -24 -85 -35 -35 -11 -79 -30 -97 -41 -18 -11 -44 -20 -59 -20 -14 0 -26 -3 -26 -7 0 -9 -69 -38 -112 -49 -16 -3 -28 -10 -28 -15 0 -5 -7 -9 -15 -9 -8 0 -38 -11 -67 -25 -28 -14 -56 -25 -61 -25 -6 0 -52 -20 -104 -45 -51 -25 -96 -45 -98 -45 -3 0 -42 -17 -88 -39 -45 -21 -120 -56 -167 -77 -361 -164 -886 -471 -1365 -798 -769 -524 -1523 -1203 -2160 -1946 -389 -453 -799 -1026 -1101 -1536 -206 -349 -498 -918 -634 -1234 -204 -473 -381 -968 -489 -1365 -42 -156 -102 -384 -111 -425 -5 -19 -25 -109 -45 -200 -20 -91 -45 -201 -55 -245 -32 -133 -107 -569 -129 -750 -31 -261 -59 -586 -71 -845 -6 -129 -13 -241 -16 -249 -12 -35 -4 -810 11 -1013 45 -642 122 -1215 225 -1668 4 -19 20 -89 34 -155 83 -375 241 -922 351 -1215 30 -80 55 -149 55 -152 0 -4 18 -46 40 -93 22 -47 40 -92 40 -98 1 -7 14 -37 30 -67 17 -30 30 -65 30 -77 0 -13 3 -23 8 -23 8 0 37 -69 48 -112 3 -16 10 -28 15 -28 5 0 9 -7 9 -16 0 -8 11 -34 23 -57 13 -23 27 -55 31 -72 11 -44 39 -105 48 -105 4 0 8 -5 8 -11 0 -15 93 -203 102 -207 4 -2 8 -8 8 -14 0 -34 385 -789 478 -938 8 -12 300 276 1378 1357 753 754 2212 2217 3243 3250 1030 1033 1884 1892 1898 1909 l24 32 -26 38 c-14 22 -883 894 -1931 1939 l-1906 1900 1 1975 c1 1864 2 1976 19 1989 14 11 416 12 2507 6 1370 -4 2560 -10 2645 -14 l155 -6 6 -960 c3 -528 7 -1939 8 -3135 1 -1196 4 -2185 7 -2198 5 -16 13 -22 26 -20 21 3 -102 -119 3596 3583 1467 1468 2686 2686 2710 2707 l43 38 1055 0 c580 0 1054 4 1054 8 0 11 -46 32 -70 32 -25 0 -80 48 -80 70 0 33 -452 363 -845 617 -580 374 -1364 775 -1892 967 -40 14 -103 37 -141 51 -37 14 -74 25 -82 25 -8 0 -24 7 -34 15 -11 8 -28 15 -39 15 -10 0 -33 6 -50 14 -18 7 -63 23 -101 35 -37 12 -86 30 -109 41 -22 11 -55 20 -72 20 -17 0 -40 7 -51 15 -10 8 -31 15 -46 15 -15 0 -29 4 -32 9 -3 5 -23 12 -43 16 -21 4 -42 10 -48 15 -5 4 -37 15 -70 24 -33 9 -73 22 -90 27 -16 6 -43 15 -60 19 -16 5 -77 23 -135 40 -370 112 -664 176 -1215 264 -432 69 -842 107 -1360 126 -253 9 -340 10 -605 3z"/>
-                        <path d="M21915 16839 c-66 -35 -141 -95 -187 -151 -24 -29 -104 -111 -177 -183 -74 -71 -189 -185 -255 -253 -285 -289 -869 -865 -956 -943 -96 -85 -181 -171 -530 -532 -107 -111 -386 -390 -619 -622 -234 -231 -540 -537 -680 -680 -140 -143 -357 -361 -481 -485 -2170 -2164 -2652 -2648 -2656 -2666 -3 -13 -2 -33 2 -46 4 -13 330 -345 725 -738 1576 -1568 3109 -3101 3124 -3123 13 -21 15 -242 15 -1963 0 -1734 -1 -1940 -15 -1950 -35 -26 -5222 -30 -5289 -4 -18 6 -24 19 -30 56 -10 74 -6 2564 4 2709 21 285 23 410 9 565 -11 123 -14 439 -14 1530 0 1300 -1 1377 -18 1403 -9 15 -23 27 -29 27 -14 0 45 59 -2112 -2095 -2751 -2747 -4205 -4190 -4228 -4197 -13 -3 -451 -6 -975 -7 -523 -1 -958 -4 -966 -7 -23 -8 8 -41 133 -141 166 -132 596 -430 816 -563 31 -19 73 -45 92 -58 19 -13 128 -78 241 -144 235 -138 417 -231 701 -360 25 -11 95 -45 157 -74 61 -30 116 -54 122 -54 6 0 11 -4 11 -8 0 -9 61 -37 105 -48 17 -4 49 -18 72 -31 23 -12 49 -23 57 -23 9 0 16 -4 16 -9 0 -5 12 -12 28 -15 43 -11 112 -40 112 -48 0 -5 12 -8 26 -8 15 0 41 -9 58 -19 17 -11 63 -31 101 -45 70 -26 105 -41 137 -57 18 -9 48 -20 158 -59 36 -12 70 -26 75 -30 15 -12 284 -94 435 -134 72 -19 159 -43 205 -56 17 -5 48 -12 70 -16 22 -4 54 -13 72 -21 18 -7 46 -13 62 -13 16 0 33 -5 36 -10 3 -6 21 -10 39 -10 19 0 50 -7 69 -15 20 -8 52 -15 71 -15 19 0 36 -5 38 -11 2 -6 26 -13 53 -16 28 -3 55 -10 62 -15 7 -6 40 -12 73 -15 33 -3 63 -10 66 -14 3 -5 26 -9 52 -9 26 -1 58 -7 72 -15 14 -8 40 -14 58 -15 18 0 43 -5 54 -11 11 -6 44 -15 72 -19 28 -5 114 -19 191 -33 77 -14 185 -30 240 -37 55 -6 136 -16 180 -22 44 -6 136 -15 205 -19 69 -4 168 -14 220 -23 73 -13 105 -14 140 -6 31 7 68 7 120 0 182 -26 366 -40 408 -31 26 5 74 5 120 -1 91 -12 582 -4 792 12 80 7 161 11 180 11 19 -1 80 6 135 15 55 9 154 19 220 23 66 3 130 12 142 19 12 6 55 12 97 12 41 0 87 5 103 11 15 6 73 15 128 19 179 15 384 50 590 100 51 12 79 19 170 40 28 6 68 14 90 17 22 3 49 12 60 19 11 8 32 14 48 14 16 0 38 5 50 12 12 6 42 15 67 19 48 8 126 26 225 54 33 9 76 20 95 25 159 40 491 139 560 166 36 14 83 33 105 41 22 8 53 21 68 29 16 8 36 14 45 14 9 0 26 7 36 15 11 8 26 15 33 15 7 0 36 11 65 25 28 14 59 25 67 25 9 0 41 13 71 30 30 16 67 29 82 30 14 0 28 3 30 8 5 11 69 40 106 47 17 4 32 11 32 16 0 5 7 9 16 9 8 0 34 11 57 23 23 13 56 27 72 31 44 11 105 39 105 48 0 4 5 8 11 8 15 0 203 93 207 102 2 4 10 8 17 8 7 0 53 20 101 44 78 39 173 84 334 159 25 11 92 48 150 81 91 52 133 77 225 133 11 7 40 23 65 35 25 13 47 25 50 28 3 3 32 23 65 45 33 22 62 42 65 45 3 3 23 14 45 24 22 11 63 36 90 57 28 20 66 45 85 55 19 10 39 23 45 27 5 4 66 45 135 91 202 134 270 181 370 261 52 42 114 90 138 107 24 18 42 40 42 51 0 27 37 57 70 57 26 0 90 51 90 72 0 4 7 8 15 8 8 0 15 4 15 8 0 5 18 16 40 26 21 9 54 36 72 59 48 62 59 72 99 90 21 9 66 43 102 74 251 224 334 303 540 512 349 355 641 679 828 921 37 47 150 198 251 335 240 325 401 563 553 817 18 30 41 72 192 347 42 77 82 153 209 401 38 74 75 141 82 148 6 7 12 19 12 27 0 17 33 75 43 75 4 0 7 5 7 10 0 6 28 68 61 138 57 118 113 250 211 497 22 55 53 134 70 175 17 41 44 113 60 160 16 47 43 119 59 160 36 95 149 473 149 501 0 11 5 30 12 42 6 12 15 38 19 57 4 19 15 62 24 95 28 99 46 177 54 225 4 25 13 55 19 67 7 12 12 34 12 50 0 16 6 37 14 48 7 11 16 38 19 60 5 37 15 82 37 175 60 248 120 576 120 659 0 14 6 64 14 111 23 132 37 237 46 335 5 50 13 126 19 170 27 198 51 668 51 988 0 557 -38 1180 -85 1399 -8 37 -15 82 -15 101 0 19 -7 51 -15 70 -8 20 -15 64 -15 97 0 33 -4 68 -10 78 -10 17 -25 112 -39 237 -4 39 -13 83 -19 98 -7 16 -12 45 -12 65 -1 20 -7 48 -15 62 -8 14 -14 48 -15 77 0 28 -4 54 -9 57 -4 3 -11 35 -14 72 -4 36 -11 71 -15 78 -5 6 -12 36 -14 66 -3 30 -11 56 -17 58 -6 2 -11 19 -11 39 0 19 -6 58 -14 86 -7 29 -21 88 -31 132 -30 139 -133 490 -190 645 -7 19 -18 53 -25 75 -7 22 -18 54 -25 70 -8 17 -29 77 -48 135 -19 58 -40 116 -45 130 -6 14 -36 95 -68 180 -67 183 -158 395 -243 572 -33 70 -61 132 -61 137 0 5 -3 11 -8 13 -8 4 -102 193 -102 207 0 5 -3 11 -7 13 -5 2 -26 39 -47 83 -22 44 -42 82 -46 85 -3 3 -14 24 -23 48 -9 23 -27 59 -40 80 -13 20 -40 71 -61 112 -21 41 -63 117 -93 168 -60 103 -69 107 -138 71z"/></g>
+                        <path d="M21915 16839 c-66 -35 -141 -95 -187 -151 -24 -29 -104 -111 -177 -183 -74 -71 -189 -185 -255 -253 -285 -289 -869 -865 -956 -943 -96 -85 -181 -171 -530 -532 -107 -111 -386 -390 -619 -622 -234 -231 -540 -537 -680 -680 -140 -143 -357 -361 -481 -485 -2170 -2164 -2652 -2648 -2656 -2666 -3 -13 -2 -33 2 -46 4 -13 330 -345 725 -738 1576 -1568 3109 -3101 3124 -3123 13 -21 15 -242 15 -1963 0 -1734 -1 -1940 -15 -1950 -35 -26 -5222 -30 -5289 -4 -18 6 -24 19 -30 56 -10 74 -6 2564 4 2709 21 285 23 410 9 565 -11 123 -14 439 -14 1530 0 1300 -1 1377 -18 1403 -9 15 -23 27 -29 27 -14 0 45 59 -2112 -2095 -2751 -2747 -4205 -4190 -4228 -4197 -13 -3 -451 -6 -975 -7 -523 -1 -958 -4 -966 -7 -23 -8 8 -41 133 -141 166 -132 596 -430 816 -563 31 -19 73 -45 92 -58 19 -13 128 -78 241 -144 235 -138 417 -231 701 -360 25 -11 95 -45 157 -74 61 -30 116 -54 122 -54 6 0 11 -4 11 -8 0 -9 61 -37 105 -48 17 -4 49 -18 72 -31 23 -12 49 -23 57 -23 9 0 16 -4 16 -9 0 -5 12 -12 28 -15 43 -11 112 -40 112 -48 0 -5 12 -8 26 -8 15 0 41 -9 58 -19 17 -11 63 -31 101 -45 70 -26 105 -41 137 -57 18 -9 48 -20 158 -59 36 -12 70 -26 75 -30 15 -12 284 -94 435 -134 72 -19 159 -43 205 -56 17 -5 48 -12 70 -16 22 -4 54 -13 72 -21 18 -7 46 -13 62 -13 16 0 33 -5 36 -10 3 -6 21 -10 39 -10 19 0 50 -7 69 -15 20 -8 52 -15 71 -15 19 0 36 -5 38 -11 2 -6 26 -13 53 -16 28 -3 55 -10 62 -15 7 -6 40 -12 73 -15 33 -3 63 -10 66 -14 3 -5 26 -9 52 -9 26 -1 58 -7 72 -15 14 -8 40 -14 58 -15 18 0 43 -5 54 -11 11 -6 44 -15 72 -19 28 -5 114 -19 191 -33 77 -14 185 -30 240 -37 55 -6 136 -16 180 -22 44 -6 136 -15 205 -19 69 -4 168 -14 220 -23 73 -13 105 -14 140 -6 31 7 68 7 120 0 182 -26 366 -40 408 -31 26 5 74 5 120 -1 91 -12 582 -4 792 12 80 7 161 11 180 11 19 -1 80 6 135 15 55 9 154 19 220 23 66 3 130 12 142 19 12 6 55 12 97 12 41 0 87 5 103 11 15 6 73 15 128 19 179 15 384 50 590 100 51 12 79 19 170 40 28 6 68 14 90 17 22 3 49 12 60 19 11 8 32 14 48 14 16 0 38 5 50 12 12 6 42 15 67 19 48 8 126 26 225 54 33 9 76 20 95 25 159 40 491 139 560 166 36 14 83 33 105 41 22 8 53 21 68 29 16 8 36 14 45 14 9 0 26 7 36 15 11 8 26 15 33 15 7 0 36 11 65 25 28 14 59 25 67 25 9 0 41 13 71 30 30 16 67 29 82 30 14 0 28 3 30 8 5 11 69 40 106 47 17 4 32 11 32 16 0 5 7 9 16 9 8 0 34 11 57 23 23 13 56 27 72 31 44 11 105 39 105 48 0 4 5 8 11 8 15 0 203 93 207 102 2 4 10 8 17 8 7 0 53 20 101 44 78 39 173 84 334 159 25 11 92 48 150 81 91 52 133 77 225 133 11 7 40 23 65 35 25 13 47 25 50 28 3 3 32 23 65 45 33 22 62 42 65 45 3 3 23 14 45 24 22 11 63 36 90 57 28 20 66 45 85 55 19 10 39 23 45 27 5 4 66 45 135 91 202 134 270 181 370 261 52 42 114 90 138 107 24 18 42 40 42 51 0 27 37 57 70 57 26 0 90 51 90 72 0 4 7 8 15 8 8 0 15 4 15 8 0 5 18 16 40 26 21 9 54 36 72 59 48 62 59 72 99 90 21 9 66 43 102 74 251 224 334 303 540 512 349 355 641 679 828 921 37 47 150 198 251 335 240 325 401 563 553 817 18 30 41 72 192 347 42 77 82 153 209 401 38 74 75 141 82 148 6 7 12 19 12 27 0 17 33 75 43 75 4 0 7 5 7 10 0 6 28 68 61 138 57 118 113 250 211 497 22 55 53 134 70 175 17 41 44 113 60 160 16 47 43 119 59 160 36 95 149 473 149 501 0 11 5 30 12 42 6 12 15 38 19 57 4 19 15 62 24 95 28 99 46 177 54 225 4 25 13 55 19 67 7 12 12 34 12 50 0 16 6 37 14 48 7 11 16 38 19 60 5 37 15 82 37 175 60 248 120 576 120 659 0 14 6 64 14 111 23 132 37 237 46 335 5 50 13 126 19 170 27 198 51 668 51 988 0 557 -38 1180 -85 1399 -8 37 -15 82 -15 101 0 19 -7 51 -15 70 -8 20 -15 64 -15 97 0 33 -4 68 -10 78 -10 17 -25 112 -39 237 -4 39 -13 83 -19 98 -7 16 -12 45 -12 65 -1 20 -7 48 -15 62 -8 14 -14 48 -15 77 0 28 -4 54 -9 57 -4 3 -11 35 -14 72 -4 36 -11 71 -15 78 -5 6 -12 36 -14 66 -3 30 -11 56 -17 58 -6 2 -11 19 -11 39 0 19 -6 58 -14 86 -7 29 -21 88 -31 132 -30 139 -133 490 -190 645 -7 19 -18 53 -25 75 -7 22 -18 54 -25 70 -8 17 -29 77 -48 135 -19 58 -40 116 -45 130 -6 14 -36 95 -68 180 -67 183 -158 395 -243 572 -33 70 -61 132 -61 137 0 5 -3 11 -8 13 -8 4 -102 193 -102 207 0 5 -3 11 -7 13 -5 2 -26 39 -47 83 -22 44 -42 82 -46 85 -3 3 -14 24 -23 48 -9 23 -27 59 -40 80 -13 20 -40 71 -61 112 -21 41 -63 117 -93 168 -60 103 -69 107 -138 71z"/>
+                    </g>
                 </svg>
                 <span>Xonda</span>
             </a>
